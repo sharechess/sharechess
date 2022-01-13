@@ -1,7 +1,6 @@
 import "./style.css";
 import Board from "./board/Board";
 import styles from "./board/styles-board";
-import GIF from "./gif/GIF";
 import Game from "./game/Game";
 import pgns from "./test-data/pgns";
 import createSimpleGIF from "./gif/createSimpleGIF";
