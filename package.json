@@ -1,0 +1,19 @@
+{
+  "name": "chesspic",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --host 192.168.1.23",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "@types/chess.js": "^0.11.2",
+    "@types/gif.js": "^0.2.2",
+    "chess.js": "^0.12.0",
+    "gif.js": "^0.2.0"
+  }
+}
