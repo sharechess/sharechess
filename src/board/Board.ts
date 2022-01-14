@@ -69,9 +69,11 @@ class Board {
       this.style;
 
     const hasBorder = border && this.borderVisible;
-    const borderWidth = hasBorder ? this.size / 32 : 0;
-    const innerSize = this.size - borderWidth * 2;
-    const squareSize = innerSize / this.tiles;
+    const tempBorderWidth = hasBorder ? this.size / 32 : 0;
+    const tempInnerSize = this.size - tempBorderWidth * 2;
+    const squareSize = Math.floor(tempInnerSize / this.tiles);
+    const innerSize = squareSize * this.tiles;
+    const borderWidth = (this.size - innerSize) / 2;
 
     this.ctx.clearRect(0, 0, this.size, this.size);
 

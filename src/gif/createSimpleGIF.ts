@@ -8,7 +8,7 @@ const MOVE_TIME = 1000;
 const createSimpleGIF = async (
   pgn: string,
   style: Style,
-  size: number = 1024
+  size: number = 720
 ) => {
   const game = new Game().loadPGN(pgn);
   const board = new Board(8).setStyle(style).setSize(size).showBorder();
@@ -28,9 +28,7 @@ const createSimpleGIF = async (
     gif.add(board.toImgElement(), MOVE_TIME);
   }
 
-  const url = await gif.render();
-
-  window.open(url);
+  return await gif.render();
 };
 
 export default createSimpleGIF;

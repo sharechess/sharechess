@@ -104,6 +104,23 @@ Kg7 30.f3 Qxd6 31.fxg4 Qd4+ 32.Kh1 Nf6 33.Rf4 Ne4 34.Qxd3 Nf2+
 [Annotator "lichess.org"]
 
 1. b4 { A00 Polish Opening } d5 2. Bb2 e6 3. e3 f6 4. b5 Bd7 5. a4 a6 6. Nc3 axb5 7. axb5 Rxa1 8. Bxa1 Ne7 9. Nf3 c6 10. bxc6 bxc6 11. Be2 c5 12. O-O c4 13. d3 cxd3 14. Qxd3 Nbc6 15. Nb5 Nb8 16. Nd6# { White wins by checkmate. } 1-0`,
+
+  `[Event "Casual Bullet game"]
+[Site "https://lichess.org/63Ayn7j6"]
+[Date "2022.01.14"]
+[White "Anonymous"]
+[Black "Anonymous"]
+[Result "0-1"]
+[UTCDate "2022.01.14"]
+[UTCTime "02:03:45"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "A01"]
+[Opening "Nimzo-Larsen Attack: Indian Variation"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. b3 Nf6 { A01 Nimzo-Larsen Attack: Indian Variation } 2. Bb2 g6 3. Nc3 Bg7 4. d3 O-O 5. Qd2 d5 6. O-O-O e6 7. Nf3 Nbd7 8. e4 a5 9. exd5 Nxd5 10. Nxd5 exd5 11. Bxg7 Kxg7 12. g3 b5 13. Bg2 a4 14. b4 a3 15. Nd4 c6 16. Nb3 Nf6 17. Nc5 Nd7 18. Rhe1 Nxc5 19. d4 Na4 20. c3 Nb2 21. Kb1 Bf5+ 22. Ka1 Nxd1 23. Qxd1 Qf6 24. Qf3 Rae8 25. g4 Rxe1+ 26. Qd1 Rxd1# { Black wins by checkmate. } 0-1`,
 ];
 
 export default pgns;

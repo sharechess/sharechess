@@ -24,10 +24,16 @@ class GIF {
     this.gif.addFrame(frame, { delay });
   }
 
-  render(): Promise<string> {
+  render(): Promise<File> {
     return new Promise((resolve) => {
       this.gif.on("finished", function (blob) {
-        resolve(URL.createObjectURL(blob));
+        const file = new File([blob], `board.gif`, {
+          type: "image/gif",
+          lastModified: Date.now(),
+        });
+
+        resolve(file);
+        // resolve(URL.createObjectURL(file));
       });
 
       this.gif.render();
