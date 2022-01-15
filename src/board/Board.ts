@@ -8,7 +8,7 @@ import drawPieces from "./layers/drawPieces";
 import boards from "./styles-board";
 
 class Board {
-  private size: number = 1024;
+  private size: number = 720;
   private style: Style = boards.standard;
   private flipped: boolean = false;
   private boardData: BoardData | null = null;
@@ -62,6 +62,30 @@ class Board {
     return this;
   }
 
+  isCheck(move: Move | null) {
+    if (!move) {
+      return false;
+    }
+
+    return move.san.includes("+");
+  }
+
+  isMate(move: Move | null) {
+    if (!move) {
+      return false;
+    }
+
+    return move.san.includes("#");
+  }
+
+  getOppositeColor(color?: "w" | "b") {
+    if (!color) {
+      return;
+    }
+
+    return color === "w" ? "b" : "w";
+  }
+
   async render(boardData: BoardData | null, move: Move | null = null) {
     this.lastMove = move;
     this.boardData = boardData;
@@ -74,6 +98,13 @@ class Board {
     const squareSize = Math.floor(tempInnerSize / this.tiles);
     const innerSize = squareSize * this.tiles;
     const borderWidth = (this.size - innerSize) / 2;
+
+    const check = this.isCheck(move)
+      ? this.getOppositeColor(move?.color)
+      : undefined;
+    const mate = this.isMate(move)
+      ? this.getOppositeColor(move?.color)
+      : undefined;
 
     this.ctx.clearRect(0, 0, this.size, this.size);
 
@@ -134,7 +165,10 @@ class Board {
         squareSize,
         borderWidth,
         this.tiles,
-        this.flipped
+        this.flipped,
+        check,
+        mate,
+        true
       );
     }
   }

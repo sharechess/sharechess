@@ -24,7 +24,7 @@ const style: Style = {
   moveIndicator: {
     type: "solid",
     data: {
-      color: "#ff00dd44",
+      color: "#0077ff00",
     },
   },
   border: {

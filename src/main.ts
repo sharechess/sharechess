@@ -12,7 +12,10 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const play = async (board: Board, pgn: string, interval: number) => {
   const game = new Game().loadPGN(pgn);
+  // game.goto(28);
   await board.render(game.getBoardData());
+
+  console.log(game.pgn());
 
   while (true) {
     const move = game.next();
@@ -40,17 +43,16 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 
 const main = async () => {
   const style = styles.calm;
+  // Object.values(styles).forEach((style, i) => {
+  const board = new Board(8).setStyle(style).setSize(720).showBorder();
 
-  Object.values(styles).forEach((style, i) => {
-    const board = new Board(8).setStyle(style).setSize(480).showBorder();
+  $app?.appendChild(board.canvas);
 
-    $app?.appendChild(board.canvas);
+  play(board, pgns[0], 1000);
+  // });
 
-    play(board, pgns[i], 1000);
-  });
-
-  const link = await createDownloadLink(pgns[0], styles.peach);
-  document.body.appendChild(link);
+  // const link = await createDownloadLink(pgns[0], styles.peach);
+  // document.body.appendChild(link);
 };
 
 main();

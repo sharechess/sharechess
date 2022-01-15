@@ -12,8 +12,34 @@ class Game {
     this.moves = [];
   }
 
+  private cleanPGN(pgn: string) {
+    const game = new Chess();
+    game.load_pgn(pgn);
+    game.delete_comments();
+    const [_, moves] = game.pgn().split("\n\n");
+
+    const header = Object.entries(game.header())
+      .filter(([key]) =>
+        [
+          "event",
+          "site",
+          "white",
+          "black",
+          "date",
+          "result",
+          "opening",
+        ].includes(key.toLowerCase())
+      )
+      .map(([key, val]) => `[${key} "${val}"]`)
+      .sort()
+      .join("\n");
+
+    return [header, moves].join("\n\n");
+  }
+
   loadPGN(pgn: string) {
-    this.game.load_pgn(pgn);
+    this.game.load_pgn(this.cleanPGN(pgn));
+    this.game.delete_comments();
     this.moves = this.game.history({ verbose: true });
     this.currentPly = 0;
 
@@ -74,6 +100,10 @@ class Game {
 
   getBoardData() {
     return this.replay.board();
+  }
+
+  pgn() {
+    return this.game.pgn();
   }
 }
 
