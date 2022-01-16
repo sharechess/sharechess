@@ -20,6 +20,25 @@ is hanging, the bishop is blocked because of the
 Queen.--Fischer} b5 10.Nxb5 cxb5 11.Bxb5+ Nbd7 12.O-O-O Rd8
 13.Rxd7 Rxd7 14.Rd1 Qe6 15.Bxd7+ Nxd7 16.Qb8+ Nxb8 17.Rd8# 1-0`,
 
+  `[Event "Casual Bullet game"]
+[Site "https://lichess.org/9PndkM3J"]
+[Date "2022.01.15"]
+[White "Anonymous"]
+[Black "Anonymous"]
+[Result "1-0"]
+[UTCDate "2022.01.15"]
+[UTCTime "19:04:57"]
+[WhiteElo "?"]
+[BlackElo "?"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "A00"]
+[Opening "Polish Opening"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. b4 { A00 Polish Opening } e5 2. Bb2 Nc6 3. b5 Nd4 4. e3 Nxb5 5. Bxb5 c6 6. Be2 Nf6 7. Bxe5 d6 8. Bb2 Be7 9. Nf3 O-O 10. O-O Bg4 11. d3 d5 12. Nbd2 Rc8 13. Qc1 Be6 14. c4 d4 15. Bxd4 Bg4 16. Bb2 Qc7 17. Qc3 Bxf3 18. Bxf3 Rcd8 19. Ne4 a5 20. a3 b5 21. Rad1 b4 22. axb4 Bxb4 23. Nxf6+ gxf6 24. Qxf6 Rd6 25. Qg7# { White wins by checkmate. } 1-0`,
+
   `[Event "Hoogovens Group A"]
 [Site "Wijk aan Zee NED"]
 [Date "1999.01.20"]

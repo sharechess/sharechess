@@ -19,7 +19,7 @@ const drawPieces = async (
           type: PieceType;
           color: PieceColor;
         };
-        const img = await ImagesCache.get("tatiana", type, color);
+        const img = await ImagesCache.get("cburnett", type, color);
         const rank = flipped ? tiles - 1 - y : y;
         const file = flipped ? tiles - 1 - x : x;
 
@@ -34,9 +34,11 @@ const drawPieces = async (
         }
 
         if (color === check && type === "k") {
-          filters.push(`drop-shadow(0 0 ${squareSize * 0.1}px orange)`);
+          filters.push(`drop-shadow(0 0 ${squareSize * 0.07}px #ffa600)`);
+          filters.push(`drop-shadow(0 0 ${squareSize * 0.07}px #ffa600)`);
         } else if (color === mate && type === "k") {
-          filters.push(`drop-shadow(0 0 ${squareSize * 0.1}px red)`);
+          filters.push(`drop-shadow(0 0 ${squareSize * 0.07}px #ff002f)`);
+          filters.push(`drop-shadow(0 0 ${squareSize * 0.07}px #ff002f)`);
         }
 
         ctx.filter = filters.length > 0 ? filters.join(" ") : "none";

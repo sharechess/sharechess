@@ -5,17 +5,21 @@ import styles from "./board/styles-board";
 import Game from "./game/Game";
 import pgns from "./test-data/pgns";
 import createSimpleGIF from "./gif/createSimpleGIF";
+import { compressPGN, decompressPGN } from "./game/PGNHelpers";
 
 const $app = document.querySelector<HTMLImageElement>("#app");
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const play = async (board: Board, pgn: string, interval: number) => {
-  const game = new Game().loadPGN(pgn);
+const play = async (board: Board, pgn: string | null, interval: number) => {
+  const game = new Game();
+
+  if (pgn) {
+    game.loadPGN(pgn);
+  }
+
   // game.goto(28);
   await board.render(game.getBoardData());
-
-  console.log(game.pgn());
 
   while (true) {
     const move = game.next();
@@ -28,7 +32,7 @@ const play = async (board: Board, pgn: string, interval: number) => {
     await board.render(game.getBoardData(), move);
   }
 
-  await delay(interval);
+  await delay(interval * 3);
   play(board, pgn, interval);
 };
 
@@ -42,17 +46,21 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 };
 
 const main = async () => {
-  const style = styles.calm;
-  // Object.values(styles).forEach((style, i) => {
+  const style = styles.avocado;
+
+  const hash = window.location.hash;
+  const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
   const board = new Board(8).setStyle(style).setSize(720).showBorder();
+
+  window.location.hash = "#alala";
 
   $app?.appendChild(board.canvas);
 
-  play(board, pgns[0], 1000);
-  // });
+  play(board, pgn, 1000);
 
-  // const link = await createDownloadLink(pgns[0], styles.peach);
-  // document.body.appendChild(link);
+  // createDownloadLink(pgns[0], style).then((link) => {
+  //   document.body.appendChild(link);
+  // });
 };
 
 main();
