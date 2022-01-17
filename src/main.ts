@@ -3,9 +3,9 @@ import "./style.css";
 import Board from "./board/Board";
 import styles from "./board/styles-board";
 import Game from "./game/Game";
-import pgns from "./test-data/pgns";
+// import pgns from "./test-data/pgns";
 import createSimpleGIF from "./gif/createSimpleGIF";
-import { compressPGN, decompressPGN } from "./game/PGNHelpers";
+import { decompressPGN } from "./game/PGNHelpers";
 
 const $app = document.querySelector<HTMLImageElement>("#app");
 
@@ -47,8 +47,10 @@ const createDownloadLink = async (pgn: string, style: Style) => {
   return link;
 };
 
+console.log(createDownloadLink.name);
+
 const main = async () => {
-  const style = styles.calm;
+  const style = styles.avocado;
 
   window.location.hash =
     "#QiBEdWtlIEthcmwgLyBDb3VudCBJc291YXJkCkQgMTg1OC4/Py4/PwpFIFBhcmlzClIgMS0wClMgUGFyaXMgRlJBClcgUGF1bCBNb3JwaHkKCmU0IGU1IE5mMyBkNiBkNCBCZzQgZHhlNSBCeGYzIFF4ZjMgZHhlNSBCYzQgTmY2IFFiMyBRZTcgTmMzIGM2IEJnNSBiNSBOeGI1IGN4YjUgQnhiNSsgTmJkNyBPLU8tTyBSZDggUnhkNyBSeGQ3IFJkMSBRZTYgQnhkNysgTnhkNyBRYjgrIE54YjggUmQ4Iw==";

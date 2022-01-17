@@ -92,6 +92,7 @@ class Board {
   }
 
   async renderTitleScreen(header: { [key: string]: string | undefined }) {
+    console.log(header);
     this.tempCtx.clearRect(0, 0, this.size, this.size);
     await drawSquare(this.tempCtx, this.size, 0, 0, this.style.border);
 
@@ -101,8 +102,7 @@ class Board {
   async render(boardData: BoardData | null, move: Move | null = null) {
     this.lastMove = move;
     this.boardData = boardData;
-    const { background, dark, light, moveIndicator, border, coords } =
-      this.style;
+    const { background, dark, light, border, coords } = this.style;
 
     const hasBorder = border && this.borderVisible;
     const tempBorderWidth = hasBorder ? this.size / 32 : 0;
