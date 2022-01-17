@@ -50,6 +50,9 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 const main = async () => {
   const style = styles.calm;
 
+  window.location.hash =
+    "#QiBEdWtlIEthcmwgLyBDb3VudCBJc291YXJkCkQgMTg1OC4/Py4/PwpFIFBhcmlzClIgMS0wClMgUGFyaXMgRlJBClcgUGF1bCBNb3JwaHkKCmU0IGU1IE5mMyBkNiBkNCBCZzQgZHhlNSBCeGYzIFF4ZjMgZHhlNSBCYzQgTmY2IFFiMyBRZTcgTmMzIGM2IEJnNSBiNSBOeGI1IGN4YjUgQnhiNSsgTmJkNyBPLU8tTyBSZDggUnhkNyBSeGQ3IFJkMSBRZTYgQnhkNysgTnhkNyBRYjgrIE54YjggUmQ4Iw==";
+
   const hash = window.location.hash;
   const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
   const board = new Board(8).setStyle(style).setSize(720).showBorder();
