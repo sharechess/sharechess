@@ -5,26 +5,24 @@ const style: Style = {
   background: {
     type: "image",
     data: {
-      src: "https://placekitten.com/1024/1024",
+      src: "https://placekitten.com/720/720",
     },
   },
   dark: {
-    type: "image",
+    type: "solid",
     data: {
-      src: "https://placekitten.com/128/128",
+      color: "#00000055",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "transparent",
+      color: "#ffffff55",
     },
   },
   moveIndicator: {
-    type: "solid",
-    data: {
-      color: "#0055ff77",
-    },
+    type: "color",
+    data: "#ffff0055",
   },
   border: {
     type: "solid",
@@ -33,8 +31,9 @@ const style: Style = {
     },
   },
   coords: {
-    lightColor: "#eee",
-    darkColor: "#eee",
+    onLight: "#333",
+    onDark: "#eee",
+    onBorder: "#eee",
   },
 };
 

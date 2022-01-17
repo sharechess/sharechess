@@ -33,19 +33,24 @@ export type Image = {
 };
 
 export type Coords = {
-  darkColor: string;
-  lightColor: string;
+  onLight: string;
+  onDark: string;
+  onBorder: string;
 };
 
 export type SquareStyle = Gradient | Solid | Image;
+
+export type MoveIndicator =
+  | { type: "hueShift"; data: number }
+  | { type: "color"; data: string };
 
 export type Style = {
   name: string;
   background: SquareStyle;
   light: SquareStyle;
   dark: SquareStyle;
-  moveIndicator: SquareStyle;
-  border: SquareStyle | null;
+  moveIndicator: MoveIndicator;
+  border: SquareStyle;
   coords: Coords;
 };
 

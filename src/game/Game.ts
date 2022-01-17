@@ -78,6 +78,10 @@ class Game {
     return this.replay.board();
   }
 
+  getHeader() {
+    return this.replay.header();
+  }
+
   pgn() {
     return this.game.pgn();
   }

@@ -39,7 +39,12 @@ const drawCoords = (
   ctx.font = `${fontSize}px ${FONT_FAMILY}`;
 
   orderedRanks.forEach((v, i) => {
-    ctx.fillStyle = i % 2 === 0 ? coords.darkColor : coords.lightColor;
+    ctx.fillStyle =
+      borderWidth > 0
+        ? coords.onBorder
+        : i % 2 === 0
+        ? coords.onLight
+        : coords.onDark;
 
     ctx.textAlign = borderWidth > 0 ? "center" : "left";
     ctx.fillText(v, offsetRankX, squareSize * i + fontSize + offsetRankY);
@@ -49,7 +54,12 @@ const drawCoords = (
   const orderedFiles = blackSide ? files.reverse() : files;
 
   orderedFiles.forEach((v, i) => {
-    ctx.fillStyle = i % 2 === 0 ? coords.lightColor : coords.darkColor;
+    ctx.fillStyle =
+      borderWidth > 0
+        ? coords.onBorder
+        : i % 2 === 0
+        ? coords.onDark
+        : coords.onLight;
 
     ctx.textAlign = borderWidth > 0 ? "center" : "left";
     ctx.fillText(

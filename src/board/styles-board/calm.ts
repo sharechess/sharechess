@@ -22,10 +22,8 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    type: "solid",
-    data: {
-      color: "#0077ff00",
-    },
+    type: "color",
+    data: "#ee59ff55",
   },
   border: {
     type: "gradient",
@@ -35,8 +33,9 @@ const style: Style = {
     },
   },
   coords: {
-    lightColor: "rgba(255, 255, 255, 0.9)",
-    darkColor: "rgba(255, 255, 255, 0.9)",
+    onLight: "rgba(0, 0, 0, 0.5)",
+    onDark: "rgba(255, 255, 255, 0.9)",
+    onBorder: "rgba(255, 255, 255, 0.9)",
   },
 };
 

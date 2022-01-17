@@ -21,10 +21,8 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    type: "solid",
-    data: {
-      color: "#0055ff77",
-    },
+    type: "color",
+    data: "#00ffff55",
   },
   border: {
     type: "solid",
@@ -33,8 +31,9 @@ const style: Style = {
     },
   },
   coords: {
-    lightColor: "#222",
-    darkColor: "#222",
+    onLight: "#222",
+    onDark: "#ddd",
+    onBorder: "#ddd",
   },
 };
 

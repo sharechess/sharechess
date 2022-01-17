@@ -13,20 +13,23 @@ class Board {
   private flipped: boolean = false;
   private boardData: BoardData | null = null;
   private ctx: CanvasRenderingContext2D;
+  private tempCtx: CanvasRenderingContext2D;
   private borderVisible: boolean = true;
   private lastMove: Move | null = null;
   public canvas: HTMLCanvasElement = document.createElement("canvas");
+  private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
 
   constructor(private tiles: number = 8) {
-    this.canvas;
     const ctx = this.canvas.getContext("2d");
+    const tempCtx = this.tempCanvas.getContext("2d");
     this.canvas.classList.add("board");
 
-    if (ctx == null) {
+    if (ctx === null || tempCtx === null) {
       throw new Error("Cannot create canvas 2D context");
     }
 
     this.ctx = ctx;
+    this.tempCtx = tempCtx;
     this.setSize(this.size);
   }
 
@@ -34,6 +37,8 @@ class Board {
     this.size = size;
     this.canvas.width = size;
     this.canvas.height = size;
+    this.tempCanvas.width = size;
+    this.tempCanvas.height = size;
     return this;
   }
 
@@ -86,6 +91,13 @@ class Board {
     return color === "w" ? "b" : "w";
   }
 
+  async renderTitleScreen(header: { [key: string]: string | undefined }) {
+    this.tempCtx.clearRect(0, 0, this.size, this.size);
+    await drawSquare(this.tempCtx, this.size, 0, 0, this.style.border);
+
+    this.ctx.drawImage(this.tempCanvas, 0, 0);
+  }
+
   async render(boardData: BoardData | null, move: Move | null = null) {
     this.lastMove = move;
     this.boardData = boardData;
@@ -106,13 +118,19 @@ class Board {
       ? this.getOppositeColor(move?.color)
       : undefined;
 
-    this.ctx.clearRect(0, 0, this.size, this.size);
+    this.tempCtx.clearRect(0, 0, this.size, this.size);
 
-    await drawSquare(this.ctx, innerSize, borderWidth, borderWidth, background);
+    await drawSquare(
+      this.tempCtx,
+      innerSize,
+      borderWidth,
+      borderWidth,
+      background
+    );
 
     if (hasBorder) {
       await drawBorder(
-        this.ctx,
+        this.tempCtx,
         this.size - borderWidth,
         borderWidth / 2,
         borderWidth / 2,
@@ -132,12 +150,12 @@ class Board {
         const x = file * squareSize + borderWidth;
         const y = rank * squareSize + borderWidth;
 
-        await drawSquare(this.ctx, squareSize, x, y, style);
+        await drawSquare(this.tempCtx, squareSize, x, y, style);
       }
     }
 
     drawCoords(
-      this.ctx,
+      this.tempCtx,
       coords,
       squareSize,
       this.tiles,
@@ -149,10 +167,10 @@ class Board {
     if (boardData !== null) {
       if (this.lastMove) {
         drawMoveIndicators(
-          this.ctx,
+          this.tempCtx,
           this.lastMove,
           squareSize,
-          moveIndicator,
+          this.style,
           borderWidth,
           this.tiles,
           this.flipped
@@ -160,7 +178,7 @@ class Board {
       }
 
       await drawPieces(
-        this.ctx,
+        this.tempCtx,
         boardData,
         squareSize,
         borderWidth,
@@ -171,6 +189,9 @@ class Board {
         true
       );
     }
+
+    this.ctx.clearRect(0, 0, this.size, this.size);
+    this.ctx.drawImage(this.tempCanvas, 0, 0);
   }
 
   toImgUrl() {

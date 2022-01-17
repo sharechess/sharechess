@@ -19,6 +19,8 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
   }
 
   // game.goto(28);
+  // await board.renderTitleScreen(game.getHeader());
+  // await delay(interval);
   await board.render(game.getBoardData());
 
   while (true) {
@@ -46,15 +48,15 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 };
 
 const main = async () => {
-  const style = styles.avocado;
+  const style = styles.calm;
 
   const hash = window.location.hash;
   const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
   const board = new Board(8).setStyle(style).setSize(720).showBorder();
 
-  window.location.hash = "#alala";
-
   $app?.appendChild(board.canvas);
+
+  console.log(pgn);
 
   play(board, pgn, 1000);
 

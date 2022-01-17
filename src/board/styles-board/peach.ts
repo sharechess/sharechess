@@ -21,16 +21,19 @@ const style: Style = {
     },
   },
   moveIndicator: {
+    type: "hueShift",
+    data: 330,
+  },
+  border: {
     type: "solid",
     data: {
-      // color: "#0055ff77",
-      color: "transparent",
+      color: "#962c2c",
     },
   },
-  border: null,
   coords: {
-    lightColor: "#ffa987",
-    darkColor: "#e54b4b",
+    onLight: "#e54b4b",
+    onDark: "#ffa987",
+    onBorder: "#ffa987",
   },
 };
 

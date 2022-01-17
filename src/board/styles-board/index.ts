@@ -2,7 +2,7 @@ import avocado from "./avocado";
 import calm from "./calm";
 import standard from "./standard";
 import glass from "./glass";
-// import kittens from "./kittens";
+import kittens from "./kittens";
 import lichess from "./lichess";
 import lila from "./lila";
 import mono from "./mono";
@@ -12,7 +12,7 @@ export default {
   avocado,
   calm,
   glass,
-  // kittens,
+  kittens,
   lichess,
   lila,
   mono,
