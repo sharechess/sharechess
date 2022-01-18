@@ -10,7 +10,8 @@ const drawCoords = (
   tiles: number,
   blackSide: boolean = false,
   borderWidth: number,
-  size: number
+  size: number,
+  hasBorder: boolean
 ) => {
   const scale = size / 1024;
 
@@ -19,16 +20,8 @@ const drawCoords = (
   }
 
   const fontSize = BASE_FONT_SIZE * scale;
-  const offset = 10;
-  const offsetFileX =
-    borderWidth > 0 ? borderWidth + squareSize / 2 : offset * scale;
-  const offsetFileY =
-    borderWidth > 0 ? -borderWidth * 2 + offset * scale : offset * scale;
-  const offsetRankX = borderWidth > 0 ? borderWidth / 2 : offset * scale;
-  const offsetRankY =
-    borderWidth > 0
-      ? borderWidth + squareSize / 2 - fontSize / 2
-      : offset * scale;
+  const offsetA = 6 * scale;
+  const offsetB = 4 * scale;
 
   const ranks =
     "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26"
@@ -37,6 +30,7 @@ const drawCoords = (
   const orderedRanks = blackSide ? ranks : ranks.reverse();
 
   ctx.font = `${fontSize}px ${FONT_FAMILY}`;
+  ctx.textBaseline = hasBorder ? "middle" : "top";
 
   orderedRanks.forEach((v, i) => {
     ctx.fillStyle =
@@ -46,12 +40,19 @@ const drawCoords = (
         ? coords.onLight
         : coords.onDark;
 
-    ctx.textAlign = borderWidth > 0 ? "center" : "left";
-    ctx.fillText(v, offsetRankX, squareSize * i + fontSize + offsetRankY);
+    const x = hasBorder ? borderWidth / 2 : offsetA;
+    const y = hasBorder
+      ? squareSize * i + borderWidth + squareSize / 2
+      : squareSize * i + offsetA;
+
+    ctx.textAlign = hasBorder ? "center" : "left";
+    ctx.fillText(v, x, y);
   });
 
   const files = "ABCDEFGHIJKLMNOPQRSTUWVXYZ".split("").slice(0, tiles);
   const orderedFiles = blackSide ? files.reverse() : files;
+
+  ctx.textBaseline = hasBorder ? "middle" : "bottom";
 
   orderedFiles.forEach((v, i) => {
     ctx.fillStyle =
@@ -61,12 +62,13 @@ const drawCoords = (
         ? coords.onDark
         : coords.onLight;
 
-    ctx.textAlign = borderWidth > 0 ? "center" : "left";
-    ctx.fillText(
-      v,
-      squareSize * i + offsetFileX,
-      squareSize * tiles - offsetFileY
-    );
+    const x = hasBorder
+      ? squareSize * i + borderWidth + squareSize / 2
+      : squareSize * i + offsetA;
+    const y = hasBorder ? size - borderWidth / 2 : size - offsetB;
+
+    ctx.textAlign = hasBorder ? "center" : "left";
+    ctx.fillText(v, x, y);
   });
 };
 

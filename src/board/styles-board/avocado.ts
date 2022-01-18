@@ -31,8 +31,8 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#72b339",
-    onDark: "#ececa4",
+    onLight: "#4d7a26",
+    onDark: "#ffffc4",
     onBorder: "#ececa4",
   },
 };

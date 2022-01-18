@@ -5,6 +5,7 @@ import drawBorder from "./layers/drawBorder";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
 import drawPieces from "./layers/drawPieces";
+import drawHeader from "./layers/drawHeader.ts";
 import boards from "./styles-board";
 
 class Board {
@@ -18,6 +19,11 @@ class Board {
   private lastMove: Move | null = null;
   public canvas: HTMLCanvasElement = document.createElement("canvas");
   private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
+  private squareSize: number = 84;
+  private innerSize: number = 672;
+  private borderWidth: number = 24;
+  private background: Promise<ImageBitmap> | null = null;
+  // private frames: Promise<ImageBitmap>[] = [];
 
   constructor(private tiles: number = 8) {
     const ctx = this.canvas.getContext("2d");
@@ -39,6 +45,13 @@ class Board {
     this.canvas.height = size;
     this.tempCanvas.width = size;
     this.tempCanvas.height = size;
+
+    const tempBorderWidth = this.borderVisible ? this.size / 32 : 0;
+    const tempInnerSize = this.size - tempBorderWidth * 2;
+    this.squareSize = Math.floor(tempInnerSize / this.tiles);
+    this.innerSize = this.squareSize * this.tiles;
+    this.borderWidth = (this.size - this.innerSize) / 2;
+
     return this;
   }
 
@@ -59,11 +72,13 @@ class Board {
 
   hideBorder() {
     this.borderVisible = false;
+    this.setSize(this.size);
     return this;
   }
 
   showBorder() {
     this.borderVisible = true;
+    this.setSize(this.size);
     return this;
   }
 
@@ -92,49 +107,28 @@ class Board {
   }
 
   async renderTitleScreen(header: { [key: string]: string | undefined }) {
-    console.log(header);
-    this.tempCtx.clearRect(0, 0, this.size, this.size);
-    await drawSquare(this.tempCtx, this.size, 0, 0, this.style.border);
-
+    await drawHeader(this.tempCtx, this.size, this.style, header);
     this.ctx.drawImage(this.tempCanvas, 0, 0);
   }
 
-  async render(boardData: BoardData | null, move: Move | null = null) {
-    this.lastMove = move;
-    this.boardData = boardData;
+  async renderBackground() {
     const { background, dark, light, border, coords } = this.style;
-
-    const hasBorder = border && this.borderVisible;
-    const tempBorderWidth = hasBorder ? this.size / 32 : 0;
-    const tempInnerSize = this.size - tempBorderWidth * 2;
-    const squareSize = Math.floor(tempInnerSize / this.tiles);
-    const innerSize = squareSize * this.tiles;
-    const borderWidth = (this.size - innerSize) / 2;
-
-    const check = this.isCheck(move)
-      ? this.getOppositeColor(move?.color)
-      : undefined;
-    const mate = this.isMate(move)
-      ? this.getOppositeColor(move?.color)
-      : undefined;
-
-    this.tempCtx.clearRect(0, 0, this.size, this.size);
 
     await drawSquare(
       this.tempCtx,
-      innerSize,
-      borderWidth,
-      borderWidth,
+      this.innerSize,
+      this.borderVisible ? this.borderWidth : 0,
+      this.borderVisible ? this.borderWidth : 0,
       background
     );
 
-    if (hasBorder) {
+    if (this.borderVisible) {
       await drawBorder(
         this.tempCtx,
-        this.size - borderWidth,
-        borderWidth / 2,
-        borderWidth / 2,
-        borderWidth,
+        this.size - this.borderWidth,
+        this.borderWidth / 2,
+        this.borderWidth / 2,
+        this.borderWidth,
         border
       );
     }
@@ -147,31 +141,54 @@ class Board {
             ? light
             : dark;
 
-        const x = file * squareSize + borderWidth;
-        const y = rank * squareSize + borderWidth;
+        const x = file * this.squareSize + this.borderWidth;
+        const y = rank * this.squareSize + this.borderWidth;
 
-        await drawSquare(this.tempCtx, squareSize, x, y, style);
+        await drawSquare(this.tempCtx, this.squareSize, x, y, style);
       }
     }
 
     drawCoords(
       this.tempCtx,
       coords,
-      squareSize,
+      this.squareSize,
       this.tiles,
       this.flipped,
-      borderWidth,
-      this.size
+      this.borderWidth,
+      this.size,
+      this.borderVisible
     );
+
+    this.background = createImageBitmap(this.tempCanvas);
+  }
+
+  async render(boardData: BoardData | null, move: Move | null = null) {
+    this.lastMove = move;
+    this.boardData = boardData;
+
+    const check = this.isCheck(move)
+      ? this.getOppositeColor(move?.color)
+      : undefined;
+    const mate = this.isMate(move)
+      ? this.getOppositeColor(move?.color)
+      : undefined;
+
+    this.tempCtx.clearRect(0, 0, this.size, this.size);
+
+    if (this.background === null) {
+      await this.renderBackground();
+    }
+
+    this.tempCtx.drawImage((await this.background) as ImageBitmap, 0, 0);
 
     if (boardData !== null) {
       if (this.lastMove) {
         drawMoveIndicators(
           this.tempCtx,
           this.lastMove,
-          squareSize,
+          this.squareSize,
           this.style,
-          borderWidth,
+          this.borderWidth,
           this.tiles,
           this.flipped
         );
@@ -180,8 +197,8 @@ class Board {
       await drawPieces(
         this.tempCtx,
         boardData,
-        squareSize,
-        borderWidth,
+        this.squareSize,
+        this.borderWidth,
         this.tiles,
         this.flipped,
         check,

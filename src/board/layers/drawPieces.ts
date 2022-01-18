@@ -19,7 +19,7 @@ const drawPieces = async (
           type: PieceType;
           color: PieceColor;
         };
-        const img = await ImagesCache.get("cburnett", type, color);
+        const img = await ImagesCache.get("tatiana", type, color);
         const rank = flipped ? tiles - 1 - y : y;
         const file = flipped ? tiles - 1 - x : x;
 

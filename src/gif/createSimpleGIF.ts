@@ -14,6 +14,9 @@ const createSimpleGIF = async (
   const board = new Board(8).setStyle(style).setSize(size).showBorder();
   const gif = new GIF(size, true);
 
+  await board.renderTitleScreen(game.getHeader());
+  gif.add(board.toImgElement(), 5000);
+
   await board.render(game.getBoardData());
   gif.add(board.toImgElement(), MOVE_TIME);
 

@@ -79,7 +79,7 @@ class Game {
   }
 
   getHeader() {
-    return this.replay.header();
+    return this.game.header();
   }
 
   pgn() {
