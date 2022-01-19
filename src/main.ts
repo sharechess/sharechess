@@ -8,12 +8,6 @@ import createSimpleGIF from "./gif/createSimpleGIF";
 // import { decompressPGN } from "./game/PGNHelpers";
 import WebFont from "webfontloader";
 
-WebFont.load({
-  google: {
-    families: ["Ubuntu:500,700", "Fira Code"],
-  },
-});
-
 const $app = document.querySelector<HTMLImageElement>("#app");
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -77,4 +71,9 @@ const main = async () => {
   // });
 };
 
-main();
+WebFont.load({
+  google: {
+    families: ["Ubuntu:500,700", "Fira Code"],
+  },
+  active: main,
+});
