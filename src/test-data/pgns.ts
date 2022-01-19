@@ -20,24 +20,27 @@ is hanging, the bishop is blocked because of the
 Queen.--Fischer} b5 10.Nxb5 cxb5 11.Bxb5+ Nbd7 12.O-O-O Rd8
 13.Rxd7 Rxd7 14.Rd1 Qe6 15.Bxd7+ Nxd7 16.Qb8+ Nxb8 17.Rd8# 1-0`,
 
-  `[Event "Casual Bullet game"]
-[Site "https://lichess.org/9PndkM3J"]
-[Date "2022.01.15"]
-[White "Anonymous"]
-[Black "Anonymous"]
-[Result "1-0"]
-[UTCDate "2022.01.15"]
-[UTCTime "19:04:57"]
+  `[Event "Karpov - Kasparov World Championship Match"]
+[Site "Moscow URS"]
+[Date "1985.10.15"]
+[EventDate "?"]
+[Round "16"]
+[Result "0-1"]
+[White "Anatoly Karpov"]
+[Black "Garry Kasparov"]
+[ECO "B44"]
 [WhiteElo "?"]
 [BlackElo "?"]
-[Variant "Standard"]
-[TimeControl "60+0"]
-[ECO "A00"]
-[Opening "Polish Opening"]
-[Termination "Normal"]
-[Annotator "lichess.org"]
+[PlyCount "80"]
 
-1. b4 { A00 Polish Opening } e5 2. Bb2 Nc6 3. b5 Nd4 4. e3 Nxb5 5. Bxb5 c6 6. Be2 Nf6 7. Bxe5 d6 8. Bb2 Be7 9. Nf3 O-O 10. O-O Bg4 11. d3 d5 12. Nbd2 Rc8 13. Qc1 Be6 14. c4 d4 15. Bxd4 Bg4 16. Bb2 Qc7 17. Qc3 Bxf3 18. Bxf3 Rcd8 19. Ne4 a5 20. a3 b5 21. Rad1 b4 22. axb4 Bxb4 23. Nxf6+ gxf6 24. Qxf6 Rd6 25. Qg7# { White wins by checkmate. } 1-0`,
+1.e4 c5 2.Nf3 e6 3.d4 cxd4 4.Nxd4 Nc6 5.Nb5 d6 6.c4 Nf6 7.N1c3
+a6 8.Na3 d5 9.cxd5 exd5 10.exd5 Nb4 11.Be2 Bc5 12.O-O O-O
+13.Bf3 Bf5 14.Bg5 Re8 15.Qd2 b5 16.Rad1 Nd3 17.Nab1 h6 18.Bh4
+b4 19.Na4 Bd6 20.Bg3 Rc8 21.b3 g5 22.Bxd6 Qxd6 23.g3 Nd7
+24.Bg2 Qf6 25.a3 a5 26.axb4 axb4 27.Qa2 Bg6 28.d6 g4 29.Qd2
+Kg7 30.f3 Qxd6 31.fxg4 Qd4+ 32.Kh1 Nf6 33.Rf4 Ne4 34.Qxd3 Nf2+
+35.Rxf2 Bxd3 36.Rfd2 Qe3 37.Rxd3 Rc1 38.Nb2 Qf2 39.Nd2 Rxd1+
+40.Nxd1 Re1+ 0-1`,
 
   `[Event "Hoogovens Group A"]
 [Site "Wijk aan Zee NED"]

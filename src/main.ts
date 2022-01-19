@@ -63,11 +63,11 @@ const main = async () => {
 
   console.log(pgn);
 
-  play(board, pgns[2], 1000);
+  play(board, pgns[1], 1000);
 
-  createDownloadLink(pgns[2], style).then((link) => {
-    document.body.appendChild(link);
-  });
+  // createDownloadLink(pgns[2], style).then((link) => {
+  //   document.body.appendChild(link);
+  // });
 };
 
 main();
