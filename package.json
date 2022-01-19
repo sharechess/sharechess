@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.8",
+    "@types/webfontloader": "^1.6.34",
     "typescript": "^4.4.4",
     "vite": "^2.7.2"
   },
@@ -15,6 +16,7 @@
     "@types/chess.js": "^0.11.2",
     "@types/gif.js": "^0.2.2",
     "chess.js": "^0.12.0",
-    "gif.js": "^0.2.0"
+    "gif.js": "^0.2.0",
+    "webfontloader": "^1.6.28"
   }
 }

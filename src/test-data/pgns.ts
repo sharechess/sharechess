@@ -1,5 +1,5 @@
 const pgns = [
-  `[Event "Paris"]
+  `[Event "Paris Opera"]
 [Site "Paris FRA"]
 [Date "1858.??.??"]
 [EventDate "?"]

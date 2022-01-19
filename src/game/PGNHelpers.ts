@@ -24,7 +24,7 @@ const cleanPGN = (pgn: string) => {
   const [_, moves] = game.pgn().split("\n\n");
 
   const header = Object.entries(game.header())
-    .filter(([key]) => PGN_KEYS.includes(key))
+    .filter(([key, val]) => PGN_KEYS.includes(key) && val !== "?")
     .map(([key, val]) => `[${key} "${val}"]`)
     .sort()
     .join("\n");
