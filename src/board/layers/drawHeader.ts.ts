@@ -28,7 +28,7 @@ const formatDate = (date: string) => {
     : month && year
     ? `${month} ${year}`
     : year
-    ? year
+    ? String(year)
     : "";
 };
 
