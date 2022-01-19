@@ -12,6 +12,7 @@ class Board {
   private size: number = 720;
   private style: Style = boards.standard;
   private flipped: boolean = false;
+  // @ts-ignore
   private boardData: BoardData | null = null;
   private ctx: CanvasRenderingContext2D;
   private tempCtx: CanvasRenderingContext2D;
