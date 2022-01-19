@@ -65,7 +65,7 @@ class Board {
 
   flip() {
     this.flipped = !this.flipped;
-    // this.render(this.boardData, this.lastMove);
+    this.render(this.boardData, this.lastMove);
     return this;
   }
 
