@@ -3,6 +3,7 @@ import { Chess } from "chess.js";
 const PGN_KEYS_TO_SHORT = {
   Event: "E",
   Site: "S",
+  Round: "N",
   White: "W",
   Black: "B",
   Date: "D",

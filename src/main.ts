@@ -18,7 +18,6 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
     game.loadPGN(pgn);
   }
 
-  // game.goto(28);
   await board.renderTitleScreen(game.getHeader());
   await delay(interval * 5);
   await board.render(game.getBoardData());
@@ -61,9 +60,9 @@ const main = async () => {
 
   $app?.appendChild(board.canvas);
 
-  console.log(pgn);
+  console.log(pgns[5]);
 
-  play(board, pgns[1], 1000);
+  play(board, pgns[5], 1000);
 
   // createDownloadLink(pgns[2], style).then((link) => {
   //   document.body.appendChild(link);

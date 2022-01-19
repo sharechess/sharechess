@@ -10,7 +10,8 @@ const drawPieces = async (
   flipped: boolean,
   check?: "b" | "w",
   mate?: "b" | "w",
-  shadow: boolean = false
+  shadow: boolean = false,
+  blur: boolean = false
 ) => {
   for (let y = 0; y < 8; y++) {
     for (let x = 0; x < 8; x++) {
@@ -24,6 +25,10 @@ const drawPieces = async (
         const file = flipped ? tiles - 1 - x : x;
 
         const filters = [];
+
+        if (blur) {
+          filters.push(`blur(5px)`);
+        }
 
         if (shadow) {
           filters.push(

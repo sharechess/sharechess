@@ -51,9 +51,9 @@ const drawHeader = async (
   ctx: CanvasRenderingContext2D,
   size: number,
   style: Style,
-  data: { [key: string]: string | undefined },
-  flipped: boolean
+  data: { [key: string]: string | undefined }
 ) => {
+  console.log(data);
   const scale = size / 720;
   ctx.clearRect(0, 0, size, size);
   await drawSquare(ctx, size, 0, 0, style.border);
@@ -61,51 +61,13 @@ const drawHeader = async (
   ctx.fillStyle = style.coords.onBorder;
 
   if (data.White) {
-    drawText(
-      ctx,
-      data.White,
-      36 * scale,
-      700,
-      size / 2,
-      (flipped ? 100 : size - 100) * scale,
-      "center"
-    );
+    drawText(ctx, data.White, 36 * scale, 700, size / 2, 200 * scale, "center");
   }
+
+  drawText(ctx, "vs", 20 * scale, 500, size / 2, 260 * scale, "center");
 
   if (data.Black) {
-    drawText(
-      ctx,
-      data.Black,
-      36 * scale,
-      700,
-      size / 2,
-      (flipped ? size - 100 : 100) * scale,
-      "center"
-    );
-  }
-
-  if (data.Event) {
-    drawText(
-      ctx,
-      data.Event,
-      24 * scale,
-      500,
-      size / 2,
-      (size / 2 - (data.Round ? 20 : 0)) * scale,
-      "center"
-    );
-  }
-
-  if (data.Round) {
-    drawText(
-      ctx,
-      `Round ${data.Round}`,
-      24 * scale,
-      500,
-      size / 2,
-      (size / 2 + 20) * scale,
-      "center"
-    );
+    drawText(ctx, data.Black, 36 * scale, 700, size / 2, 320 * scale, "center");
   }
 
   if (data.Date) {
@@ -115,13 +77,17 @@ const drawHeader = async (
       20 * scale,
       500,
       size / 2,
-      450 * scale,
+      500 * scale,
       "center"
     );
   }
 
+  if (data.Event) {
+    drawText(ctx, data.Event, 24 * scale, 500, size / 2, 540 * scale, "center");
+  }
+
   if (data.Site) {
-    drawText(ctx, data.Site, 20 * scale, 500, size / 2, 480 * scale, "center");
+    drawText(ctx, data.Site, 20 * scale, 500, size / 2, 580 * scale, "center");
   }
 };
 

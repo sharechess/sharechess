@@ -23,7 +23,6 @@ class Board {
   private innerSize: number = 672;
   private borderWidth: number = 24;
   private background: Promise<ImageBitmap> | null = null;
-  // private frames: Promise<ImageBitmap>[] = [];
 
   constructor(private tiles: number = 8) {
     const ctx = this.canvas.getContext("2d");
@@ -66,7 +65,7 @@ class Board {
 
   flip() {
     this.flipped = !this.flipped;
-    this.render(this.boardData, this.lastMove);
+    // this.render(this.boardData, this.lastMove);
     return this;
   }
 
@@ -107,7 +106,7 @@ class Board {
   }
 
   async renderTitleScreen(header: { [key: string]: string | undefined }) {
-    await drawHeader(this.tempCtx, this.size, this.style, header);
+    await drawHeader(this.tempCtx, this.size, this.style, header, this.flipped);
     this.ctx.drawImage(this.tempCanvas, 0, 0);
   }
 
@@ -183,7 +182,7 @@ class Board {
 
     if (boardData !== null) {
       if (this.lastMove) {
-        drawMoveIndicators(
+        await drawMoveIndicators(
           this.tempCtx,
           this.lastMove,
           this.squareSize,
