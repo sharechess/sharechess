@@ -1,6 +1,6 @@
 import { Move } from "chess.js";
 import { Style, SquareStyle } from "../../types";
-import drawSquare from "./drawSquare";
+import drawRectangle from "./drawRectangle";
 
 const FILES = "abcdefghijklmnopqrstuwvxyz";
 
@@ -18,15 +18,15 @@ const drawMoveIndicators = async (
   { dark, light, moveIndicator }: Style,
   borderWidth: number,
   tiles: number,
-  flipped: boolean = false
+  flipped: boolean,
+  margin: number
 ) => {
   const [x0, y0] = notationToXY(move.from, flipped, tiles);
   const [x1, y1] = notationToXY(move.to, flipped, tiles);
 
-  const [fromX, fromY, toX, toY] = [
-    ...notationToXY(move.from, flipped, tiles),
-    ...notationToXY(move.to, flipped, tiles),
-  ].map((v) => v * squareSize + borderWidth);
+  const [fromX, fromY, toX, toY] = [x0, y0, x1, y1].map(
+    (v) => v * squareSize + borderWidth
+  );
 
   let fromStyle;
   let toStyle;
@@ -43,8 +43,8 @@ const drawMoveIndicators = async (
     toStyle = fromStyle;
   }
 
-  drawSquare(ctx, squareSize, fromX, fromY, fromStyle);
-  drawSquare(ctx, squareSize, toX, toY, toStyle);
+  drawRectangle(ctx, squareSize, squareSize, fromX, fromY + margin, fromStyle);
+  drawRectangle(ctx, squareSize, squareSize, toX, toY + margin, toStyle);
 };
 
 export default drawMoveIndicators;

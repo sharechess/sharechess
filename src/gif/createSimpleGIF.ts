@@ -11,13 +11,16 @@ const createSimpleGIF = async (
   size: number = 720
 ) => {
   const game = new Game().loadPGN(pgn);
-  const board = new Board(8).setStyle(style).setSize(size).showBorder();
-  const gif = new GIF(size, true);
+  const board = new Board(8).setStyle(style).setSize(size).hideBorder();
+  const gif = new GIF(board.width, board.height, true);
+  const header = game.getHeader();
 
-  await board.renderTitleScreen(game.getHeader());
+  await board.titleFrame(header);
+  board.render();
   gif.add(board.toImgElement(), 5000);
 
-  await board.render(game.getBoardData());
+  await board.frame(game.getBoardData(), header);
+  board.render();
   gif.add(board.toImgElement(), MOVE_TIME);
 
   while (true) {
@@ -27,7 +30,8 @@ const createSimpleGIF = async (
       break;
     }
 
-    await board.render(game.getBoardData(), move);
+    await board.frame(game.getBoardData(), header, move);
+    board.render();
     gif.add(board.toImgElement(), MOVE_TIME);
   }
 

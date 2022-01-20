@@ -1,5 +1,6 @@
 import { Style } from "./../../types";
-import drawSquare from "../layers/drawSquare";
+import drawRectangle from "./drawRectangle";
+import drawText from "./drawText";
 
 const MONTHS = [
   "January",
@@ -32,31 +33,18 @@ const formatDate = (date: string) => {
     : "";
 };
 
-const drawText = (
-  ctx: CanvasRenderingContext2D,
-  text: string,
-  fontSize: number,
-  fontWeight: number,
-  x: number,
-  y: number,
-  align: CanvasTextAlign
-) => {
-  ctx.font = `${fontWeight} ${fontSize}px Ubuntu`;
-  ctx.textAlign = align;
-  ctx.textBaseline = "middle";
-  ctx.fillText(text, x, y);
-};
-
 const drawHeader = async (
   ctx: CanvasRenderingContext2D,
   size: number,
+  scale: number,
+  margin: number,
   style: Style,
   data: { [key: string]: string | undefined },
   flipped: boolean
 ) => {
-  const scale = size / 720;
   ctx.clearRect(0, 0, size, size);
-  await drawSquare(ctx, size, 0, 0, style.border);
+  await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
+  // await drawRectangle()
 
   ctx.fillStyle = style.coords.onBorder;
 
@@ -67,7 +55,7 @@ const drawHeader = async (
       36 * scale,
       700,
       size / 2,
-      (flipped ? 100 : size - 100) * scale,
+      (flipped ? 100 : size - 100) * scale + margin,
       "center"
     );
   }
@@ -79,7 +67,7 @@ const drawHeader = async (
       36 * scale,
       700,
       size / 2,
-      (flipped ? size - 100 : 100) * scale,
+      (flipped ? size - 100 : 100) * scale + margin,
       "center"
     );
   }
@@ -91,7 +79,7 @@ const drawHeader = async (
       24 * scale,
       500,
       size / 2,
-      (size / 2 - (data.Round ? 20 : 0)) * scale,
+      (size / 2 - (data.Round ? 20 : 0)) * scale + margin,
       "center"
     );
   }
@@ -103,7 +91,7 @@ const drawHeader = async (
       24 * scale,
       500,
       size / 2,
-      (size / 2 + 20) * scale,
+      (size / 2 + 20) * scale + margin,
       "center"
     );
   }
@@ -115,13 +103,21 @@ const drawHeader = async (
       20 * scale,
       500,
       size / 2,
-      450 * scale,
+      450 * scale + margin,
       "center"
     );
   }
 
   if (data.Site) {
-    drawText(ctx, data.Site, 20 * scale, 500, size / 2, 480 * scale, "center");
+    drawText(
+      ctx,
+      data.Site,
+      20 * scale,
+      500,
+      size / 2,
+      480 * scale + margin,
+      "center"
+    );
   }
 };
 

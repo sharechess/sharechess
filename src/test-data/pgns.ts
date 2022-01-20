@@ -161,6 +161,25 @@ Rdc1 Bf6 28. Rc8+ 1-0`,
 [Annotator "lichess.org"]
 
 1. b3 Nf6 { A01 Nimzo-Larsen Attack: Indian Variation } 2. Bb2 g6 3. Nc3 Bg7 4. d3 O-O 5. Qd2 d5 6. O-O-O e6 7. Nf3 Nbd7 8. e4 a5 9. exd5 Nxd5 10. Nxd5 exd5 11. Bxg7 Kxg7 12. g3 b5 13. Bg2 a4 14. b4 a3 15. Nd4 c6 16. Nb3 Nf6 17. Nc5 Nd7 18. Rhe1 Nxc5 19. d4 Na4 20. c3 Nb2 21. Kb1 Bf5+ 22. Ka1 Nxd1 23. Qxd1 Qf6 24. Qf3 Rae8 25. g4 Rxe1+ 26. Qd1 Rxd1# { Black wins by checkmate. } 0-1`,
+
+  `[Event "Casual Bullet game"]
+[Site "https://lichess.org/kF9IVNaR"]
+[Date "2022.01.20"]
+[White "MG014"]
+[Black "caderek"]
+[Result "0-1"]
+[UTCDate "2022.01.20"]
+[UTCTime "05:03:34"]
+[WhiteElo "1852"]
+[BlackElo "1370"]
+[Variant "Standard"]
+[TimeControl "30+0"]
+[ECO "A43"]
+[Opening "Benoni Defense: Old Benoni"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. d4 c5 { A43 Benoni Defense: Old Benoni } 2. Nf3 cxd4 3. Qxd4 Nc6 4. Qd1 g6 5. Nc3 Bg7 6. Bf4 e6 7. e3 Nge7 8. Bd3 O-O 9. Qd2 d5 10. O-O-O b6 11. e4 a5 12. exd5 Nxd5 13. Nxd5 exd5 14. Bb5 Bb7 15. Bxc6 Bxc6 16. a3 Qf6 17. Rhe1 Qxb2# { Black wins by checkmate. } 0-1`,
 ];
 
 export default pgns;

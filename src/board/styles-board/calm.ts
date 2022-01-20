@@ -2,6 +2,12 @@ import { Style } from "../../types";
 
 const style: Style = {
   name: "Calm",
+  // background: {
+  //   type: "solid",
+  //   data: {
+  //     color: "transparent",
+  //   },
+  // },
   background: {
     type: "gradient",
     data: {

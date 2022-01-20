@@ -11,7 +11,8 @@ const drawCoords = (
   blackSide: boolean = false,
   borderWidth: number,
   size: number,
-  hasBorder: boolean
+  hasBorder: boolean,
+  margin: number
 ) => {
   const scale = size / 1024;
 
@@ -41,9 +42,10 @@ const drawCoords = (
         : coords.onDark;
 
     const x = hasBorder ? borderWidth / 2 : offsetA;
-    const y = hasBorder
-      ? squareSize * i + borderWidth + squareSize / 2
-      : squareSize * i + offsetA;
+    const y =
+      (hasBorder
+        ? squareSize * i + borderWidth + squareSize / 2
+        : squareSize * i + offsetA) + margin;
 
     ctx.textAlign = hasBorder ? "center" : "left";
     ctx.fillText(v, x, y);
@@ -65,7 +67,7 @@ const drawCoords = (
     const x = hasBorder
       ? squareSize * i + borderWidth + squareSize / 2
       : squareSize * i + offsetA;
-    const y = hasBorder ? size - borderWidth / 2 : size - offsetB;
+    const y = (hasBorder ? size - borderWidth / 2 : size - offsetB) + margin;
 
     ctx.textAlign = hasBorder ? "center" : "left";
     ctx.fillText(v, x, y);

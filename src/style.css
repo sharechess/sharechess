@@ -3,6 +3,7 @@ body {
   background-image: url(background.png);
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
   text-align: center;
   padding-top: 50px;
 }

@@ -1,11 +1,11 @@
 import { Move } from "chess.js";
 import { Style, BoardData } from "../types";
-import drawSquare from "./layers/drawSquare";
-import drawBorder from "./layers/drawBorder";
+import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
 import drawPieces from "./layers/drawPieces";
 import drawHeader from "./layers/drawHeader.ts";
+import drawExtraInfo from "./layers/drawExtraInfo";
 import boards from "./styles-board";
 
 class Board {
@@ -24,6 +24,9 @@ class Board {
   private innerSize: number = 672;
   private borderWidth: number = 24;
   private background: Promise<ImageBitmap> | null = null;
+  private extraInfo: boolean = true;
+  private scale: number = 1;
+  private margin: number = 0;
 
   constructor(private tiles: number = 8) {
     const ctx = this.canvas.getContext("2d");
@@ -41,10 +44,13 @@ class Board {
 
   setSize(size: number) {
     this.size = size;
+    this.scale = size / 720;
+    this.margin = this.extraInfo ? 50 * this.scale : 0;
+
     this.canvas.width = size;
-    this.canvas.height = size;
+    this.canvas.height = size + this.margin * 2;
     this.tempCanvas.width = size;
-    this.tempCanvas.height = size;
+    this.tempCanvas.height = size + this.margin * 2;
 
     const tempBorderWidth = this.borderVisible ? this.size / 32 : 0;
     const tempInnerSize = this.size - tempBorderWidth * 2;
@@ -106,32 +112,31 @@ class Board {
     return color === "w" ? "b" : "w";
   }
 
-  async renderTitleScreen(header: { [key: string]: string | undefined }) {
-    await drawHeader(this.tempCtx, this.size, this.style, header, this.flipped);
-    this.ctx.drawImage(this.tempCanvas, 0, 0);
+  async titleFrame(header: { [key: string]: string | undefined }) {
+    await drawHeader(
+      this.tempCtx,
+      this.size,
+      this.scale,
+      this.margin,
+      this.style,
+      header,
+      this.flipped
+    );
   }
 
   async renderBackground() {
     const { background, dark, light, border, coords } = this.style;
 
-    await drawSquare(
+    await drawRectangle(this.tempCtx, this.width, this.height, 0, 0, border);
+
+    await drawRectangle(
       this.tempCtx,
       this.innerSize,
+      this.innerSize,
       this.borderVisible ? this.borderWidth : 0,
-      this.borderVisible ? this.borderWidth : 0,
+      (this.borderVisible ? this.borderWidth : 0) + this.margin,
       background
     );
-
-    if (this.borderVisible) {
-      await drawBorder(
-        this.tempCtx,
-        this.size - this.borderWidth,
-        this.borderWidth / 2,
-        this.borderWidth / 2,
-        this.borderWidth,
-        border
-      );
-    }
 
     for (let rank = 0; rank < this.tiles; rank++) {
       for (let file = 0; file < this.tiles; file++) {
@@ -142,9 +147,16 @@ class Board {
             : dark;
 
         const x = file * this.squareSize + this.borderWidth;
-        const y = rank * this.squareSize + this.borderWidth;
+        const y = rank * this.squareSize + this.borderWidth + this.margin;
 
-        await drawSquare(this.tempCtx, this.squareSize, x, y, style);
+        await drawRectangle(
+          this.tempCtx,
+          this.squareSize,
+          this.squareSize,
+          x,
+          y,
+          style
+        );
       }
     }
 
@@ -156,13 +168,18 @@ class Board {
       this.flipped,
       this.borderWidth,
       this.size,
-      this.borderVisible
+      this.borderVisible,
+      this.margin
     );
 
     this.background = createImageBitmap(this.tempCanvas);
   }
 
-  async render(boardData: BoardData | null, move: Move | null = null) {
+  async frame(
+    boardData: BoardData | null,
+    header: { [key: string]: string | undefined },
+    move: Move | null = null
+  ) {
     this.lastMove = move;
     this.boardData = boardData;
 
@@ -190,9 +207,12 @@ class Board {
           this.style,
           this.borderWidth,
           this.tiles,
-          this.flipped
+          this.flipped,
+          this.margin
         );
       }
+
+      const piecesShadow = false;
 
       await drawPieces(
         this.tempCtx,
@@ -203,10 +223,26 @@ class Board {
         this.flipped,
         check,
         mate,
-        true
+        piecesShadow,
+        this.margin
       );
-    }
 
+      if (this.extraInfo && header) {
+        await drawExtraInfo(
+          this.tempCtx,
+          this.width,
+          this.height,
+          this.scale,
+          this.margin,
+          this.style,
+          header,
+          this.flipped
+        );
+      }
+    }
+  }
+
+  render() {
     this.ctx.clearRect(0, 0, this.size, this.size);
     this.ctx.drawImage(this.tempCanvas, 0, 0);
   }
@@ -223,6 +259,16 @@ class Board {
     img.src = dataUrl;
     return img;
   }
+
+  get width() {
+    return this.size;
+  }
+
+  get height() {
+    return this.size + this.margin * 2;
+  }
+
+  toGIF() {}
 }
 
 export default Board;

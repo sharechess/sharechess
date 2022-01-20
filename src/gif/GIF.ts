@@ -3,12 +3,12 @@ import GIFLib from "gif.js";
 class GIF {
   private gif: GIFLib;
 
-  constructor(size: number, loop: boolean) {
+  constructor(width: number, height: number, loop: boolean) {
     this.gif = new GIFLib({
       workers: 2,
       quality: 10,
-      width: size,
-      height: size,
+      width,
+      height,
       repeat: loop ? 0 : -1,
     });
   }
@@ -26,14 +26,14 @@ class GIF {
 
   render(): Promise<File> {
     return new Promise((resolve) => {
+      const timestamp = Date.now();
       this.gif.on("finished", function (blob) {
-        const file = new File([blob], `board.gif`, {
+        const file = new File([blob], `board_${timestamp}.gif`, {
           type: "image/gif",
-          lastModified: Date.now(),
+          lastModified: timestamp,
         });
 
         resolve(file);
-        // resolve(URL.createObjectURL(file));
       });
 
       this.gif.render();

@@ -8,10 +8,10 @@ const drawPieces = async (
   borderWidth: number,
   tiles: number,
   flipped: boolean,
-  check?: "b" | "w",
-  mate?: "b" | "w",
-  shadow: boolean = false,
-  blur: boolean = false
+  check: "b" | "w" | undefined,
+  mate: "b" | "w" | undefined,
+  shadow: boolean,
+  margin: number
 ) => {
   for (let y = 0; y < 8; y++) {
     for (let x = 0; x < 8; x++) {
@@ -25,10 +25,6 @@ const drawPieces = async (
         const file = flipped ? tiles - 1 - x : x;
 
         const filters = [];
-
-        if (blur) {
-          filters.push(`blur(5px)`);
-        }
 
         if (shadow) {
           filters.push(
@@ -51,7 +47,7 @@ const drawPieces = async (
         ctx.drawImage(
           img,
           borderWidth + file * squareSize,
-          borderWidth + rank * squareSize,
+          borderWidth + rank * squareSize + margin,
           squareSize,
           squareSize
         );

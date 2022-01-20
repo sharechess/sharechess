@@ -2,27 +2,26 @@ import { SquareStyle } from "../../types";
 import createGradient from "../fill/createGradient";
 import createPattern from "../fill/createPattern";
 
-const drawBorder = async (
+const drawRectangle = async (
   ctx: CanvasRenderingContext2D,
-  size: number,
+  width: number,
+  height: number,
   x: number,
   y: number,
-  width: number,
   squareStyle: SquareStyle
 ) => {
   const fill = await (squareStyle.type === "solid"
     ? squareStyle.data.color
     : squareStyle.type === "gradient"
-    ? createGradient(ctx, squareStyle.data, size, x, y)
+    ? createGradient(ctx, squareStyle.data, width, height, x, y)
     : createPattern(ctx, squareStyle.data));
 
   if (fill === null) {
     throw new Error("Cannot create canvas fill style");
   }
 
-  ctx.lineWidth = width;
-  ctx.strokeStyle = fill;
-  ctx.strokeRect(x, y, size, size);
+  ctx.fillStyle = fill;
+  ctx.fillRect(x, y, width, height);
 };
 
-export default drawBorder;
+export default drawRectangle;

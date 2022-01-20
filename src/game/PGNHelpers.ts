@@ -9,6 +9,8 @@ const PGN_KEYS_TO_SHORT = {
   Date: "D",
   Result: "R",
   FEN: "F",
+  WhiteElo: "WE",
+  BlackElo: "BE",
 };
 
 const PGN_KEYS = Object.keys(PGN_KEYS_TO_SHORT);
