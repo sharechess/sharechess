@@ -1,21 +1,6 @@
 import { Style } from "./../../types";
 import drawText from "./drawText";
 
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
 const drawExtraInfo = async (
   ctx: CanvasRenderingContext2D,
   width: number,
