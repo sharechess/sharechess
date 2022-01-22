@@ -1,23 +1,25 @@
 import { Style } from "../../types";
 
 const style: Style = {
-  name: "Avocado",
+  name: "Temp",
   background: {
-    type: "solid",
+    type: "gradient",
     data: {
-      color: "transparent",
+      dir: "radial",
+      colors: ["#ff00ff", "#00ffff"],
     },
   },
   dark: {
-    type: "solid",
+    type: "image",
     data: {
-      color: "#72b339",
+      src: "https://placekitten.com/1024/1024",
     },
   },
   light: {
-    type: "solid",
+    type: "gradient",
     data: {
-      color: "#ececa4",
+      dir: "radial",
+      colors: ["#ffffff11", "#ffff0099", "#ffff0099"],
     },
   },
   moveIndicator: {

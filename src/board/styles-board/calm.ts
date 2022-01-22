@@ -35,7 +35,7 @@ const style: Style = {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#70982b", "#008b7a"],
+      colors: ["#65a32e", "#007a80"],
     },
   },
   coords: {

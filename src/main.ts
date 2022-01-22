@@ -4,7 +4,7 @@ import Board from "./board/Board";
 import styles from "./board/styles-board";
 import Game from "./game/Game";
 import pgns from "./test-data/pgns";
-import createSimpleGIF from "./gif/createSimpleGIF";
+import createAnimation from "./encoders/createAnimation";
 // import { decompressPGN } from "./game/PGNHelpers";
 import WebFont from "webfontloader";
 
@@ -21,10 +21,10 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
 
   const header = game.getHeader();
 
-  await board.titleFrame(header);
-  board.render();
+  // await board.titleFrame(header);
+  // board.render();
   await board.frame(game.getBoardData(), header);
-  await delay(interval * 3);
+  // await delay(interval * 3);
   board.render();
 
   while (true) {
@@ -44,7 +44,7 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
 };
 
 const createDownloadLink = async (pgn: string, style: Style) => {
-  const file = await createSimpleGIF(pgn, style, 720);
+  const file = await createAnimation(pgn, style, 720, "GIF");
   const link = document.createElement("a");
   link.innerText = "DOWNLOAD";
   link.setAttribute("href", URL.createObjectURL(file));
@@ -62,7 +62,7 @@ const main = async () => {
 
   // const hash = window.location.hash;
   // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  const pgn = pgns[pgns.length - 1];
+  const pgn = pgns[2];
   const board = new Board(8).setStyle(style).setSize(720).showBorder();
 
   $app?.appendChild(board.canvas);
@@ -72,9 +72,9 @@ const main = async () => {
   const interval = 1000;
   play(board, pgn, interval);
 
-  createDownloadLink(pgns[2], style).then((link) => {
-    document.body.appendChild(link);
-  });
+  // createDownloadLink(pgns[2], style).then((link) => {
+  //   document.body.appendChild(link);
+  // });
 };
 
 WebFont.load({

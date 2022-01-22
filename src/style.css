@@ -1,3 +1,9 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #111;
   background-image: url(background.png);
@@ -15,7 +21,7 @@ body {
   height: 800px; */
   /* width: 1024px;
   height: 1024px; */
-  margin: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  max-width: 100%;
 }

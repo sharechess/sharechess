@@ -23,7 +23,7 @@ class Board {
   private squareSize: number = 84;
   private innerSize: number = 672;
   private borderWidth: number = 24;
-  private background: Promise<ImageBitmap> | null = null;
+  private background: HTMLCanvasElement | null = null;
   private extraInfo: boolean = true;
   private scale: number = 1;
   private margin: number = 0;
@@ -125,12 +125,18 @@ class Board {
   }
 
   async renderBackground() {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+
+    canvas.width = this.size;
+    canvas.height = this.size + this.margin * 2;
+
     const { background, dark, light, border, coords } = this.style;
 
-    await drawRectangle(this.tempCtx, this.width, this.height, 0, 0, border);
+    await drawRectangle(ctx, this.width, this.height, 0, 0, border);
 
     await drawRectangle(
-      this.tempCtx,
+      ctx,
       this.innerSize,
       this.innerSize,
       this.borderVisible ? this.borderWidth : 0,
@@ -149,19 +155,12 @@ class Board {
         const x = file * this.squareSize + this.borderWidth;
         const y = rank * this.squareSize + this.borderWidth + this.margin;
 
-        await drawRectangle(
-          this.tempCtx,
-          this.squareSize,
-          this.squareSize,
-          x,
-          y,
-          style
-        );
+        await drawRectangle(ctx, this.squareSize, this.squareSize, x, y, style);
       }
     }
 
     drawCoords(
-      this.tempCtx,
+      ctx,
       coords,
       this.squareSize,
       this.tiles,
@@ -172,7 +171,7 @@ class Board {
       this.margin
     );
 
-    this.background = createImageBitmap(this.tempCanvas);
+    this.background = canvas;
   }
 
   async frame(
@@ -180,6 +179,7 @@ class Board {
     header: { [key: string]: string | undefined },
     move: Move | null = null
   ) {
+    console.log("Preparing frame");
     this.lastMove = move;
     this.boardData = boardData;
 
@@ -193,10 +193,12 @@ class Board {
     this.tempCtx.clearRect(0, 0, this.size, this.size);
 
     if (this.background === null) {
+      console.log("Background rendering...");
       await this.renderBackground();
+      console.log("Background rendered");
     }
 
-    this.tempCtx.drawImage((await this.background) as ImageBitmap, 0, 0);
+    this.tempCtx.drawImage((await this.background) as HTMLCanvasElement, 0, 0);
 
     if (boardData !== null) {
       if (this.lastMove) {

@@ -2,7 +2,8 @@ export type GradientDir =
   | "horizontal"
   | "vertical"
   | "diagonal-top"
-  | "diagonal-bottom";
+  | "diagonal-bottom"
+  | "radial";
 
 export type GradientData = {
   dir: GradientDir;

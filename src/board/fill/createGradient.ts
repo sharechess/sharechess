@@ -15,13 +15,27 @@ const createGradient = (
   x: number,
   y: number
 ) => {
-  const [dirXStart, dirYStart, dirXStop, dirYStop] = gradientDirs[data.dir];
-  const gradient = ctx.createLinearGradient(
-    x + dirXStart * width,
-    y + dirYStart * height,
-    x + dirXStop * width,
-    y + dirYStop * height
-  );
+  let gradient: CanvasGradient;
+
+  if (data.dir === "radial") {
+    const radius = Math.sqrt((width / 2) ** 2 + (height / 2) ** 2);
+    gradient = ctx.createRadialGradient(
+      x + width / 2,
+      y + height / 2,
+      radius,
+      x + width / 2,
+      y + height / 2,
+      0
+    );
+  } else {
+    const [dirXStart, dirYStart, dirXStop, dirYStop] = gradientDirs[data.dir];
+    gradient = ctx.createLinearGradient(
+      x + dirXStart * width,
+      y + dirYStart * height,
+      x + dirXStop * width,
+      y + dirYStop * height
+    );
+  }
 
   const maxIndex = data.colors.length - 1;
 
