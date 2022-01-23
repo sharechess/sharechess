@@ -53,8 +53,8 @@ const drawHeader = async (
   await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
 
   const allSizes = [
-    { key: "White", line: 50 * scale, font: 36 * scale, n: 0 },
-    { key: "Black", line: 50 * scale, font: 36 * scale, n: 2 },
+    { key: "White", line: 60 * scale, font: 42 * scale, n: 0 },
+    { key: "Black", line: 60 * scale, font: 42 * scale, n: 2 },
     { key: "Event", line: 30 * scale, font: 20 * scale, n: 4 },
     { key: "Round", line: 30 * scale, font: 20 * scale, n: 5 },
     { key: "Date", line: 30 * scale, font: 20 * scale, n: 7 },
