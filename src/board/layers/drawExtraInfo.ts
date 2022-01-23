@@ -55,18 +55,10 @@ const drawExtraInfo = async (
     const [resultWhite, resultBlack] = data.Result.split("-");
 
     const textWhite =
-      resultWhite === "0"
-        ? "Lost: 0"
-        : resultWhite === "1"
-        ? "Won: 1"
-        : "Draw: 1/2";
+      resultWhite === "0" ? "Lost" : resultWhite === "1" ? "Won" : "Draw";
 
     const textBlack =
-      resultBlack === "0"
-        ? "Lost: 0"
-        : resultBlack === "1"
-        ? "Won: 1"
-        : "Draw: 1/2";
+      resultBlack === "0" ? "Lost" : resultBlack === "1" ? "Won" : "Draw";
 
     drawText(
       ctx,

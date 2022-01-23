@@ -64,17 +64,18 @@ const main = async () => {
 
   // const hash = window.location.hash;
   // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  const pgn = pgns[pgns.length - 1];
-  const board = new Board(8).setStyle(style).setSize(720).showBorder();
+  const pgn = pgns[pgns.length - 12];
+  const board = new Board(8).setStyle(style).setSize(720).hideBorder();
 
   $app?.appendChild(board.canvas);
 
   const interval = 1000;
   play(board, pgn, interval);
 
-  createDownloadLink(pgns[2], style).then((link) => {
-    document.body.appendChild(link);
-  });
+  // createDownloadLink(pgns[2], style).then((link) => {
+  //   document.body.appendChild(link);
+  //   console.log("Animation created!");
+  // });
 };
 
 WebFont.load({

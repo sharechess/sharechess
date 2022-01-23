@@ -158,17 +158,19 @@ class Board {
       }
     }
 
-    drawCoords(
-      ctx,
-      coords,
-      this.squareSize,
-      this.tiles,
-      this.flipped,
-      this.borderWidth,
-      this.size,
-      this.borderVisible,
-      this.margin
-    );
+    if (this.borderVisible) {
+      drawCoords(
+        ctx,
+        coords,
+        this.squareSize,
+        this.tiles,
+        this.flipped,
+        this.borderWidth,
+        this.size,
+        this.borderVisible,
+        this.margin
+      );
+    }
 
     this.background = canvas;
   }
@@ -206,6 +208,20 @@ class Board {
           this.borderWidth,
           this.tiles,
           this.flipped,
+          this.margin
+        );
+      }
+
+      if (!this.borderVisible) {
+        drawCoords(
+          this.tempCtx,
+          this.style.coords,
+          this.squareSize,
+          this.tiles,
+          this.flipped,
+          this.borderWidth,
+          this.size,
+          this.borderVisible,
           this.margin
         );
       }
