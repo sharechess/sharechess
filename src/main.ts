@@ -19,12 +19,14 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
     game.loadPGN(pgn);
   }
 
+  console.log(game.pgn());
+
   const header = game.getHeader();
 
-  // await board.titleFrame(header);
-  // board.render();
+  await board.titleFrame(header);
+  board.render();
   await board.frame(game.getBoardData(), header);
-  // await delay(interval * 3);
+  await delay(interval * 3);
   board.render();
 
   while (true) {
@@ -55,19 +57,17 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 console.log(createDownloadLink.name);
 
 const main = async () => {
-  const style = styles.calm;
+  const style = styles.lila;
 
   // window.location.hash =
   //   "#QiBEdWtlIEthcmwgLyBDb3VudCBJc291YXJkCkQgMTg1OC4/Py4/PwpFIFBhcmlzClIgMS0wClMgUGFyaXMgRlJBClcgUGF1bCBNb3JwaHkKCmU0IGU1IE5mMyBkNiBkNCBCZzQgZHhlNSBCeGYzIFF4ZjMgZHhlNSBCYzQgTmY2IFFiMyBRZTcgTmMzIGM2IEJnNSBiNSBOeGI1IGN4YjUgQnhiNSsgTmJkNyBPLU8tTyBSZDggUnhkNyBSeGQ3IFJkMSBRZTYgQnhkNysgTnhkNyBRYjgrIE54YjggUmQ4Iw==";
 
   // const hash = window.location.hash;
   // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  const pgn = pgns[2];
+  const pgn = pgns[pgns.length - 1];
   const board = new Board(8).setStyle(style).setSize(720).showBorder();
 
   $app?.appendChild(board.canvas);
-
-  console.log(pgn);
 
   const interval = 1000;
   play(board, pgn, interval);

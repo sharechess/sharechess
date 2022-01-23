@@ -27,9 +27,10 @@ const style: Style = {
     data: 70,
   },
   border: {
-    type: "solid",
+    type: "gradient",
     data: {
-      color: "#2d3923",
+      dir: "radial",
+      colors: ["#009999", "#000099", "#990000"],
     },
   },
   coords: {

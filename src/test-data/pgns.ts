@@ -104,11 +104,7 @@ Rdc1 Bf6 28. Rc8+ 1-0`,
 
 1. e4 c5 2. Nf3 Nc6 { B30 Sicilian Defense: Old Sicilian } 3. Bc4 g6 4. c3 e5? { (0.35 → 1.61) Mistake. Nf6 was best. } (4... Nf6 5. e5 d5 6. Bb5 Nd7 7. O-O Qb6 8. Na3 Bg7 9. Re1) 5. O-O?! { (1.61 → 0.63) Inaccuracy. d4 was best. } (5. d4 cxd4 6. cxd4 exd4 7. Nxd4 Nf6 8. O-O Bg7 9. Nb5 O-O) 5... Bg7 6. Re1?! { (0.95 → 0.10) Inaccuracy. d4 was best. } (6. d4 exd4 7. cxd4 cxd4 8. Bf4 d6 9. Qb3 Na5 10. Bb5+ Nc6) 6... Nf6?? { (0.10 → 2.28) Blunder. Nge7 was best. } (6... Nge7 7. b4 cxb4 8. cxb4 O-O 9. Nc3 a6 10. a4 Nxb4 11. Ba3) 7. h3?? { (2.28 → 0.18) Blunder. d4 was best. } (7. d4) 7... O-O 8. d3 d5 9. exd5 Nxd5 10. d4? { (0.00 → -1.06) Mistake. Nbd2 was best. } (10. Nbd2 b6 11. Bb5 Bb7 12. Bxc6 Bxc6 13. Nxe5 Bxe5 14. Rxe5 Nf4 15. Ne4 Nxd3 16. Bg5 f6) 10... exd4 11. cxd4?! { (-0.88 → -1.78) Inaccuracy. Bg5 was best. } (11. Bg5 Qd7 12. cxd4 h6 13. Bxd5 hxg5 14. Bxc6 bxc6 15. Nbd2 cxd4 16. Rc1 Qd5 17. Ne4 Qxa2) 11... cxd4?! { (-1.78 → -0.76) Inaccuracy. Nxd4 was best. } (11... Nxd4 12. Nxd4 cxd4 13. Nd2 Be6 14. Ne4 Ne3 15. Bxe3 Bxc4 16. Bg5 Qb6 17. Qf3 f5 18. Nd2) 12. Nxd4?? { (-0.76 → -8.14) Blunder. Bg5 was best. } (12. Bg5 Qd6 13. Nbd2 Bf5 14. Rc1 h6 15. Bh4 Nf4 16. Ne4 Bxe4 17. Rxe4 Rae8 18. Rxe8 Rxe8) 12... Nxd4 13. Nc3 Nxc3 14. bxc3 Nc6 15. Bb2 Qxd1 16. Raxd1 a6 17. a4 Rb8 18. Re2 b5 19. axb5 axb5 20. Bd3 Be6 21. Bc2 b4 22. cxb4 Bxb2 23. Rb1 Bc3 24. b5 Nd4 25. Rxe6 fxe6 26. Ba4 Ne2+ 27. Kh2? { (-8.93 → Mate in 8) Checkmate is now unavoidable. Kf1 was best. } (27. Kf1 Ng3+) 27... Be5+ 28. g3 Rxf2+ 29. Kh1 Nxg3+ 30. Kg1 Ra2 31. Bb3 Bd4# { Black wins by checkmate. } 0-1`,
 
-  `[Event "Tata Steel Chess Masters 2022"]
-[Site "Wijk aan Zee, Netherlands"]
-[Date "2022.01.18"]
-[Round "4.3"]
-[White "Mamedyarov, Shakhriyar"]
+  `[White "Mamedyarov, Shakhriyar"]
 [Black "Duda, Jan-Krzysztof"]
 [Result "1-0"]
 [WhiteElo "2767"]
@@ -180,6 +176,26 @@ Rdc1 Bf6 28. Rc8+ 1-0`,
 [Annotator "lichess.org"]
 
 1. d4 c5 { A43 Benoni Defense: Old Benoni } 2. Nf3 cxd4 3. Qxd4 Nc6 4. Qd1 g6 5. Nc3 Bg7 6. Bf4 e6 7. e3 Nge7 8. Bd3 O-O 9. Qd2 d5 10. O-O-O b6 11. e4 a5 12. exd5 Nxd5 13. Nxd5 exd5 14. Bb5 Bb7 15. Bxc6 Bxc6 16. a3 Qf6 17. Rhe1 Qxb2# { Black wins by checkmate. } 0-1`,
+
+  `[Event "Tata Steel Chess Masters 2022"]
+[Site "Wijk aan Zee, Netherlands"]
+[Date "2022.01.22"]
+[Round "7.1"]
+[White "Praggnanandhaa R"]
+[Black "Carlsen, Magnus"]
+[Result "0-1"]
+[WhiteElo "2612"]
+[BlackElo "2865"]
+[UTCDate "2022.01.22"]
+[UTCTime "13:08:27"]
+[Variant "Standard"]
+[ECO "D27"]
+[Opening "Queen's Gambit Accepted: Classical Defense, Main Line"]
+[Annotator "https://lichess.org/@/ImaginaryGC"]
+
+1. d4 { [%eval 0.3] [%clk 1:40:32] } 1... d5 { [%eval 0.28] [%clk 1:39:39] } 2. c4 { [%eval 0.35] [%clk 1:40:46] } 2... e6 { [%eval 0.38] [%clk 1:40:04] } 3. Nf3 { [%eval 0.0] [%clk 1:41:11] } 3... dxc4 { [%eval 0.25] [%clk 1:40:27] } 4. e3 { [%eval 0.13] [%clk 1:39:16] } 4... a6 { [%eval 0.4] [%clk 1:39:48] } 5. Bxc4 { [%eval 0.25] [%clk 1:38:16] } 5... Nf6 { [%eval 0.2] [%clk 1:40:00] } 6. O-O { [%eval 0.17] [%clk 1:37:53] } 6... c5 { [%eval 0.36] [%clk 1:40:25] } 7. b3 { [%eval 0.19] [%clk 1:35:31] } 7... b6 { [%eval 0.58] [%clk 1:37:38] } 8. Ba3 { [%eval 0.78] [%clk 1:28:39] } 8... Nbd7 { [%eval 0.6] [%clk 1:35:08] } 9. d5 { [%eval 0.52] [%clk 1:27:25] } 9... exd5 { [%eval 0.7] [%clk 1:35:29] } 10. Bxd5 { [%eval 0.52] [%clk 1:27:50] } 10... Rb8 { [%eval 0.6] [%clk 1:34:05] } 11. Bb2 { [%eval 0.87] [%clk 1:19:12] } 11... Be7 { [%eval 0.59] [%clk 1:26:21] } 12. Nc3 { [%eval 0.58] [%clk 1:17:24] } 12... O-O { [%eval 1.03] [%clk 1:25:08] } 13. Qc2 { [%eval 1.0] [%clk 1:10:37] } 13... b5 { [%eval 0.69] [%clk 1:02:49] } 14. Rfd1?! { [%eval 0.17] } { Inaccuracy. Rad1 was best. } { [%clk 1:01:39] } (14. Rad1 Qc7 15. Ng5 g6 16. f4 c4 17. Ne6 fxe6 18. Bxe6+ Rf7 19. Nd5 Nxd5 20. Bxd5 Nf6) 14... Qc7?! { [%eval 0.91] } { Inaccuracy. h6 was best. } { [%clk 0:54:21] } (14... h6) 15. a4? { [%eval -0.52] } { Mistake. Ng5 was best. } { [%clk 0:48:20] } (15. Ng5 g6 16. h3 b4 17. Nce4 Nxd5 18. Rxd5 h6 19. Nf3 Bb7 20. Rd2 Qc6 21. Ng3 Nb6) 15... h6?! { [%eval 0.11] } { Inaccuracy. b4 was best. } { [%clk 0:39:23] } (15... b4) 16. axb5 { [%eval 0.33] [%clk 0:42:13] } 16... axb5 { [%eval 0.23] [%clk 0:39:47] } 17. Qe2 { [%eval 0.25] [%clk 0:36:43] } 17... Qb6 { [%eval -0.1] [%clk 0:30:41] } 18. e4 { [%eval 0.11] [%clk 0:32:56] } 18... Re8 { [%eval 0.04] [%clk 0:30:49] } 19. Qd2?! { [%eval -0.64] } { Inaccuracy. e5 was best. } { [%clk 0:26:08] } (19. e5) 19... Bf8 { [%eval -0.71] [%clk 0:24:56] } 20. Qf4 { [%eval -1.08] [%clk 0:23:07] } 20... b4 { [%eval -1.18] [%clk 0:22:47] } 21. Na4 { [%eval -1.21] [%clk 0:15:15] } 21... Nxd5 { [%eval -1.29] [%clk 0:23:11] } 22. Rxd5 { [%eval -1.26] [%clk 0:15:18] } 22... Qe6?! { [%eval -0.59] } { Inaccuracy. Qc6 was best. } { [%clk 0:19:20] } (22... Qc6) 23. Rad1?? { [%eval -2.8] } { Blunder. Nxc5 was best. } { [%clk 0:11:53] } (23. Nxc5 Bxc5) 23... Ra8 { [%eval -3.08] [%clk 0:12:30] } 24. Qc1 { [%eval -2.92] [%clk 0:06:43] } 24... Qxe4 { [%eval -2.73] [%clk 0:07:45] } 25. h3 { [%eval -2.68] [%clk 0:03:59] } 25... Ra7 { [%eval -2.94] [%clk 0:02:17] } 26. Qd2 { [%eval -3.28] [%clk 0:03:22] } 26... Qg6 { [%eval -2.87] [%clk 0:02:07] } 27. Nh4 { [%eval -3.12] [%clk 0:01:33] } 27... Qe6 { [%eval -3.07] [%clk 0:01:19] } 28. Nf5 { [%eval -3.49] [%clk 0:01:11] } 28... c4? { [%eval -1.57] } { Mistake. Bb7 was best. } { [%clk 0:01:03] } (28... Bb7 29. Nxh6+) 29. Qd4?? { [%eval -4.12] } { Blunder. Bxg7 was best. } { [%clk 0:00:36] } (29. Bxg7 Bxg7) 29... Nf6 { [%eval -4.18] [%clk 0:01:04] } 30. Nb6? { [%eval -8.81] } { Mistake. Nxg7 was best. } { [%clk 0:00:32] } (30. Nxg7 Bxg7 31. Rd6 Qxd6 32. Qxd6 Rd7 33. Bxf6 Rxd6 34. Rxd6 c3 35. Bxg7 Kxg7 36. Nxc3 bxc3) 30... c3 { [%eval -8.85] [%clk 0:01:14] } 31. Nxc8 { [%eval -8.95] [%clk 0:00:32] } 31... Qxd5 { [%eval -8.46] [%clk 0:01:25] } 32. Qxd5 { [%eval -9.12] [%clk 0:00:40] } 32... Nxd5 { [%eval -9.0] [%clk 0:01:52] } 33. Nxa7 { [%eval -9.05] [%clk 0:01:04] } 33... cxb2 { [%eval -9.13] [%clk 0:02:13] } 34. Rb1 { [%eval -9.07] [%clk 0:01:26] } 34... Re2 { [%eval -9.08] [%clk 0:02:34] } 0-1
+
+`,
 ];
 
 export default pgns;

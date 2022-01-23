@@ -119,8 +119,7 @@ class Board {
       this.scale,
       this.margin,
       this.style,
-      header,
-      this.flipped
+      header
     );
   }
 
@@ -179,7 +178,6 @@ class Board {
     header: { [key: string]: string | undefined },
     move: Move | null = null
   ) {
-    console.log("Preparing frame");
     this.lastMove = move;
     this.boardData = boardData;
 
@@ -193,9 +191,7 @@ class Board {
     this.tempCtx.clearRect(0, 0, this.size, this.size);
 
     if (this.background === null) {
-      console.log("Background rendering...");
       await this.renderBackground();
-      console.log("Background rendered");
     }
 
     this.tempCtx.drawImage((await this.background) as HTMLCanvasElement, 0, 0);

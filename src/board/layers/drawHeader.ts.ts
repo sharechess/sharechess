@@ -33,92 +33,91 @@ const formatDate = (date: string) => {
     : "";
 };
 
+const formatName = (name: string) => {
+  return name
+    .split(",")
+    .map((x) => x.trim())
+    .reverse()
+    .join(" ");
+};
+
 const drawHeader = async (
   ctx: CanvasRenderingContext2D,
   size: number,
   scale: number,
   margin: number,
   style: Style,
-  data: { [key: string]: string | undefined },
-  flipped: boolean
+  data: { [key: string]: string | undefined }
 ) => {
   ctx.clearRect(0, 0, size, size);
   await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
-  // await drawRectangle()
+
+  const allSizes = [
+    { key: "White", line: 50 * scale, font: 36 * scale, n: 0 },
+    { key: "Black", line: 50 * scale, font: 36 * scale, n: 2 },
+    { key: "Event", line: 30 * scale, font: 20 * scale, n: 4 },
+    { key: "Round", line: 30 * scale, font: 20 * scale, n: 5 },
+    { key: "Date", line: 30 * scale, font: 20 * scale, n: 7 },
+    { key: "Site", line: 30 * scale, font: 20 * scale, n: 8 },
+  ];
+
+  const keys = new Set(Object.keys(data));
+
+  const sizes = allSizes.filter(({ key }) => keys.has(key));
+
+  if (data.White && data.Black) {
+    sizes.push({ key: "vs", line: 50, font: 20, n: 1 });
+  }
+
+  if (data.Event || data.Round) {
+    sizes.push({ key: "margin", line: 100, font: 0, n: 3 });
+  }
+
+  if (data.Date || data.Site) {
+    const line = data.Event || data.Round ? 20 : 100;
+    sizes.push({ key: "margin", line, font: 0, n: 6 });
+  }
+
+  const totalHeight = sizes.reduce((a, b) => a + b.line, 0);
+  let fromTop = (size + margin * 2 - totalHeight) / 2;
 
   ctx.fillStyle = style.coords.onBorder;
 
-  if (data.White) {
-    drawText(
-      ctx,
-      data.White,
-      36 * scale,
-      700,
-      size / 2,
-      (flipped ? 100 : size - 100) * scale + margin,
-      "center"
-    );
-  }
+  sizes
+    .sort((a, b) => a.n - b.n)
+    .forEach(({ key, line, font }) => {
+      if (key === "vs") {
+        const y = fromTop + line / 2;
+        drawText(ctx, "vs", font, 700, size / 2, y, "center");
 
-  if (data.Black) {
-    drawText(
-      ctx,
-      data.Black,
-      36 * scale,
-      700,
-      size / 2,
-      (flipped ? size - 100 : 100) * scale + margin,
-      "center"
-    );
-  }
+        fromTop += line;
+        return;
+      }
 
-  if (data.Event) {
-    drawText(
-      ctx,
-      data.Event,
-      24 * scale,
-      500,
-      size / 2,
-      (size / 2 - (data.Round ? 20 : 0)) * scale + margin,
-      "center"
-    );
-  }
+      if (key === "margin") {
+        fromTop += line;
+        return;
+      }
 
-  if (data.Round) {
-    drawText(
-      ctx,
-      `Round ${data.Round}`,
-      24 * scale,
-      500,
-      size / 2,
-      (size / 2 + 20) * scale + margin,
-      "center"
-    );
-  }
+      const item = data[key];
 
-  if (data.Date) {
-    drawText(
-      ctx,
-      formatDate(data.Date),
-      20 * scale,
-      500,
-      size / 2,
-      450 * scale + margin,
-      "center"
-    );
-  }
+      if (item) {
+        const text =
+          key === "Date"
+            ? formatDate(item)
+            : key === "Black" || key === "White"
+            ? formatName(item)
+            : key === "Round"
+            ? `Round ${item}`
+            : item;
 
-  if (data.Site) {
-    drawText(
-      ctx,
-      data.Site,
-      20 * scale,
-      500,
-      size / 2,
-      480 * scale + margin,
-      "center"
-    );
-  }
+        const y = fromTop + line / 2;
+
+        drawText(ctx, text, font, 700, size / 2, y, "center", size * 0.9);
+      }
+
+      fromTop += line;
+    });
 };
 
 export default drawHeader;
