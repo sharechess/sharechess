@@ -79,7 +79,7 @@ const main = async () => {
 
 WebFont.load({
   google: {
-    families: ["Ubuntu:500,700", "Fira Code"],
+    families: ["Ubuntu:500,700", "Fira Mono"],
   },
   active: main,
 });
