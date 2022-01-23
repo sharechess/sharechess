@@ -46,7 +46,7 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
 };
 
 const createDownloadLink = async (pgn: string, style: Style) => {
-  const file = await createAnimation(pgn, style, 720, "GIF");
+  const file = await createAnimation(pgn, style, 720, "WebM");
   const link = document.createElement("a");
   link.innerText = "DOWNLOAD";
   link.setAttribute("href", URL.createObjectURL(file));
@@ -72,9 +72,9 @@ const main = async () => {
   const interval = 1000;
   play(board, pgn, interval);
 
-  // createDownloadLink(pgns[2], style).then((link) => {
-  //   document.body.appendChild(link);
-  // });
+  createDownloadLink(pgns[2], style).then((link) => {
+    document.body.appendChild(link);
+  });
 };
 
 WebFont.load({
