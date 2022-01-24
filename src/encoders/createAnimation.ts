@@ -3,32 +3,43 @@ import Board from "../board/Board";
 import Game from "../game/Game";
 import GIF from "./GIF";
 import WebM from "./WebM";
-// import MP4 from "./MP4";
+import MP4 from "./MP4";
 
-const MOVE_TIME = 1000;
+const getData = (board: Board, encoder: GIF | WebM | MP4) => {
+  return encoder instanceof GIF
+    ? board.toImgElement()
+    : encoder instanceof MP4
+    ? board.toImageData()
+    : board.canvas;
+};
 
 const createAnimation = async (
   pgn: string,
   style: Style,
   size: number = 720,
-  format: "GIF" | "WebM"
+  format: "GIF" | "WebM" | "MP4"
 ) => {
   const game = new Game().loadPGN(pgn);
-  const board = new Board(8).setStyle(style).setSize(size).hideBorder();
-  const animation =
-    format === "GIF" ? new GIF(board.width, board.height, true) : new WebM();
+  const board = new Board(8).setStyle(style).setSize(size).showBorder();
+  const encoder =
+    format === "GIF"
+      ? new GIF(board.width, board.height, true)
+      : format === "MP4"
+      ? new MP4(board.width, board.height)
+      : new WebM();
+
   const header = game.getHeader();
 
   await board.titleFrame(header);
   board.render();
-  animation.add(format === "GIF" ? board.toImgElement() : board.canvas, 5000);
+
+  // @ts-ignore
+  await encoder.add(getData(board, encoder), 5);
 
   await board.frame(game.getBoardData(), header);
   board.render();
-  animation.add(
-    format === "GIF" ? board.toImgElement() : board.canvas,
-    MOVE_TIME
-  );
+  // @ts-ignore
+  await encoder.add(getData(board, encoder), 1);
 
   while (true) {
     const move = game.next();
@@ -39,13 +50,11 @@ const createAnimation = async (
 
     await board.frame(game.getBoardData(), header, move);
     board.render();
-    animation.add(
-      format === "GIF" ? board.toImgElement() : board.canvas,
-      MOVE_TIME
-    );
+    // @ts-ignore
+    await encoder.add(getData(board, encoder), 1);
   }
 
-  return await animation.render();
+  return await encoder.render();
 };
 
 export default createAnimation;

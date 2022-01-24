@@ -265,6 +265,10 @@ class Board {
     return this.canvas.toDataURL();
   }
 
+  toImageData() {
+    return this.ctx.getImageData(0, 0, this.width, this.height).data;
+  }
+
   toImgElement() {
     const dataUrl = this.toImgUrl();
 
