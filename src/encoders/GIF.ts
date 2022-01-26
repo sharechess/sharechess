@@ -12,7 +12,7 @@ class GIF {
   ) {
     this.gif = new GIFLib({
       workers: 2,
-      quality: 10,
+      quality: 20,
       width,
       height,
       repeat: loop ? 0 : -1,

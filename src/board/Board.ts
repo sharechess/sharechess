@@ -1,4 +1,4 @@
-import { Move } from "chess.js";
+import { Material, MoveWithPly } from "./../game/Game";
 import { Style, BoardData } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
@@ -17,7 +17,7 @@ class Board {
   private ctx: CanvasRenderingContext2D;
   private tempCtx: CanvasRenderingContext2D;
   private borderVisible: boolean = true;
-  private lastMove: Move | null = null;
+  private lastMove: MoveWithPly | null = null;
   public canvas: HTMLCanvasElement = document.createElement("canvas");
   private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
   private squareSize: number = 84;
@@ -88,7 +88,7 @@ class Board {
     return this;
   }
 
-  isCheck(move: Move | null) {
+  isCheck(move: MoveWithPly | null) {
     if (!move) {
       return false;
     }
@@ -96,7 +96,7 @@ class Board {
     return move.san.includes("+");
   }
 
-  isMate(move: Move | null) {
+  isMate(move: MoveWithPly | null) {
     if (!move) {
       return false;
     }
@@ -178,7 +178,8 @@ class Board {
   async frame(
     boardData: BoardData | null,
     header: { [key: string]: string | undefined },
-    move: Move | null = null
+    move: MoveWithPly | null = null,
+    material?: Material
   ) {
     this.lastMove = move;
     this.boardData = boardData;
@@ -250,7 +251,9 @@ class Board {
           this.margin,
           this.style,
           header,
-          this.flipped
+          this.flipped,
+          move?.end === 0,
+          material
         );
       }
     }

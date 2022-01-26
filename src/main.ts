@@ -25,8 +25,8 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
 
   await board.titleFrame(header);
   board.render();
-  await board.frame(game.getBoardData(), header);
-  await delay(interval * 3);
+  await board.frame(game.getBoardData(), header, null, game.materialInfo());
+  await delay(interval * 5);
   board.render();
 
   while (true) {
@@ -36,7 +36,7 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
       break;
     }
 
-    await board.frame(game.getBoardData(), header, move);
+    await board.frame(game.getBoardData(), header, move, game.materialInfo());
     await delay(interval);
     board.render();
   }
@@ -46,7 +46,7 @@ const play = async (board: Board, pgn: string | null, interval: number) => {
 };
 
 const createDownloadLink = async (pgn: string, style: Style) => {
-  const file = await createAnimation(pgn, style, 720, "MP4");
+  const file = await createAnimation(pgn, style, 720, "WebM");
   const link = document.createElement("a");
   link.innerText = "DOWNLOAD";
   link.setAttribute("href", URL.createObjectURL(file));
@@ -57,29 +57,33 @@ const createDownloadLink = async (pgn: string, style: Style) => {
 console.log(createDownloadLink.name);
 
 const main = async () => {
-  const style = styles.calm;
+  const style = styles.standard;
 
   // window.location.hash =
   //   "#QiBEdWtlIEthcmwgLyBDb3VudCBJc291YXJkCkQgMTg1OC4/Py4/PwpFIFBhcmlzClIgMS0wClMgUGFyaXMgRlJBClcgUGF1bCBNb3JwaHkKCmU0IGU1IE5mMyBkNiBkNCBCZzQgZHhlNSBCeGYzIFF4ZjMgZHhlNSBCYzQgTmY2IFFiMyBRZTcgTmMzIGM2IEJnNSBiNSBOeGI1IGN4YjUgQnhiNSsgTmJkNyBPLU8tTyBSZDggUnhkNyBSeGQ3IFJkMSBRZTYgQnhkNysgTnhkNyBRYjgrIE54YjggUmQ4Iw==";
 
   // const hash = window.location.hash;
   // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  const pgn = pgns[pgns.length - 12];
-  const board = new Board(8).setStyle(style).setSize(720).showBorder();
+  const pgn = pgns[pgns.length - 15];
+  const board = new Board(8).setStyle(style).setSize(720).hideBorder();
 
   $app?.appendChild(board.canvas);
 
   const interval = 1000;
   play(board, pgn, interval);
 
-  createDownloadLink(pgns[2], style).then((link) => {
-    document.body.appendChild(link);
-  });
+  // createDownloadLink(pgn, style).then((link) => {
+  //   document.body.appendChild(link);
+  // });
 };
 
 WebFont.load({
   google: {
     families: ["Ubuntu:500,700", "Fira Mono"],
+  },
+  custom: {
+    families: ["Chess"],
+    urls: ["/fonts.css"],
   },
   active: main,
 });

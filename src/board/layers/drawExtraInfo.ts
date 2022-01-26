@@ -1,5 +1,15 @@
+import { Material } from "../../game/Game";
 import { Style } from "./../../types";
 import drawText from "./drawText";
+
+const chessFontMapping: { [key: string]: string } = {
+  k: "l",
+  q: "w",
+  r: "t",
+  b: "n",
+  n: "j",
+  p: "o",
+};
 
 const drawExtraInfo = async (
   ctx: CanvasRenderingContext2D,
@@ -10,46 +20,73 @@ const drawExtraInfo = async (
   style: Style,
   data: { [key: string]: string | undefined },
   flipped: boolean,
-  lastMove: boolean = true
+  lastMove: boolean,
+  material?: Material
 ) => {
+  const fontSize = 20 * scale;
+  let offsetX = (margin - fontSize) / 2;
+  let offsetY = margin / 2;
+
+  const marginLeft = offsetX;
+
   ctx.fillStyle = style.coords.onBorder;
 
-  const fontSize = 20 * scale;
-
-  const offsetX = (margin - fontSize) / 2;
-  const offsetY = margin / 2;
-
   if (data.White) {
-    const text =
-      data.White +
-      (data.WhiteElo && data.WhiteElo !== "?" ? ` (${data.WhiteElo})` : "");
+    const w = drawText(
+      ctx,
+      data.White,
+      "Ubuntu",
+      fontSize,
+      700,
+      marginLeft,
+      (flipped ? offsetY : height - offsetY) * scale,
+      "left"
+    );
+
+    const elo =
+      data.WhiteElo && data.WhiteElo !== "?" ? ` ${data.WhiteElo}` : "";
 
     drawText(
       ctx,
-      text,
+      elo,
+      "Fira Mono",
       fontSize,
       500,
-      offsetX,
+      marginLeft + w,
       (flipped ? offsetY : height - offsetY) * scale,
       "left"
     );
   }
 
   if (data.Black) {
-    const text =
-      data.Black +
-      (data.BlackElo && data.BlackElo !== "?" ? ` (${data.BlackElo})` : "");
+    const elo =
+      data.BlackElo && data.BlackElo !== "?" ? ` ${data.BlackElo}` : "";
+
+    const w = drawText(
+      ctx,
+      data.Black,
+      "Ubuntu",
+      fontSize,
+      700,
+      marginLeft,
+      (flipped ? height - offsetY : offsetY) * scale,
+      "left"
+    );
 
     drawText(
       ctx,
-      text,
+      elo,
+      "Fira Mono",
       fontSize,
       500,
-      offsetX,
+      marginLeft + w,
       (flipped ? height - offsetY : offsetY) * scale,
       "left"
     );
   }
+
+  let rightMarginWhite = 0;
+  let rightMarginBlack = 0;
 
   if (lastMove && data.Result) {
     const [resultWhite, resultBlack] = data.Result.split("-");
@@ -60,25 +97,96 @@ const drawExtraInfo = async (
     const textBlack =
       resultBlack === "0" ? "Lost" : resultBlack === "1" ? "Won" : "Draw";
 
-    drawText(
+    const widthWhite = drawText(
       ctx,
       textWhite,
+      "Ubuntu",
       fontSize,
-      500,
+      700,
       width - offsetX,
       (flipped ? offsetY : height - offsetY) * scale,
       "right"
     );
 
-    drawText(
+    const widthBlack = drawText(
       ctx,
       textBlack,
+      "Ubuntu",
       fontSize,
-      500,
+      700,
       width - offsetX,
       (flipped ? height - offsetY : offsetY) * scale,
       "right"
     );
+
+    const w = Math.max(widthWhite, widthBlack);
+
+    rightMarginWhite = w + 20 * scale;
+    rightMarginBlack = w + 20 * scale;
+  }
+
+  if (material) {
+    const textWhite = material.diff > 0 ? `+${Math.abs(material.diff)}` : "";
+
+    rightMarginWhite += drawText(
+      ctx,
+      textWhite,
+      "Fira Mono",
+      fontSize,
+      500,
+      width - offsetX - rightMarginWhite,
+      (flipped ? offsetY : height - offsetY) * scale,
+      "right"
+    );
+
+    const textBlack = material.diff < 0 ? `+${Math.abs(material.diff)}` : "";
+
+    rightMarginBlack += drawText(
+      ctx,
+      textBlack,
+      "Fira Mono",
+      fontSize,
+      500,
+      width - offsetX - rightMarginBlack,
+      (flipped ? height - offsetY : offsetY) * scale,
+      "right"
+    );
+
+    for (const [piece, count] of Object.entries(material.imbalance.w)) {
+      for (let i = 0; i < count; i++) {
+        const textWidth = drawText(
+          ctx,
+          chessFontMapping[piece],
+          "Chess",
+          fontSize,
+          500,
+          width - offsetX - rightMarginWhite,
+          (flipped ? offsetY : height - offsetY) * scale - 2 * scale,
+          "right"
+        );
+
+        rightMarginWhite +=
+          i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
+      }
+    }
+
+    for (const [piece, count] of Object.entries(material.imbalance.b)) {
+      for (let i = 0; i < count; i++) {
+        const textWidth = drawText(
+          ctx,
+          chessFontMapping[piece],
+          "Chess",
+          fontSize,
+          500,
+          width - offsetX - rightMarginBlack,
+          (flipped ? height - offsetY : offsetY) * scale - 2 * scale,
+          "right"
+        );
+
+        rightMarginBlack +=
+          i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
+      }
+    }
   }
 };
 

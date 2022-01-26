@@ -36,7 +36,7 @@ const createAnimation = async (
   // @ts-ignore
   await encoder.add(getData(board, encoder), 5);
 
-  await board.frame(game.getBoardData(), header);
+  await board.frame(game.getBoardData(), header, null, game.materialInfo());
   board.render();
   // @ts-ignore
   await encoder.add(getData(board, encoder), 1);
@@ -44,14 +44,16 @@ const createAnimation = async (
   while (true) {
     const move = game.next();
 
+    // console.log(move);
+
     if (!move) {
       break;
     }
 
-    await board.frame(game.getBoardData(), header, move);
+    await board.frame(game.getBoardData(), header, move, game.materialInfo());
     board.render();
     // @ts-ignore
-    await encoder.add(getData(board, encoder), 1);
+    await encoder.add(getData(board, encoder), move.end === 0 ? 5 : 1);
   }
 
   return await encoder.render();

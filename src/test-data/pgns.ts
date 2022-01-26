@@ -238,6 +238,60 @@ Rdc1 Bf6 28. Rc8+ 1-0`,
 1. d4 { [%eval 0.3] [%clk 1:40:56] } 1... d5 { [%eval 0.28] [%clk 1:39:45] } 2. c4 { [%eval 0.34] [%clk 1:41:19] } 2... e6 { [%eval 0.38] [%clk 1:40:10] } 3. Nc3 { [%eval 0.39] [%clk 1:41:41] } 3... c5 { [%eval 0.51] [%clk 1:40:34] } 4. cxd5 { [%eval 0.42] [%clk 1:41:06] } 4... cxd4 { [%eval 0.55] [%clk 1:40:23] } 5. Qa4+ { [%eval 0.69] [%clk 1:40:40] } 5... Bd7 { [%eval 0.84] [%clk 1:40:41] } 6. Qxd4 { [%eval 0.62] [%clk 1:41:05] } 6... exd5 { [%eval 0.67] [%clk 1:40:59] } 7. Qxd5 { [%eval 0.62] [%clk 1:40:40] } 7... Nf6 { [%eval 0.58] [%clk 1:41:16] } 8. Qb3 { [%eval 0.65] [%clk 1:36:01] } 8... Na6 { [%eval 0.49] [%clk 1:37:20] } 9. Nf3 { [%eval 0.47] [%clk 1:33:43] } 9... Nc5 { [%eval 0.46] [%clk 1:33:44] } 10. Qc2 { [%eval 0.45] [%clk 1:32:05] } 10... Rc8 { [%eval 0.61] [%clk 1:26:01] } 11. e3 { [%eval 0.46] [%clk 1:25:56] } 11... Nce4 { [%eval 0.89] [%clk 1:22:09] } 12. Bd3 { [%eval 0.56] [%clk 1:20:10] } 12... Nxc3 { [%eval 0.71] [%clk 1:18:12] } 13. bxc3 { [%eval 0.82] [%clk 1:20:36] } 13... Nd5 { [%eval 0.42] [%clk 1:11:14] } 14. O-O { [%eval 0.67] [%clk 1:15:00] } 14... Nxc3 { [%eval 0.61] [%clk 1:04:09] } 15. Bb2 { [%eval 0.86] [%clk 1:09:32] } 15... Bb4 { [%eval 0.46] [%clk 0:59:53] } 16. Bxc3 { [%eval 0.2] [%clk 0:51:52] } 16... Bxc3 { [%eval 0.41] [%clk 0:54:16] } 17. Rab1 { [%eval 0.12] [%clk 0:50:47] } 17... Bf6 { [%eval 0.19] [%clk 0:48:55] } 18. Qe2 { [%eval 0.18] [%clk 0:50:36] } 18... Rc7 { [%eval 0.18] [%clk 0:41:07] } 19. e4 { [%eval 0.0] [%clk 0:45:13] } 19... O-O { [%eval -0.05] [%clk 0:39:59] } 20. e5 { [%eval 0.0] [%clk 0:44:59] } 20... Be7 { [%eval -0.03] [%clk 0:40:18] } 21. Nd4 { [%eval 0.02] [%clk 0:40:02] } 21... Bc5 { [%eval 0.0] [%clk 0:27:25] } 22. e6 { [%eval 0.07] [%clk 0:36:59] } 22... Bxe6 { [%eval 0.07] [%clk 0:26:56] } 23. Nxe6 { [%eval 0.0] [%clk 0:37:14] } 23... fxe6 { [%eval 0.0] [%clk 0:27:23] } 24. Qxe6+ { [%eval 0.0] [%clk 0:35:49] } 24... Kh8 { [%eval 0.0] [%clk 0:27:52] } 25. Qh3 { [%eval -0.25] [%clk 0:25:18] } 25... h6 { [%eval -0.24] [%clk 0:28:03] } 26. Qg3 { [%eval -0.25] [%clk 0:23:54] } 26... Rd7 { [%eval -0.23] [%clk 0:22:53] } 27. Rb3 { [%eval -0.29] [%clk 0:16:26] } 27... Rf6 { [%eval -0.09] [%clk 0:23:05] } 28. h3 { [%eval -0.32] [%clk 0:12:54] } 28... b6 { [%eval -0.21] [%clk 0:20:08] } 29. Be2 { [%eval -0.43] [%clk 0:10:08] } 29... Rd2 { [%eval -0.21] [%clk 0:13:43] } 30. Rd3 { [%eval -0.23] [%clk 0:10:32] } 30... Rxd3 { [%eval -0.22] [%clk 0:13:33] } 31. Bxd3?! { [%eval -0.85] } { Inaccuracy. Qxd3 was best. } { [%clk 0:08:28] } (31. Qxd3 Qxd3 32. Bxd3 g5 33. Bb5 Rf4 34. g3 Rb4 35. a4 a6 36. Bxa6 Rxa4 37. Bb5 Rb4) 31... Qd6?! { [%eval -0.2] } { Inaccuracy. Qd5 was best. } { [%clk 0:13:52] } (31... Qd5) 32. Qxd6 { [%eval 0.0] [%clk 0:08:24] } 32... Rxd6 { [%eval -0.17] [%clk 0:14:19] } 33. Rd1 { [%eval 0.0] [%clk 0:08:31] } 33... g5 { [%eval -0.19] [%clk 0:14:39] } 34. Kf1 { [%eval -0.15] [%clk 0:07:54] } 34... Kg7 { [%eval -0.06] [%clk 0:14:07] } 35. Bc2 { [%eval -0.24] [%clk 0:08:02] } 1/2-1/2
 
 `,
+
+  `[Event "Rated Bullet game"]
+[Site "https://lichess.org/kTpyRkG8"]
+[Date "2022.01.25"]
+[White "Puededarmedinero"]
+[Black "caderek"]
+[Result "0-1"]
+[UTCDate "2022.01.25"]
+[UTCTime "23:56:12"]
+[WhiteElo "1296"]
+[BlackElo "1322"]
+[WhiteRatingDiff "-6"]
+[BlackRatingDiff "+5"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "D00"]
+[Opening "Queen's Pawn Game: Mason Variation"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. d4 d5 2. Bf4 { D00 Queen's Pawn Game: Mason Variation } g6 3. e3 Bg7 4. Bb5+ c6 5. Ba4 Nf6 6. c3 O-O 7. Nd2 e6 8. Ngf3 Bd7 9. O-O Qe7 10. Re1 Bc8 11. e4 dxe4 12. Nxe4 Nxe4 13. Rxe4 Nd7 14. Ne5 Nxe5 15. Bxe5 Bxe5 16. Rxe5 b5 17. Bc2 Bb7 18. Qc1 Rad8 19. Qg5 f6 20. Qe3 fxe5 21. Qxe5 Qf6 22. Qc7 Qxf2+ 23. Kh1 Qf1+ 24. Rxf1 Rxf1# { Black wins by checkmate. } 0-1`,
+
+  `[Event "Rated Bullet game"]
+[Site "https://lichess.org/XNdj5NpP"]
+[Date "2022.01.26"]
+[White "caderek"]
+[Black "DoncaBrown"]
+[Result "1-0"]
+[UTCDate "2022.01.26"]
+[UTCTime "00:23:12"]
+[WhiteElo "1307"]
+[BlackElo "1326"]
+[WhiteRatingDiff "+6"]
+[BlackRatingDiff "-6"]
+[Variant "Standard"]
+[TimeControl "60+0"]
+[ECO "A00"]
+[Opening "Polish Opening"]
+[Termination "Normal"]
+[Annotator "lichess.org"]
+
+1. b4 { A00 Polish Opening } d5 2. Bb2 Nf6 3. e3 g6 4. Be2 Bg7 5. Nf3 O-O 6. O-O Ne4 7. Bxg7 Kxg7 8. d3 Nf6 9. Nbd2 Bg4 10. c4 dxc4 11. dxc4 Qd6 12. c5 Qe6 13. a3 Nbd7 14. Nd4 b6 15. Nxe6+ fxe6 16. Bxg4 Nxg4 17. Qxg4 Nf6 18. Qe2 Rad8 19. Nf3 e5 20. Nxe5 Rd5 21. f4 Ne4 22. Rad1 Rxd1 23. Rxd1 Nc3 24. Qd2 Nxd1 25. Qxd1 Rf5 26. Qd7 Kh6 27. Qxe7 Rh5 28. Qxc7 a5 29. Qxb6 axb4 30. Nf7+ Kg7 31. Qb7 Rf5 32. axb4 Rxf7 33. Qxf7+ Kxf7 34. b5 Ke7 35. b6 Kd8 36. Kf2 Kc8 37. Ke2 Kb7 38. Kd3 Kb8 39. Kd4 Kb7 40. e4 Kc6 41. e5 Kb7 42. e6 Kc6 43. g3 Kb5 44. h3 Kb4 45. b7 Kb3 46. b8=Q+ Kc2 47. c6 Kd2 48. c7 Ke2 49. c8=Q Kf3 50. Qb2 g5 51. Qcc3# { White wins by checkmate. } 1-0`,
+
+  `[Black "Mamedyarov, Shakhriyar"]
+[BlackElo "2767"]
+[Date "2022.01.25"]
+[Event "Tata Steel Chess Masters 2022"]
+[Result "1-0"]
+[Round "9.1"]
+[Site "Wijk aan Zee, Netherlands"]
+[White "Carlsen, Magnus"]
+[WhiteElo "2865"]
+
+1. d4 Nf6 2. Nf3 d5 3. c4 e6 4. g3 dxc4 5. Bg2 Bb4+ 6. Bd2 a5 7. O-O O-O 8. e3 Ra6 9. Qc2 b5 10. a4 c6 11. Nc3 Rb6 12. e4 Be7 13. e5 Nd5 14. axb5 cxb5 15. Nxd5 exd5 16. Bxa5 Nc6 17. Bxb6 Qxb6 18. Ra8 h6 19. Rfa1 Be6 20. Qd1 b4 21. b3 c3 22. R8a6 Qc7 23. Ne1 f6 24. Nd3 fxe5 25. Nxe5 Nxe5 26. Rxe6 c2 27. Qe1 1-0`,
 ];
 
 export default pgns;

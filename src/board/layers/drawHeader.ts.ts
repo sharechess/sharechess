@@ -52,13 +52,15 @@ const drawHeader = async (
   ctx.clearRect(0, 0, size, size);
   await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
 
+  const font = "Ubuntu";
+
   const allSizes = [
-    { key: "White", line: 60 * scale, font: 42 * scale, n: 0 },
-    { key: "Black", line: 60 * scale, font: 42 * scale, n: 2 },
-    { key: "Event", line: 30 * scale, font: 20 * scale, n: 4 },
-    { key: "Round", line: 30 * scale, font: 20 * scale, n: 5 },
-    { key: "Date", line: 30 * scale, font: 20 * scale, n: 7 },
-    { key: "Site", line: 30 * scale, font: 20 * scale, n: 8 },
+    { key: "White", line: 60 * scale, fontSize: 42 * scale, n: 0 },
+    { key: "Black", line: 60 * scale, fontSize: 42 * scale, n: 2 },
+    { key: "Event", line: 30 * scale, fontSize: 20 * scale, n: 4 },
+    { key: "Round", line: 30 * scale, fontSize: 20 * scale, n: 5 },
+    { key: "Date", line: 30 * scale, fontSize: 20 * scale, n: 7 },
+    { key: "Site", line: 30 * scale, fontSize: 20 * scale, n: 8 },
   ];
 
   const keys = new Set(Object.keys(data));
@@ -66,16 +68,16 @@ const drawHeader = async (
   const sizes = allSizes.filter(({ key }) => keys.has(key));
 
   if (data.White && data.Black) {
-    sizes.push({ key: "vs", line: 50, font: 20, n: 1 });
+    sizes.push({ key: "vs", line: 50, fontSize: 20, n: 1 });
   }
 
   if (data.Event || data.Round) {
-    sizes.push({ key: "margin", line: 100, font: 0, n: 3 });
+    sizes.push({ key: "margin", line: 100, fontSize: 0, n: 3 });
   }
 
   if (data.Date || data.Site) {
     const line = data.Event || data.Round ? 20 : 100;
-    sizes.push({ key: "margin", line, font: 0, n: 6 });
+    sizes.push({ key: "margin", line, fontSize: 0, n: 6 });
   }
 
   const totalHeight = sizes.reduce((a, b) => a + b.line, 0);
@@ -85,10 +87,10 @@ const drawHeader = async (
 
   sizes
     .sort((a, b) => a.n - b.n)
-    .forEach(({ key, line, font }) => {
+    .forEach(({ key, line, fontSize }) => {
       if (key === "vs") {
         const y = fromTop + line / 2;
-        drawText(ctx, "vs", font, 700, size / 2, y, "center");
+        drawText(ctx, "vs", font, fontSize, 700, size / 2, y, "center");
 
         fromTop += line;
         return;
@@ -113,7 +115,17 @@ const drawHeader = async (
 
         const y = fromTop + line / 2;
 
-        drawText(ctx, text, font, 700, size / 2, y, "center", size * 0.9);
+        drawText(
+          ctx,
+          text,
+          font,
+          fontSize,
+          700,
+          size / 2,
+          y,
+          "center",
+          size * 0.9
+        );
       }
 
       fromTop += line;
