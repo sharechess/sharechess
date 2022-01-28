@@ -163,8 +163,8 @@ const main = async () => {
 
   // const hash = window.location.hash;
   // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  // const pgn = pgns[pgns.length - 1];
-  const pgn = pgns[2];
+  const pgn = pgns[pgns.length - 1];
+  // const pgn = pgns[2];
   const board = new Board(boardConfig);
 
   $app?.appendChild(board.canvas);
