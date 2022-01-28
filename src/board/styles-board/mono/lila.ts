@@ -1,7 +1,8 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Peach",
+  name: "Lila",
+  category: "mono",
   background: {
     type: "solid",
     data: {
@@ -11,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#e54b4b",
+      color: "#c0acb5",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#ffa987",
+      color: "#e5d0cb",
     },
   },
   moveIndicator: {
     type: "hueShift",
-    data: 330,
+    data: 180,
   },
   border: {
     type: "solid",
     data: {
-      color: "#962c2c",
+      color: "#735c66",
     },
   },
   coords: {
-    onLight: "#e54b4b",
-    onDark: "#ffa987",
-    onBorder: "#ffa987",
+    onLight: "#876b77",
+    onDark: "#fff5f2",
+    onBorder: "#e5d0cb",
   },
 };
 

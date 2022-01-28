@@ -2,6 +2,7 @@ import { Style } from "../../types";
 
 const style: Style = {
   name: "Temp",
+  category: "custom",
   background: {
     type: "gradient",
     data: {

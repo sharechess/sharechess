@@ -1,28 +1,29 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Kittens",
+  name: "Standard",
+  category: "mono",
   background: {
-    type: "image",
+    type: "solid",
     data: {
-      src: "https://placekitten.com/720/720",
+      color: "transparent",
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "#00000055",
+      color: "#999",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#ffffff55",
+      color: "#eee",
     },
   },
   moveIndicator: {
     type: "color",
-    data: "#ffff0055",
+    data: "#0088ff66",
   },
   border: {
     type: "solid",
@@ -31,7 +32,7 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#333",
+    onLight: "#999",
     onDark: "#eee",
     onBorder: "#eee",
   },

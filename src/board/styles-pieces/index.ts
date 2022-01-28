@@ -4,7 +4,6 @@ import cburnett from "./cburnett";
 import fantasy from "./fantasy";
 import gioco from "./gioco";
 import horsey from "./horsey";
-import kilfiger from "./kilfiger";
 import merida from "./merida";
 import staunty from "./staunty";
 import tatiana from "./tatiana";
@@ -16,7 +15,6 @@ const piecesSets = {
   fantasy,
   gioco,
   horsey,
-  kilfiger,
   merida,
   staunty,
   tatiana,

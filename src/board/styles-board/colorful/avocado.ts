@@ -1,7 +1,8 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Standard",
+  name: "Avocado",
+  category: "colorful",
   background: {
     type: "solid",
     data: {
@@ -11,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#999",
+      color: "#72b339",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#eee",
+      color: "#ececa4",
     },
   },
   moveIndicator: {
-    type: "color",
-    data: "#0088ff66",
+    type: "hueShift",
+    data: 70,
   },
   border: {
     type: "solid",
     data: {
-      color: "#444",
+      color: "#2d3923",
     },
   },
   coords: {
-    onLight: "#999",
-    onDark: "#eee",
-    onBorder: "#eee",
+    onLight: "#4d7a26",
+    onDark: "#ffffc4",
+    onBorder: "#ececa4",
   },
 };
 

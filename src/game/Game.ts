@@ -32,7 +32,7 @@ class Game {
 
     this.moves = moves.map((item, i) => ({
       ...item,
-      ply: i,
+      ply: i + 1,
       end: moves.length - 1 - i,
     }));
 
@@ -53,25 +53,34 @@ class Game {
   }
 
   next() {
-    const move = this.moves[this.currentPly];
+    this.currentPly++;
+    const move = this.moves[this.currentPly - 1];
 
     if (!move) {
       return null;
     }
 
     this.replay.move(move);
-    this.currentPly++;
     return move;
   }
 
   prev() {
-    const move = this.replay.undo();
+    const undo = Boolean(this.replay.undo());
 
-    if (!move) {
+    if (undo) {
+      this.currentPly--;
+    } else {
       return null;
     }
 
-    this.currentPly--;
+    const move = this.moves[this.currentPly];
+
+    // if (!move) {
+    //   return null;
+    // }
+
+    console.log("Prev!");
+
     return move;
   }
 

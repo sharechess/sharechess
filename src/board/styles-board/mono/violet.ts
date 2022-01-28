@@ -1,39 +1,40 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Lila",
+  name: "Violet",
+  category: "mono",
   background: {
     type: "solid",
     data: {
-      color: "transparent",
+      color: "#361b52",
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "#c0acb5",
+      color: "#5d3e7d",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#e5d0cb",
+      color: "#cea9f5",
     },
   },
   moveIndicator: {
     type: "hueShift",
-    data: 180,
+    data: 60,
   },
   border: {
     type: "solid",
     data: {
-      color: "#735c66",
+      color: "#271936",
     },
   },
   coords: {
-    onLight: "#876b77",
-    onDark: "#fff5f2",
-    onBorder: "#e5d0cb",
+    onLight: "#271936",
+    onDark: "#271936",
+    onBorder: "#cea9f5",
   },
 };
 

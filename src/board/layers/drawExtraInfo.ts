@@ -23,7 +23,7 @@ const drawExtraInfo = async (
   lastMove: boolean,
   material?: Material
 ) => {
-  const fontSize = 20 * scale;
+  const fontSize = Math.round(20 * scale);
   let offsetX = (margin - fontSize) / 2;
   let offsetY = margin / 2;
 
@@ -39,7 +39,7 @@ const drawExtraInfo = async (
       fontSize,
       700,
       marginLeft,
-      (flipped ? offsetY : height - offsetY) * scale,
+      flipped ? offsetY : height - offsetY,
       "left"
     );
 
@@ -53,7 +53,7 @@ const drawExtraInfo = async (
       fontSize,
       500,
       marginLeft + w,
-      (flipped ? offsetY : height - offsetY) * scale,
+      flipped ? offsetY : height - offsetY,
       "left"
     );
   }
@@ -69,7 +69,7 @@ const drawExtraInfo = async (
       fontSize,
       700,
       marginLeft,
-      (flipped ? height - offsetY : offsetY) * scale,
+      flipped ? height - offsetY : offsetY,
       "left"
     );
 
@@ -80,7 +80,7 @@ const drawExtraInfo = async (
       fontSize,
       500,
       marginLeft + w,
-      (flipped ? height - offsetY : offsetY) * scale,
+      flipped ? height - offsetY : offsetY,
       "left"
     );
   }
@@ -104,7 +104,7 @@ const drawExtraInfo = async (
       fontSize,
       700,
       width - offsetX,
-      (flipped ? offsetY : height - offsetY) * scale,
+      flipped ? offsetY : height - offsetY,
       "right"
     );
 
@@ -115,7 +115,7 @@ const drawExtraInfo = async (
       fontSize,
       700,
       width - offsetX,
-      (flipped ? height - offsetY : offsetY) * scale,
+      flipped ? height - offsetY : offsetY,
       "right"
     );
 
@@ -135,7 +135,7 @@ const drawExtraInfo = async (
       fontSize,
       500,
       width - offsetX - rightMarginWhite,
-      (flipped ? offsetY : height - offsetY) * scale,
+      flipped ? offsetY : height - offsetY,
       "right"
     );
 
@@ -148,7 +148,7 @@ const drawExtraInfo = async (
       fontSize,
       500,
       width - offsetX - rightMarginBlack,
-      (flipped ? height - offsetY : offsetY) * scale,
+      flipped ? height - offsetY : offsetY,
       "right"
     );
 
@@ -161,12 +161,16 @@ const drawExtraInfo = async (
           fontSize,
           500,
           width - offsetX - rightMarginWhite,
-          (flipped ? offsetY : height - offsetY) * scale - 2 * scale,
+          (flipped ? offsetY : height - offsetY) - 2 * scale,
           "right"
         );
 
         rightMarginWhite +=
-          i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
+          i === count - 1
+            ? textWidth * 0.85
+            : piece === "p"
+            ? textWidth * 0.4
+            : textWidth * 0.6;
       }
     }
 
@@ -179,12 +183,17 @@ const drawExtraInfo = async (
           fontSize,
           500,
           width - offsetX - rightMarginBlack,
-          (flipped ? height - offsetY : offsetY) * scale - 2 * scale,
+          (flipped ? height - offsetY : offsetY) - 2 * scale,
           "right"
         );
 
         rightMarginBlack +=
-          i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
+          i === count - 1
+            ? textWidth * 0.85
+            : piece === "p"
+            ? textWidth * 0.4
+            : textWidth * 0.6;
+        // i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
       }
     }
   }

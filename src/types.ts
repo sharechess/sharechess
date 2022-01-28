@@ -47,6 +47,7 @@ export type MoveIndicator =
 
 export type Style = {
   name: string;
+  category: "mono" | "colorful" | "gradient" | "material" | "pic" | "custom";
   background: SquareStyle;
   light: SquareStyle;
   dark: SquareStyle;
@@ -77,3 +78,34 @@ export type Piece =
   | "bb"
   | "nb"
   | "pb";
+
+export type PiecesStyle =
+  | "alpha"
+  | "cardinal"
+  | "cburnett"
+  | "fantasy"
+  | "gioco"
+  | "horsey"
+  | "merida"
+  | "staunty"
+  | "tatiana";
+
+export type BoardConfig = {
+  size: number;
+  boardStyle: Style;
+  piecesStyle: PiecesStyle;
+  showBorder: boolean;
+  showExtraInfo: boolean;
+  showMaterial: boolean;
+  showMoveIndicator: boolean;
+  showChecks: boolean;
+  showCoords: boolean;
+  flipped: boolean;
+};
+
+export type GameConfig = {
+  titleScreen: boolean;
+  fromPly: number | null;
+  toPly: number | null;
+  loop: boolean;
+};

@@ -1,7 +1,8 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
   name: "Lichess",
+  category: "mono",
   background: {
     type: "solid",
     data: {

@@ -1,4 +1,4 @@
-import { BoardData, PieceType, PieceColor } from "../../types";
+import { BoardData, PieceType, PieceColor, PiecesStyle } from "../../types";
 import ImagesCache from "../loaders/PiecesCache";
 
 const drawPieces = async (
@@ -11,7 +11,8 @@ const drawPieces = async (
   check: "b" | "w" | undefined,
   mate: "b" | "w" | undefined,
   shadow: boolean,
-  margin: number
+  margin: number,
+  piecesStyle: PiecesStyle
 ) => {
   for (let y = 0; y < 8; y++) {
     for (let x = 0; x < 8; x++) {
@@ -20,7 +21,7 @@ const drawPieces = async (
           type: PieceType;
           color: PieceColor;
         };
-        const img = await ImagesCache.get("tatiana", type, color);
+        const img = await ImagesCache.get(piecesStyle, type, color);
         const rank = flipped ? tiles - 1 - y : y;
         const file = flipped ? tiles - 1 - x : x;
 

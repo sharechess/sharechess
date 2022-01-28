@@ -1,18 +1,13 @@
-import { Style } from "../../types";
+import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Calm",
-  // background: {
-  //   type: "solid",
-  //   data: {
-  //     color: "transparent",
-  //   },
-  // },
+  name: "Sunset",
+  category: "gradient",
   background: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#96c93d", "#00b09b"],
+      colors: ["hsl(32, 88%, 67%)", "hsl(342, 83%, 57%)"],
     },
   },
   dark: {
@@ -29,20 +24,22 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#ee59ff55",
+    data: "#00ffee55",
   },
   border: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#65a32e", "#007a80"],
+      colors: ["hsl(22, 68%, 57%)", "hsl(332, 63%, 47%)"],
     },
   },
   coords: {
-    onLight: "rgba(0, 0, 0, 0.5)",
-    onDark: "rgba(255, 255, 255, 0.9)",
-    onBorder: "rgba(255, 255, 255, 0.9)",
+    onLight: "hsl(332, 63%, 47%)",
+    onDark: "#fff",
+    onBorder: "#fff",
   },
 };
 
 export default style;
+
+// background-image: linear-gradient( 68.3deg,  rgba(245,177,97,1) 0.4%, rgba(236,54,110,1) 100.2% );

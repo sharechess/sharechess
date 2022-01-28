@@ -1,4 +1,4 @@
-import { Style } from "../types";
+import { BoardConfig } from "./../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
 import GIF from "./GIF";
@@ -15,12 +15,11 @@ const getData = (board: Board, encoder: GIF | WebM | MP4) => {
 
 const createAnimation = async (
   pgn: string,
-  style: Style,
-  size: number = 720,
+  boardConfig: BoardConfig,
   format: "GIF" | "WebM" | "MP4"
 ) => {
   const game = new Game().loadPGN(pgn);
-  const board = new Board(8).setStyle(style).setSize(size).showBorder();
+  const board = new Board(boardConfig);
   const encoder =
     format === "GIF"
       ? new GIF(board.width, board.height, true)
@@ -52,6 +51,7 @@ const createAnimation = async (
 
     await board.frame(game.getBoardData(), header, move, game.materialInfo());
     board.render();
+
     // @ts-ignore
     await encoder.add(getData(board, encoder), move.end === 0 ? 5 : 1);
   }
