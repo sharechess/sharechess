@@ -29,7 +29,9 @@ class GIF {
 
     frames: number
   ) {
-    this.gif.addFrame(frame, { delay: frames * this.frameTime });
+    while (frames--) {
+      this.gif.addFrame(frame, { delay: this.frameTime });
+    }
   }
 
   render(): Promise<File> {

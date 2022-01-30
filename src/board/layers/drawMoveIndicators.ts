@@ -1,6 +1,8 @@
+import { Solid } from "./../../types";
 import { Move } from "chess.js";
 import { Style, SquareStyle } from "../../types";
 import drawRectangle from "./drawRectangle";
+import { changeHSL } from "../../utils/colors";
 
 const FILES = "abcdefghijklmnopqrstuwvxyz";
 
@@ -32,9 +34,26 @@ const drawMoveIndicators = async (
   let toStyle;
 
   if (moveIndicator.type === "hueShift") {
-    ctx.filter = `hue-rotate(${moveIndicator.data}deg)`;
-    fromStyle = (x0 + y0) % 2 === 0 ? light : dark;
-    toStyle = (x1 + y1) % 2 === 0 ? light : dark;
+    const newLight: Solid = {
+      type: "solid",
+      data: {
+        color: light.data.color
+          ? changeHSL(light.data.color, moveIndicator.data)
+          : "#00ff0055",
+      },
+    };
+
+    const newDark: Solid = {
+      type: "solid",
+      data: {
+        color: dark.data.color
+          ? changeHSL(dark.data.color, moveIndicator.data)
+          : "#00ff0055",
+      },
+    };
+
+    fromStyle = (x0 + y0) % 2 === 0 ? newLight : newDark;
+    toStyle = (x1 + y1) % 2 === 0 ? newLight : newDark;
   } else {
     fromStyle = {
       type: "solid",

@@ -33,7 +33,7 @@ const createAnimation = async (
   board.render();
 
   // @ts-ignore
-  await encoder.add(getData(board, encoder), 5);
+  await encoder.add(getData(board, encoder), 4);
 
   await board.frame(game.getBoardData(), header, null, game.materialInfo());
   board.render();

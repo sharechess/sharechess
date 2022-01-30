@@ -12,7 +12,7 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#5d3e7d",
+      color: "#7b4fa8",
     },
   },
   light: {
@@ -23,7 +23,7 @@ const style: Style = {
   },
   moveIndicator: {
     type: "hueShift",
-    data: 60,
+    data: -60,
   },
   border: {
     type: "solid",

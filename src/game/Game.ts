@@ -28,6 +28,8 @@ class Game {
     this.game.load_pgn(cleanPGN(pgn));
     this.game.delete_comments();
 
+    console.log(this.game.pgn());
+
     const moves = this.game.history({ verbose: true });
 
     this.moves = moves.map((item, i) => ({
@@ -53,14 +55,15 @@ class Game {
   }
 
   next() {
-    this.currentPly++;
-    const move = this.moves[this.currentPly - 1];
+    const move = this.moves[this.currentPly];
 
     if (!move) {
       return null;
     }
 
+    this.currentPly++;
     this.replay.move(move);
+
     return move;
   }
 
@@ -73,13 +76,7 @@ class Game {
       return null;
     }
 
-    const move = this.moves[this.currentPly];
-
-    // if (!move) {
-    //   return null;
-    // }
-
-    console.log("Prev!");
+    const move = this.moves[this.currentPly - 1];
 
     return move;
   }
@@ -103,11 +100,11 @@ class Game {
       ply > this.currentPly ? this.next() : this.prev();
     }
 
-    return this.moves[ply];
+    return this.moves[ply - 1];
   }
 
   materialInfo() {
-    const pieces = this.getBoardData().flat().filter(Boolean);
+    const pieces = this.replay.board().flat().filter(Boolean);
 
     const sum = { w: 0, b: 0 };
     const imbalance = {
@@ -138,6 +135,7 @@ class Game {
   }
 
   getBoardData() {
+    // console.log(this.replay.ascii());
     return this.replay.board();
   }
 

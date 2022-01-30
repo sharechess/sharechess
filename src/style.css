@@ -10,8 +10,8 @@
 }
 
 body {
-  background-color: #111;
-  background-image: url(background.png);
+  background-color: #191d24;
+  /* background-image: url(background.png); */
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

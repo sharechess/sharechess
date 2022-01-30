@@ -7,14 +7,14 @@ import pgns from "./test-data/pgns";
 import createAnimation from "./encoders/createAnimation";
 // import { decompressPGN } from "./game/PGNHelpers";
 import WebFont from "webfontloader";
+import Player from "./player/Player";
+import * as Hammer from "hammerjs";
 
 const $app = document.querySelector<HTMLImageElement>("#app");
 
-// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const boardConfig: BoardConfig = {
   size: 720,
-  boardStyle: styles.violet,
+  boardStyle: styles.sunset,
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,
@@ -31,120 +31,6 @@ const gameConfig: GameConfig = {
   toPly: null,
   loop: true,
 };
-
-class Player {
-  // private interval = 1000;
-  private game: Game = new Game();
-  private header: { [key: string]: string | undefined } = {};
-  public playing: boolean = false;
-
-  constructor(private board: Board, private config: GameConfig) {
-    this.board
-      .frame(this.game.getBoardData(), {}, null)
-      .then((_) => this.board.render());
-  }
-
-  updateConfig(config: Partial<GameConfig>) {
-    this.config = { ...this.config, ...config };
-  }
-
-  load(game: Game) {
-    this.game = game;
-    this.header = game.getHeader();
-
-    return this;
-  }
-
-  async play() {
-    this.playing = true;
-
-    while (this.playing) {}
-  }
-
-  pause() {
-    this.playing = false;
-  }
-
-  async prev() {
-    const move = this.game.prev();
-
-    console.log({ ply: move?.ply, end: move?.end });
-
-    if (!move) {
-      await this.board.titleFrame(this.header);
-      this.board.render();
-      return;
-    }
-
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
-    this.board.render();
-  }
-
-  async next() {
-    const move = this.game.next();
-
-    console.log({ ply: move?.ply, end: move?.end });
-
-    if (!move) {
-      return;
-    }
-
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
-    this.board.render();
-  }
-
-  first() {}
-
-  last() {}
-}
-
-// const play = async (
-//   board: Board,
-//   config: GameConfig,
-//   pgn: string | null,
-//   interval: number = 1000
-// ) => {
-//   const game = new Game();
-
-//   if (pgn) {
-//     game.loadPGN(pgn);
-//   }
-
-//   console.log(game.pgn());
-
-//   const header = game.getHeader();
-
-//   await board.titleFrame(header);
-//   board.render();
-//   await board.frame(game.getBoardData(), header, null, game.materialInfo());
-//   await delay(interval * 1);
-//   board.render();
-
-//   while (true) {
-//     const move = game.next();
-
-//     if (!move) {
-//       break;
-//     }
-
-//     await board.frame(game.getBoardData(), header, move, game.materialInfo());
-//     await delay(interval);
-//     board.render();
-//   }
-
-//   await delay(interval * 5);
-//   // play(board, config, pgn, interval);
-// };
 
 const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
   const file = await createAnimation(pgn, boardConfig, "GIF");
@@ -172,14 +58,21 @@ const main = async () => {
   // const interval = 1000;
   // play(board, gameConfig, pgn, interval);
 
-  const player = new Player(board, gameConfig).load(new Game().loadPGN(pgn));
+  const player = new Player(board, gameConfig);
+
+  await player.load(new Game().loadPGN(pgn));
 
   // @ts-ignore
   window.player = player;
 
-  document.addEventListener("click", () => {
-    player.next();
-  });
+  // @ts-ignore
+  window.load = async (pgn: string) => {
+    await player.load(new Game().loadPGN(pgn));
+  };
+
+  // document.addEventListener("click", () => {
+  //   player.next();
+  // });
 
   document.addEventListener(
     "contextmenu",
@@ -192,21 +85,24 @@ const main = async () => {
   );
 
   document.addEventListener("keydown", ({ key }) => {
-    console.log(key);
     switch (key) {
       case "ArrowLeft":
+        player.pause();
         player.prev();
         break;
       case "ArrowRight":
+        player.pause();
         player.next();
         break;
       case "ArrowUp":
+        player.pause();
         player.first();
         break;
       case "ArrowDown":
+        player.pause();
         player.last();
         break;
-      case "":
+      case " ":
         player.playing ? player.pause() : player.play();
         break;
       case "b":
@@ -221,9 +117,51 @@ const main = async () => {
     }
   });
 
-  createDownloadLink(pgn, boardConfig).then((link) => {
-    document.body.appendChild(link);
+  const hammer = new Hammer.Manager(board.canvas);
+  hammer.add(new Hammer.Swipe());
+  hammer.add(new Hammer.Pinch());
+  hammer.add(new Hammer.Press({ time: 500 }));
+  hammer.add(new Hammer.Tap({ taps: 2 }));
+
+  hammer.on("swiperight", () => {
+    player.pause();
+    player.prev();
   });
+
+  hammer.on("swipeleft", () => {
+    player.pause();
+    player.next();
+  });
+
+  hammer.on("swipeup", () => {
+    player.pause();
+    player.first();
+  });
+
+  hammer.on("swipedown", () => {
+    player.pause();
+    player.last();
+  });
+
+  hammer.on("pinchin", () => {
+    board.showBorder();
+  });
+
+  hammer.on("pinchout", () => {
+    board.hideBorder();
+  });
+
+  hammer.on("tap", () => {
+    player.playing ? player.pause() : player.play();
+  });
+
+  hammer.on("press", () => {
+    board.flip();
+  });
+
+  // createDownloadLink(pgn, boardConfig).then((link) => {
+  //   document.body.appendChild(link);
+  // });
 };
 
 WebFont.load({

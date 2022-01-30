@@ -8,6 +8,7 @@ export type GradientDir =
 export type GradientData = {
   dir: GradientDir;
   colors: string[];
+  [key: string]: any;
 };
 
 export type Gradient = {
@@ -17,6 +18,7 @@ export type Gradient = {
 
 export type SolidData = {
   color: string;
+  [key: string]: any;
 };
 
 export type Solid = {
@@ -26,6 +28,7 @@ export type Solid = {
 
 export type ImageData = {
   src: string;
+  [key: string]: any;
 };
 
 export type Image = {
