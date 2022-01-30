@@ -1,4 +1,4 @@
-import { Material } from "../../game/Game";
+import { Material } from "../../game/Game_x";
 import { Style } from "./../../types";
 import drawText from "./drawText";
 

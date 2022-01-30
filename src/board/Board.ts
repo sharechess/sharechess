@@ -1,5 +1,5 @@
 import { BoardConfig, PiecesStyle } from "./../types";
-import { Material, MoveWithPly } from "./../game/Game";
+import { Material, MoveWithDetails } from "../game/Game_x";
 import { Style, BoardData } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
@@ -41,7 +41,7 @@ class Board {
   private ctx: CanvasRenderingContext2D;
   private tempCtx: CanvasRenderingContext2D;
   private borderVisible: boolean = true;
-  private lastMove: MoveWithPly | null = null;
+  private lastMove: MoveWithDetails | null = null;
   private lastMaterial: Material | undefined = undefined;
   public canvas: HTMLCanvasElement = document.createElement("canvas");
   private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
@@ -174,7 +174,7 @@ class Board {
     return this;
   }
 
-  isCheck(move: MoveWithPly | null) {
+  isCheck(move: MoveWithDetails | null) {
     if (!move) {
       return false;
     }
@@ -182,7 +182,7 @@ class Board {
     return move.san.includes("+");
   }
 
-  isMate(move: MoveWithPly | null) {
+  isMate(move: MoveWithDetails | null) {
     if (!move) {
       return false;
     }
@@ -267,7 +267,7 @@ class Board {
   async frame(
     boardData: BoardData | null,
     header: { [key: string]: string | undefined },
-    move: MoveWithPly | null = null,
+    move: MoveWithDetails | null = null,
     material?: Material
   ) {
     this.currentScreen = "move";

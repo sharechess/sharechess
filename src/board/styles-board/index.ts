@@ -1,3 +1,4 @@
+import chesscom from "./mono/chesscom";
 import lichess from "./mono/lichess";
 import lila from "./mono/lila";
 import peach from "./mono/peach";
@@ -15,6 +16,7 @@ import rainbowLight from "./gradient/rainbow-light";
 import kittens from "./pic/kittens";
 
 export default {
+  chesscom,
   lichess,
   lila,
   peach,

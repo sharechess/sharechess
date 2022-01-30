@@ -1,8 +1,8 @@
-import { PieceType } from "./../types";
+import { PieceType } from "../types";
 import { Chess, ChessInstance, Move } from "chess.js";
 import { cleanPGN } from "./PGNHelpers";
 
-export type MoveWithPly = Move & { ply: number; end: number };
+export type MoveWithDetails = Move & { ply: number; end: number; fen: string };
 
 const MATERIAL_VALUE: Map<PieceType, number> = new Map([
   ["q", 9],
@@ -15,7 +15,7 @@ const MATERIAL_VALUE: Map<PieceType, number> = new Map([
 class Game {
   private game: ChessInstance;
   private replay: ChessInstance;
-  private moves: MoveWithPly[];
+  private moves: MoveWithDetails[];
   private currentPly: number = 0;
 
   constructor() {
@@ -24,27 +24,39 @@ class Game {
     this.moves = [];
   }
 
+  getMoves() {
+    return this.moves.map((move) => move.san);
+  }
+
+  getFEN() {
+    return this.replay.fen();
+  }
+
   loadPGN(pgn: string) {
     this.game.load_pgn(cleanPGN(pgn));
     this.game.delete_comments();
 
-    console.log(this.game.pgn());
-
     const moves = this.game.history({ verbose: true });
-
-    this.moves = moves.map((item, i) => ({
-      ...item,
-      ply: i + 1,
-      end: moves.length - 1 - i,
-    }));
-
-    this.currentPly = 0;
-
+    const tempGame = new Chess();
     const fen = this.game.header().FEN;
 
     if (fen) {
+      tempGame.load(fen);
       this.replay.load(fen);
     }
+
+    this.moves = moves.map((item, i) => {
+      tempGame.move(item);
+
+      return {
+        ...item,
+        ply: i + 1,
+        end: moves.length - 1 - i,
+        fen: tempGame.fen(),
+      };
+    });
+
+    this.currentPly = 0;
 
     return this;
   }
@@ -111,7 +123,7 @@ class Game {
       w: { p: 0, n: 0, b: 0, r: 0, q: 0 },
       b: { p: 0, n: 0, b: 0, r: 0, q: 0 },
     };
-    const material = {
+    const count = {
       w: { p: 0, n: 0, b: 0, r: 0, q: 0 },
       b: { p: 0, n: 0, b: 0, r: 0, q: 0 },
     };
@@ -119,7 +131,7 @@ class Game {
     for (const piece of pieces) {
       if (piece !== null && piece.type !== "k") {
         sum[piece.color] += MATERIAL_VALUE.get(piece.type) ?? 0;
-        material[piece.color][piece.type] += 1;
+        count[piece.color][piece.type] += 1;
 
         const oppositeColor = piece.color === "b" ? "w" : "b";
 
@@ -131,7 +143,7 @@ class Game {
       }
     }
 
-    return { sum, imbalance, material, diff: sum.w - sum.b };
+    return { sum, imbalance, count, diff: sum.w - sum.b };
   }
 
   getBoardData() {

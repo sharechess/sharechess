@@ -13,8 +13,8 @@ import * as Hammer from "hammerjs";
 const $app = document.querySelector<HTMLImageElement>("#app");
 
 const boardConfig: BoardConfig = {
-  size: 720,
-  boardStyle: styles.sunset,
+  size: 1024,
+  boardStyle: styles.chesscom,
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,
@@ -59,11 +59,14 @@ const main = async () => {
   // play(board, gameConfig, pgn, interval);
 
   const player = new Player(board, gameConfig);
+  const game = new Game().loadPGN(pgn);
 
-  await player.load(new Game().loadPGN(pgn));
+  await player.load(game);
 
   // @ts-ignore
   window.player = player;
+  // @ts-ignore
+  window.game = game;
 
   // @ts-ignore
   window.load = async (pgn: string) => {
@@ -121,7 +124,7 @@ const main = async () => {
   hammer.add(new Hammer.Swipe());
   hammer.add(new Hammer.Pinch());
   hammer.add(new Hammer.Press({ time: 500 }));
-  hammer.add(new Hammer.Tap({ taps: 2 }));
+  hammer.add(new Hammer.Tap({ taps: 1 }));
 
   hammer.on("swiperight", () => {
     player.pause();
@@ -129,8 +132,7 @@ const main = async () => {
   });
 
   hammer.on("swipeleft", () => {
-    player.pause();
-    player.next();
+    player.playing ? player.pause() : player.play();
   });
 
   hammer.on("swipeup", () => {
@@ -152,7 +154,8 @@ const main = async () => {
   });
 
   hammer.on("tap", () => {
-    player.playing ? player.pause() : player.play();
+    player.pause();
+    player.next();
   });
 
   hammer.on("press", () => {

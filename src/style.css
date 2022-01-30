@@ -11,12 +11,11 @@
 
 body {
   background-color: #191d24;
-  /* background-image: url(background.png); */
-  background-attachment: fixed;
-  background-size: cover;
+  background-image: url(pattern.png);
+  background-repeat: repeat;
   background-position: center;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 2.5vh;
 }
 
 .board {
@@ -29,4 +28,5 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   max-width: 100%;
+  max-height: 95vh;
 }

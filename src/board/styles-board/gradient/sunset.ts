@@ -41,5 +41,3 @@ const style: Style = {
 };
 
 export default style;
-
-// background-image: linear-gradient( 68.3deg,  rgba(245,177,97,1) 0.4%, rgba(236,54,110,1) 100.2% );
