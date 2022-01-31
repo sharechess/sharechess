@@ -1,4 +1,4 @@
-import { Position, PieceType, PieceColor, PiecesStyle } from "../../types";
+import { Position, PiecesStyle } from "../../types";
 import ImagesCache from "../loaders/PiecesCache";
 // import drawCircle from "./drawCircle";
 
