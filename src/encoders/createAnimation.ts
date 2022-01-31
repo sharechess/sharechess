@@ -27,7 +27,7 @@ const createAnimation = async (
       ? new MP4(board.width, board.height)
       : new WebM();
 
-  const header = game.getHeader();
+  const header = game.header;
 
   await board.titleFrame(header);
   board.render();
@@ -35,25 +35,12 @@ const createAnimation = async (
   // @ts-ignore
   await encoder.add(getData(board, encoder), 4);
 
-  await board.frame(game.getBoardData(), header, null, game.materialInfo());
-  board.render();
-  // @ts-ignore
-  await encoder.add(getData(board, encoder), 1);
-
-  while (true) {
-    const move = game.next();
-
-    // console.log(move);
-
-    if (!move) {
-      break;
-    }
-
-    await board.frame(game.getBoardData(), header, move, game.materialInfo());
+  for (let ply = 0; ply < game.length; ply++) {
+    const position = game.getPosition(ply);
+    await board.frame(position, header);
     board.render();
-
     // @ts-ignore
-    await encoder.add(getData(board, encoder), move.end === 0 ? 5 : 1);
+    await encoder.add(getData(board, encoder), position.end === 0 ? 5 : 1);
   }
 
   return await encoder.render();

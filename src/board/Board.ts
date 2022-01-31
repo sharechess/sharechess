@@ -1,6 +1,5 @@
-import { BoardConfig, PiecesStyle } from "./../types";
-import { Material, MoveWithDetails } from "../game/Game_x";
-import { Style, BoardData } from "../types";
+import { BoardConfig, PiecesStyle, Position } from "./../types";
+import { Style } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
@@ -37,14 +36,10 @@ class Board {
   private style: Style = boards.standard;
   private flipped: boolean = false;
   private header: { [key: string]: string | undefined } = {};
-  private boardData: BoardData | null = null;
-  private ctx: CanvasRenderingContext2D;
-  private tempCtx: CanvasRenderingContext2D;
+  // private boardData: BoardData | null = null;
   private borderVisible: boolean = true;
-  private lastMove: MoveWithDetails | null = null;
-  private lastMaterial: Material | undefined = undefined;
-  public canvas: HTMLCanvasElement = document.createElement("canvas");
-  private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
+  private lastPosition: Position | null = null;
+  // private lastMaterial: Material | undefined = undefined;
   private background: HTMLCanvasElement | null = null;
   private extraInfo: boolean = true;
   private piecesStyle: PiecesStyle = "tatiana";
@@ -53,6 +48,12 @@ class Board {
   private showCoords: boolean = true;
   private showChecks: boolean = true;
   private currentScreen: "title" | "move" = "move";
+
+  private ctx: CanvasRenderingContext2D;
+  private tempCtx: CanvasRenderingContext2D;
+
+  private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
+  public canvas: HTMLCanvasElement = document.createElement("canvas");
 
   constructor(config: Partial<BoardConfig> = {}) {
     const ctx = this.canvas.getContext("2d");
@@ -96,13 +97,8 @@ class Board {
 
     if (this.currentScreen === "title") {
       await this.titleFrame(this.header);
-    } else {
-      await this.frame(
-        this.boardData,
-        this.header,
-        this.lastMove,
-        this.lastMaterial
-      );
+    } else if (this.lastPosition !== null) {
+      await this.frame(this.lastPosition, this.header);
     }
 
     this.render();
@@ -174,30 +170,6 @@ class Board {
     return this;
   }
 
-  isCheck(move: MoveWithDetails | null) {
-    if (!move) {
-      return false;
-    }
-
-    return move.san.includes("+");
-  }
-
-  isMate(move: MoveWithDetails | null) {
-    if (!move) {
-      return false;
-    }
-
-    return move.san.includes("#");
-  }
-
-  getOppositeColor(color?: "w" | "b") {
-    if (!color) {
-      return;
-    }
-
-    return color === "w" ? "b" : "w";
-  }
-
   async titleFrame(header: { [key: string]: string | undefined }) {
     this.currentScreen = "title";
     this.header = header;
@@ -265,22 +237,12 @@ class Board {
   }
 
   async frame(
-    boardData: BoardData | null,
-    header: { [key: string]: string | undefined },
-    move: MoveWithDetails | null = null,
-    material?: Material
+    position: Position | null,
+    header: { [key: string]: string | undefined }
   ) {
     this.currentScreen = "move";
-    this.lastMove = move;
-    this.boardData = boardData;
-    this.lastMaterial = material;
-
-    const check = this.isCheck(move)
-      ? this.getOppositeColor(move?.color)
-      : undefined;
-    const mate = this.isMate(move)
-      ? this.getOppositeColor(move?.color)
-      : undefined;
+    this.lastPosition = position;
+    this.header = header;
 
     this.tempCtx.clearRect(0, 0, this.size, this.size);
 
@@ -290,64 +252,59 @@ class Board {
 
     this.tempCtx.drawImage((await this.background) as HTMLCanvasElement, 0, 0);
 
-    if (boardData !== null) {
-      if (this.lastMove && this.showMoveIndicator) {
-        await drawMoveIndicators(
-          this.tempCtx,
-          this.lastMove,
-          this.squareSize,
-          this.style,
-          this.borderWidth,
-          this.tiles,
-          this.flipped,
-          this.margin
-        );
-      }
-
-      if (!this.borderVisible && this.showCoords) {
-        drawCoords(
-          this.tempCtx,
-          this.style.coords,
-          this.squareSize,
-          this.tiles,
-          this.flipped,
-          this.borderWidth,
-          this.size,
-          this.borderVisible,
-          this.margin
-        );
-      }
-
-      const piecesShadow = false;
-
-      await drawPieces(
+    if (this.lastPosition?.move && this.showMoveIndicator) {
+      await drawMoveIndicators(
         this.tempCtx,
-        boardData,
+        this.lastPosition.move,
         this.squareSize,
+        this.style,
         this.borderWidth,
         this.tiles,
         this.flipped,
-        check && this.showChecks ? check : undefined,
-        mate && this.showChecks ? mate : undefined,
-        piecesShadow,
-        this.margin,
-        this.piecesStyle
+        this.margin
       );
+    }
 
-      if (this.extraInfo && header) {
-        await drawExtraInfo(
-          this.tempCtx,
-          this.width,
-          this.height,
-          this.scale,
-          this.margin,
-          this.style,
-          header,
-          this.flipped,
-          move?.end === 0,
-          material && this.showMaterial ? material : undefined
-        );
-      }
+    if (!this.borderVisible && this.showCoords) {
+      drawCoords(
+        this.tempCtx,
+        this.style.coords,
+        this.squareSize,
+        this.tiles,
+        this.flipped,
+        this.borderWidth,
+        this.size,
+        this.borderVisible,
+        this.margin
+      );
+    }
+
+    if (!this.lastPosition) {
+      return;
+    }
+
+    await drawPieces(
+      this.tempCtx,
+      this.lastPosition,
+      this.squareSize,
+      this.borderWidth,
+      this.flipped,
+      this.margin,
+      this.piecesStyle
+    );
+
+    if (this.extraInfo && header) {
+      await drawExtraInfo(
+        this.tempCtx,
+        this.width,
+        this.height,
+        this.scale,
+        this.margin,
+        this.style,
+        this.header,
+        this.flipped,
+        this.lastPosition
+      );
     }
   }
 

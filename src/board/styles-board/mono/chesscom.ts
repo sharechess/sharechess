@@ -28,7 +28,7 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#40522f",
+      color: "#312e2b",
     },
   },
   coords: {

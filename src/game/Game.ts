@@ -1,8 +1,6 @@
-import { PieceType } from "../types";
-import { Chess, ChessInstance, Move } from "chess.js";
+import { PieceType, PieceColor, BoardData, Position } from "../types";
+import { Chess, ChessInstance } from "chess.js";
 import { cleanPGN } from "./PGNHelpers";
-
-export type MoveWithDetails = Move & { ply: number; end: number; fen: string };
 
 const MATERIAL_VALUE: Map<PieceType, number> = new Map([
   ["q", 9],
@@ -13,110 +11,96 @@ const MATERIAL_VALUE: Map<PieceType, number> = new Map([
 ]);
 
 class Game {
-  private game: ChessInstance;
-  private replay: ChessInstance;
-  private moves: MoveWithDetails[];
-  private currentPly: number = 0;
+  private positions: Position[] = [];
+  private game: ChessInstance = new Chess();
 
-  constructor() {
-    this.game = new Chess();
-    this.replay = new Chess();
-    this.moves = [];
-  }
-
-  getMoves() {
-    return this.moves.map((move) => move.san);
-  }
-
-  getFEN() {
-    return this.replay.fen();
-  }
+  constructor() {}
 
   loadPGN(pgn: string) {
-    this.game.load_pgn(cleanPGN(pgn));
-    this.game.delete_comments();
+    const game = new Chess();
+    const replay = new Chess();
 
-    const moves = this.game.history({ verbose: true });
-    const tempGame = new Chess();
-    const fen = this.game.header().FEN;
+    game.load_pgn(cleanPGN(pgn));
+    game.delete_comments();
+
+    const moves = game.history({ verbose: true });
+    const fen = game.header().FEN;
 
     if (fen) {
-      tempGame.load(fen);
-      this.replay.load(fen);
+      replay.load(fen);
     }
 
-    this.moves = moves.map((item, i) => {
-      tempGame.move(item);
+    this.positions = [
+      {
+        ply: 0,
+        move: null,
+        end: moves.length,
+        fen: replay.fen(),
+        check: replay.in_check(),
+        mate: replay.in_checkmate(),
+        turn: replay.turn(),
+        material: this.materialInfo(replay.board()),
+        placement: this.getPlacement(replay.fen()),
+        last: moves.length === 0,
+      },
+    ];
 
-      return {
-        ...item,
+    moves.forEach((item, i) => {
+      replay.move(item);
+
+      const currentFEN = replay.fen();
+
+      this.positions.push({
         ply: i + 1,
+        move: item,
         end: moves.length - 1 - i,
-        fen: tempGame.fen(),
-      };
+        fen: currentFEN,
+        check: replay.in_check(),
+        mate: replay.in_checkmate(),
+        turn: replay.turn(),
+        material: this.materialInfo(replay.board()),
+        placement: this.getPlacement(currentFEN),
+        last: i === moves.length - 1,
+      });
     });
 
-    this.currentPly = 0;
-
+    this.game = game;
     return this;
   }
 
   loadFEN(fen: string) {
-    this.game.load(fen);
-    return this;
+    this.game = new Chess(fen);
+    this.positions = [];
   }
 
-  next() {
-    const move = this.moves[this.currentPly];
+  private getPlacement(fen: string) {
+    const board = new Chess(fen).board();
 
-    if (!move) {
-      return null;
+    const placement: {
+      x: number;
+      y: number;
+      type: PieceType;
+      color: PieceColor;
+    }[] = [];
+
+    for (let y = 0; y < 8; y++) {
+      for (let x = 0; x < 8; x++) {
+        if (board[y][x] !== null) {
+          const { type, color } = board[y][x] as {
+            type: PieceType;
+            color: PieceColor;
+          };
+
+          placement.push({ x, y, type, color });
+        }
+      }
     }
 
-    this.currentPly++;
-    this.replay.move(move);
-
-    return move;
+    return placement;
   }
 
-  prev() {
-    const undo = Boolean(this.replay.undo());
-
-    if (undo) {
-      this.currentPly--;
-    } else {
-      return null;
-    }
-
-    const move = this.moves[this.currentPly - 1];
-
-    return move;
-  }
-
-  last() {
-    while (this.next()) {}
-    return this.moves[this.moves.length - 1];
-  }
-
-  first() {
-    while (this.prev()) {}
-    return this.moves[0];
-  }
-
-  goto(ply: number) {
-    if (ply === this.currentPly || ply < 0 || ply > this.moves.length - 1) {
-      return null;
-    }
-
-    while (this.currentPly !== ply) {
-      ply > this.currentPly ? this.next() : this.prev();
-    }
-
-    return this.moves[ply - 1];
-  }
-
-  materialInfo() {
-    const pieces = this.replay.board().flat().filter(Boolean);
+  private materialInfo(boardData: BoardData) {
+    const pieces = boardData.flat().filter(Boolean);
 
     const sum = { w: 0, b: 0 };
     const imbalance = {
@@ -146,20 +130,23 @@ class Game {
     return { sum, imbalance, count, diff: sum.w - sum.b };
   }
 
-  getBoardData() {
-    // console.log(this.replay.ascii());
-    return this.replay.board();
+  get length() {
+    return this.positions.length;
   }
 
-  getHeader() {
+  get header() {
     return this.game.header();
   }
 
-  pgn() {
-    return this.game.pgn();
+  getPosition(ply: number) {
+    const position = this.positions[ply];
+
+    return position ?? null;
+  }
+
+  getMoves() {
+    return this.positions.slice(1).map(({ move }) => move?.san) as string[];
   }
 }
-
-export type Material = ReturnType<Game["materialInfo"]>;
 
 export default Game;

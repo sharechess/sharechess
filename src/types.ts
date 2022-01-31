@@ -1,3 +1,5 @@
+import { Move } from "chess.js";
+
 export type GradientDir =
   | "horizontal"
   | "vertical"
@@ -111,4 +113,51 @@ export type GameConfig = {
   fromPly: number | null;
   toPly: number | null;
   loop: boolean;
+};
+
+export type MaterialCount = {
+  w: {
+    p: number;
+    n: number;
+    b: number;
+    r: number;
+    q: number;
+  };
+  b: {
+    p: number;
+    n: number;
+    b: number;
+    r: number;
+    q: number;
+  };
+};
+
+export type Material = {
+  sum: {
+    w: number;
+    b: number;
+  };
+  imbalance: MaterialCount;
+  count: MaterialCount;
+  diff: number;
+};
+
+export type Placement = {
+  x: number;
+  y: number;
+  type: PieceType;
+  color: PieceColor;
+}[];
+
+export type Position = {
+  move: Move | null;
+  ply: number;
+  end: number;
+  fen: string;
+  check: boolean;
+  mate: boolean;
+  turn: PieceColor;
+  material: Material;
+  placement: Placement;
+  last: boolean;
 };

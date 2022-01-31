@@ -1,5 +1,4 @@
-import { Material } from "../../game/Game_x";
-import { Style } from "./../../types";
+import { Style, Position } from "./../../types";
 import drawText from "./drawText";
 
 const chessFontMapping: { [key: string]: string } = {
@@ -20,8 +19,7 @@ const drawExtraInfo = async (
   style: Style,
   data: { [key: string]: string | undefined },
   flipped: boolean,
-  lastMove: boolean,
-  material?: Material
+  position: Position
 ) => {
   const fontSize = Math.round(20 * scale);
   let offsetX = (margin - fontSize) / 2;
@@ -88,7 +86,7 @@ const drawExtraInfo = async (
   let rightMarginWhite = 0;
   let rightMarginBlack = 0;
 
-  if (lastMove && data.Result) {
+  if (position.last && data.Result) {
     const [resultWhite, resultBlack] = data.Result.split("-");
 
     const textWhite =
@@ -125,76 +123,75 @@ const drawExtraInfo = async (
     rightMarginBlack = w + 20 * scale;
   }
 
-  if (material) {
-    const textWhite = material.diff > 0 ? `+${Math.abs(material.diff)}` : "";
+  const { diff, imbalance } = position.material;
 
-    rightMarginWhite += drawText(
-      ctx,
-      textWhite,
-      "Fira Mono",
-      fontSize,
-      500,
-      width - offsetX - rightMarginWhite,
-      flipped ? offsetY : height - offsetY,
-      "right"
-    );
+  const textWhite = diff > 0 ? `+${Math.abs(diff)}` : "";
 
-    const textBlack = material.diff < 0 ? `+${Math.abs(material.diff)}` : "";
+  rightMarginWhite += drawText(
+    ctx,
+    textWhite,
+    "Fira Mono",
+    fontSize,
+    500,
+    width - offsetX - rightMarginWhite,
+    flipped ? offsetY : height - offsetY,
+    "right"
+  );
 
-    rightMarginBlack += drawText(
-      ctx,
-      textBlack,
-      "Fira Mono",
-      fontSize,
-      500,
-      width - offsetX - rightMarginBlack,
-      flipped ? height - offsetY : offsetY,
-      "right"
-    );
+  const textBlack = diff < 0 ? `+${Math.abs(diff)}` : "";
 
-    for (const [piece, count] of Object.entries(material.imbalance.w)) {
-      for (let i = 0; i < count; i++) {
-        const textWidth = drawText(
-          ctx,
-          chessFontMapping[piece],
-          "Chess",
-          fontSize,
-          500,
-          width - offsetX - rightMarginWhite,
-          (flipped ? offsetY : height - offsetY) - 2 * scale,
-          "right"
-        );
+  rightMarginBlack += drawText(
+    ctx,
+    textBlack,
+    "Fira Mono",
+    fontSize,
+    500,
+    width - offsetX - rightMarginBlack,
+    flipped ? height - offsetY : offsetY,
+    "right"
+  );
 
-        rightMarginWhite +=
-          i === count - 1
-            ? textWidth * 0.85
-            : piece === "p"
-            ? textWidth * 0.4
-            : textWidth * 0.6;
-      }
+  for (const [piece, count] of Object.entries(imbalance.w)) {
+    for (let i = 0; i < count; i++) {
+      const textWidth = drawText(
+        ctx,
+        chessFontMapping[piece],
+        "Chess",
+        fontSize,
+        500,
+        width - offsetX - rightMarginWhite,
+        (flipped ? offsetY : height - offsetY) - 2 * scale,
+        "right"
+      );
+
+      rightMarginWhite +=
+        i === count - 1
+          ? textWidth * 0.85
+          : piece === "p"
+          ? textWidth * 0.4
+          : textWidth * 0.6;
     }
+  }
 
-    for (const [piece, count] of Object.entries(material.imbalance.b)) {
-      for (let i = 0; i < count; i++) {
-        const textWidth = drawText(
-          ctx,
-          chessFontMapping[piece],
-          "Chess",
-          fontSize,
-          500,
-          width - offsetX - rightMarginBlack,
-          (flipped ? height - offsetY : offsetY) - 2 * scale,
-          "right"
-        );
+  for (const [piece, count] of Object.entries(imbalance.b)) {
+    for (let i = 0; i < count; i++) {
+      const textWidth = drawText(
+        ctx,
+        chessFontMapping[piece],
+        "Chess",
+        fontSize,
+        500,
+        width - offsetX - rightMarginBlack,
+        (flipped ? height - offsetY : offsetY) - 2 * scale,
+        "right"
+      );
 
-        rightMarginBlack +=
-          i === count - 1
-            ? textWidth * 0.85
-            : piece === "p"
-            ? textWidth * 0.4
-            : textWidth * 0.6;
-        // i === count - 1 || piece !== "p" ? textWidth * 0.8 : textWidth * 0.4;
-      }
+      rightMarginBlack +=
+        i === count - 1
+          ? textWidth * 0.85
+          : piece === "p"
+          ? textWidth * 0.4
+          : textWidth * 0.6;
     }
   }
 };

@@ -1,20 +1,22 @@
 import { BoardConfig, GameConfig } from "./types";
 import "./style.css";
 import Board from "./board/Board";
-import styles from "./board/styles-board";
 import Game from "./game/Game";
+import styles from "./board/styles-board";
 import pgns from "./test-data/pgns";
 import createAnimation from "./encoders/createAnimation";
 // import { decompressPGN } from "./game/PGNHelpers";
 import WebFont from "webfontloader";
 import Player from "./player/Player";
 import * as Hammer from "hammerjs";
+import Moves from "./ui/moves/Moves";
 
-const $app = document.querySelector<HTMLImageElement>("#app");
+const $board = document.querySelector<HTMLImageElement>("#board");
+const $moves = document.querySelector<HTMLImageElement>("#moves");
 
 const boardConfig: BoardConfig = {
   size: 1024,
-  boardStyle: styles.chesscom,
+  boardStyle: styles.lila,
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,
@@ -33,7 +35,7 @@ const gameConfig: GameConfig = {
 };
 
 const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
-  const file = await createAnimation(pgn, boardConfig, "GIF");
+  const file = await createAnimation(pgn, { ...boardConfig, size: 720 }, "GIF");
   const link = document.createElement("a");
   link.innerText = "DOWNLOAD";
   link.setAttribute("href", URL.createObjectURL(file));
@@ -53,7 +55,7 @@ const main = async () => {
   // const pgn = pgns[2];
   const board = new Board(boardConfig);
 
-  $app?.appendChild(board.canvas);
+  $board?.appendChild(board.canvas);
 
   // const interval = 1000;
   // play(board, gameConfig, pgn, interval);
@@ -61,12 +63,15 @@ const main = async () => {
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
 
+  const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
+
+  // @ts-ignore
+  window.game = game;
+
   await player.load(game);
 
   // @ts-ignore
   window.player = player;
-  // @ts-ignore
-  window.game = game;
 
   // @ts-ignore
   window.load = async (pgn: string) => {

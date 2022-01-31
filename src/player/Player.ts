@@ -7,15 +7,14 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 class Player {
   private interval = 1000;
   private game: Game = new Game();
-  private header: { [key: string]: string | undefined } = {};
-  private start: boolean = true;
-  private end: boolean = false;
+  private ply: number = 0;
   public playing: boolean = false;
+
   private firstRender: Promise<void>;
 
   constructor(private board: Board, private config: GameConfig) {
     this.firstRender = this.board
-      .frame(this.game.getBoardData(), {}, null)
+      .frame(this.game.getPosition(0), this.game.header)
       .then((_) => this.board.render());
   }
 
@@ -28,9 +27,9 @@ class Player {
     await this.firstRender;
 
     this.game = game;
-    this.header = game.getHeader();
+    this.ply = -1;
 
-    await this.board.titleFrame(this.game.getHeader());
+    await this.board.titleFrame(this.game.header);
     this.board.render();
   }
 
@@ -52,103 +51,56 @@ class Player {
   }
 
   async prev() {
-    if (this.start) {
+    const ply = this.ply - 1;
+
+    if (ply < -1) {
       return;
     }
 
-    this.end = false;
+    this.ply = ply;
 
-    const move = this.game.prev();
-
-    if (!move) {
-      await this.board.titleFrame(this.header);
+    if (ply === -1) {
+      await this.board.titleFrame(this.game.header);
       this.board.render();
-      this.start = true;
-
       return;
     }
 
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
+    await this.board.frame(this.game.getPosition(ply), this.game.header);
     this.board.render();
   }
 
   async next() {
-    if (this.end) {
+    const ply = this.ply + 1;
+
+    if (ply >= this.game.length) {
       return;
     }
 
-    if (this.start) {
-      await this.board.frame(
-        this.game.getBoardData(),
-        this.header,
-        null,
-        this.game.materialInfo()
-      );
-      this.board.render();
-      this.start = false;
-      return;
-    }
+    this.ply = ply;
 
-    const move = this.game.next();
-
-    this.end = move?.end === 0;
-
-    if (!move) {
-      return;
-    }
-
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
+    await this.board.frame(this.game.getPosition(ply), this.game.header);
     this.board.render();
   }
 
   async first() {
-    this.game.first();
+    this.ply = 0;
 
-    await this.board.titleFrame(this.header);
+    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
     this.board.render();
-
-    this.end = false;
-    this.start = true;
   }
 
   async last() {
-    const move = this.game.last();
+    this.ply = this.game.length - 1;
 
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
+    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
     this.board.render();
-
-    this.end = true;
-    this.start = false;
   }
 
   async goto(ply: number) {
-    const move = this.game.goto(ply);
+    this.ply = ply;
 
-    await this.board.frame(
-      this.game.getBoardData(),
-      this.header,
-      move,
-      this.game.materialInfo()
-    );
+    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
     this.board.render();
-
-    this.start = false;
-    this.end = move?.end === 0;
   }
 }
 
