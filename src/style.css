@@ -57,3 +57,21 @@ body {
   background: rgba(135, 207, 235, 0.5);
   height: 100vh;
 }
+
+@media screen and (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .moves-box {
+    height: auto;
+  }
+
+  .board-box {
+    height: auto;
+  }
+
+  .setup-box {
+    height: auto;
+  }
+}
