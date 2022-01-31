@@ -43,9 +43,11 @@ class Board {
   private background: HTMLCanvasElement | null = null;
   private extraInfo: boolean = true;
   private piecesStyle: PiecesStyle = "tatiana";
+  // @ts-ignore
   private showMaterial: boolean = true;
   private showMoveIndicator: boolean = true;
   private showCoords: boolean = true;
+  // @ts-ignore
   private showChecks: boolean = true;
   private currentScreen: "title" | "move" = "move";
 

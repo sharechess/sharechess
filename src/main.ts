@@ -63,7 +63,7 @@ const main = async () => {
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
 
-  const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
+  new Moves($moves as HTMLElement, player).load(game.getMoves());
 
   // @ts-ignore
   window.game = game;
