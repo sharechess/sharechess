@@ -126,32 +126,20 @@ const main = async () => {
     false
   );
 
+  const keyMapping: { [key: string]: () => void } = {
+    ArrowLeft: handlers.prev,
+    ArrowRight: handlers.next,
+    ArrowUp: handlers.first,
+    ArrowDown: handlers.last,
+    " ": handlers.togglePlay,
+    b: handlers.toggleBorder,
+    f: handlers.flip,
+    e: handlers.toggleExtraInfo,
+  };
+
   document.addEventListener("keydown", ({ key }) => {
-    switch (key) {
-      case "ArrowLeft":
-        handlers.prev();
-        break;
-      case "ArrowRight":
-        handlers.next();
-        break;
-      case "ArrowUp":
-        handlers.first();
-        break;
-      case "ArrowDown":
-        handlers.last();
-        break;
-      case " ":
-        handlers.togglePlay();
-        break;
-      case "b":
-        handlers.toggleBorder();
-        break;
-      case "f":
-        handlers.flip();
-        break;
-      case "e":
-        handlers.toggleExtraInfo();
-        break;
+    if (keyMapping[key]) {
+      keyMapping[key]();
     }
   });
 
