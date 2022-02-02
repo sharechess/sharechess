@@ -78,15 +78,49 @@ const main = async () => {
     await player.load(new Game().loadPGN(pgn));
   };
 
-  // document.addEventListener("click", () => {
-  //   player.next();
-  // });
+  const handlers = {
+    prev() {
+      player.pause();
+      player.prev();
+    },
+    next() {
+      player.pause();
+      player.next();
+    },
+    first() {
+      player.pause();
+      player.first();
+    },
+    last() {
+      player.pause();
+      player.last();
+    },
+    toggleBorder() {
+      board.toggleBorder();
+    },
+
+    showBorder() {
+      board.showBorder();
+    },
+    hideBorder() {
+      board.hideBorder();
+    },
+    toggleExtraInfo() {
+      board.toggleExtraInfo();
+    },
+    flip() {
+      board.flip();
+    },
+    togglePlay() {
+      player.playing ? player.pause() : player.play();
+    },
+  };
 
   document.addEventListener(
     "contextmenu",
     (e) => {
       e.preventDefault();
-      player.prev();
+      handlers.prev();
       return false;
     },
     false
@@ -95,32 +129,28 @@ const main = async () => {
   document.addEventListener("keydown", ({ key }) => {
     switch (key) {
       case "ArrowLeft":
-        player.pause();
-        player.prev();
+        handlers.prev();
         break;
       case "ArrowRight":
-        player.pause();
-        player.next();
+        handlers.next();
         break;
       case "ArrowUp":
-        player.pause();
-        player.first();
+        handlers.first();
         break;
       case "ArrowDown":
-        player.pause();
-        player.last();
+        handlers.last();
         break;
       case " ":
-        player.playing ? player.pause() : player.play();
+        handlers.togglePlay();
         break;
       case "b":
-        board.toggleBorder();
+        handlers.toggleBorder();
         break;
       case "f":
-        board.flip();
+        handlers.flip();
         break;
       case "e":
-        board.toggleExtraInfo();
+        handlers.toggleExtraInfo();
         break;
     }
   });
@@ -131,41 +161,14 @@ const main = async () => {
   hammer.add(new Hammer.Press({ time: 500 }));
   hammer.add(new Hammer.Tap({ taps: 1 }));
 
-  hammer.on("swiperight", () => {
-    player.pause();
-    player.prev();
-  });
-
-  hammer.on("swipeleft", () => {
-    player.playing ? player.pause() : player.play();
-  });
-
-  hammer.on("swipeup", () => {
-    player.pause();
-    player.first();
-  });
-
-  hammer.on("swipedown", () => {
-    player.pause();
-    player.last();
-  });
-
-  hammer.on("pinchin", () => {
-    board.showBorder();
-  });
-
-  hammer.on("pinchout", () => {
-    board.hideBorder();
-  });
-
-  hammer.on("tap", () => {
-    player.pause();
-    player.next();
-  });
-
-  hammer.on("press", () => {
-    board.flip();
-  });
+  hammer.on("swiperight", handlers.next);
+  hammer.on("swipeleft", handlers.prev);
+  hammer.on("swipeup", handlers.first);
+  hammer.on("swipedown", handlers.last);
+  hammer.on("pinchin", handlers.showBorder);
+  hammer.on("pinchout", handlers.hideBorder);
+  hammer.on("tap", handlers.togglePlay);
+  hammer.on("press", handlers.flip);
 
   // createDownloadLink(pgn, boardConfig).then((link) => {
   //   document.body.appendChild(link);

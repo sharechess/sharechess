@@ -41,21 +41,32 @@ body {
 .layout {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "setup board controls"
+    "setup board moves";
 }
 
 .moves-box {
   background: rgba(255, 192, 203, 0.5);
-  height: 100vh;
+  grid-area: moves;
 }
 
 .board-box {
   background: rgba(255, 166, 0, 0.5);
   height: 100vh;
+  grid-area: board;
 }
 
 .setup-box {
   background: rgba(135, 207, 235, 0.5);
   height: 100vh;
+  grid-area: setup;
+}
+
+.controls-box {
+  background: rgba(0, 255, 0, 0.5);
+  height: 100px;
+  grid-area: controls;
 }
 
 @media screen and (max-width: 1024px) {
