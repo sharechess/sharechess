@@ -1,5 +1,5 @@
 import { html } from "common-tags";
-import Player from "../../player/Player";
+import Player from "../player/Player";
 import chunk_ from "@arrows/array/chunk_";
 
 class Moves {

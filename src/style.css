@@ -48,6 +48,7 @@ body {
 
 .moves-box {
   background: rgba(255, 192, 203, 0.5);
+  height: 85vh;
   grid-area: moves;
 }
 
@@ -65,7 +66,7 @@ body {
 
 .controls-box {
   background: rgba(0, 255, 0, 0.5);
-  height: 100px;
+  height: 15vh;
   grid-area: controls;
 }
 

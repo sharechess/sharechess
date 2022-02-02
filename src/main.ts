@@ -9,10 +9,12 @@ import createAnimation from "./encoders/createAnimation";
 import WebFont from "webfontloader";
 import Player from "./player/Player";
 import * as Hammer from "hammerjs";
-import Moves from "./ui/moves/Moves";
+import Moves from "./ui/Moves";
+import Controls from "./ui/Controls";
 
 const $board = document.querySelector<HTMLImageElement>("#board");
 const $moves = document.querySelector<HTMLImageElement>("#moves");
+const $controls = document.querySelector<HTMLImageElement>("#controls");
 
 const boardConfig: BoardConfig = {
   size: 1024,
@@ -63,21 +65,6 @@ const main = async () => {
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
 
-  new Moves($moves as HTMLElement, player).load(game.getMoves());
-
-  // @ts-ignore
-  window.game = game;
-
-  await player.load(game);
-
-  // @ts-ignore
-  window.player = player;
-
-  // @ts-ignore
-  window.load = async (pgn: string) => {
-    await player.load(new Game().loadPGN(pgn));
-  };
-
   const handlers = {
     prev() {
       player.pause();
@@ -114,6 +101,19 @@ const main = async () => {
     togglePlay() {
       player.playing ? player.pause() : player.play();
     },
+  };
+
+  const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
+  const controls = new Controls($controls as HTMLElement, handlers).load();
+
+  await player.load(game);
+
+  // @ts-ignore
+  window.load = async (pgn: string) => {
+    const game = new Game().loadPGN(pgn);
+    await player.load(game);
+    moves.load(game.getMoves());
+    controls.load();
   };
 
   document.addEventListener(
@@ -155,7 +155,7 @@ const main = async () => {
   hammer.on("swipedown", handlers.last);
   hammer.on("pinchin", handlers.showBorder);
   hammer.on("pinchout", handlers.hideBorder);
-  hammer.on("tap", handlers.togglePlay);
+  hammer.on("tap", handlers.next);
   hammer.on("press", handlers.flip);
 
   // createDownloadLink(pgn, boardConfig).then((link) => {

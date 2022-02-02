@@ -161,3 +161,16 @@ export type Position = {
   placement: Placement;
   last: boolean;
 };
+
+export type Handlers = {
+  prev(): void;
+  next(): void;
+  first(): void;
+  last(): void;
+  toggleBorder(): void;
+  showBorder(): void;
+  hideBorder(): void;
+  toggleExtraInfo(): void;
+  flip(): void;
+  togglePlay(): void;
+};
