@@ -1,23 +1,35 @@
 .game-tabs {
-  margin: 10px;
+  margin: 20px;
   /* height: 100%; */
 }
 
 .game-tabs__btn {
-  width: 50%;
-  background: #2a2c38;
+  width: 48%;
+  background: rgb(0, 173, 136);
+  color: #0e0e13;
   padding: 10px;
   font-family: Ubuntu;
   font-size: 1.5rem;
-  color: rgb(0, 207, 162);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   cursor: pointer;
 }
 
+.game-tabs__btn:hover {
+  background: rgb(0, 207, 162);
+}
+
 .game-tabs__btn--active {
   width: 50%;
-  background: #13141a;
-  color: rgb(0, 173, 136);
+  background: #0e0e13;
+  color: #aaa;
   cursor: default;
+}
+
+.game-tabs__btn--active:hover {
+  background: #0e0e13;
+}
+
+.game-tabs__btn:nth-child(1) {
+  margin-right: 2%;
 }

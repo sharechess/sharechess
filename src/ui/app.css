@@ -23,13 +23,13 @@ body {
 
 .dark {
   background-color: #191d24;
-  background-image: url(src/ui/img/pattern.png);
+  /* background-image: url(src/ui/img/pattern.png); */
   color: #ddd;
 }
 
 .light {
   background-color: #cfcfcf;
-  background-image: url(src/ui/img/pattern-light.png);
+  /* background-image: url(src/ui/img/pattern-light.png); */
   color: #222;
 }
 

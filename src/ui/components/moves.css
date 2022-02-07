@@ -1,5 +1,5 @@
 .moves {
-  background: #13141a;
+  background: #0e0e13;
   font-size: 1.4rem;
   font-family: "Fira Mono";
   text-align: left;
@@ -15,6 +15,7 @@
   width: 40px;
   text-align: right;
   margin-right: 10px;
+  color: #aaa;
 }
 
 .move__ply {
