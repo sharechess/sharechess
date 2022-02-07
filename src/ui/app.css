@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html {
@@ -49,8 +50,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas:
-    "setup board controls"
-    "setup board moves";
+    "setup board moves"
+    "setup board controls";
 }
 
 .moves-box {
@@ -87,18 +88,6 @@ body {
   padding: 20px;
 }
 
-.move {
-  display: inline-block;
-  width: 50%;
-  min-width: 150px;
-  text-align: left;
-}
-
-.ply {
-  padding-left: 10px;
-  cursor: pointer;
-}
-
 @media screen and (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
@@ -115,4 +104,8 @@ body {
   .setup-box {
     height: auto;
   }
+}
+
+::placeholder {
+  color: #677794;
 }

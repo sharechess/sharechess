@@ -1,6 +1,7 @@
 import { Component, For } from "solid-js";
 import chunk_ from "@arrows/array/chunk_";
 import { Handlers } from "../../types";
+import "./moves.css";
 
 const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   props
@@ -12,21 +13,21 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
           const [white, black] = move as [string, string];
 
           return (
-            <p class="move">
-              {i() + 1}.
+            <div class="move">
+              <span class="move__id">{i() + 1}.</span>
               <span
-                class="ply"
+                class="move__ply"
                 onClick={() => props.handlers.goto(i() * 2 + 1)}
               >
                 {white}
               </span>
               <span
-                class="ply"
+                class="move__ply"
                 onClick={() => props.handlers.goto(i() * 2 + 2)}
               >
                 {black}
               </span>
-            </p>
+            </div>
           );
         }}
       </For>

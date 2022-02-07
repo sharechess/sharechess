@@ -1,0 +1,29 @@
+.moves {
+  background: #13141a;
+  font-size: 1.4rem;
+  font-family: "Fira Mono";
+  text-align: left;
+}
+
+.move {
+  display: inline-block;
+  padding: 3px;
+}
+
+.move__id {
+  display: inline-block;
+  width: 40px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.move__ply {
+  display: inline-block;
+  width: 60px;
+  color: rgb(0, 173, 136);
+}
+
+.move__ply:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
