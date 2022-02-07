@@ -1,5 +1,4 @@
 import { BoardConfig, GameConfig } from "./types";
-import "./style.css";
 import Board from "./board/Board";
 import Game from "./game/Game";
 import styles from "./board/styles-board";
@@ -9,16 +8,19 @@ import createAnimation from "./encoders/createAnimation";
 import WebFont from "webfontloader";
 import Player from "./player/Player";
 import * as Hammer from "hammerjs";
-import Moves from "./ui/Moves";
-import Controls from "./ui/Controls";
+// import Moves from "./ui/Moves";
+// import Controls from "./ui/Controls";
+import { state, setState } from "./state";
 
-const $board = document.querySelector<HTMLImageElement>("#board");
+import { render } from "solid-js/web";
+import App from "./ui/App";
+
 const $moves = document.querySelector<HTMLImageElement>("#moves");
 const $controls = document.querySelector<HTMLImageElement>("#controls");
 
 const boardConfig: BoardConfig = {
   size: 1024,
-  boardStyle: styles.lila,
+  boardStyle: styles.calm,
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,
@@ -57,13 +59,15 @@ const main = async () => {
   // const pgn = pgns[2];
   const board = new Board(boardConfig);
 
-  $board?.appendChild(board.canvas);
-
   // const interval = 1000;
   // play(board, gameConfig, pgn, interval);
 
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
+
+  console.log(game.getMoves());
+
+  setState({ moves: game.getMoves() });
 
   const handlers = {
     prev() {
@@ -101,10 +105,26 @@ const main = async () => {
     togglePlay() {
       player.playing ? player.pause() : player.play();
     },
+    goto(ply: number) {
+      player.pause();
+      player.goto(ply);
+    },
   };
 
-  const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
-  const controls = new Controls($controls as HTMLElement, handlers).load();
+  /**
+   * RENDER
+   **/
+  render(
+    () => <App handlers={handlers} state={state} />,
+    document.getElementById("root") as HTMLElement
+  );
+
+  const $board = document.querySelector<HTMLImageElement>("#board");
+  console.log({ $board });
+  $board?.appendChild(board.canvas);
+
+  // const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
+  // const controls = new Controls($controls as HTMLElement, handlers).load();
 
   await player.load(game);
 
@@ -112,8 +132,8 @@ const main = async () => {
   window.load = async (pgn: string) => {
     const game = new Game().loadPGN(pgn);
     await player.load(game);
-    moves.load(game.getMoves());
-    controls.load();
+    // moves.load(game.getMoves());
+    // controls.load();
   };
 
   document.addEventListener(

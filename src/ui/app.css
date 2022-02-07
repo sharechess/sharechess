@@ -7,6 +7,11 @@
   border: 0;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
 }
 
 body {
@@ -17,12 +22,14 @@ body {
 
 .dark {
   background-color: #191d24;
-  background-image: url(pattern.png);
+  background-image: url(src/ui/img/pattern.png);
+  color: #ddd;
 }
 
 .light {
   background-color: #cfcfcf;
-  background-image: url(pattern-light.png);
+  background-image: url(src/ui/img/pattern-light.png);
+  color: #222;
 }
 
 .board {
@@ -47,27 +54,49 @@ body {
 }
 
 .moves-box {
-  background: rgba(255, 192, 203, 0.5);
+  /* background: rgba(255, 192, 203, 0.1); */
   height: 85vh;
   grid-area: moves;
 }
 
 .board-box {
-  background: rgba(255, 166, 0, 0.5);
+  /* background: rgba(255, 166, 0, 0.1); */
   height: 100vh;
   grid-area: board;
 }
 
 .setup-box {
-  background: rgba(135, 207, 235, 0.5);
+  /* background: rgba(135, 207, 235, 0.1); */
   height: 100vh;
   grid-area: setup;
 }
 
 .controls-box {
-  background: rgba(0, 255, 0, 0.5);
+  /* background: rgba(0, 255, 0, 0.1); */
   height: 15vh;
   grid-area: controls;
+}
+
+.controls__button {
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.moves {
+  padding: 20px;
+}
+
+.move {
+  display: inline-block;
+  width: 50%;
+  min-width: 150px;
+  text-align: left;
+}
+
+.ply {
+  padding-left: 10px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {

@@ -173,4 +173,5 @@ export type Handlers = {
   toggleExtraInfo(): void;
   flip(): void;
   togglePlay(): void;
+  goto(ply: number): void;
 };

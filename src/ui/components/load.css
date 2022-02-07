@@ -1,0 +1,26 @@
+.load {
+  background: black;
+  padding: 20px;
+}
+
+.load__fen-input {
+  width: 100%;
+  padding: 10px;
+  font-family: "Fira Mono";
+  font-size: 1.4rem;
+}
+
+.load__pgn-input {
+  width: 100%;
+  padding: 10px;
+  font-family: "Fira Mono";
+  font-size: 1.4rem;
+}
+
+.load__fen-btn,
+.load__pgn-btn {
+  width: 100%;
+  padding: 10px;
+  font-family: "Fira Mono";
+  font-size: 1.4rem;
+}
