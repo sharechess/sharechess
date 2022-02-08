@@ -1,7 +1,8 @@
 .load {
   background: #0e0e13;
-  /* background: #13141a; */
   padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .load__fen-input,

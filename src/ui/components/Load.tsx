@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import "./load.css";
+import "./Load.css";
 
 const Load: Component = () => {
   return (

@@ -1,8 +1,8 @@
 .moves {
-  background: #0e0e13;
   font-size: 1.4rem;
   font-family: "Fira Mono";
   text-align: left;
+  /* height: 85vh; */
 }
 
 .move {

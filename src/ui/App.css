@@ -19,6 +19,7 @@ body {
   background-repeat: repeat;
   background-position: center;
   text-align: center;
+  font-family: Ubuntu, sans-serif;
 }
 
 .dark {
@@ -49,42 +50,26 @@ body {
 .layout {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+
   grid-template-areas:
     "setup board moves"
     "setup board controls";
-}
 
-.moves-box {
-  /* background: rgba(255, 192, 203, 0.1); */
-  height: 85vh;
-  grid-area: moves;
+  height: 100vh;
 }
 
 .board-box {
   /* background: rgba(255, 166, 0, 0.1); */
   height: 100vh;
   grid-area: board;
+  padding: 20px;
 }
 
 .setup-box {
   /* background: rgba(135, 207, 235, 0.1); */
   height: 100vh;
   grid-area: setup;
-}
-
-.controls-box {
-  /* background: rgba(0, 255, 0, 0.1); */
-  height: 15vh;
-  grid-area: controls;
-}
-
-.controls__button {
-  margin: 5px;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.moves {
   padding: 20px;
 }
 

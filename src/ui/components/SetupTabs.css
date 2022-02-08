@@ -1,10 +1,10 @@
-.game-tabs {
-  margin: 20px;
-  /* height: 100%; */
+.setup {
+  font-size: 1.6rem;
+  /* background: #0e0e13; */
 }
 
-.game-tabs__btn {
-  width: 48%;
+.setup-tabs__btn {
+  width: 32%;
   background: rgb(0, 173, 136);
   color: #0e0e13;
   padding: 10px;
@@ -15,21 +15,21 @@
   cursor: pointer;
 }
 
-.game-tabs__btn:hover {
+.setup-tabs__btn:hover {
   background: rgb(0, 207, 162);
 }
 
-.game-tabs__btn--active {
-  width: 50%;
+.setup-tabs__btn--active {
   background: #0e0e13;
   color: #aaa;
   cursor: default;
 }
 
-.game-tabs__btn--active:hover {
+.setup-tabs__btn--active:hover {
   background: #0e0e13;
 }
 
-.game-tabs__btn:nth-child(1) {
+.setup-tabs__btn:nth-child(1),
+.setup-tabs__btn:nth-child(2) {
   margin-right: 2%;
 }

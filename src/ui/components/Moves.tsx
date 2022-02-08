@@ -1,13 +1,14 @@
 import { Component, For } from "solid-js";
 import chunk_ from "@arrows/array/chunk_";
 import { Handlers } from "../../types";
-import "./moves.css";
+import Scrollable from "./reusable/Scrollable";
+import "./Moves.css";
 
 const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   props
 ) => {
   return (
-    <div class="moves">
+    <Scrollable class="moves">
       <For each={chunk_(2, props.moves as string[])}>
         {(move, i) => {
           const [white, black] = move as [string, string];
@@ -31,7 +32,7 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
           );
         }}
       </For>
-    </div>
+    </Scrollable>
   );
 };
 
