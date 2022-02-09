@@ -13,7 +13,7 @@ import sunset from "./gradient/sunset";
 import rainbow from "./gradient/rainbow";
 import rainbowLight from "./gradient/rainbow-light";
 
-import kittens from "./pic/kittens";
+// import kittens from "./pic/kittens";
 
 export default {
   chesscom,
@@ -28,5 +28,5 @@ export default {
   sunset,
   rainbow,
   rainbowLight,
-  kittens,
+  // kittens,
 };

@@ -11,6 +11,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
+  width: 100%;
 }
 
 .scrollable__content::-webkit-scrollbar {

@@ -17,6 +17,7 @@ import App from "./ui/App";
 
 const boardConfig: BoardConfig = {
   size: 1024,
+  tiles: 8,
   boardStyle: styles.calm,
   piecesStyle: "tatiana",
   showBorder: true,
@@ -36,7 +37,7 @@ const gameConfig: GameConfig = {
 };
 
 const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
-  const file = await createAnimation(pgn, { ...boardConfig, size: 720 }, "GIF");
+  const file = await createAnimation(pgn, { ...boardConfig, size: 720 }, "MP4");
   const link = document.createElement("a");
   link.innerText = "DOWNLOAD";
   link.setAttribute("href", URL.createObjectURL(file));

@@ -66,13 +66,6 @@ body {
   padding: 20px;
 }
 
-.setup-box {
-  /* background: rgba(135, 207, 235, 0.1); */
-  height: 100vh;
-  grid-area: setup;
-  padding: 20px;
-}
-
 @media screen and (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;

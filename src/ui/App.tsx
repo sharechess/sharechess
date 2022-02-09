@@ -4,7 +4,6 @@ import type { DeepReadonly } from "solid-js/store";
 import { Handlers } from "../types";
 import { State } from "../state";
 
-import Controls from "./components/Controls";
 import GameTabs from "./components/GameTabs";
 import SetupTabs from "./components/SetupTabs";
 

@@ -10,6 +10,7 @@ import boards from "./styles-board";
 
 const defaultConfig: BoardConfig = {
   size: 720,
+  tiles: 8,
   boardStyle: boards.avocado,
   piecesStyle: "gioco",
   showBorder: true,
@@ -77,6 +78,7 @@ class Board {
 
     this.cfg = cfg;
 
+    this.tiles = cfg.tiles;
     this.extraInfo = cfg.showExtraInfo;
     this.piecesStyle = cfg.piecesStyle;
     this.showMaterial = cfg.showMaterial;

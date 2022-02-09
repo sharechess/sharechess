@@ -50,9 +50,17 @@ export type MoveIndicator =
   | { type: "hueShift"; data: number }
   | { type: "color"; data: string };
 
+export type StyleCategory =
+  | "mono"
+  | "colorful"
+  | "gradient"
+  | "material"
+  | "pic"
+  | "custom";
+
 export type Style = {
   name: string;
-  category: "mono" | "colorful" | "gradient" | "material" | "pic" | "custom";
+  category: StyleCategory;
   background: SquareStyle;
   light: SquareStyle;
   dark: SquareStyle;
@@ -97,6 +105,7 @@ export type PiecesStyle =
 
 export type BoardConfig = {
   size: number;
+  tiles: number;
   boardStyle: Style;
   piecesStyle: PiecesStyle;
   showBorder: boolean;
