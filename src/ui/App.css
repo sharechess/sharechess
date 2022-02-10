@@ -22,6 +22,46 @@ body {
   font-family: Ubuntu, sans-serif;
 }
 
+button {
+  padding: 10px;
+  font-family: "Ubuntu";
+  font-size: 1.5rem;
+  background: rgb(0, 173, 136);
+  color: #0e0e13;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button:hover {
+  background: rgb(0, 207, 162);
+  cursor: pointer;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-family: "Fira Mono";
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  background: #20242a;
+  border: solid 1px #2d323a;
+  color: #acbddb;
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgb(0, 87, 68);
+}
+
+h2 {
+  color: #aaa;
+  text-align: left;
+  font-size: 1.8rem;
+  margin: 30px 0 10px 0;
+}
+
 .dark {
   background-color: #191d24;
   /* background-image: url(src/ui/img/pattern.png); */
@@ -35,12 +75,6 @@ body {
 }
 
 .board {
-  /* width: 600px;
-  height: 600px;
-  width: 800px;
-  height: 800px; */
-  /* width: 1024px;
-  height: 1024px; */
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   max-width: 100%;
@@ -69,6 +103,10 @@ body {
 @media screen and (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "board"
+      "moves"
+      "setup";
   }
 
   .moves-box {

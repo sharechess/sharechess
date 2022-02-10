@@ -195,8 +195,6 @@ class Board {
     canvas.width = this.size;
     canvas.height = this.size + this.margin * 2;
 
-    console.log({ style: this.style });
-
     const { background, dark, light, border, coords } = this.style;
 
     await drawRectangle(ctx, this.width, this.height, 0, 0, border);

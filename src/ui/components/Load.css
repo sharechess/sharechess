@@ -5,24 +5,6 @@
   border-bottom-right-radius: 5px;
 }
 
-.load__fen-input,
-.load__pgn-input {
-  width: 100%;
-  padding: 10px;
-  font-family: "Fira Mono";
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  background: #20242a;
-  border: solid 1px #2d323a;
-  color: #acbddb;
-  outline: none;
-}
-
-.load__fen-input:focus,
-.load__pgn-input:focus {
-  border-color: rgb(0, 87, 68);
-}
-
 .load__pgn-input {
   height: 30vh;
   margin-top: 20px;
@@ -31,14 +13,4 @@
 .load__fen-btn,
 .load__pgn-btn {
   width: 100%;
-  padding: 10px;
-  font-family: "Ubuntu";
-  font-size: 1.5rem;
-  background: rgb(0, 173, 136);
-}
-
-.load__fen-btn:hover,
-.load__pgn-btn:hover {
-  background: rgb(0, 207, 162);
-  cursor: pointer;
 }

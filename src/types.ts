@@ -136,6 +136,8 @@ export type GameConfig = {
   fromPly: number | null;
   toPly: number | null;
   loop: boolean;
+  format: "GIF" | "MP4" | "WebM";
+  size: "XS" | "S" | "M" | "L" | "XL";
 };
 
 export type MaterialCount = {

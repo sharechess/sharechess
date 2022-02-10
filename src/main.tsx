@@ -62,8 +62,6 @@ const main = async () => {
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
 
-  console.log(game.getMoves());
-
   setState({ moves: game.getMoves() });
 
   const handlers = {
@@ -117,7 +115,6 @@ const main = async () => {
   );
 
   const $board = document.querySelector<HTMLImageElement>("#board");
-  console.log({ $board });
   $board?.appendChild(board.canvas);
 
   // const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());

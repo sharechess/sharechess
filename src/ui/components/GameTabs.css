@@ -13,19 +13,9 @@
 
 .game-tabs__btn {
   width: 48%;
-  background: rgb(0, 173, 136);
-  color: #0e0e13;
-  padding: 10px;
-  font-family: Ubuntu;
-  font-size: 1.5rem;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  cursor: pointer;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   height: 38px;
-}
-
-.game-tabs__btn:hover {
-  background: rgb(0, 207, 162);
 }
 
 .game-tabs__btn--active {

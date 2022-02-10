@@ -1,0 +1,42 @@
+.share__format,
+.share__size {
+  padding: 10px;
+  border-radius: 0;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.share__format {
+  width: 33.33%;
+}
+
+.share__size {
+  width: 20%;
+}
+
+.share__format--first,
+.share__size--first {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.share__format--last,
+.share__size--last {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.share__format--active,
+.share__size--active {
+  opacity: 1;
+}
+
+.share__format--active:hover,
+.share__size--active:hover {
+  background: rgb(0, 173, 136);
+  cursor: default;
+}
+
+.share__btn {
+  margin-bottom: 10px;
+}
