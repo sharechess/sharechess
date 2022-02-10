@@ -1,7 +1,6 @@
 import { BoardConfig, GameConfig } from "./types";
 import Board from "./board/Board";
 import Game from "./game/Game";
-import styles from "./board/styles-board";
 import pgns from "./test-data/pgns";
 import createAnimation from "./encoders/createAnimation";
 // import { decompressPGN } from "./game/PGNHelpers";
@@ -18,7 +17,7 @@ import App from "./ui/App";
 const boardConfig: BoardConfig = {
   size: 1024,
   tiles: 8,
-  boardStyle: styles.calm,
+  boardStyle: "calm",
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,

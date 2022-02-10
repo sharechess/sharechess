@@ -1,11 +1,10 @@
 import { createStore } from "solid-js/store";
-
 import { BoardConfig, GameConfig } from "./types";
-import styles from "./board/styles-board";
 
 const boardConfig: BoardConfig = {
   size: 1024,
-  boardStyle: styles.calm,
+  tiles: 8,
+  boardStyle: "calm",
   piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,

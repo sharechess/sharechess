@@ -1,2 +1,16 @@
 .pieces {
+  text-align: center;
+}
+
+.pieces__ico {
+  border: solid 5px black;
+  margin: 5px;
+  cursor: pointer;
+  width: 82px;
+  background-color: #ffffff22;
+}
+
+.pieces__ico--active {
+  border-color: white;
+  cursor: default;
 }

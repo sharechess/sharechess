@@ -92,6 +92,20 @@ export type Piece =
   | "nb"
   | "pb";
 
+export type BoardStyle =
+  | "chesscom"
+  | "lichess"
+  | "lila"
+  | "peach"
+  | "standard"
+  | "violet"
+  | "avocado"
+  | "calm"
+  | "laguna"
+  | "sunset"
+  | "rainbow"
+  | "rainbowLight";
+
 export type PiecesStyle =
   | "alpha"
   | "cardinal"
@@ -106,7 +120,7 @@ export type PiecesStyle =
 export type BoardConfig = {
   size: number;
   tiles: number;
-  boardStyle: Style;
+  boardStyle: BoardStyle;
   piecesStyle: PiecesStyle;
   showBorder: boolean;
   showExtraInfo: boolean;

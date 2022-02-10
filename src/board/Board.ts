@@ -1,5 +1,5 @@
 import { BoardConfig, PiecesStyle, Position } from "./../types";
-import { Style } from "../types";
+import { Style, BoardStyle } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
@@ -11,7 +11,7 @@ import boards from "./styles-board";
 const defaultConfig: BoardConfig = {
   size: 720,
   tiles: 8,
-  boardStyle: boards.avocado,
+  boardStyle: "avocado",
   piecesStyle: "gioco",
   showBorder: true,
   showExtraInfo: true,
@@ -135,8 +135,8 @@ class Board {
     return this.size;
   }
 
-  setStyle(style: Style) {
-    this.style = style;
+  setStyle(style: BoardStyle) {
+    this.style = boards[style];
     return this;
   }
 
@@ -194,6 +194,8 @@ class Board {
 
     canvas.width = this.size;
     canvas.height = this.size + this.margin * 2;
+
+    console.log({ style: this.style });
 
     const { background, dark, light, border, coords } = this.style;
 

@@ -1,11 +1,13 @@
 import { Component, For, createSignal } from "solid-js";
-import { Handlers, StyleCategory } from "../../types";
+import { Handlers, StyleCategory, BoardStyle, Style } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
 import styles from "../../board/styles-board";
 import Board from "../../board/Board";
+import { state, setState } from "../../state";
 
 type BoardPreview = {
+  key: keyof typeof styles;
   name: string;
   category: StyleCategory;
   img: string;
@@ -21,21 +23,22 @@ const prepareBoards = async () => {
     showExtraInfo: false,
   });
 
-  for (const style of Object.values(styles)) {
-    await board.updateConfig({ boardStyle: style });
+  for (const [key, style] of Object.entries(styles) as [BoardStyle, Style][]) {
+    await board.updateConfig({ boardStyle: key });
     await board.frame(null, {});
     board.render();
     boards.push({
+      key,
       name: style.name,
       category: style.category,
       img: board.toImgUrl(),
-    });
+    } as BoardPreview);
   }
 
   return boards;
 };
 
-const Boards: Component<{ handlers: Handlers }> = (props) => {
+const Boards: Component<{ handlers: Handlers }> = () => {
   const [boards, setBoards] = createSignal<BoardPreview[]>([]);
 
   prepareBoards().then((data) => setBoards(data));
@@ -44,7 +47,20 @@ const Boards: Component<{ handlers: Handlers }> = (props) => {
     <Scrollable class="boards">
       <For each={boards()}>
         {(board) => {
-          return <img src={board.img} title={board.name} />;
+          return (
+            <img
+              class={
+                "boards__ico" +
+                (state.board.boardStyle === board.key
+                  ? " boards__ico--active"
+                  : "")
+              }
+              onClick={() => setState("board", "boardStyle", board.key)}
+              src={board.img}
+              title={board.name}
+              draggable={false}
+            />
+          );
         }}
       </For>
     </Scrollable>

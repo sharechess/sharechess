@@ -5,7 +5,9 @@ import Share from "./Share";
 import Boards from "./Boards";
 import Pieces from "./Pieces";
 
-const SetupTabs: Component<{ handlers: Handlers }> = (props) => {
+const SetupTabs: Component<{
+  handlers: Handlers;
+}> = (props) => {
   const [tab, setTab] = createSignal("share");
 
   return (

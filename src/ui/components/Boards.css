@@ -1,3 +1,14 @@
 .boards {
-  text-align: left;
+  text-align: center;
+}
+
+.boards__ico {
+  border: solid 5px black;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.boards__ico--active {
+  border-color: white;
+  cursor: default;
 }
