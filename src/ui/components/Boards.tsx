@@ -38,7 +38,7 @@ const prepareBoards = async () => {
   return boards;
 };
 
-const Boards: Component<{ handlers: Handlers }> = () => {
+const Boards: Component<{ handlers: Handlers }> = (props) => {
   const [boards, setBoards] = createSignal<BoardPreview[]>([]);
 
   prepareBoards().then((data) => setBoards(data));
@@ -55,7 +55,10 @@ const Boards: Component<{ handlers: Handlers }> = () => {
                   ? " boards__ico--active"
                   : "")
               }
-              onClick={() => setState("board", "boardStyle", board.key)}
+              onClick={() => {
+                setState("board", "boardStyle", board.key);
+                props.handlers.changeBoardStyle(board.key);
+              }}
               src={board.img}
               title={board.name}
               draggable={false}

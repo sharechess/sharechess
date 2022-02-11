@@ -1,4 +1,4 @@
-import { BoardConfig, GameConfig } from "./types";
+import { BoardConfig, BoardStyle, GameConfig, PiecesStyle } from "./types";
 import Board from "./board/Board";
 import Game from "./game/Game";
 import pgns from "./test-data/pgns";
@@ -33,6 +33,8 @@ const gameConfig: GameConfig = {
   fromPly: null,
   toPly: null,
   loop: true,
+  format: "GIF",
+  size: "M",
 };
 
 const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
@@ -104,6 +106,12 @@ const main = async () => {
       player.pause();
       player.goto(ply);
     },
+    changeBoardStyle(style: BoardStyle) {
+      board.updateConfig({ boardStyle: style });
+    },
+    changePiecesStyle(style: PiecesStyle) {
+      board.updateConfig({ piecesStyle: style });
+    },
   };
 
   /**
@@ -129,6 +137,9 @@ const main = async () => {
     // moves.load(game.getMoves());
     // controls.load();
   };
+
+  // @ts-ignore
+  window.board = board;
 
   document.addEventListener(
     "contextmenu",

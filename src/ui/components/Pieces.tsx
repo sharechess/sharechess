@@ -10,7 +10,7 @@ const pieces = Object.entries(piecesSets).map(([key, data]) => ({
   img: data.nw,
 })) as { key: PiecesStyle; img: string }[];
 
-const Pieces: Component<{ handlers: Handlers }> = () => {
+const Pieces: Component<{ handlers: Handlers }> = (props) => {
   return (
     <Scrollable class="pieces">
       {
@@ -23,7 +23,10 @@ const Pieces: Component<{ handlers: Handlers }> = () => {
                   ? " pieces__ico--active"
                   : "")
               }
-              onClick={() => setState("board", "piecesStyle", item.key)}
+              onClick={() => {
+                setState("board", "piecesStyle", item.key);
+                props.handlers.changePiecesStyle(item.key);
+              }}
               src={item.img}
               title={item.key}
               draggable={false}

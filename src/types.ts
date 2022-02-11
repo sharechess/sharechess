@@ -199,4 +199,6 @@ export type Handlers = {
   flip(): void;
   togglePlay(): void;
   goto(ply: number): void;
+  changeBoardStyle: (style: BoardStyle) => void;
+  changePiecesStyle: (style: PiecesStyle) => void;
 };
