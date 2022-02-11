@@ -27,12 +27,16 @@ const gameConfig: GameConfig = {
 export type State = {
   board: BoardConfig;
   game: GameConfig;
+  pgn: string | null;
+  fen: string | null;
   moves: string[];
 };
 
 const initialState: State = {
   board: boardConfig,
   game: gameConfig,
+  pgn: null,
+  fen: null,
   moves: [],
 };
 

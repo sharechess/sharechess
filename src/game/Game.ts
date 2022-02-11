@@ -70,7 +70,21 @@ class Game {
 
   loadFEN(fen: string) {
     this.game = new Chess(fen);
-    this.positions = [];
+    this.positions = [
+      {
+        ply: 0,
+        move: null,
+        end: 0,
+        fen,
+        check: false,
+        mate: false,
+        turn: this.game.turn(),
+        material: this.materialInfo(this.game.board()),
+        placement: this.getPlacement(this.game.fen()),
+        last: true,
+      },
+    ];
+    return this;
   }
 
   private getPlacement(fen: string) {

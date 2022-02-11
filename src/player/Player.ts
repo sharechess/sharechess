@@ -27,9 +27,9 @@ class Player {
     await this.firstRender;
 
     this.game = game;
-    this.ply = -1;
+    this.ply = 0;
 
-    await this.board.titleFrame(this.game.header);
+    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
     this.board.render();
   }
 
@@ -53,7 +53,7 @@ class Player {
   async prev() {
     const ply = this.ply - 1;
 
-    if (ply < -1) {
+    if (ply < -1 || (ply < 0 && this.config.titleScreen === false)) {
       return;
     }
 

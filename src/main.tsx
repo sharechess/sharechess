@@ -112,7 +112,20 @@ const main = async () => {
     changePiecesStyle(style: PiecesStyle) {
       board.setPiecesStyle(style);
     },
+    async loadPGN(pgn: string) {
+      const game = new Game().loadPGN(pgn);
+      setState({ pgn, fen: null, moves: game.getMoves() });
+      await player.load(game);
+    },
+    async loadFEN(fen: string) {
+      const game = new Game().loadFEN(fen);
+      setState({ pgn: null, fen, moves: game.getMoves() });
+      await player.load(game);
+    },
   };
+
+  // @ts-ignore
+  window.handlers = handlers;
 
   /**
    * RENDER
