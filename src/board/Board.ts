@@ -11,8 +11,8 @@ import boards from "./styles-board";
 const defaultConfig: BoardConfig = {
   size: 720,
   tiles: 8,
-  boardStyle: "avocado",
-  piecesStyle: "gioco",
+  boardStyle: "standard",
+  piecesStyle: "tatiana",
   showBorder: true,
   showExtraInfo: true,
   showMaterial: true,
@@ -26,7 +26,6 @@ class Board {
   private cfg: BoardConfig = defaultConfig;
 
   private scale: number = 1;
-  private tiles: number = 8;
 
   private size: number = 0;
   private squareSize: number = 0;
@@ -35,21 +34,10 @@ class Board {
   private margin: number = 0;
 
   private style: Style = boards.standard;
-  private flipped: boolean = false;
   private header: { [key: string]: string | undefined } = {};
-  // private boardData: BoardData | null = null;
   private borderVisible: boolean = true;
   private lastPosition: Position | null = null;
-  // private lastMaterial: Material | undefined = undefined;
   private background: HTMLCanvasElement | null = null;
-  private extraInfo: boolean = true;
-  private piecesStyle: PiecesStyle = "tatiana";
-  // @ts-ignore
-  private showMaterial: boolean = true;
-  private showMoveIndicator: boolean = true;
-  private showCoords: boolean = true;
-  // @ts-ignore
-  private showChecks: boolean = true;
   private currentScreen: "title" | "move" = "move";
 
   private ctx: CanvasRenderingContext2D;
@@ -78,16 +66,6 @@ class Board {
 
     this.cfg = cfg;
 
-    this.tiles = cfg.tiles;
-    this.extraInfo = cfg.showExtraInfo;
-    this.piecesStyle = cfg.piecesStyle;
-    this.showMaterial = cfg.showMaterial;
-    this.showMoveIndicator = cfg.showMoveIndicator;
-    this.showCoords = cfg.showCoords;
-    this.showChecks = cfg.showChecks;
-    this.flipped = cfg.flipped;
-    this.borderVisible = cfg.showBorder;
-
     this.setSize(cfg.size);
     this.setStyle(cfg.boardStyle);
 
@@ -111,7 +89,7 @@ class Board {
   setSize(size: number) {
     this.size = size;
     this.scale = size / 720;
-    this.margin = this.extraInfo ? Math.round(50 * this.scale) : 0;
+    this.margin = this.cfg.showExtraInfo ? Math.round(50 * this.scale) : 0;
 
     const height = size + this.margin * 2;
 
@@ -124,8 +102,8 @@ class Board {
 
     const tempBorderWidth = this.borderVisible ? this.size / 32 : 0;
     const tempInnerSize = this.size - tempBorderWidth * 2;
-    this.squareSize = Math.floor(tempInnerSize / this.tiles);
-    this.innerSize = this.squareSize * this.tiles;
+    this.squareSize = Math.floor(tempInnerSize / this.cfg.tiles);
+    this.innerSize = this.squareSize * this.cfg.tiles;
     this.borderWidth = (this.size - this.innerSize) / 2;
 
     return this;
@@ -137,11 +115,18 @@ class Board {
 
   setStyle(style: BoardStyle) {
     this.style = boards[style];
+    this.refresh();
+    return this;
+  }
+
+  setPiecesStyle(style: PiecesStyle) {
+    this.cfg.piecesStyle = style;
+    this.refresh();
     return this;
   }
 
   flip() {
-    this.flipped = !this.flipped;
+    this.cfg.flipped = !this.cfg.flipped;
     this.refresh();
     return this;
   }
@@ -168,7 +153,7 @@ class Board {
   }
 
   toggleExtraInfo() {
-    this.extraInfo = !this.extraInfo;
+    this.cfg.showExtraInfo = !this.cfg.showExtraInfo;
     this.setSize(this.size);
     this.refresh();
     return this;
@@ -208,8 +193,8 @@ class Board {
       background
     );
 
-    for (let rank = 0; rank < this.tiles; rank++) {
-      for (let file = 0; file < this.tiles; file++) {
+    for (let rank = 0; rank < this.cfg.tiles; rank++) {
+      for (let file = 0; file < this.cfg.tiles; file++) {
         const style =
           (file % 2 === 0 && rank % 2 === 0) ||
           (file % 2 !== 0 && rank % 2 !== 0)
@@ -223,13 +208,13 @@ class Board {
       }
     }
 
-    if (this.borderVisible && this.showCoords) {
+    if (this.borderVisible && this.cfg.showCoords) {
       drawCoords(
         ctx,
         coords,
         this.squareSize,
-        this.tiles,
-        this.flipped,
+        this.cfg.tiles,
+        this.cfg.flipped,
         this.borderWidth,
         this.size,
         this.borderVisible,
@@ -256,26 +241,26 @@ class Board {
 
     this.tempCtx.drawImage((await this.background) as HTMLCanvasElement, 0, 0);
 
-    if (this.lastPosition?.move && this.showMoveIndicator) {
+    if (this.lastPosition?.move && this.cfg.showMoveIndicator) {
       await drawMoveIndicators(
         this.tempCtx,
         this.lastPosition.move,
         this.squareSize,
         this.style,
         this.borderWidth,
-        this.tiles,
-        this.flipped,
+        this.cfg.tiles,
+        this.cfg.flipped,
         this.margin
       );
     }
 
-    if (!this.borderVisible && this.showCoords) {
+    if (!this.borderVisible && this.cfg.showCoords) {
       drawCoords(
         this.tempCtx,
         this.style.coords,
         this.squareSize,
-        this.tiles,
-        this.flipped,
+        this.cfg.tiles,
+        this.cfg.flipped,
         this.borderWidth,
         this.size,
         this.borderVisible,
@@ -292,12 +277,12 @@ class Board {
       this.lastPosition,
       this.squareSize,
       this.borderWidth,
-      this.flipped,
+      this.cfg.flipped,
       this.margin,
-      this.piecesStyle
+      this.cfg.piecesStyle
     );
 
-    if (this.extraInfo && header) {
+    if (this.cfg.showExtraInfo && header) {
       await drawExtraInfo(
         this.tempCtx,
         this.width,
@@ -306,7 +291,7 @@ class Board {
         this.margin,
         this.style,
         this.header,
-        this.flipped,
+        this.cfg.flipped,
         this.lastPosition
       );
     }

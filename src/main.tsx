@@ -107,10 +107,10 @@ const main = async () => {
       player.goto(ply);
     },
     changeBoardStyle(style: BoardStyle) {
-      board.updateConfig({ boardStyle: style });
+      board.setStyle(style);
     },
     changePiecesStyle(style: PiecesStyle) {
-      board.updateConfig({ piecesStyle: style });
+      board.setPiecesStyle(style);
     },
   };
 
