@@ -137,7 +137,8 @@ export type GameConfig = {
   toPly: number | null;
   loop: boolean;
   format: "GIF" | "MP4" | "WebM";
-  size: "XS" | "S" | "M" | "L" | "XL";
+  picSize: "XS" | "S" | "M" | "L" | "XL";
+  animationSize: "XS" | "S" | "M" | "L" | "XL";
 };
 
 export type MaterialCount = {
@@ -203,4 +204,5 @@ export type Handlers = {
   changePiecesStyle: (style: PiecesStyle) => void;
   loadPGN: (pgn: string) => Promise<void>;
   loadFEN: (fen: string) => Promise<void>;
+  downloadImage: () => void;
 };

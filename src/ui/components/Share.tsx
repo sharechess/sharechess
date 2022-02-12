@@ -1,14 +1,21 @@
-import { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import { state, setState } from "../../state";
 import "./Share.css";
 
 const Share: Component<{ handlers: Handlers }> = (props) => {
+  const [copyId, setCopyId] = createSignal("");
+
+  const blinkCopy = (id: string) => {
+    setCopyId(id);
+    setTimeout(() => setCopyId(""), 1000);
+  };
+
   return (
     <Scrollable class="share">
       <div className="share__view">
-        <h2>Board options</h2>
+        <h2 class="header--first">Board options</h2>
         <button
           class="controls__button controls__button--first"
           onClick={props.handlers.flip}
@@ -56,10 +63,80 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
         />
 
         <div class="double">
-          <button class="share__btn share__btn--left">Copy FEN</button>
-          <button class="share__btn share__btn--right">Copy link</button>
+          <button
+            class="share__btn share__btn--left"
+            onClick={() => {
+              navigator.clipboard.writeText(state.fen);
+              blinkCopy("fen");
+            }}
+          >
+            {copyId() === "fen" ? "Copied!" : "Copy FEN"}
+          </button>
+          <button
+            class="share__btn share__btn--right"
+            onClick={() => {
+              const link = `${location.origin}/#v1/fen/${encodeURI(state.fen)}`;
+              navigator.clipboard.writeText(link);
+              blinkCopy("fen-link");
+            }}
+          >
+            {copyId() === "fen-link" ? "Copied!" : "Copy link"}
+          </button>
         </div>
-        <button class="share__btn">Save as image</button>
+        <h3>Image</h3>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--first": true,
+            "share__size--active": state.game.animationSize === "XS",
+          }}
+          onClick={() => setState("game", "animationSize", "XS")}
+        >
+          XS
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.game.animationSize === "S",
+          }}
+          onClick={() => setState("game", "animationSize", "S")}
+        >
+          S
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.game.animationSize === "M",
+          }}
+          onClick={() => setState("game", "animationSize", "M")}
+        >
+          M
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.game.animationSize === "L",
+          }}
+          onClick={() => setState("game", "animationSize", "L")}
+        >
+          L
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--last": true,
+            "share__size--active": state.game.animationSize === "XL",
+          }}
+          onClick={() => setState("game", "animationSize", "XL")}
+        >
+          XL
+        </button>
+        <button
+          class="share__btn"
+          onClick={() => props.handlers.downloadImage()}
+        >
+          Save as image
+        </button>
       </div>
       <div class="share__pgn">
         <h2>Game</h2>
@@ -73,41 +150,41 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
         </div>
       </div>
       <div class="share__animation">
-        <h2>Animation</h2>
+        <h3>Animation</h3>
         <button
           classList={{
             share__size: true,
             "share__size--first": true,
-            "share__size--active": state.game.size === "XS",
+            "share__size--active": state.game.picSize === "XS",
           }}
-          onClick={() => setState("game", "size", "XS")}
+          onClick={() => setState("game", "picSize", "XS")}
         >
           XS
         </button>
         <button
           classList={{
             share__size: true,
-            "share__size--active": state.game.size === "S",
+            "share__size--active": state.game.picSize === "S",
           }}
-          onClick={() => setState("game", "size", "S")}
+          onClick={() => setState("game", "picSize", "S")}
         >
           S
         </button>
         <button
           classList={{
             share__size: true,
-            "share__size--active": state.game.size === "M",
+            "share__size--active": state.game.picSize === "M",
           }}
-          onClick={() => setState("game", "size", "M")}
+          onClick={() => setState("game", "picSize", "M")}
         >
           M
         </button>
         <button
           classList={{
             share__size: true,
-            "share__size--active": state.game.size === "L",
+            "share__size--active": state.game.picSize === "L",
           }}
-          onClick={() => setState("game", "size", "L")}
+          onClick={() => setState("game", "picSize", "L")}
         >
           L
         </button>
@@ -115,9 +192,9 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           classList={{
             share__size: true,
             "share__size--last": true,
-            "share__size--active": state.game.size === "XL",
+            "share__size--active": state.game.picSize === "XL",
           }}
-          onClick={() => setState("game", "size", "XL")}
+          onClick={() => setState("game", "picSize", "XL")}
         >
           XL
         </button>
@@ -152,7 +229,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           WebM
         </button>
 
-        <button class="share__create-animation">GENERATE</button>
+        <button class="share__create-animation">Save animation</button>
       </div>
     </Scrollable>
   );

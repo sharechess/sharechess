@@ -13,6 +13,8 @@ import { state, setState } from "./state";
 
 import { render } from "solid-js/web";
 import App from "./ui/App";
+import download from "./utils/download";
+import createImage from "./encoders/createImage";
 
 const boardConfig: BoardConfig = {
   size: 1024,
@@ -34,7 +36,8 @@ const gameConfig: GameConfig = {
   toPly: null,
   loop: true,
   format: "GIF",
-  size: "M",
+  picSize: "M",
+  animationSize: "M",
 };
 
 const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
@@ -114,13 +117,17 @@ const main = async () => {
     },
     async loadPGN(pgn: string) {
       const game = new Game().loadPGN(pgn);
-      setState({ pgn, fen: null, moves: game.getMoves() });
+      setState({ pgn, fen: "", moves: game.getMoves() });
       await player.load(game);
     },
     async loadFEN(fen: string) {
       const game = new Game().loadFEN(fen);
       setState({ pgn: null, fen, moves: game.getMoves() });
       await player.load(game);
+    },
+    async downloadImage() {
+      const data = await createImage(state.fen, state.board, 1024);
+      download(data, "fen", "png");
     },
   };
 

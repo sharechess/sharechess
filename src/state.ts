@@ -21,7 +21,8 @@ const gameConfig: GameConfig = {
   toPly: null,
   loop: true,
   format: "GIF",
-  size: "M",
+  picSize: "M",
+  animationSize: "M",
 };
 
 export type State = {
