@@ -8,7 +8,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
   return (
     <Scrollable class="share">
       <div className="share__view">
-        <h2>View options</h2>
+        <h2>Board options</h2>
         <button
           class="controls__button controls__button--first"
           onClick={props.handlers.flip}
@@ -28,7 +28,6 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           onClick={props.handlers.toggleExtraInfo}
           title="EXTRA INFO"
         >
-          {/* <i class="las la-info"></i> */}
           <i class="las la-info-circle"></i>
         </button>
         <button
@@ -53,6 +52,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           name="current_fen"
           readOnly
           placeholder="Current FEN..."
+          value={state.fen}
         />
 
         <div class="double">

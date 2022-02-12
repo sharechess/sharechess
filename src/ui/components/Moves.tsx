@@ -3,6 +3,7 @@ import chunk_ from "@arrows/array/chunk_";
 import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Moves.css";
+import { state } from "../../state";
 
 const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   props
@@ -17,13 +18,19 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
             <div class="move">
               <span class="move__id">{i() + 1}.</span>
               <span
-                class="move__ply"
+                classList={{
+                  move__ply: true,
+                  "move__ply--current": state.ply === i() * 2 + 1,
+                }}
                 onClick={() => props.handlers.goto(i() * 2 + 1)}
               >
                 {white}
               </span>
               <span
-                class="move__ply"
+                classList={{
+                  move__ply: true,
+                  "move__ply--current": state.ply === i() * 2 + 2,
+                }}
                 onClick={() => props.handlers.goto(i() * 2 + 2)}
               >
                 {black}

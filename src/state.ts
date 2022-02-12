@@ -28,16 +28,18 @@ export type State = {
   board: BoardConfig;
   game: GameConfig;
   pgn: string | null;
-  fen: string | null;
+  fen: string;
   moves: string[];
+  ply: number;
 };
 
 const initialState: State = {
   board: boardConfig,
   game: gameConfig,
   pgn: null,
-  fen: null,
+  fen: "",
   moves: [],
+  ply: 0,
 };
 
 const [state, setState] = createStore(initialState);

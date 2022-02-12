@@ -23,6 +23,11 @@
   color: rgb(0, 173, 136);
 }
 
+.move__ply--current {
+  color: #aaa;
+  background-color: #ffffff22;
+}
+
 .move__ply:hover {
   text-decoration: underline;
   cursor: pointer;

@@ -1,6 +1,7 @@
 import { GameConfig } from "../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
+import { setState } from "../state";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -22,6 +23,14 @@ class Player {
     this.config = { ...this.config, ...config };
   }
 
+  getPosition() {
+    const position = this.game.getPosition(this.ply);
+    setState({ ply: position.ply });
+    setState({ fen: position.fen });
+
+    return position;
+  }
+
   async load(game: Game) {
     this.pause();
     await this.firstRender;
@@ -29,7 +38,7 @@ class Player {
     this.game = game;
     this.ply = 0;
 
-    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 
@@ -65,7 +74,7 @@ class Player {
       return;
     }
 
-    await this.board.frame(this.game.getPosition(ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 
@@ -78,28 +87,28 @@ class Player {
 
     this.ply = ply;
 
-    await this.board.frame(this.game.getPosition(ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 
   async first() {
     this.ply = 0;
 
-    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 
   async last() {
     this.ply = this.game.length - 1;
 
-    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 
   async goto(ply: number) {
     this.ply = ply;
 
-    await this.board.frame(this.game.getPosition(this.ply), this.game.header);
+    await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
   }
 }
