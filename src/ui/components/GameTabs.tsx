@@ -38,7 +38,7 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
           <Controls handlers={props.handlers} />
         </Match>
         <Match when={tab() === "load"}>
-          <Load />
+          <Load handlers={props.handlers} showMoves={() => setTab("moves")} />
         </Match>
       </Switch>
     </div>

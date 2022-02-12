@@ -3,6 +3,7 @@
   height: 100vh;
   grid-area: setup;
   padding: 20px;
+  min-width: 360px;
 }
 
 .setup {

@@ -8,8 +8,9 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
   return (
     <Scrollable class="share">
       <div className="share__view">
+        <h2>View options</h2>
         <button
-          class="controls__button"
+          class="controls__button controls__button--first"
           onClick={props.handlers.flip}
           title="FLIP"
         >
@@ -27,7 +28,8 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           onClick={props.handlers.toggleExtraInfo}
           title="EXTRA INFO"
         >
-          <i class="las la-info"></i>
+          {/* <i class="las la-info"></i> */}
+          <i class="las la-info-circle"></i>
         </button>
         <button
           class="controls__button"
@@ -35,6 +37,13 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           title="INCLUDE HEADER"
         >
           <i class="las la-heading"></i>
+        </button>
+        <button
+          class="controls__button controls__button--last"
+          onClick={props.handlers.toggleExtraInfo}
+          title="ANONYMOUS"
+        >
+          <i class="las la-user-secret"></i>
         </button>
       </div>
       <div className="share__fen">
@@ -46,15 +55,22 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           placeholder="Current FEN..."
         />
 
-        <button class="share__btn">Copy FEN</button>
+        <div class="double">
+          <button class="share__btn share__btn--left">Copy FEN</button>
+          <button class="share__btn share__btn--right">Copy link</button>
+        </div>
         <button class="share__btn">Save as image</button>
-        <button class="share__btn">Copy link</button>
       </div>
       <div class="share__pgn">
         <h2>Game</h2>
-        <button class="share__btn">Copy PGN</button>
-        <button class="share__btn">Export PGN</button>
-        <button class="share__btn">Copy link</button>
+        <div class="double">
+          <button class="share__btn">Copy PGN</button>
+          <button class="share__btn">Copy link</button>
+        </div>
+        <div class="double">
+          <button class="share__btn">Export PGN</button>
+          <button class="share__btn">Copy markdown</button>
+        </div>
       </div>
       <div class="share__animation">
         <h2>Animation</h2>

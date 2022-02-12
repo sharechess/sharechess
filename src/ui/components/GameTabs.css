@@ -1,7 +1,7 @@
 .game-box {
   grid-area: moves;
   padding: 20px;
-  min-width: 325px;
+  min-width: 360px;
   height: 100vh;
 }
 

@@ -27,10 +27,10 @@
   cursor: pointer;
 }
 
-.controls__button:nth-child(5) {
+.controls__button--last {
   margin-right: 0px;
 }
 
-.controls__button:nth-child(1) {
+.controls__button--first {
   margin-left: 0px;
 }

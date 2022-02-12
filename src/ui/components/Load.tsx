@@ -2,7 +2,9 @@ import { Component, createSignal } from "solid-js";
 import { Handlers } from "../../types";
 import "./Load.css";
 
-const Load: Component<{ handlers: Handlers }> = (props) => {
+const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
+  props
+) => {
   const [fen, setFEN] = createSignal("");
   const [pgn, setPGN] = createSignal("");
 
@@ -19,7 +21,10 @@ const Load: Component<{ handlers: Handlers }> = (props) => {
       />
       <button
         class="load__fen-btn"
-        onClick={() => props.handlers.loadFEN(fen())}
+        onClick={() => {
+          props.handlers.loadFEN(fen());
+          setFEN("");
+        }}
       >
         LOAD FEN
       </button>
@@ -28,8 +33,19 @@ const Load: Component<{ handlers: Handlers }> = (props) => {
         name="load-pgn"
         placeholder="PASTE PGN..."
         spellcheck={false}
+        value={pgn()}
+        onInput={(e) => setPGN(e.currentTarget.value)}
       ></textarea>
-      <button class="load__pgn-btn">LOAD PGN</button>
+      <button
+        class="load__pgn-btn"
+        onClick={() => {
+          props.handlers.loadPGN(pgn());
+          setPGN("");
+          props.showMoves();
+        }}
+      >
+        LOAD PGN
+      </button>
     </div>
   );
 };

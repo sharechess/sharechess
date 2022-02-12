@@ -59,7 +59,7 @@ h2 {
   color: #aaa;
   text-align: left;
   font-size: 1.8rem;
-  margin: 30px 0 10px 0;
+  margin: 25px 0 10px 0;
 }
 
 .dark {
@@ -79,6 +79,12 @@ h2 {
   border-radius: 5px;
   max-width: 100%;
   max-height: 95vh;
+}
+
+.double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
 }
 
 .layout {
