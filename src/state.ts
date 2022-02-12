@@ -1,3 +1,4 @@
+import isMobile from "is-mobile";
 import { createStore } from "solid-js/store";
 import { BoardConfig, GameConfig } from "./types";
 
@@ -32,6 +33,7 @@ export type State = {
   fen: string;
   moves: string[];
   ply: number;
+  mobile: boolean;
 };
 
 const initialState: State = {
@@ -41,6 +43,7 @@ const initialState: State = {
   fen: "",
   moves: [],
   ply: 0,
+  mobile: isMobile(),
 };
 
 const [state, setState] = createStore(initialState);

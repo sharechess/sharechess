@@ -29,10 +29,10 @@ const drawExtraInfo = async (
 
   ctx.fillStyle = style.coords.onBorder;
 
-  if (data.White) {
+  {
     const w = drawText(
       ctx,
-      data.White,
+      data.White ?? "White",
       "Ubuntu",
       fontSize,
       700,
@@ -56,13 +56,10 @@ const drawExtraInfo = async (
     );
   }
 
-  if (data.Black) {
-    const elo =
-      data.BlackElo && data.BlackElo !== "?" ? ` ${data.BlackElo}` : "";
-
+  {
     const w = drawText(
       ctx,
-      data.Black,
+      data.Black ?? "Black",
       "Ubuntu",
       fontSize,
       700,
@@ -70,6 +67,9 @@ const drawExtraInfo = async (
       flipped ? height - offsetY : offsetY,
       "left"
     );
+
+    const elo =
+      data.BlackElo && data.BlackElo !== "?" ? ` ${data.BlackElo}` : "";
 
     drawText(
       ctx,

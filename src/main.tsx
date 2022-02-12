@@ -67,7 +67,12 @@ const main = async () => {
   const player = new Player(board, gameConfig);
   const game = new Game().loadPGN(pgn);
 
-  setState({ moves: game.getMoves() });
+  setState({
+    moves: game.getMoves(),
+    pgn,
+    ply: 0,
+    fen: game.getPosition(0).fen,
+  });
 
   const handlers = {
     prev() {
@@ -88,19 +93,24 @@ const main = async () => {
     },
     toggleBorder() {
       board.toggleBorder();
+      setState("board", "showBorder", !state.board.showBorder);
     },
 
     showBorder() {
       board.showBorder();
+      setState("board", "showBorder", true);
     },
     hideBorder() {
       board.hideBorder();
+      setState("board", "showBorder", false);
     },
     toggleExtraInfo() {
       board.toggleExtraInfo();
+      setState("board", "showExtraInfo", !state.board.showExtraInfo);
     },
     flip() {
       board.flip();
+      setState("board", "flipped", !state.board.flipped);
     },
     togglePlay() {
       player.playing ? player.pause() : player.play();
@@ -111,9 +121,11 @@ const main = async () => {
     },
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
+      setState("board", "boardStyle", style);
     },
     changePiecesStyle(style: PiecesStyle) {
       board.setPiecesStyle(style);
+      setState("board", "piecesStyle", style);
     },
     async loadPGN(pgn: string) {
       const game = new Game().loadPGN(pgn);
@@ -126,13 +138,21 @@ const main = async () => {
       await player.load(game);
     },
     async downloadImage() {
-      const data = await createImage(state.fen, state.board, 1024);
+      const data = await createImage(
+        state.fen,
+        state.pgn,
+        state.ply,
+        state.board,
+        state.game.picSize
+      );
       download(data, "fen", "png");
     },
   };
 
   // @ts-ignore
   window.handlers = handlers;
+  // @ts-ignore
+  window.state = state;
 
   /**
    * RENDER

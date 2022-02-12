@@ -35,7 +35,6 @@ class Board {
 
   private style: Style = boards.standard;
   private header: { [key: string]: string | undefined } = {};
-  private borderVisible: boolean = true;
   private lastPosition: Position | null = null;
   private background: HTMLCanvasElement | null = null;
   private currentScreen: "title" | "move" = "move";
@@ -100,7 +99,7 @@ class Board {
       this.tempCanvas.height = height;
     }
 
-    const tempBorderWidth = this.borderVisible ? this.size / 32 : 0;
+    const tempBorderWidth = this.cfg.showBorder ? this.size / 32 : 0;
     const tempInnerSize = this.size - tempBorderWidth * 2;
     this.squareSize = Math.floor(tempInnerSize / this.cfg.tiles);
     this.innerSize = this.squareSize * this.cfg.tiles;
@@ -132,21 +131,21 @@ class Board {
   }
 
   hideBorder() {
-    this.borderVisible = false;
+    this.cfg.showBorder = false;
     this.setSize(this.size);
     this.refresh();
     return this;
   }
 
   showBorder() {
-    this.borderVisible = true;
+    this.cfg.showBorder = true;
     this.setSize(this.size);
     this.refresh();
     return this;
   }
 
   toggleBorder() {
-    this.borderVisible = !this.borderVisible;
+    this.cfg.showBorder = !this.cfg.showBorder;
     this.setSize(this.size);
     this.refresh();
     return this;
@@ -188,8 +187,8 @@ class Board {
       ctx,
       this.innerSize,
       this.innerSize,
-      this.borderVisible ? this.borderWidth : 0,
-      (this.borderVisible ? this.borderWidth : 0) + this.margin,
+      this.cfg.showBorder ? this.borderWidth : 0,
+      (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
       background
     );
 
@@ -208,7 +207,7 @@ class Board {
       }
     }
 
-    if (this.borderVisible && this.cfg.showCoords) {
+    if (this.cfg.showBorder && this.cfg.showCoords) {
       drawCoords(
         ctx,
         coords,
@@ -217,7 +216,7 @@ class Board {
         this.cfg.flipped,
         this.borderWidth,
         this.size,
-        this.borderVisible,
+        this.cfg.showBorder,
         this.margin
       );
     }
@@ -254,7 +253,7 @@ class Board {
       );
     }
 
-    if (!this.borderVisible && this.cfg.showCoords) {
+    if (!this.cfg.showBorder && this.cfg.showCoords) {
       drawCoords(
         this.tempCtx,
         this.style.coords,
@@ -263,7 +262,7 @@ class Board {
         this.cfg.flipped,
         this.borderWidth,
         this.size,
-        this.borderVisible,
+        this.cfg.showBorder,
         this.margin
       );
     }

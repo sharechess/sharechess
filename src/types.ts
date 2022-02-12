@@ -131,14 +131,16 @@ export type BoardConfig = {
   flipped: boolean;
 };
 
+export type Size = "XS" | "S" | "M" | "L" | "XL";
+
 export type GameConfig = {
   titleScreen: boolean;
   fromPly: number | null;
   toPly: number | null;
   loop: boolean;
   format: "GIF" | "MP4" | "WebM";
-  picSize: "XS" | "S" | "M" | "L" | "XL";
-  animationSize: "XS" | "S" | "M" | "L" | "XL";
+  picSize: Size;
+  animationSize: Size;
 };
 
 export type MaterialCount = {
