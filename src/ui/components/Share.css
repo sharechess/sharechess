@@ -45,3 +45,40 @@
   margin-top: 0;
   margin-bottom: 25px;
 }
+
+.options__button {
+  margin: 3px;
+  padding: 5px;
+  font-size: 3rem;
+  background: rgb(0, 173, 136);
+  text-align: center;
+  border-radius: 5px;
+  width: 44px;
+  height: 44px;
+  opacity: 0.5;
+}
+
+.options__button--active {
+  opacity: 1;
+}
+
+.options__button:hover {
+  background: rgb(0, 207, 162);
+  cursor: pointer;
+}
+
+.options__button--last {
+  margin-right: 0px;
+}
+
+.options__button--first {
+  margin-left: 0px;
+}
+
+.rotatable {
+  transition: transform 0.3s;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}

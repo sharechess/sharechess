@@ -1,78 +1,28 @@
-import { BoardConfig, BoardStyle, GameConfig, PiecesStyle } from "./types";
+import WebFont from "webfontloader";
+import * as Hammer from "hammerjs";
+import { render } from "solid-js/web";
+
+import { BoardStyle, PiecesStyle } from "./types";
+
 import Board from "./board/Board";
 import Game from "./game/Game";
-import pgns from "./test-data/pgns";
-import createAnimation from "./encoders/createAnimation";
-// import { decompressPGN } from "./game/PGNHelpers";
-import WebFont from "webfontloader";
 import Player from "./player/Player";
-import * as Hammer from "hammerjs";
-// import Moves from "./ui/Moves";
-// import Controls from "./ui/Controls";
+import App from "./ui/App";
+
 import { state, setState } from "./state";
 
-import { render } from "solid-js/web";
-import App from "./ui/App";
-import download from "./utils/download";
 import createImage from "./encoders/createImage";
-
-const boardConfig: BoardConfig = {
-  size: 1024,
-  tiles: 8,
-  boardStyle: "calm",
-  piecesStyle: "tatiana",
-  showBorder: true,
-  showExtraInfo: true,
-  showMaterial: true,
-  showMoveIndicator: true,
-  showChecks: true,
-  showCoords: true,
-  flipped: false,
-};
-
-const gameConfig: GameConfig = {
-  titleScreen: true,
-  fromPly: null,
-  toPly: null,
-  loop: true,
-  format: "GIF",
-  picSize: "M",
-  animationSize: "M",
-};
-
-const createDownloadLink = async (pgn: string, boardConfig: BoardConfig) => {
-  const file = await createAnimation(pgn, { ...boardConfig, size: 720 }, "MP4");
-  const link = document.createElement("a");
-  link.innerText = "DOWNLOAD";
-  link.setAttribute("href", URL.createObjectURL(file));
-  link.setAttribute("download", file.name);
-  return link;
-};
-
-console.log(createDownloadLink.name);
+import createAnimation from "./encoders/createAnimation";
+import readFile from "./utils/readFile";
+import download from "./utils/download";
+import { compressPGN } from "./game/PGNHelpers";
+import extractUrlData from "./persistance/extractUrlData";
 
 const main = async () => {
-  // window.location.hash =
-  //   "#QiBEdWtlIEthcmwgLyBDb3VudCBJc291YXJkCkQgMTg1OC4/Py4/PwpFIFBhcmlzClIgMS0wClMgUGFyaXMgRlJBClcgUGF1bCBNb3JwaHkKCmU0IGU1IE5mMyBkNiBkNCBCZzQgZHhlNSBCeGYzIFF4ZjMgZHhlNSBCYzQgTmY2IFFiMyBRZTcgTmMzIGM2IEJnNSBiNSBOeGI1IGN4YjUgQnhiNSsgTmJkNyBPLU8tTyBSZDggUnhkNyBSeGQ3IFJkMSBRZTYgQnhkNysgTnhkNyBRYjgrIE54YjggUmQ4Iw==";
+  const board = new Board(state.boardConfig);
+  const player = new Player(board, state.gameConfig);
 
-  // const hash = window.location.hash;
-  // const pgn = hash === "" ? null : decompressPGN(hash.slice(1));
-  const pgn = pgns[pgns.length - 1];
-  // const pgn = pgns[2];
-  const board = new Board(boardConfig);
-
-  // const interval = 1000;
-  // play(board, gameConfig, pgn, interval);
-
-  const player = new Player(board, gameConfig);
-  const game = new Game().loadPGN(pgn);
-
-  setState({
-    moves: game.getMoves(),
-    pgn,
-    ply: 0,
-    fen: game.getPosition(0).fen,
-  });
+  /* Register handlers */
 
   const handlers = {
     prev() {
@@ -93,24 +43,36 @@ const main = async () => {
     },
     toggleBorder() {
       board.toggleBorder();
-      setState("board", "showBorder", !state.board.showBorder);
+      setState("boardConfig", "showBorder", !state.boardConfig.showBorder);
     },
 
     showBorder() {
       board.showBorder();
-      setState("board", "showBorder", true);
+      setState("boardConfig", "showBorder", true);
     },
     hideBorder() {
       board.hideBorder();
-      setState("board", "showBorder", false);
+      setState("boardConfig", "showBorder", false);
     },
     toggleExtraInfo() {
       board.toggleExtraInfo();
-      setState("board", "showExtraInfo", !state.board.showExtraInfo);
+      setState(
+        "boardConfig",
+        "showExtraInfo",
+        !state.boardConfig.showExtraInfo
+      );
+    },
+    toggleAnonymous() {
+      setState("boardConfig", "anonymous", !state.boardConfig.anonymous);
+      board.updateConfig({ anonymous: state.boardConfig.anonymous });
+    },
+    toggleTitleScreen() {
+      setState("gameConfig", "titleScreen", !state.gameConfig.titleScreen);
     },
     flip() {
+      console.log("FLIP");
       board.flip();
-      setState("board", "flipped", !state.board.flipped);
+      setState("boardConfig", "flipped", !state.boardConfig.flipped);
     },
     togglePlay() {
       player.playing ? player.pause() : player.play();
@@ -121,20 +83,28 @@ const main = async () => {
     },
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
-      setState("board", "boardStyle", style);
+      setState("boardConfig", "boardStyle", style);
     },
     changePiecesStyle(style: PiecesStyle) {
       board.setPiecesStyle(style);
-      setState("board", "piecesStyle", style);
+      setState("boardConfig", "piecesStyle", style);
     },
     async loadPGN(pgn: string) {
       const game = new Game().loadPGN(pgn);
-      setState({ pgn, fen: "", moves: game.getMoves() });
+      setState({
+        pgn: game.pgn,
+        fen: "",
+        moves: game.getMoves(),
+        ply: 0,
+        game,
+      });
+      window.location.hash = `v1/pgn/${compressPGN(game.pgn)}`;
+
       await player.load(game);
     },
     async loadFEN(fen: string) {
       const game = new Game().loadFEN(fen);
-      setState({ pgn: null, fen, moves: game.getMoves() });
+      setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
       await player.load(game);
     },
     async downloadImage() {
@@ -142,21 +112,24 @@ const main = async () => {
         state.fen,
         state.pgn,
         state.ply,
-        state.board,
-        state.game.picSize
+        state.boardConfig,
+        state.gameConfig.picSize
       );
       download(data, "fen", "png");
     },
+    async downloadAnimation() {
+      const data = await createAnimation(
+        state.pgn,
+        state.boardConfig,
+        state.gameConfig.format,
+        state.gameConfig.animationSize
+      );
+      download(data, "game", state.gameConfig.format.toLowerCase());
+    },
   };
 
-  // @ts-ignore
-  window.handlers = handlers;
-  // @ts-ignore
-  window.state = state;
+  /* Render the page */
 
-  /**
-   * RENDER
-   **/
   render(
     () => <App handlers={handlers} state={state} />,
     document.getElementById("root") as HTMLElement
@@ -165,31 +138,19 @@ const main = async () => {
   const $board = document.querySelector<HTMLImageElement>("#board");
   $board?.appendChild(board.canvas);
 
-  // const moves = new Moves($moves as HTMLElement, player).load(game.getMoves());
-  // const controls = new Controls($controls as HTMLElement, handlers).load();
+  /* Restore game from the url */
 
-  await player.load(game);
+  const { pgn, fen } = extractUrlData();
 
-  // @ts-ignore
-  window.load = async (pgn: string) => {
-    const game = new Game().loadPGN(pgn);
-    await player.load(game);
-    // moves.load(game.getMoves());
-    // controls.load();
-  };
+  await (pgn
+    ? handlers.loadPGN(pgn)
+    : fen
+    ? handlers.loadFEN(fen)
+    : handlers.loadFEN(
+        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+      ));
 
-  // @ts-ignore
-  window.board = board;
-
-  document.addEventListener(
-    "contextmenu",
-    (e) => {
-      e.preventDefault();
-      handlers.prev();
-      return false;
-    },
-    false
-  );
+  /* Register events */
 
   const keyMapping: { [key: string]: () => void } = {
     ArrowLeft: handlers.prev,
@@ -202,9 +163,31 @@ const main = async () => {
     e: handlers.toggleExtraInfo,
   };
 
-  document.addEventListener("keydown", ({ key }) => {
-    if (keyMapping[key]) {
-      keyMapping[key]();
+  document.addEventListener("keydown", (e) => {
+    const target = e.target as HTMLElement | null;
+
+    if (
+      keyMapping[e.key] &&
+      target?.nodeName !== "INPUT" &&
+      target?.nodeName !== "TEXTAREA"
+    ) {
+      keyMapping[e.key]();
+    }
+  });
+
+  const preventDefaults = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+    document.addEventListener(eventName, preventDefaults, false);
+  });
+
+  document.addEventListener("drop", async (e) => {
+    if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
+      const content = await readFile(e.dataTransfer.files[0]);
+      handlers.loadPGN(content);
     }
   });
 
@@ -222,11 +205,9 @@ const main = async () => {
   hammer.on("pinchout", handlers.hideBorder);
   hammer.on("tap", handlers.next);
   hammer.on("press", handlers.flip);
-
-  // createDownloadLink(pgn, boardConfig).then((link) => {
-  //   document.body.appendChild(link);
-  // });
 };
+
+/* Boot */
 
 WebFont.load({
   google: {

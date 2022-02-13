@@ -3,6 +3,7 @@ import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import { state, setState } from "../../state";
 import "./Share.css";
+import download from "../../utils/download";
 
 const Share: Component<{ handlers: Handlers }> = (props) => {
   const [copyId, setCopyId] = createSignal("");
@@ -17,41 +18,66 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
       <div className="share__view">
         <h2 class="header--first">Board options</h2>
         <button
-          class="controls__button controls__button--first"
           onClick={props.handlers.flip}
           title="FLIP"
+          classList={{
+            options__button: true,
+            "options__button--first": true,
+            "options__button--active": true,
+          }}
         >
-          <i class="las la-sync"></i>
+          <i
+            classList={{
+              rotated: state.boardConfig.flipped,
+              las: true,
+              "la-sync": true,
+              rotatable: true,
+            }}
+          ></i>
         </button>
         <button
-          class="controls__button"
+          classList={{
+            options__button: true,
+            "options__button--active": state.boardConfig.showBorder,
+          }}
           onClick={props.handlers.toggleBorder}
           title="BORDER"
         >
           <i class="las la-expand"></i>
         </button>
         <button
-          class="controls__button"
+          classList={{
+            options__button: true,
+            "options__button--active": state.boardConfig.showExtraInfo,
+          }}
           onClick={props.handlers.toggleExtraInfo}
           title="EXTRA INFO"
         >
           <i class="las la-info-circle"></i>
         </button>
         <button
-          class="controls__button"
-          onClick={props.handlers.toggleExtraInfo}
-          title="INCLUDE HEADER"
+          classList={{
+            options__button: true,
+            "options__button--active": state.gameConfig.titleScreen,
+          }}
+          onClick={props.handlers.toggleTitleScreen}
+          title="TITLE SCREEN"
         >
           <i class="las la-heading"></i>
         </button>
         <button
-          class="controls__button controls__button--last"
-          onClick={props.handlers.toggleExtraInfo}
+          classList={{
+            options__button: true,
+            "options__button--last": true,
+            "options__button--active": state.boardConfig.anonymous,
+          }}
+          onClick={props.handlers.toggleAnonymous}
           title="ANONYMOUS"
         >
           <i class="las la-user-secret"></i>
         </button>
       </div>
+      <hr />
       <div className="share__fen">
         <h2>Current position</h2>
         <input
@@ -89,36 +115,36 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             classList={{
               share__size: true,
               "share__size--first": true,
-              "share__size--active": state.game.picSize === "XS",
+              "share__size--active": state.gameConfig.picSize === "XS",
             }}
-            onClick={() => setState("game", "picSize", "XS")}
+            onClick={() => setState("gameConfig", "picSize", "XS")}
           >
             XS
           </button>
           <button
             classList={{
               share__size: true,
-              "share__size--active": state.game.picSize === "S",
+              "share__size--active": state.gameConfig.picSize === "S",
             }}
-            onClick={() => setState("game", "picSize", "S")}
+            onClick={() => setState("gameConfig", "picSize", "S")}
           >
             S
           </button>
           <button
             classList={{
               share__size: true,
-              "share__size--active": state.game.picSize === "M",
+              "share__size--active": state.gameConfig.picSize === "M",
             }}
-            onClick={() => setState("game", "picSize", "M")}
+            onClick={() => setState("gameConfig", "picSize", "M")}
           >
             M
           </button>
           <button
             classList={{
               share__size: true,
-              "share__size--active": state.game.picSize === "L",
+              "share__size--active": state.gameConfig.picSize === "L",
             }}
-            onClick={() => setState("game", "picSize", "L")}
+            onClick={() => setState("gameConfig", "picSize", "L")}
           >
             L
           </button>
@@ -126,9 +152,9 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             classList={{
               share__size: true,
               "share__size--last": true,
-              "share__size--active": state.game.picSize === "XL",
+              "share__size--active": state.gameConfig.picSize === "XL",
             }}
-            onClick={() => setState("game", "picSize", "XL")}
+            onClick={() => setState("gameConfig", "picSize", "XL")}
           >
             XL
           </button>
@@ -140,98 +166,156 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           </button>
         </Show>
       </div>
-      <div class="share__pgn">
-        <h2>Game</h2>
-        <div class="double">
-          <button class="share__btn">Copy PGN</button>
-          <button class="share__btn">Copy link</button>
+      <Show when={state.pgn}>
+        <hr />
+        <div class="share__pgn">
+          <h2>Game</h2>
+          <div class="double">
+            <button
+              class="share__btn"
+              onClick={() => {
+                navigator.clipboard.writeText(state.pgn);
+                blinkCopy("pgn");
+              }}
+            >
+              {copyId() === "pgn" ? "Copied!" : "Copy PGN"}
+            </button>
+            <button
+              class="share__btn"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                blinkCopy("pgn-link");
+              }}
+            >
+              {copyId() === "pgn-link" ? "Copied!" : "Copy link"}
+            </button>
+          </div>
+          <div class="double">
+            <button
+              class="share__btn"
+              onClick={() => {
+                const data = new Blob([state.pgn], {
+                  type: "application/vnd.chess-pgn;charset=utf-8",
+                });
+                download(data, "pgn", "pgn");
+              }}
+            >
+              Export PGN
+            </button>
+            <button
+              class="share__btn"
+              onClick={() => {
+                const header = state.game.header;
+                const w = state.boardConfig.anonymous
+                  ? "Anonymous"
+                  : header.WhitePretty;
+                const b = state.boardConfig.anonymous
+                  ? "Anonymous"
+                  : header.BlackPretty;
+
+                const title =
+                  `${w} vs ${b}` +
+                  (header.Event ? ` | ${header.Event}` : "") +
+                  (header.Round ? `, Round ${header.Round}` : "") +
+                  (header.DatePretty ? ` | ${header.DatePretty}` : "");
+
+                const md = `[${title}](${window.location.href})`;
+
+                navigator.clipboard.writeText(md);
+                blinkCopy("markdown");
+              }}
+            >
+              {copyId() === "markdown" ? "Copied!" : "Copy markdown"}
+            </button>
+          </div>
         </div>
-        <div class="double">
-          <button class="share__btn">Export PGN</button>
-          <button class="share__btn">Copy markdown</button>
-        </div>
-      </div>
-      <Show when={!state.mobile}>
-        <div class="share__animation">
-          <h3>Animation</h3>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--first": true,
-              "share__size--active": state.game.animationSize === "XS",
-            }}
-            onClick={() => setState("game", "animationSize", "XS")}
-          >
-            XS
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.game.animationSize === "S",
-            }}
-            onClick={() => setState("game", "animationSize", "S")}
-          >
-            S
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.game.animationSize === "M",
-            }}
-            onClick={() => setState("game", "animationSize", "M")}
-          >
-            M
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.game.animationSize === "L",
-            }}
-            onClick={() => setState("game", "animationSize", "L")}
-          >
-            L
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--last": true,
-              "share__size--active": state.game.animationSize === "XL",
-            }}
-            onClick={() => setState("game", "animationSize", "XL")}
-          >
-            XL
-          </button>
-          <button
-            classList={{
-              share__format: true,
-              "share__format--first": true,
-              "share__format--active": state.game.format === "GIF",
-            }}
-            onClick={() => setState("game", "format", "GIF")}
-          >
-            GIF
-          </button>
-          <button
-            classList={{
-              share__format: true,
-              "share__format--active": state.game.format === "MP4",
-            }}
-            onClick={() => setState("game", "format", "MP4")}
-          >
-            MP4
-          </button>
-          <button
-            classList={{
-              share__format: true,
-              "share__format--last": true,
-              "share__format--active": state.game.format === "WebM",
-            }}
-            onClick={() => setState("game", "format", "WebM")}
-          >
-            WebM
-          </button>
-          <button class="share__create-animation">Save animation</button>
-        </div>
+        <Show when={!state.mobile}>
+          <div class="share__animation">
+            <h3>Animation</h3>
+            <button
+              classList={{
+                share__size: true,
+                "share__size--first": true,
+                "share__size--active": state.gameConfig.animationSize === "XS",
+              }}
+              onClick={() => setState("gameConfig", "animationSize", "XS")}
+            >
+              XS
+            </button>
+            <button
+              classList={{
+                share__size: true,
+                "share__size--active": state.gameConfig.animationSize === "S",
+              }}
+              onClick={() => setState("gameConfig", "animationSize", "S")}
+            >
+              S
+            </button>
+            <button
+              classList={{
+                share__size: true,
+                "share__size--active": state.gameConfig.animationSize === "M",
+              }}
+              onClick={() => setState("gameConfig", "animationSize", "M")}
+            >
+              M
+            </button>
+            <button
+              classList={{
+                share__size: true,
+                "share__size--active": state.gameConfig.animationSize === "L",
+              }}
+              onClick={() => setState("gameConfig", "animationSize", "L")}
+            >
+              L
+            </button>
+            <button
+              classList={{
+                share__size: true,
+                "share__size--last": true,
+                "share__size--active": state.gameConfig.animationSize === "XL",
+              }}
+              onClick={() => setState("gameConfig", "animationSize", "XL")}
+            >
+              XL
+            </button>
+            <button
+              classList={{
+                share__format: true,
+                "share__format--first": true,
+                "share__format--active": state.gameConfig.format === "GIF",
+              }}
+              onClick={() => setState("gameConfig", "format", "GIF")}
+            >
+              GIF
+            </button>
+            <button
+              classList={{
+                share__format: true,
+                "share__format--active": state.gameConfig.format === "MP4",
+              }}
+              onClick={() => setState("gameConfig", "format", "MP4")}
+            >
+              MP4
+            </button>
+            <button
+              classList={{
+                share__format: true,
+                "share__format--last": true,
+                "share__format--active": state.gameConfig.format === "WebM",
+              }}
+              onClick={() => setState("gameConfig", "format", "WebM")}
+            >
+              WebM
+            </button>
+            <button
+              class="share__create-animation"
+              onClick={() => props.handlers.downloadAnimation()}
+            >
+              Save animation
+            </button>
+          </div>
+        </Show>
       </Show>
     </Scrollable>
   );

@@ -1,6 +1,7 @@
-import { BoardConfig } from "./../types";
+import { BoardConfig, Size } from "./../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
+import sizeToPX from "./sizeToPX";
 import GIF from "./GIF";
 import WebM from "./WebM";
 import MP4 from "./MP4";
@@ -16,10 +17,11 @@ const getData = (board: Board, encoder: GIF | WebM | MP4) => {
 const createAnimation = async (
   pgn: string,
   boardConfig: BoardConfig,
-  format: "GIF" | "WebM" | "MP4"
+  format: "GIF" | "WebM" | "MP4",
+  size: Size
 ) => {
   const game = new Game().loadPGN(pgn);
-  const board = new Board(boardConfig);
+  const board = new Board({ ...boardConfig, size: sizeToPX[size] });
   const encoder =
     format === "GIF"
       ? new GIF(board.width, board.height, true)

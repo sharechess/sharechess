@@ -22,7 +22,21 @@ body {
   font-family: Ubuntu, sans-serif;
 }
 
-button {
+.upload {
+  visibility: hidden;
+  padding: 0;
+}
+
+.upload::before {
+  content: "UPLOAD PGN FILE";
+  visibility: visible;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+button,
+.upload::before {
   padding: 10px;
   font-family: "Ubuntu";
   font-size: 1.5rem;
@@ -32,7 +46,8 @@ button {
   width: 100%;
 }
 
-button:hover {
+button:hover,
+.upload:hover::before {
   background: rgb(0, 207, 162);
   cursor: pointer;
 }
@@ -67,6 +82,11 @@ h3 {
   text-align: left;
   font-size: 1.6rem;
   margin: 15px 0 10px 0;
+}
+
+hr {
+  margin-top: 20px;
+  border-top: solid 1px #ffffff22;
 }
 
 .dark {

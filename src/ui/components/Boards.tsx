@@ -25,7 +25,7 @@ const prepareBoards = async () => {
 
   for (const [key, style] of Object.entries(styles) as [BoardStyle, Style][]) {
     await board.updateConfig({ boardStyle: key });
-    await board.frame(null, {});
+    await board.frame(null);
     board.render();
     boards.push({
       key,
@@ -51,12 +51,12 @@ const Boards: Component<{ handlers: Handlers }> = (props) => {
             <img
               class={
                 "boards__ico" +
-                (state.board.boardStyle === board.key
+                (state.boardConfig.boardStyle === board.key
                   ? " boards__ico--active"
                   : "")
               }
               onClick={() => {
-                setState("board", "boardStyle", board.key);
+                setState("boardConfig", "boardStyle", board.key);
                 props.handlers.changeBoardStyle(board.key);
               }}
               src={board.img}

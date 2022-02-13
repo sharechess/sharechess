@@ -28,3 +28,16 @@
 .load__pgn-btn {
   width: 100%;
 }
+
+.load__pgn-file {
+  margin-top: 20px;
+}
+
+.load__pgn-file-info {
+  font-size: 1.5rem;
+}
+
+.load__pgn-file-info p {
+  margin-top: 10px;
+  color: #677794;
+}

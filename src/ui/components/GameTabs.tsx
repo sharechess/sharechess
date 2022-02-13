@@ -20,7 +20,7 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
           }
           onClick={() => setTab("moves")}
         >
-          MOVES
+          GAME
         </button>
         <button
           class={

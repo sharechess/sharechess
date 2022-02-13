@@ -1,6 +1,7 @@
 import { PieceType, PieceColor, BoardData, Position } from "../types";
 import { Chess, ChessInstance } from "chess.js";
 import { cleanPGN } from "./PGNHelpers";
+import { formatDate, formatName } from "../utils/formatters";
 
 const MATERIAL_VALUE: Map<PieceType, number> = new Map([
   ["q", 9],
@@ -9,6 +10,13 @@ const MATERIAL_VALUE: Map<PieceType, number> = new Map([
   ["n", 3],
   ["p", 1],
 ]);
+
+const prepareHeaderEntry = (
+  entry: string | undefined,
+  ifEmpty: null | string = null
+) => {
+  return !entry || entry === "?" ? ifEmpty : entry;
+};
 
 class Game {
   private positions: Position[] = [];
@@ -149,7 +157,30 @@ class Game {
   }
 
   get header() {
-    return this.game.header();
+    const header = this.game.header();
+
+    const white = prepareHeaderEntry(header.White, "Anonymous") as string;
+    const black = prepareHeaderEntry(header.Black, "Anonymous") as string;
+    const date = prepareHeaderEntry(header.Date);
+
+    return {
+      White: white,
+      Black: black,
+      WhitePretty: formatName(white),
+      BlackPretty: formatName(black),
+      WhiteElo: prepareHeaderEntry(header.WhiteElo),
+      BlackElo: prepareHeaderEntry(header.BlackElo),
+      Date: date,
+      DatePretty: date === null ? null : formatDate(date),
+      Event: prepareHeaderEntry(header.Event),
+      Round: prepareHeaderEntry(header.Round),
+      Site: prepareHeaderEntry(header.Site),
+      Result: prepareHeaderEntry(header.Result),
+    };
+  }
+
+  get pgn() {
+    return this.game.pgn();
   }
 
   getPosition(ply: number) {

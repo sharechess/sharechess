@@ -19,12 +19,12 @@ const Pieces: Component<{ handlers: Handlers }> = (props) => {
             <img
               class={
                 "pieces__ico" +
-                (state.board.piecesStyle === item.key
+                (state.boardConfig.piecesStyle === item.key
                   ? " pieces__ico--active"
                   : "")
               }
               onClick={() => {
-                setState("board", "piecesStyle", item.key);
+                setState("boardConfig", "piecesStyle", item.key);
                 props.handlers.changePiecesStyle(item.key);
               }}
               src={item.img}
@@ -97,7 +97,7 @@ export default Pieces;
 //                   ? " boards__ico--active"
 //                   : "")
 //               }
-//               onClick={() => setState("board", "boardStyle", board.key)}
+//               onClick={() => setState("boardConfig", "boardStyle", board.key)}
 //               src={board.img}
 //               title={board.name}
 //             />

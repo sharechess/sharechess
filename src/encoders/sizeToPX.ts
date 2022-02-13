@@ -1,5 +1,5 @@
 const sizeToPX = {
-  XS: 256,
+  XS: 360,
   S: 512,
   M: 720,
   L: 1024,

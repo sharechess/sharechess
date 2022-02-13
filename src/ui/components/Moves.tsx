@@ -1,4 +1,4 @@
-import { Component, For } from "solid-js";
+import { Component, For, createEffect } from "solid-js";
 import chunk_ from "@arrows/array/chunk_";
 import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
@@ -8,6 +8,10 @@ import { state } from "../../state";
 const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   props
 ) => {
+  createEffect(() => {
+    document.querySelector(`[data-ply="${state.ply}"]`)?.scrollIntoView();
+  });
+
   return (
     <Scrollable class="moves">
       <For each={chunk_(2, props.moves as string[])}>
@@ -23,6 +27,7 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
                   "move__ply--current": state.ply === i() * 2 + 1,
                 }}
                 onClick={() => props.handlers.goto(i() * 2 + 1)}
+                data-ply={i() * 2 + 1}
               >
                 {white}
               </span>
@@ -32,6 +37,7 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
                   "move__ply--current": state.ply === i() * 2 + 2,
                 }}
                 onClick={() => props.handlers.goto(i() * 2 + 2)}
+                data-ply={i() * 2 + 2}
               >
                 {black}
               </span>

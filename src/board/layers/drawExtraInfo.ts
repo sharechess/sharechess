@@ -1,4 +1,4 @@
-import { Style, Position } from "./../../types";
+import { Style, Position, Header } from "./../../types";
 import drawText from "./drawText";
 
 const chessFontMapping: { [key: string]: string } = {
@@ -17,7 +17,7 @@ const drawExtraInfo = async (
   scale: number,
   margin: number,
   style: Style,
-  data: { [key: string]: string | undefined },
+  data: Header,
   flipped: boolean,
   position: Position
 ) => {
@@ -32,7 +32,7 @@ const drawExtraInfo = async (
   {
     const w = drawText(
       ctx,
-      data.White ?? "White",
+      data.White === "Anonymous" ? "White" : data.White,
       "Ubuntu",
       fontSize,
       700,
@@ -41,8 +41,7 @@ const drawExtraInfo = async (
       "left"
     );
 
-    const elo =
-      data.WhiteElo && data.WhiteElo !== "?" ? ` ${data.WhiteElo}` : "";
+    const elo = data.WhiteElo ? ` ${data.WhiteElo}` : "";
 
     drawText(
       ctx,
@@ -59,7 +58,7 @@ const drawExtraInfo = async (
   {
     const w = drawText(
       ctx,
-      data.Black ?? "Black",
+      data.Black === "Anonymous" ? "Black" : data.Black,
       "Ubuntu",
       fontSize,
       700,
@@ -68,8 +67,7 @@ const drawExtraInfo = async (
       "left"
     );
 
-    const elo =
-      data.BlackElo && data.BlackElo !== "?" ? ` ${data.BlackElo}` : "";
+    const elo = data.BlackElo ? ` ${data.BlackElo}` : "";
 
     drawText(
       ctx,

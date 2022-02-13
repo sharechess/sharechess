@@ -129,6 +129,7 @@ export type BoardConfig = {
   showChecks: boolean;
   showCoords: boolean;
   flipped: boolean;
+  anonymous: boolean;
 };
 
 export type Size = "XS" | "S" | "M" | "L" | "XL";
@@ -199,6 +200,8 @@ export type Handlers = {
   showBorder(): void;
   hideBorder(): void;
   toggleExtraInfo(): void;
+  toggleAnonymous(): void;
+  toggleTitleScreen(): void;
   flip(): void;
   togglePlay(): void;
   goto(ply: number): void;
@@ -206,5 +209,21 @@ export type Handlers = {
   changePiecesStyle: (style: PiecesStyle) => void;
   loadPGN: (pgn: string) => Promise<void>;
   loadFEN: (fen: string) => Promise<void>;
-  downloadImage: () => void;
+  downloadImage: () => Promise<void>;
+  downloadAnimation: () => Promise<void>;
+};
+
+export type Header = {
+  White: string;
+  Black: string;
+  WhitePretty: string;
+  BlackPretty: string;
+  WhiteElo: string | null;
+  BlackElo: string | null;
+  Date: string | null;
+  DatePretty: string | null;
+  Event: string | null;
+  Round: string | null;
+  Site: string | null;
+  Result: string | null;
 };

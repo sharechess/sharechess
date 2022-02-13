@@ -1,5 +1,6 @@
 import isMobile from "is-mobile";
 import { createStore } from "solid-js/store";
+import Game from "./game/Game";
 import { BoardConfig, GameConfig } from "./types";
 
 const boardConfig: BoardConfig = {
@@ -14,6 +15,7 @@ const boardConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   flipped: false,
+  anonymous: false,
 };
 
 const gameConfig: GameConfig = {
@@ -27,9 +29,10 @@ const gameConfig: GameConfig = {
 };
 
 export type State = {
-  board: BoardConfig;
-  game: GameConfig;
-  pgn: string | null;
+  boardConfig: BoardConfig;
+  gameConfig: GameConfig;
+  game: Game;
+  pgn: string;
   fen: string;
   moves: string[];
   ply: number;
@@ -37,9 +40,10 @@ export type State = {
 };
 
 const initialState: State = {
-  board: boardConfig,
-  game: gameConfig,
-  pgn: null,
+  boardConfig,
+  gameConfig,
+  game: new Game(),
+  pgn: "",
   fen: "",
   moves: [],
   ply: 0,

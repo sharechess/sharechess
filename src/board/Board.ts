@@ -1,10 +1,10 @@
-import { BoardConfig, PiecesStyle, Position } from "./../types";
+import { BoardConfig, Header, PiecesStyle, Position } from "./../types";
 import { Style, BoardStyle } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
 import drawPieces from "./layers/drawPieces";
-import drawHeader from "./layers/drawHeader.ts";
+import drawHeader from "./layers/drawHeader";
 import drawExtraInfo from "./layers/drawExtraInfo";
 import boards from "./styles-board";
 
@@ -20,6 +20,22 @@ const defaultConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   flipped: false,
+  anonymous: false,
+};
+
+const defaultHeader: Header = {
+  White: "White",
+  Black: "Black",
+  WhitePretty: "White",
+  BlackPretty: "Black",
+  WhiteElo: null,
+  BlackElo: null,
+  Date: null,
+  DatePretty: null,
+  Event: null,
+  Round: null,
+  Site: null,
+  Result: null,
 };
 
 class Board {
@@ -34,7 +50,7 @@ class Board {
   private margin: number = 0;
 
   private style: Style = boards.standard;
-  private header: { [key: string]: string | undefined } = {};
+  private header: Header = defaultHeader;
   private lastPosition: Position | null = null;
   private background: HTMLCanvasElement | null = null;
   private currentScreen: "title" | "move" = "move";
@@ -158,7 +174,19 @@ class Board {
     return this;
   }
 
-  async titleFrame(header: { [key: string]: string | undefined }) {
+  private getFinalHeader() {
+    return this.cfg.anonymous
+      ? {
+          ...this.header,
+          White: "Anonymous",
+          Black: "Anonymous",
+          WhitePretty: "Anonymous",
+          BlackPretty: "Anonymous",
+        }
+      : this.header;
+  }
+
+  async titleFrame(header: Header) {
     this.currentScreen = "title";
     this.header = header;
 
@@ -168,7 +196,7 @@ class Board {
       this.scale,
       this.margin,
       this.style,
-      header
+      this.getFinalHeader()
     );
   }
 
@@ -224,13 +252,10 @@ class Board {
     this.background = canvas;
   }
 
-  async frame(
-    position: Position | null,
-    header: { [key: string]: string | undefined }
-  ) {
+  async frame(position: Position | null, header?: Header) {
     this.currentScreen = "move";
     this.lastPosition = position;
-    this.header = header;
+    this.header = header ?? this.header;
 
     this.tempCtx.clearRect(0, 0, this.size, this.size);
 
@@ -289,7 +314,7 @@ class Board {
         this.scale,
         this.margin,
         this.style,
-        this.header,
+        this.getFinalHeader(),
         this.cfg.flipped,
         this.lastPosition
       );

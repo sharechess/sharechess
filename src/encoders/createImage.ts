@@ -10,7 +10,6 @@ const createImage = async (
   boardConfig: BoardConfig,
   size: Size
 ) => {
-  console.log({ fen, pgn, ply, size });
   const game = new Game();
 
   if (pgn) {

@@ -1,45 +1,6 @@
-import { Style } from "./../../types";
+import { Header, Style } from "../../types";
 import drawRectangle from "./drawRectangle";
 import drawText from "./drawText";
-
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const formatDate = (date: string) => {
-  const [y, m, d] = date.split(".").map(Number);
-
-  const month = Number.isNaN(m) ? null : MONTHS[m - 1];
-  const day = Number.isNaN(d) || month === null ? null : d;
-  const year = Number.isNaN(y) ? null : y;
-
-  return month && day && year
-    ? `${month} ${day}, ${year}`
-    : month && year
-    ? `${month} ${year}`
-    : year
-    ? String(year)
-    : "";
-};
-
-const formatName = (name: string) => {
-  return name
-    .split(",")
-    .map((x) => x.trim())
-    .reverse()
-    .join(" ");
-};
 
 const drawHeader = async (
   ctx: CanvasRenderingContext2D,
@@ -47,7 +8,7 @@ const drawHeader = async (
   scale: number,
   margin: number,
   style: Style,
-  data: { [key: string]: string | undefined }
+  data: Header
 ) => {
   ctx.clearRect(0, 0, size, size);
   await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
@@ -55,11 +16,11 @@ const drawHeader = async (
   const font = "Ubuntu";
 
   const allSizes = [
-    { key: "White", line: 60 * scale, fontSize: 42 * scale, n: 0 },
-    { key: "Black", line: 60 * scale, fontSize: 42 * scale, n: 2 },
+    { key: "WhitePretty", line: 60 * scale, fontSize: 42 * scale, n: 0 },
+    { key: "BlackPretty", line: 60 * scale, fontSize: 42 * scale, n: 2 },
     { key: "Event", line: 30 * scale, fontSize: 20 * scale, n: 4 },
     { key: "Round", line: 30 * scale, fontSize: 20 * scale, n: 5 },
-    { key: "Date", line: 30 * scale, fontSize: 20 * scale, n: 7 },
+    { key: "DatePretty", line: 30 * scale, fontSize: 20 * scale, n: 7 },
     { key: "Site", line: 30 * scale, fontSize: 20 * scale, n: 8 },
   ];
 
@@ -67,16 +28,16 @@ const drawHeader = async (
 
   const sizes = allSizes.filter(({ key }) => keys.has(key));
 
-  if (data.White && data.Black) {
-    sizes.push({ key: "vs", line: 50, fontSize: 20, n: 1 });
+  if (data.WhitePretty && data.BlackPretty) {
+    sizes.push({ key: "vs", line: 50 * scale, fontSize: 20 * scale, n: 1 });
   }
 
   if (data.Event || data.Round) {
-    sizes.push({ key: "margin", line: 100, fontSize: 0, n: 3 });
+    sizes.push({ key: "margin", line: 100 * scale, fontSize: 0, n: 3 });
   }
 
   if (data.Date || data.Site) {
-    const line = data.Event || data.Round ? 20 : 100;
+    const line = data.Event || data.Round ? 20 * scale : 100 * scale;
     sizes.push({ key: "margin", line, fontSize: 0, n: 6 });
   }
 
@@ -101,17 +62,10 @@ const drawHeader = async (
         return;
       }
 
-      const item = data[key];
+      const item = data[key as keyof Header];
 
       if (item) {
-        const text =
-          key === "Date"
-            ? formatDate(item)
-            : key === "Black" || key === "White"
-            ? formatName(item)
-            : key === "Round"
-            ? `Round ${item}`
-            : item;
+        const text = key === "Round" ? `Round ${item}` : item;
 
         const y = fromTop + line / 2;
 

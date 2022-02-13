@@ -16,7 +16,7 @@ const drawCoords = (
 ) => {
   const scale = size / 1024;
 
-  if (scale <= 0.25) {
+  if (scale <= 0.32) {
     return;
   }
 
