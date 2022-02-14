@@ -1,3 +1,8 @@
+.share {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .share__format,
 .share__size {
   padding: 10px;
@@ -33,7 +38,6 @@
 
 .share__format--active:hover,
 .share__size--active:hover {
-  background: rgb(0, 173, 136);
   cursor: default;
 }
 
@@ -50,7 +54,6 @@
   margin: 3px;
   padding: 5px;
   font-size: 3rem;
-  background: rgb(0, 173, 136);
   text-align: center;
   border-radius: 5px;
   width: 44px;
@@ -63,7 +66,7 @@
 }
 
 .options__button:hover {
-  background: rgb(0, 207, 162);
+  background: var(--color-btn-light);
   cursor: pointer;
 }
 

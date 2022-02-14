@@ -1,5 +1,5 @@
 .scrollable {
-  background: #0e0e13;
+  background: var(--color-bg-block);
   height: auto;
   padding: 40px 20px;
   height: 100%;

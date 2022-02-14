@@ -17,5 +17,5 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"]
   },
-  "include": ["./src", "gif.worker.js", "gif.worker.js"]
+  "include": ["./src", "public/gif.worker.js", "public/gif.worker.js"]
 }

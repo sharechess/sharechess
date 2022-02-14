@@ -4,7 +4,7 @@
 }
 
 .controls {
-  background: #0e0e13;
+  background: var(--color-bg-block);
   height: 100%;
   padding: 20px;
   border-bottom-left-radius: 5px;
@@ -15,7 +15,6 @@
   margin: 3px;
   padding: 5px;
   font-size: 3rem;
-  background: rgb(0, 173, 136);
   text-align: center;
   border-radius: 5px;
   width: 44px;
@@ -23,7 +22,7 @@
 }
 
 .controls__button:hover {
-  background: rgb(0, 207, 162);
+  background: var(--color-btn-light);
   cursor: pointer;
 }
 

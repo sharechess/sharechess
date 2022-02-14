@@ -1,5 +1,5 @@
 .load {
-  background: #0e0e13;
+  background: var(--color-bg-block);
   padding: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -39,7 +39,7 @@
 
 .load__pgn-file-info p {
   margin-top: 10px;
-  color: #677794;
+  color: var(--color-text-dimmed);
 }
 
 .load__link-input {

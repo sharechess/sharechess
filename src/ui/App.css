@@ -22,6 +22,43 @@ body {
   font-family: Ubuntu, sans-serif;
 }
 
+.dark {
+  background-color: #232831;
+  background-image: url(src/ui/img/pattern.png);
+  color: #ddd;
+
+  --color-btn: rgb(0, 173, 136);
+  --color-btn-light: rgb(0, 207, 162);
+  --color-tab: #899399;
+  --color-tab-light: #a9b4bd;
+  --color-bg-block: #0e0e13;
+  --color-bg-input: #20242a;
+  --color-border-input: #2d323a;
+  --color-highlight: #ffffff22;
+  --color-text: #aaa;
+  --color-text-contrast: #0e0e13;
+  --color-text-input: #acbddb;
+  --color-text-dimmed: #677794;
+}
+
+.light {
+  background-color: #a7b3b9;
+  /* background-image: url(src/ui/img/pattern-light.png); */
+  color: #222;
+  --color-btn: rgb(0, 148, 116);
+  --color-btn-light: rgb(0, 114, 89);
+  --color-tab: #5d6468;
+  --color-tab-light: #3e4346;
+  --color-bg-block: #f1f1f1;
+  --color-bg-input: #fcfcfc;
+  --color-border-input: #7f8999;
+  --color-highlight: #00000022;
+  --color-text: rgb(46, 54, 58);
+  --color-text-contrast: #fff;
+  --color-text-input: #46494e;
+  --color-text-dimmed: #767980;
+}
+
 .upload {
   visibility: hidden;
   padding: 0;
@@ -40,15 +77,15 @@ button,
   padding: 10px;
   font-family: "Ubuntu";
   font-size: 1.5rem;
-  background: rgb(0, 173, 136);
-  color: #0e0e13;
+  background: var(--color-btn);
+  color: var(--color-text-contrast);
   border-radius: 5px;
   width: 100%;
 }
 
 button:hover,
 .upload:hover::before {
-  background: rgb(0, 207, 162);
+  background: var(--color-btn-light);
   cursor: pointer;
 }
 
@@ -59,9 +96,9 @@ textarea {
   font-family: "Fira Mono";
   font-size: 1.4rem;
   margin-bottom: 10px;
-  background: #20242a;
-  border: solid 1px #2d323a;
-  color: #acbddb;
+  background: var(--color-bg-input);
+  border: solid 1px var(--color-border-input);
+  color: var(--color-text-input);
   outline: none;
 }
 
@@ -71,14 +108,14 @@ textarea:focus {
 }
 
 h2 {
-  color: #aaa;
+  color: var(--color-text);
   text-align: left;
   font-size: 1.8rem;
   margin: 25px 0 10px 0;
 }
 
 h3 {
-  color: #aaa;
+  color: var(--color-text);
   text-align: left;
   font-size: 1.6rem;
   margin: 15px 0 10px 0;
@@ -86,26 +123,14 @@ h3 {
 
 hr {
   margin-top: 20px;
-  border-top: solid 1px #ffffff22;
-}
-
-.dark {
-  background-color: #191d24;
-  /* background-image: url(src/ui/img/pattern.png); */
-  color: #ddd;
-}
-
-.light {
-  background-color: #cfcfcf;
-  /* background-image: url(src/ui/img/pattern-light.png); */
-  color: #222;
+  border-top: solid 1px var(--color-highlight);
 }
 
 .board {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   max-width: 100%;
-  max-height: 95vh;
+  max-height: 100%;
 }
 
 .double {
@@ -130,7 +155,7 @@ hr {
   /* background: rgba(255, 166, 0, 0.1); */
   height: 100vh;
   grid-area: board;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -156,5 +181,5 @@ hr {
 }
 
 ::placeholder {
-  color: #677794;
+  color: var(--color-text-dimmed);
 }

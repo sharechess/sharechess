@@ -86,6 +86,10 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           readOnly
           placeholder="Current FEN..."
           value={state.fen}
+          onClick={(e) => {
+            const target = e.target as HTMLInputElement;
+            target.select();
+          }}
         />
 
         <div class="double">

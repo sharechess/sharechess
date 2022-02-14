@@ -1,5 +1,7 @@
 .pieces {
   text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .pieces__ico {
@@ -7,7 +9,7 @@
   margin: 5px;
   cursor: pointer;
   width: 82px;
-  background-color: #ffffff22;
+  background-color: var(--color-highlight);
 }
 
 .pieces__ico--active {

@@ -1,5 +1,7 @@
 .boards {
   text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .boards__ico {

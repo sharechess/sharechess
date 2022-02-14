@@ -5,7 +5,6 @@
 }
 
 .move {
-  /* display: inline-block; */
   padding: 3px;
 }
 
@@ -14,18 +13,18 @@
   width: 40px;
   text-align: right;
   margin-right: 20px;
-  color: #aaa;
+  color: var(--color-text);
 }
 
 .move__ply {
   display: inline-block;
   width: 70px;
-  color: rgb(0, 173, 136);
+  color: var(--color-btn);
 }
 
 .move__ply--current {
-  color: #aaa;
-  background-color: #ffffff22;
+  color: var(--color-text);
+  background-color: var(--color-highlight);
 }
 
 .move__ply:hover {

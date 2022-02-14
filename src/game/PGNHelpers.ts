@@ -42,7 +42,10 @@ const compressPGN = (pgn: string) => {
 
   const header = Object.entries(game.header())
     .filter(([key]) => PGN_KEYS.includes(key))
-    .map(([key, val]) => `${key[0].toUpperCase()} ${val}`)
+    .map(
+      ([key, val]) =>
+        `${PGN_KEYS_TO_SHORT[key as keyof typeof PGN_KEYS_TO_SHORT]} ${val}`
+    )
     .sort()
     .join("\n");
 
