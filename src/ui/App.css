@@ -24,7 +24,7 @@ body {
 
 .dark {
   background-color: #232831;
-  background-image: url(src/ui/img/pattern.png);
+  /* background-image: url(src/ui/img/pattern.png); */
   color: #ddd;
 
   --color-btn: rgb(0, 173, 136);
