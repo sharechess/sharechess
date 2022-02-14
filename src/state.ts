@@ -37,6 +37,7 @@ export type State = {
   moves: string[];
   ply: number;
   mobile: boolean;
+  activeTab: "game" | "load";
 };
 
 const initialState: State = {
@@ -48,6 +49,7 @@ const initialState: State = {
   moves: [],
   ply: 0,
   mobile: isMobile(),
+  activeTab: "load",
 };
 
 const [state, setState] = createStore(initialState);

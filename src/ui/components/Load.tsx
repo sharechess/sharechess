@@ -3,11 +3,10 @@ import { Handlers } from "../../types";
 import readFile from "../../utils/readFile";
 import "./Load.css";
 
-const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
-  props
-) => {
+const Load: Component<{ handlers: Handlers }> = (props) => {
   const [fen, setFEN] = createSignal("");
   const [pgn, setPGN] = createSignal("");
+  const [link, setLink] = createSignal("");
 
   return (
     <div class="load">
@@ -15,7 +14,7 @@ const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
         class="load__fen-input"
         type="text"
         name="load-fen"
-        placeholder="PASTE FEN..."
+        placeholder="Paste FEN..."
         spellcheck={false}
         value={fen()}
         onInput={(e) => setFEN(e.currentTarget.value)}
@@ -32,10 +31,31 @@ const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
         LOAD FEN
       </button>
       <hr />
+      <input
+        class="load__link-input"
+        type="text"
+        name="load-link"
+        placeholder="Paste lichess link..."
+        spellcheck={false}
+        value={link()}
+        onInput={(e) => setLink(e.currentTarget.value)}
+      />
+      <button
+        class="load__link-btn"
+        onClick={() => {
+          if (link()) {
+            props.handlers.importPGN(link());
+            setLink("");
+          }
+        }}
+      >
+        IMPORT GAME
+      </button>
+      <hr />
       <textarea
         class="load__pgn-input"
         name="load-pgn"
-        placeholder="PASTE PGN..."
+        placeholder="Paste PGN..."
         spellcheck={false}
         value={pgn()}
         onInput={(e) => setPGN(e.currentTarget.value)}
@@ -46,7 +66,6 @@ const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
           if (pgn()) {
             props.handlers.loadPGN(pgn());
             setPGN("");
-            props.showMoves();
           }
         }}
       >
@@ -62,7 +81,6 @@ const Load: Component<{ handlers: Handlers; showMoves: () => void }> = (
           if (target?.files && target.files.length > 0) {
             const content = await readFile(target.files[0]);
             props.handlers.loadPGN(content);
-            props.showMoves();
           }
         }}
       ></input>

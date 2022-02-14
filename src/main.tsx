@@ -17,6 +17,7 @@ import readFile from "./utils/readFile";
 import download from "./utils/download";
 import { compressPGN } from "./game/PGNHelpers";
 import extractUrlData from "./persistance/extractUrlData";
+import importFromLink from "./imports/importFromLink";
 
 const main = async () => {
   const board = new Board(state.boardConfig);
@@ -101,11 +102,21 @@ const main = async () => {
       window.location.hash = `v1/pgn/${compressPGN(game.pgn)}`;
 
       await player.load(game);
+      setState("activeTab", "game");
     },
     async loadFEN(fen: string) {
       const game = new Game().loadFEN(fen);
       setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
       await player.load(game);
+    },
+    async importPGN(link: string) {
+      const result = await importFromLink(link);
+
+      if (result.error) {
+        return;
+      }
+
+      await this.loadPGN(result.pgn);
     },
     async downloadImage() {
       const data = await createImage(
