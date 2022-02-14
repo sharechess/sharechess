@@ -111,7 +111,8 @@ h2 {
   color: var(--color-text);
   text-align: left;
   font-size: 1.8rem;
-  margin: 25px 0 10px 0;
+  margin: 25px 0 15px 0;
+  font-weight: 500;
 }
 
 h3 {
@@ -119,6 +120,7 @@ h3 {
   text-align: left;
   font-size: 1.6rem;
   margin: 15px 0 10px 0;
+  font-weight: 500;
 }
 
 hr {
