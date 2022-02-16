@@ -9,7 +9,9 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   props
 ) => {
   createEffect(() => {
-    document.querySelector(`[data-ply="${state.ply}"]`)?.scrollIntoView();
+    if (!state.mobile) {
+      document.querySelector(`[data-ply="${state.ply}"]`)?.scrollIntoView();
+    }
   });
 
   return (

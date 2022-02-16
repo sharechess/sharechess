@@ -7,6 +7,8 @@ import download from "../../utils/download";
 
 const Share: Component<{ handlers: Handlers }> = (props) => {
   const [copyId, setCopyId] = createSignal("");
+  const [imageRendering, setImageRendering] = createSignal(false);
+  const [animationRendering, setAnimationRendering] = createSignal(false);
 
   const blinkCopy = (id: string) => {
     setCopyId(id);
@@ -164,9 +166,13 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           </button>
           <button
             class="share__btn"
-            onClick={() => props.handlers.downloadImage()}
+            onClick={async () => {
+              setImageRendering(true);
+              await props.handlers.downloadImage();
+              setImageRendering(false);
+            }}
           >
-            Save as image
+            {imageRendering() ? "Please wait..." : "Save as image"}
           </button>
         </Show>
       </div>
@@ -314,9 +320,13 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             </button>
             <button
               class="share__create-animation"
-              onClick={() => props.handlers.downloadAnimation()}
+              onClick={async () => {
+                setAnimationRendering(true);
+                await props.handlers.downloadAnimation();
+                setAnimationRendering(false);
+              }}
             >
-              Save animation
+              {animationRendering() ? "Please wait..." : "Save animation"}
             </button>
           </div>
         </Show>

@@ -1,0 +1,47 @@
+.header-box {
+  height: var(--header-height);
+  background-color: var(--color-bg-block);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.8rem;
+}
+
+.header__logo {
+  padding: 10px 20px;
+  text-align: left;
+  color: var(--color-text-dimmed);
+}
+
+.header__logo-pic {
+  height: 2rem;
+  max-width: 320px;
+  background-image: var(--logo-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.header__options {
+  padding: 0px 20px;
+  text-align: right;
+}
+
+.header__options-ico {
+  display: inline-block;
+  font-size: 2.4rem;
+  position: relative;
+  top: -0.2rem;
+  color: var(--color-text);
+  padding-top: 1rem;
+  height: 100%;
+  margin-left: 10px;
+  /* background-color: aqua; */
+  text-align: center;
+}
+
+.header__options-ico:hover {
+  color: var(--color-btn);
+  cursor: pointer;
+}

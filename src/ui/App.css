@@ -20,12 +20,16 @@ body {
   background-position: center;
   text-align: center;
   font-family: Ubuntu, sans-serif;
+
+  --header-height: 4rem;
+  --header-margin: 6rem;
 }
 
 .dark {
   background-color: #232831;
   /* background-image: url(src/ui/img/pattern.png); */
   color: #ddd;
+  --logo-url: url(src/logo.svg);
 
   --color-btn: rgb(0, 173, 136);
   --color-btn-light: rgb(0, 207, 162);
@@ -42,9 +46,11 @@ body {
 }
 
 .light {
-  background-color: #a7b3b9;
+  background-color: #c1ced4;
   /* background-image: url(src/ui/img/pattern-light.png); */
   color: #222;
+  --logo-url: url(src/logo-dark.svg);
+
   --color-btn: rgb(0, 148, 116);
   --color-btn-light: rgb(0, 114, 89);
   --color-tab: #5d6468;
@@ -74,7 +80,7 @@ body {
 
 button,
 .upload::before {
-  padding: 10px;
+  padding: 1rem;
   font-family: "Ubuntu";
   font-size: 1.5rem;
   background: var(--color-btn);
@@ -92,10 +98,10 @@ button:hover,
 input,
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 1rem;
   font-family: "Fira Mono";
   font-size: 1.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   background: var(--color-bg-input);
   border: solid 1px var(--color-border-input);
   color: var(--color-text-input);
@@ -111,7 +117,7 @@ h2 {
   color: var(--color-text);
   text-align: left;
   font-size: 1.8rem;
-  margin: 25px 0 15px 0;
+  margin: 2.5rem 0 1.5rem 0;
   font-weight: 500;
 }
 
@@ -119,17 +125,17 @@ h3 {
   color: var(--color-text);
   text-align: left;
   font-size: 1.6rem;
-  margin: 15px 0 10px 0;
+  margin: 1.5rem 0 1rem 0;
   font-weight: 500;
 }
 
 hr {
-  margin-top: 20px;
+  margin-top: 2rem;
   border-top: solid 1px var(--color-highlight);
 }
 
 .board {
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); */
   border-radius: 5px;
   max-width: 100%;
   max-height: 100%;
@@ -157,7 +163,7 @@ hr {
   /* background: rgba(255, 166, 0, 0.1); */
   height: 100vh;
   grid-area: board;
-  padding: 20px 0;
+  padding: var(--header-margin) 0 2rem 0;
 }
 
 @media screen and (max-width: 1024px) {

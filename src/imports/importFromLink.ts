@@ -21,7 +21,11 @@ const importFromLichess = async (link: string): Promise<Result> => {
 
     const pgn = await res.text();
 
-    return { error: false, pgn, side: second === "black" ? "b" : "w" };
+    return {
+      error: false,
+      pgn,
+      side: String(second).startsWith("black") ? "b" : "w",
+    };
   }
 
   return { error: true, errorType: "INCORRECT_LINK" };

@@ -5,14 +5,13 @@
 
 .controls {
   background: var(--color-bg-block);
-  height: 100%;
   padding: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .controls__button {
-  margin: 3px;
+  margin: 0 3px;
   padding: 5px;
   font-size: 3rem;
   text-align: center;

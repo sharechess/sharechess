@@ -1,8 +1,8 @@
 .setup-box {
-  /* background: rgba(135, 207, 235, 0.1); */
   height: 100vh;
   grid-area: setup;
   padding: 20px;
+  padding-top: var(--header-margin);
   min-width: 360px;
 }
 

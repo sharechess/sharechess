@@ -1,6 +1,7 @@
 .game-box {
   grid-area: moves;
   padding: 20px;
+  padding-top: var(--header-margin);
   min-width: 360px;
   height: 100vh;
 }
@@ -8,7 +9,7 @@
 .game-tabs {
   height: 100%;
   display: grid;
-  grid-template-rows: 38px 1fr;
+  grid-template-rows: 38px 1fr 84px;
 }
 
 .game-tabs__btn {

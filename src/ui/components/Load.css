@@ -3,6 +3,7 @@
   padding: 20px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  grid-row-end: span 2;
 }
 
 .load__pgn-input {

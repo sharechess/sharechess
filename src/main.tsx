@@ -119,6 +119,7 @@ const main = async () => {
       await this.loadPGN(result.pgn);
     },
     async downloadImage() {
+      await new Promise((resolve) => setTimeout(resolve, 0));
       const data = await createImage(
         state.fen,
         state.pgn,
@@ -129,6 +130,7 @@ const main = async () => {
       download(data, "fen", "png");
     },
     async downloadAnimation() {
+      await new Promise((resolve) => setTimeout(resolve, 0));
       const data = await createAnimation(
         state.pgn,
         state.boardConfig,
