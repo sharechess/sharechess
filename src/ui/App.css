@@ -27,9 +27,9 @@ body {
 
 .dark {
   background-color: #232831;
-  background-image: url(img/pattern.png);
+  background-image: url(/img/pattern.png);
   color: #ddd;
-  --logo-url: url(img/logo.svg);
+  --logo-url: url(/img/logo.svg);
 
   --color-btn: rgb(0, 173, 136);
   --color-btn-light: rgb(0, 207, 162);
@@ -47,9 +47,9 @@ body {
 
 .light {
   background-color: #c1ced4;
-  background-image: url(img/pattern-light.png);
+  background-image: url(/img/pattern-light.png);
   color: #222;
-  --logo-url: url(img/logo-dark.svg);
+  --logo-url: url(/img/logo-dark.svg);
 
   --color-btn: rgb(0, 148, 116);
   --color-btn-light: rgb(0, 114, 89);
