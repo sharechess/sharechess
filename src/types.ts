@@ -1,4 +1,6 @@
 import { Move } from "chess.js";
+import stylesBoard from "./board/styles-board";
+import stylesPieces from "./board/styles-pieces";
 
 export type GradientDir =
   | "horizontal"
@@ -92,35 +94,9 @@ export type Piece =
   | "nb"
   | "pb";
 
-export type BoardStyle =
-  | "standard"
-  | "chesscom"
-  | "lichess"
-  | "lila"
-  | "peach"
-  | "violet"
-  | "danya"
-  | "botez"
-  | "avocado"
-  | "calm"
-  | "laguna"
-  | "sunset"
-  | "rainbow"
-  | "rainbowLight";
+export type BoardStyle = keyof typeof stylesBoard;
 
-export type PiecesStyle =
-  | "alpha"
-  | "cardinal"
-  | "cburnett"
-  | "companion"
-  | "fantasy"
-  | "gioco"
-  | "governor"
-  | "horsey"
-  | "maestro"
-  | "merida"
-  | "staunty"
-  | "tatiana";
+export type PiecesStyle = keyof typeof stylesPieces;
 
 export type BoardConfig = {
   size: number;
@@ -141,9 +117,6 @@ export type Size = "XS" | "S" | "M" | "L" | "XL";
 
 export type GameConfig = {
   titleScreen: boolean;
-  fromPly: number | null;
-  toPly: number | null;
-  loop: boolean;
   format: "GIF" | "MP4" | "WebM";
   picSize: Size;
   animationSize: Size;

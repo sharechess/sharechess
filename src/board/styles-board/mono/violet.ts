@@ -28,13 +28,13 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#271936",
+      color: "#50346e",
     },
   },
   coords: {
-    onLight: "#271936",
-    onDark: "#271936",
-    onBorder: "#cea9f5",
+    onLight: "#50346e",
+    onDark: "#eedeff",
+    onBorder: "#e2c7ff",
   },
 };
 

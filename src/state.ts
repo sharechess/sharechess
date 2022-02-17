@@ -1,11 +1,14 @@
 import isMobile from "is-mobile";
 import { createStore } from "solid-js/store";
 import Game from "./game/Game";
+import loadConfig from "./persistance/loadConfig";
 import { BoardConfig, GameConfig } from "./types";
 
 const mobile = isMobile();
 
-const boardConfig: BoardConfig = {
+const saved = loadConfig();
+
+const initialBoardConfig: BoardConfig = {
   size: 1024,
   tiles: 8,
   boardStyle: "standard",
@@ -20,11 +23,8 @@ const boardConfig: BoardConfig = {
   anonymous: false,
 };
 
-const gameConfig: GameConfig = {
+const initialGameConfig: GameConfig = {
   titleScreen: true,
-  fromPly: null,
-  toPly: null,
-  loop: true,
   format: "GIF",
   picSize: "M",
   animationSize: "M",
@@ -43,8 +43,8 @@ export type State = {
 };
 
 const initialState: State = {
-  boardConfig,
-  gameConfig,
+  boardConfig: { ...initialBoardConfig, ...saved.boardConfig },
+  gameConfig: { ...initialGameConfig, ...saved.gameConfig },
   game: new Game(),
   pgn: "",
   fen: "",

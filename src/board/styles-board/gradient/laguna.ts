@@ -7,7 +7,7 @@ const style: Style = {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#3df5a7", "#096fe0"],
+      colors: ["#00c4a0", "#096fe0"],
     },
   },
   dark: {
@@ -19,7 +19,7 @@ const style: Style = {
   light: {
     type: "solid",
     data: {
-      color: "#ffffff55",
+      color: "#ffffff77",
     },
   },
   moveIndicator: {
@@ -30,7 +30,7 @@ const style: Style = {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#00b568", "#0052ad"],
+      colors: ["#009c7f", "#0052ad"],
     },
   },
   coords: {

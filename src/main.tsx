@@ -10,6 +10,7 @@ import Player from "./player/Player";
 import App from "./ui/App";
 
 import { state, setState } from "./state";
+import saveConfig from "./persistance/saveConfig";
 
 import createImage from "./encoders/createImage";
 import createAnimation from "./encoders/createAnimation";
@@ -45,15 +46,18 @@ const main = async () => {
     toggleBorder() {
       board.toggleBorder();
       setState("boardConfig", "showBorder", !state.boardConfig.showBorder);
+      saveConfig("board");
     },
 
     showBorder() {
       board.showBorder();
       setState("boardConfig", "showBorder", true);
+      saveConfig("board");
     },
     hideBorder() {
       board.hideBorder();
       setState("boardConfig", "showBorder", false);
+      saveConfig("board");
     },
     toggleExtraInfo() {
       board.toggleExtraInfo();
@@ -62,6 +66,7 @@ const main = async () => {
         "showExtraInfo",
         !state.boardConfig.showExtraInfo
       );
+      saveConfig("board");
     },
     toggleAnonymous() {
       setState("boardConfig", "anonymous", !state.boardConfig.anonymous);
@@ -69,6 +74,7 @@ const main = async () => {
     },
     toggleTitleScreen() {
       setState("gameConfig", "titleScreen", !state.gameConfig.titleScreen);
+      saveConfig("game");
     },
     flip() {
       console.log("FLIP");
@@ -85,10 +91,12 @@ const main = async () => {
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
       setState("boardConfig", "boardStyle", style);
+      saveConfig("board");
     },
     changePiecesStyle(style: PiecesStyle) {
       board.setPiecesStyle(style);
       setState("boardConfig", "piecesStyle", style);
+      saveConfig("board");
     },
     async loadPGN(pgn: string) {
       const game = new Game().loadPGN(pgn);
@@ -240,7 +248,7 @@ const main = async () => {
 
 WebFont.load({
   google: {
-    families: ["Ubuntu:500,700", "Fira Mono"],
+    families: ["Ubuntu:500,700", "Fira Mono:500"],
   },
   custom: {
     families: ["Chess"],
