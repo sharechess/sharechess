@@ -206,3 +206,10 @@ export type Header = {
   Site: string | null;
   Result: string | null;
 };
+
+export type CreateAnimation = (
+  pgn: string,
+  boardConfig: BoardConfig,
+  size: Size,
+  includeTitleScreen: boolean
+) => Promise<File>;
