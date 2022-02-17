@@ -110,6 +110,15 @@ const main = async () => {
       setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
       window.location.hash = `v1/fen/${state.fen}`;
       await player.load(game);
+      setState("activeTab", "game");
+
+      if (
+        game.getPosition(0).turn === "b" &&
+        state.boardConfig.flipped === false
+      ) {
+        setState("boardConfig", "flipped", true);
+        board.flip();
+      }
 
       document.title = `SHORTCASTLE - FEN ${fen}`;
     },

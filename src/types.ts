@@ -93,12 +93,14 @@ export type Piece =
   | "pb";
 
 export type BoardStyle =
+  | "standard"
   | "chesscom"
   | "lichess"
   | "lila"
   | "peach"
-  | "standard"
   | "violet"
+  | "danya"
+  | "botez"
   | "avocado"
   | "calm"
   | "laguna"
@@ -110,9 +112,12 @@ export type PiecesStyle =
   | "alpha"
   | "cardinal"
   | "cburnett"
+  | "companion"
   | "fantasy"
   | "gioco"
+  | "governor"
   | "horsey"
+  | "maestro"
   | "merida"
   | "staunty"
   | "tatiana";

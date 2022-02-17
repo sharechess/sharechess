@@ -4,6 +4,8 @@ import lila from "./mono/lila";
 import peach from "./mono/peach";
 import standard from "./mono/standard";
 import violet from "./mono/violet";
+import danya from "./mono/danya";
+import botez from "./mono/botez";
 
 import avocado from "./colorful/avocado";
 
@@ -22,6 +24,8 @@ export default {
   lila,
   peach,
   violet,
+  danya,
+  botez,
   avocado,
   calm,
   laguna,
