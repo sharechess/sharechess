@@ -43,7 +43,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             "options__button--active": state.boardConfig.showBorder,
           }}
           onClick={props.handlers.toggleBorder}
-          title="BORDER"
+          title={state.boardConfig.showBorder ? "HIDE BORDER" : "SHOW BORDER"}
         >
           <i class="las la-expand"></i>
         </button>
@@ -53,7 +53,11 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             "options__button--active": state.boardConfig.showExtraInfo,
           }}
           onClick={props.handlers.toggleExtraInfo}
-          title="EXTRA INFO"
+          title={
+            state.boardConfig.showExtraInfo
+              ? "HIDE EXTRA INFO"
+              : "SHOW EXTRA INFO"
+          }
         >
           <i class="las la-info-circle"></i>
         </button>
@@ -63,7 +67,11 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             "options__button--active": state.gameConfig.titleScreen,
           }}
           onClick={props.handlers.toggleTitleScreen}
-          title="TITLE SCREEN"
+          title={
+            state.gameConfig.titleScreen
+              ? "EXCLUDE TITLE SCREEN"
+              : "INCLUDE TITLE SCREEN"
+          }
         >
           <i class="las la-heading"></i>
         </button>
@@ -74,7 +82,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             "options__button--active": state.boardConfig.anonymous,
           }}
           onClick={props.handlers.toggleAnonymous}
-          title="ANONYMOUS"
+          title="TOGGLE ANONYMOUS"
         >
           <i class="las la-user-secret"></i>
         </button>
@@ -116,7 +124,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           </button>
         </div>
         <Show when={!state.mobile}>
-          <h3>Image</h3>
+          <hr class="invisible" />
           <button
             classList={{
               share__size: true,
@@ -215,19 +223,9 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             <button
               class="share__btn"
               onClick={() => {
-                const header = state.game.header;
-                const w = state.boardConfig.anonymous
-                  ? "Anonymous"
-                  : header.WhitePretty;
-                const b = state.boardConfig.anonymous
-                  ? "Anonymous"
-                  : header.BlackPretty;
-
-                const title =
-                  `${w} vs ${b}` +
-                  (header.Event ? ` | ${header.Event}` : "") +
-                  (header.Round ? `, Round ${header.Round}` : "") +
-                  (header.DatePretty ? ` | ${header.DatePretty}` : "");
+                const title = state.game.getTitle({
+                  anonymous: state.boardConfig.anonymous,
+                });
 
                 const md = `[${title}](${window.location.href})`;
 
@@ -241,7 +239,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
         </div>
         <Show when={!state.mobile}>
           <div class="share__animation">
-            <h3>Animation</h3>
+            <hr className="invisible" />
             <button
               classList={{
                 share__size: true,

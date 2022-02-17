@@ -6,6 +6,7 @@ const download = (data: string | Blob, name: string, ext: string) => {
   link.download = `${name}_${Date.now()}.${ext}`;
   link.target = "_blank";
   link.click();
+  URL.revokeObjectURL(url);
 };
 
 export default download;

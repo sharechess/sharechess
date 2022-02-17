@@ -2,14 +2,20 @@
   grid-area: moves;
   padding: 20px;
   padding-top: var(--header-margin);
-  min-width: 360px;
+  min-width: 375px;
   height: 100vh;
+}
+
+@media screen and (max-width: 1024px) {
+  .game-box {
+    height: auto;
+  }
 }
 
 .game-tabs {
   height: 100%;
   display: grid;
-  grid-template-rows: 38px 1fr 84px;
+  grid-template-rows: 38px 195px 1fr 84px;
 }
 
 .game-tabs__btn {

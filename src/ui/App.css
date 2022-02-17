@@ -26,16 +26,17 @@ body {
 }
 
 .dark {
-  background-color: #232831;
+  background-color: #313742;
   background-image: url(/img/pattern.png);
-  color: #ddd;
+  background-size: 12rem;
+  color: rgb(212, 221, 224);
   --logo-url: url(/img/logo.svg);
 
   --color-btn: rgb(0, 173, 136);
   --color-btn-light: rgb(0, 207, 162);
   --color-tab: #899399;
   --color-tab-light: #a9b4bd;
-  --color-bg-block: #0e0e13;
+  --color-bg-block: #17171f;
   --color-bg-input: #20242a;
   --color-border-input: #2d323a;
   --color-highlight: #ffffff22;
@@ -43,26 +44,30 @@ body {
   --color-text-contrast: #0e0e13;
   --color-text-input: #acbddb;
   --color-text-dimmed: #677794;
+  --color-scrollbar: rgb(0, 59, 47);
+  --color-scrollbar-track: #ffffff22;
 }
 
 .light {
-  background-color: #c1ced4;
+  background-color: #b2bcc0;
   background-image: url(/img/pattern-light.png);
-  color: #222;
+  color: rgb(29, 31, 32);
   --logo-url: url(/img/logo-dark.svg);
 
   --color-btn: rgb(0, 148, 116);
   --color-btn-light: rgb(0, 114, 89);
   --color-tab: #5d6468;
   --color-tab-light: #3e4346;
-  --color-bg-block: #f1f1f1;
-  --color-bg-input: #fcfcfc;
+  --color-bg-block: #dddddd;
+  --color-bg-input: #eeeeee;
   --color-border-input: #7f8999;
   --color-highlight: #00000022;
   --color-text: rgb(46, 54, 58);
   --color-text-contrast: #fff;
   --color-text-input: #46494e;
   --color-text-dimmed: #767980;
+  --color-scrollbar: rgb(133, 184, 173);
+  --color-scrollbar-track: #00000022;
 }
 
 .upload {
@@ -106,6 +111,7 @@ textarea {
   border: solid 1px var(--color-border-input);
   color: var(--color-text-input);
   outline: none;
+  resize: none;
 }
 
 input:focus,
@@ -116,7 +122,7 @@ textarea:focus {
 h2 {
   color: var(--color-text);
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin: 2.5rem 0 1.5rem 0;
   font-weight: 500;
 }
@@ -134,8 +140,29 @@ hr {
   border-top: solid 1px var(--color-highlight);
 }
 
+a,
+a:visited,
+a:active {
+  color: var(--color-btn);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.board-box {
+  height: 100vh;
+  grid-area: board;
+  padding: var(--header-margin) 0 2rem 0;
+}
+
 .board {
-  /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); */
+  border: solid 1rem var(--color-bg-block);
   border-radius: 5px;
   max-width: 100%;
   max-height: 100%;
@@ -157,13 +184,6 @@ hr {
     "setup board controls";
 
   height: 100vh;
-}
-
-.board-box {
-  /* background: rgba(255, 166, 0, 0.1); */
-  height: 100vh;
-  grid-area: board;
-  padding: var(--header-margin) 0 2rem 0;
 }
 
 @media screen and (max-width: 1024px) {

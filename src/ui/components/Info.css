@@ -1,0 +1,54 @@
+.info-box {
+  grid-area: controls;
+  padding: 0 20px 20px 20px;
+}
+
+.info {
+  background: var(--color-bg-block);
+  padding: 30px 20px;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.info__players {
+  position: relative;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.info__rating {
+  font-family: "Fira Code", monospace;
+  color: var(--color-text-dimmed);
+  position: absolute;
+  right: 1rem;
+}
+
+.info__color {
+  border-radius: 1rem;
+  padding: 0;
+  border: solid 2px var(--color-tab);
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.8rem;
+}
+
+.info__color--white {
+  background-color: #eee;
+}
+
+.info__color--black {
+  background-color: #111;
+}
+
+.info__event {
+  margin-bottom: 1rem;
+}
+
+.info__event,
+.info__site {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: var(--color-text);
+  padding: 0 1rem;
+}

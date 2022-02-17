@@ -103,11 +103,15 @@ const main = async () => {
 
       await player.load(game);
       setState("activeTab", "game");
+      document.title = `SHORTCASTLE - ${game.getTitle({ anonymous: false })}`;
     },
     async loadFEN(fen: string) {
       const game = new Game().loadFEN(fen);
       setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
+      window.location.hash = `v1/fen/${state.fen}`;
       await player.load(game);
+
+      document.title = `SHORTCASTLE - FEN ${fen}`;
     },
     async importPGN(link: string) {
       const result = await importFromLink(link);
@@ -135,7 +139,8 @@ const main = async () => {
         state.pgn,
         state.boardConfig,
         state.gameConfig.format,
-        state.gameConfig.animationSize
+        state.gameConfig.animationSize,
+        state.gameConfig.titleScreen
       );
       download(data, "game", state.gameConfig.format.toLowerCase());
     },
@@ -165,59 +170,61 @@ const main = async () => {
 
   /* Register events */
 
-  const keyMapping: { [key: string]: () => void } = {
-    ArrowLeft: handlers.prev,
-    ArrowRight: handlers.next,
-    ArrowUp: handlers.first,
-    ArrowDown: handlers.last,
-    " ": handlers.togglePlay,
-    b: handlers.toggleBorder,
-    f: handlers.flip,
-    e: handlers.toggleExtraInfo,
-  };
+  if (!state.mobile) {
+    const keyMapping: { [key: string]: () => void } = {
+      ArrowLeft: handlers.prev,
+      ArrowRight: handlers.next,
+      ArrowUp: handlers.first,
+      ArrowDown: handlers.last,
+      " ": handlers.togglePlay,
+      b: handlers.toggleBorder,
+      f: handlers.flip,
+      e: handlers.toggleExtraInfo,
+    };
 
-  document.addEventListener("keydown", (e) => {
-    const target = e.target as HTMLElement | null;
+    document.addEventListener("keydown", (e) => {
+      const target = e.target as HTMLElement | null;
 
-    if (
-      keyMapping[e.key] &&
-      target?.nodeName !== "INPUT" &&
-      target?.nodeName !== "TEXTAREA"
-    ) {
-      keyMapping[e.key]();
-    }
-  });
+      if (
+        keyMapping[e.key] &&
+        target?.nodeName !== "INPUT" &&
+        target?.nodeName !== "TEXTAREA"
+      ) {
+        keyMapping[e.key]();
+      }
+    });
 
-  const preventDefaults = (e: Event) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
+    const preventDefaults = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
 
-  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-    document.addEventListener(eventName, preventDefaults, false);
-  });
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+      document.addEventListener(eventName, preventDefaults, false);
+    });
 
-  document.addEventListener("drop", async (e) => {
-    if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
-      const content = await readFile(e.dataTransfer.files[0]);
-      handlers.loadPGN(content);
-    }
-  });
+    document.addEventListener("drop", async (e) => {
+      if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
+        const content = await readFile(e.dataTransfer.files[0]);
+        handlers.loadPGN(content);
+      }
+    });
+  } else {
+    const hammer = new Hammer.Manager(board.canvas);
+    hammer.add(new Hammer.Swipe());
+    hammer.add(new Hammer.Pinch());
+    hammer.add(new Hammer.Press({ time: 500 }));
+    hammer.add(new Hammer.Tap({ taps: 1 }));
 
-  const hammer = new Hammer.Manager(board.canvas);
-  hammer.add(new Hammer.Swipe());
-  hammer.add(new Hammer.Pinch());
-  hammer.add(new Hammer.Press({ time: 500 }));
-  hammer.add(new Hammer.Tap({ taps: 1 }));
-
-  hammer.on("swiperight", handlers.next);
-  hammer.on("swipeleft", handlers.prev);
-  hammer.on("swipeup", handlers.first);
-  hammer.on("swipedown", handlers.last);
-  hammer.on("pinchin", handlers.showBorder);
-  hammer.on("pinchout", handlers.hideBorder);
-  hammer.on("tap", handlers.next);
-  hammer.on("press", handlers.flip);
+    hammer.on("swiperight", handlers.next);
+    hammer.on("swipeleft", handlers.prev);
+    hammer.on("swipeup", handlers.first);
+    hammer.on("swipedown", handlers.last);
+    hammer.on("pinchin", handlers.showBorder);
+    hammer.on("pinchout", handlers.hideBorder);
+    hammer.on("tap", handlers.next);
+    hammer.on("press", handlers.flip);
+  }
 };
 
 /* Boot */

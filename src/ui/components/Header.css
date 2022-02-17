@@ -5,7 +5,7 @@
   top: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   font-size: 1.8rem;
 }
 

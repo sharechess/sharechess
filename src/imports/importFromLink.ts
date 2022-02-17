@@ -2,9 +2,9 @@ type Result =
   | { error: false; pgn: string; side: "w" | "b" }
   | { error: true; errorType: "INCORRECT_LINK" | "SERVER_ERROR" };
 
-const importFromLichess = async (link: string): Promise<Result> => {
-  const [first, second] = link
-    .replace(/^https:\/\/(www\.)*lichess\.org\/*/, "")
+const importFromLichess = async (url: URL): Promise<Result> => {
+  const [first, second] = url.pathname
+    .replace(/^\//, "")
     .split("/")
     .map((x) => x.trim());
 
@@ -24,7 +24,10 @@ const importFromLichess = async (link: string): Promise<Result> => {
     return {
       error: false,
       pgn,
-      side: String(second).startsWith("black") ? "b" : "w",
+      side:
+        String(second).startsWith("black") || url.hash.startsWith("black")
+          ? "b"
+          : "w",
     };
   }
 
@@ -32,8 +35,16 @@ const importFromLichess = async (link: string): Promise<Result> => {
 };
 
 const importFromLink = async (link: string): Promise<Result> => {
-  if (/^https:\/\/(www\.)*lichess\.org/.test(link)) {
-    return importFromLichess(link);
+  let url;
+
+  try {
+    url = new URL(link);
+  } catch {
+    return { error: true, errorType: "INCORRECT_LINK" };
+  }
+
+  if (/^(www\.)*lichess\.org/.test(url.hostname)) {
+    return importFromLichess(url);
   }
 
   return { error: true, errorType: "INCORRECT_LINK" };

@@ -8,9 +8,9 @@ import MP4 from "./MP4";
 
 const getData = (board: Board, encoder: GIF | WebM | MP4) => {
   return encoder instanceof GIF
-    ? board.toImgElement()
-    : encoder instanceof MP4
     ? board.toImageData()
+    : encoder instanceof MP4
+    ? board.toClampedArray()
     : board.canvas;
 };
 
@@ -18,7 +18,8 @@ const createAnimation = async (
   pgn: string,
   boardConfig: BoardConfig,
   format: "GIF" | "WebM" | "MP4",
-  size: Size
+  size: Size,
+  includeTitleScreen: boolean
 ) => {
   const game = new Game().loadPGN(pgn);
   const board = new Board({ ...boardConfig, size: sizeToPX[size] });
@@ -31,11 +32,13 @@ const createAnimation = async (
 
   const header = game.header;
 
-  await board.titleFrame(header);
-  board.render();
+  if (includeTitleScreen) {
+    await board.titleFrame(header);
+    board.render();
 
-  // @ts-ignore
-  await encoder.add(getData(board, encoder), 4);
+    // @ts-ignore
+    await encoder.add(getData(board, encoder), 4);
+  }
 
   for (let ply = 0; ply < game.length; ply++) {
     const position = game.getPosition(ply);

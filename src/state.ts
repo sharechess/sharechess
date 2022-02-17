@@ -3,12 +3,14 @@ import { createStore } from "solid-js/store";
 import Game from "./game/Game";
 import { BoardConfig, GameConfig } from "./types";
 
+const mobile = isMobile();
+
 const boardConfig: BoardConfig = {
   size: 1024,
   tiles: 8,
   boardStyle: "calm",
   piecesStyle: "tatiana",
-  showBorder: true,
+  showBorder: !mobile,
   showExtraInfo: true,
   showMaterial: true,
   showMoveIndicator: true,
@@ -48,7 +50,7 @@ const initialState: State = {
   fen: "",
   moves: [],
   ply: 0,
-  mobile: isMobile(),
+  mobile,
   activeTab: "load",
 };
 

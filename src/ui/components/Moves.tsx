@@ -1,4 +1,4 @@
-import { Component, For, createEffect } from "solid-js";
+import { Component, For, Show, createEffect } from "solid-js";
 import chunk_ from "@arrows/array/chunk_";
 import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
@@ -16,6 +16,11 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
 
   return (
     <Scrollable class="moves">
+      <Show when={props.moves.length === 0}>
+        <p class="moves__turn">
+          {state.game.getPosition(0).turn === "w" ? "White" : "Black"} to move.
+        </p>
+      </Show>
       <For each={chunk_(2, props.moves as string[])}>
         {(move, i) => {
           const [white, black] = move as [string, string];

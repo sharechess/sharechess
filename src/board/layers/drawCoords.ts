@@ -1,6 +1,6 @@
 import { Coords } from "../../types";
 
-const BASE_FONT_SIZE = 20;
+const BASE_FONT_SIZE = 24;
 const FONT_FAMILY = "Fira Mono";
 
 const drawCoords = (

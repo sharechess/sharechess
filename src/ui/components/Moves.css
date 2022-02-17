@@ -2,6 +2,11 @@
   font-size: 1.4rem;
   font-family: "Fira Mono";
   text-align: left;
+  background-color: var(--color-bg-input);
+}
+
+.moves__turn {
+  text-align: center;
 }
 
 .move {

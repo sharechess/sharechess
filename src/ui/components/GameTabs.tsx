@@ -1,6 +1,7 @@
 import { Component, Switch, Match } from "solid-js";
 import Moves from "./Moves";
 import Controls from "./Controls";
+import Info from "./Info";
 import Load from "./Load";
 import { Handlers } from "../../types";
 import "./GameTabs.css";
@@ -33,6 +34,7 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
       </div>
       <Switch>
         <Match when={state.activeTab === "game"}>
+          <Info handlers={props.handlers}></Info>
           <Moves moves={props.moves} handlers={props.handlers} />
           <Controls handlers={props.handlers} />
         </Match>

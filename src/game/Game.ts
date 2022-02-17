@@ -179,6 +179,19 @@ class Game {
     };
   }
 
+  getTitle({ anonymous }: { anonymous: boolean }) {
+    const header = this.header;
+    const w = anonymous ? "Anonymous" : header.WhitePretty;
+    const b = anonymous ? "Anonymous" : header.BlackPretty;
+
+    return (
+      `${w} vs ${b}` +
+      (header.Event ? ` | ${header.Event}` : "") +
+      (header.Round ? `, Round ${header.Round}` : "") +
+      (header.DatePretty ? ` | ${header.DatePretty}` : "")
+    );
+  }
+
   get pgn() {
     return this.game.pgn();
   }

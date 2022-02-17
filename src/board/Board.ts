@@ -331,6 +331,10 @@ class Board {
   }
 
   toImageData() {
+    return this.ctx.getImageData(0, 0, this.width, this.height);
+  }
+
+  toClampedArray() {
     return this.ctx.getImageData(0, 0, this.width, this.height).data;
   }
 
