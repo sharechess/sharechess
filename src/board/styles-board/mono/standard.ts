@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#999",
+      color: "#10ad88",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#eee",
+      color: "#aae4d7",
     },
   },
   moveIndicator: {
     type: "color",
-    data: "#0088ff66",
+    data: "#ffff0055",
   },
   border: {
     type: "solid",
     data: {
-      color: "#444",
+      color: "#00735a",
     },
   },
   coords: {
-    onLight: "#999",
-    onDark: "#eee",
-    onBorder: "#eee",
+    onLight: "#00735a",
+    onDark: "#d4fff5",
+    onBorder: "#bbfaec",
   },
 };
 

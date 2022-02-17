@@ -1,7 +1,7 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Lichess",
+  name: "Mono",
   category: "mono",
   background: {
     type: "solid",
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#b58863",
+      color: "#999",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#f0d9b5",
+      color: "#eee",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: -40,
+    type: "color",
+    data: "#0088ff66",
   },
   border: {
     type: "solid",
     data: {
-      color: "#80634d",
+      color: "#444",
     },
   },
   coords: {
-    onLight: "#9c6f49",
-    onDark: "#f9f0e1",
-    onBorder: "#f9f0e1",
+    onLight: "#999",
+    onDark: "#eee",
+    onBorder: "#eee",
   },
 };
 

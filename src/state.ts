@@ -8,7 +8,7 @@ const mobile = isMobile();
 const boardConfig: BoardConfig = {
   size: 1024,
   tiles: 8,
-  boardStyle: "calm",
+  boardStyle: "standard",
   piecesStyle: "tatiana",
   showBorder: !mobile,
   showExtraInfo: true,

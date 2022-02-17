@@ -63,7 +63,9 @@ const changeHSL = (
   const [r, g, b] = chunk(
     colorHex.length === 4 ? 1 : 2,
     colorHex.slice(1).split("")
-  ).map((x) => parseInt(x.join(""), 16));
+  ).map((x) => {
+    return parseInt(x.join(""), 16);
+  });
 
   let [h, s, l] = rgb2hsl(r, g, b);
   const absDelta = Math.abs(deltaH);

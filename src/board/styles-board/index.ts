@@ -16,11 +16,11 @@ import rainbowLight from "./gradient/rainbow-light";
 // import kittens from "./pic/kittens";
 
 export default {
+  standard,
   chesscom,
   lichess,
   lila,
   peach,
-  standard,
   violet,
   avocado,
   calm,
