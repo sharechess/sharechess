@@ -12,7 +12,7 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#10ad88",
+      color: "#00ad88",
     },
   },
   light: {
