@@ -1,40 +1,40 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Kittens",
+  name: "Wood 4",
   category: "pic",
   background: {
     type: "image",
     data: {
-      src: "https://placekitten.com/720/720",
+      src: "/textures/wood04.jpg",
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "#00000055",
+      color: "transparent",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#ffffff55",
+      color: "transparent",
     },
   },
   moveIndicator: {
     type: "color",
-    data: "#ffff0055",
+    data: "#55ff0022",
   },
   border: {
-    type: "solid",
+    type: "image",
     data: {
-      color: "#444",
+      src: "/textures/wood04_bg.jpg",
     },
   },
   coords: {
     onLight: "#333",
     onDark: "#eee",
-    onBorder: "#eee",
+    onBorder: "#ffffffbb",
   },
 };
 

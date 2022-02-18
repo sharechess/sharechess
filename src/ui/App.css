@@ -49,7 +49,7 @@ body {
 }
 
 .light {
-  background-color: #b2bcc0;
+  background-color: #959ea1;
   background-image: url(/img/pattern-light.png);
   color: rgb(29, 31, 32);
   --logo-url: url(/img/logo-dark.svg);
