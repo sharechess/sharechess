@@ -8,11 +8,28 @@ const drawRectangle = async (
   height: number,
   x: number,
   y: number,
-  squareStyle: SquareStyle
+  squareStyle: SquareStyle,
+  tiles: number = 8
 ) => {
   if (squareStyle.type === "image") {
     const img = await loadImage(squareStyle.data.src);
-    ctx.drawImage(img, x, y, width, height);
+
+    if (tiles < 8) {
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width * (tiles / 8),
+        img.height * (tiles / 8),
+        x,
+        y,
+        width,
+        height
+      );
+    } else {
+      ctx.drawImage(img, x, y, width, height);
+    }
+
     return;
   }
 

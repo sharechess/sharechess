@@ -13,7 +13,6 @@ import calm from "./gradient/calm";
 import laguna from "./gradient/laguna";
 import sunset from "./gradient/sunset";
 
-// import kittens from "./pic/kittens";
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
 import wood3 from "./pic/wood3";
@@ -32,7 +31,6 @@ const styles = {
   calm,
   laguna,
   sunset,
-  // kittens,
   wood1,
   wood2,
   wood3,

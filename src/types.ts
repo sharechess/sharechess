@@ -69,6 +69,7 @@ export type Style = {
   moveIndicator: MoveIndicator;
   border: SquareStyle;
   coords: Coords;
+  ico?: string;
 };
 
 export type PieceType = "k" | "q" | "r" | "b" | "n" | "p";
@@ -206,10 +207,3 @@ export type Header = {
   Site: string | null;
   Result: string | null;
 };
-
-export type CreateAnimation = (
-  pgn: string,
-  boardConfig: BoardConfig,
-  size: Size,
-  includeTitleScreen: boolean
-) => Promise<File>;

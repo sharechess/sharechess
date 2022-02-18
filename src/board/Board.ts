@@ -245,7 +245,8 @@ class Board {
       this.innerSize,
       this.cfg.showBorder ? this.borderWidth : 0,
       (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
-      background
+      background,
+      this.cfg.tiles
     );
 
     for (let rank = 0; rank < this.cfg.tiles; rank++) {

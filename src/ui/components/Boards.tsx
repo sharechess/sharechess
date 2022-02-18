@@ -17,21 +17,29 @@ const prepareBoards = async () => {
   const boards = [];
 
   const board = new Board({
-    size: 72,
+    size: 144,
     tiles: 2,
     showBorder: true,
     showExtraInfo: false,
   });
 
   for (const [key, style] of Object.entries(styles) as [BoardStyle, Style][]) {
-    await board.updateConfig({ boardStyle: key });
-    await board.frame(null);
-    board.render();
+    let img: string;
+
+    if (style.ico) {
+      img = style.ico;
+    } else {
+      await board.updateConfig({ boardStyle: key });
+      await board.frame(null);
+      board.render();
+      img = board.toImgUrl();
+    }
+
     boards.push({
       key,
       name: style.name,
       category: style.category,
-      img: board.toImgUrl(),
+      img,
     } as BoardPreview);
   }
 

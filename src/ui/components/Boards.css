@@ -8,6 +8,7 @@
   border: solid 5px black;
   margin: 5px;
   cursor: pointer;
+  width: 72px;
 }
 
 .boards__ico--active {
