@@ -23,7 +23,7 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#55ff0022",
+    data: "#ff007733",
   },
   border: {
     type: "image",
@@ -32,9 +32,9 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#333",
-    onDark: "#eee",
-    onBorder: "#ffffffbb",
+    onLight: "#773e2d",
+    onDark: "#d6b29a",
+    onBorder: "#d6b29a",
   },
   ico: "/textures/wood02_ico.png",
 };

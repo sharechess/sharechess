@@ -32,9 +32,9 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#333",
-    onDark: "#eee",
-    onBorder: "#ffffffbb",
+    onLight: "#5a4334",
+    onDark: "#c2a078",
+    onBorder: "#c2a078",
   },
   ico: "/textures/wood01_ico.png",
 };
