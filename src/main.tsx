@@ -71,6 +71,13 @@ const main = async () => {
     toggleAnonymous() {
       setState("boardConfig", "anonymous", !state.boardConfig.anonymous);
       board.updateConfig({ anonymous: state.boardConfig.anonymous });
+
+      if (state.pgn !== "") {
+        const pgn = state.boardConfig.anonymous
+          ? state.game.anonymousPGN
+          : state.game.pgn;
+        window.location.hash = `v1/pgn/${compressPGN(pgn)}`;
+      }
     },
     toggleTitleScreen() {
       setState("gameConfig", "titleScreen", !state.gameConfig.titleScreen);
@@ -98,7 +105,7 @@ const main = async () => {
       setState("boardConfig", "piecesStyle", style);
       saveConfig("board");
     },
-    async loadPGN(pgn: string) {
+    async loadPGN(pgn: string, side: "w" | "b" = "w") {
       const game = new Game().loadPGN(pgn);
       setState({
         pgn: game.pgn,
@@ -111,22 +118,37 @@ const main = async () => {
 
       await player.load(game);
       setState("activeTab", "game");
+
+      if (side === "w") {
+        board.flipWhite();
+      } else {
+        board.flipBlack();
+      }
+
+      setState("boardConfig", "flipped", side === "b");
+
       document.title = `SHORTCASTLE - ${game.getTitle({ anonymous: false })}`;
     },
-    async loadFEN(fen: string) {
+    async loadFEN(fen: string, hash = true) {
       const game = new Game().loadFEN(fen);
       setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
-      window.location.hash = `v1/fen/${state.fen}`;
-      await player.load(game);
-      setState("activeTab", "game");
 
-      if (
-        game.getPosition(0).turn === "b" &&
-        state.boardConfig.flipped === false
-      ) {
-        setState("boardConfig", "flipped", true);
-        board.flip();
+      await player.load(game);
+
+      if (hash) {
+        window.location.hash = `v1/fen/${state.fen}`;
+        setState("activeTab", "game");
       }
+
+      const side = game.getPosition(0).turn;
+
+      if (side === "w") {
+        board.flipWhite();
+      } else {
+        board.flipBlack();
+      }
+
+      setState("boardConfig", "flipped", side === "b");
 
       document.title = `SHORTCASTLE - FEN ${fen}`;
     },
@@ -137,7 +159,7 @@ const main = async () => {
         return;
       }
 
-      await this.loadPGN(result.pgn);
+      await this.loadPGN(result.pgn, result.side);
     },
     async downloadImage() {
       await new Promise((resolve) => setTimeout(resolve, 0));
@@ -182,7 +204,8 @@ const main = async () => {
     : fen
     ? handlers.loadFEN(fen)
     : handlers.loadFEN(
-        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        false
       ));
 
   /* Register events */

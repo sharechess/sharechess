@@ -43,7 +43,11 @@ export type State = {
 };
 
 const initialState: State = {
-  boardConfig: { ...initialBoardConfig, ...saved.boardConfig },
+  boardConfig: {
+    ...initialBoardConfig,
+    ...saved.boardConfig,
+    anonymous: false,
+  },
   gameConfig: { ...initialGameConfig, ...saved.gameConfig },
   game: new Game(),
   pgn: "",

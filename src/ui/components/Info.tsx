@@ -3,6 +3,7 @@ import { Handlers } from "../../types";
 import { state } from "../../state";
 import "./Info.css";
 import isSafeLink from "../../utils/isSafeLink";
+import isLink from "../../utils/isLink";
 
 const Info: Component<{ handlers: Handlers }> = () => {
   return (
@@ -10,17 +11,17 @@ const Info: Component<{ handlers: Handlers }> = () => {
       <div className="info__players">
         <p>
           <button className="info__color info__color--white"></button>
-          {state.game.header.WhitePretty}{" "}
-          <span className="info__rating">
-            {state.game.header.WhiteElo ?? "????"}
-          </span>
+          <Show when={!state.boardConfig.anonymous} fallback="Anonymous">
+            {state.game.header.WhitePretty}{" "}
+          </Show>
+          <span className="info__rating">{state.game.header.WhiteElo}</span>
         </p>
         <p>
           <button className="info__color info__color--black"></button>
-          {state.game.header.BlackPretty}{" "}
-          <span className="info__rating">
-            {state.game.header.BlackElo ?? "????"}
-          </span>
+          <Show when={!state.boardConfig.anonymous} fallback="Anonymous">
+            {state.game.header.BlackPretty}{" "}
+          </Show>
+          <span className="info__rating">{state.game.header.BlackElo}</span>
         </p>
       </div>
       <div className="info__event">
@@ -35,12 +36,18 @@ const Info: Component<{ handlers: Handlers }> = () => {
         <Show when={state.game.header.Site}>
           <p>
             <Show
-              when={isSafeLink(state.game.header.Site)}
-              fallback={state.game.header.Site}
+              when={
+                !state.boardConfig.anonymous || !isLink(state.game.header.Site)
+              }
             >
-              <a href={state.game.header.Site ?? ""}>
-                {state.game.header.Site?.replace(/^https:\/\//, "")}
-              </a>
+              <Show
+                when={isSafeLink(state.game.header.Site)}
+                fallback={state.game.header.Site}
+              >
+                <a href={state.game.header.Site ?? ""}>
+                  {state.game.header.Site?.replace(/^https:\/\//, "")}
+                </a>
+              </Show>
             </Show>
           </p>
         </Show>

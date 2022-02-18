@@ -192,7 +192,11 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             <button
               class="share__btn"
               onClick={() => {
-                navigator.clipboard.writeText(state.pgn);
+                navigator.clipboard.writeText(
+                  state.boardConfig.anonymous
+                    ? state.game.anonymousPGN
+                    : state.pgn
+                );
                 blinkCopy("pgn");
               }}
             >

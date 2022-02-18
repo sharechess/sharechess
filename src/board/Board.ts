@@ -7,6 +7,7 @@ import drawPieces from "./layers/drawPieces";
 import drawHeader from "./layers/drawHeader";
 import drawExtraInfo from "./layers/drawExtraInfo";
 import boards from "./styles-board";
+import isLink from "../utils/isLink";
 
 const defaultConfig: BoardConfig = {
   size: 720,
@@ -130,6 +131,7 @@ class Board {
 
   setStyle(style: BoardStyle) {
     this.style = boards[style];
+    this.cfg.boardStyle = style;
     this.refresh();
     return this;
   }
@@ -142,6 +144,26 @@ class Board {
 
   flip() {
     this.cfg.flipped = !this.cfg.flipped;
+    this.refresh();
+    return this;
+  }
+
+  flipWhite() {
+    if (!this.cfg.flipped) {
+      return;
+    }
+
+    this.cfg.flipped = false;
+    this.refresh();
+    return this;
+  }
+
+  flipBlack() {
+    if (this.cfg.flipped) {
+      return;
+    }
+
+    this.cfg.flipped = true;
     this.refresh();
     return this;
   }
@@ -182,8 +204,14 @@ class Board {
           Black: "Anonymous",
           WhitePretty: "Anonymous",
           BlackPretty: "Anonymous",
+          Site: isLink(this.header.Site) ? null : this.header.Site,
         }
-      : this.header;
+      : {
+          ...this.header,
+          Site: isLink(this.header.Site)
+            ? (this.header.Site as string).replace(/^http[s]*:\/\//, "")
+            : this.header.Site,
+        };
   }
 
   async titleFrame(header: Header) {

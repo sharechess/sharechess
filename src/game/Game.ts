@@ -1,7 +1,8 @@
-import { PieceType, PieceColor, BoardData, Position } from "../types";
+import { PieceType, PieceColor, BoardData, Position, Header } from "../types";
 import { Chess, ChessInstance } from "chess.js";
 import { cleanPGN } from "./PGNHelpers";
 import { formatDate, formatName } from "../utils/formatters";
+import isLink from "../utils/isLink";
 
 const MATERIAL_VALUE: Map<PieceType, number> = new Map([
   ["q", 9],
@@ -194,6 +195,17 @@ class Game {
 
   get pgn() {
     return this.game.pgn();
+  }
+
+  get anonymousPGN() {
+    const pgn = this.game
+      .pgn()
+      .replace(/\[White .+\]/, '[White "Anonymous"]')
+      .replace(/\[Black .+\]/, '[Black "Anonymous"]');
+
+    return isLink(this.header.Site)
+      ? pgn.replace(/\[Site .+\]/, '[Site "?"]')
+      : pgn;
   }
 
   getPosition(ply: number) {

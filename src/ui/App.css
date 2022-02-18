@@ -162,7 +162,7 @@ a:hover {
 }
 
 .board {
-  border: solid 1rem var(--color-bg-block);
+  box-shadow: 0 0 2rem #00000099;
   border-radius: 5px;
   max-width: 100%;
   max-height: 100%;
