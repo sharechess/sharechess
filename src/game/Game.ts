@@ -1,4 +1,4 @@
-import { PieceType, PieceColor, BoardData, Position, Header } from "../types";
+import { PieceType, PieceColor, BoardData, Position } from "../types";
 import { Chess, ChessInstance } from "chess.js";
 import { cleanPGN } from "./PGNHelpers";
 import { formatDate, formatName } from "../utils/formatters";
