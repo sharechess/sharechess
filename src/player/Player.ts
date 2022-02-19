@@ -9,6 +9,7 @@ class Player {
   private interval = 1000;
   private game: Game = new Game();
   private ply: number = 0;
+  private callback: (playing: boolean, ply: number) => void = () => {};
   public playing: boolean = false;
 
   private firstRender: Promise<void>;
@@ -17,6 +18,10 @@ class Player {
     this.firstRender = this.board
       .frame(this.game.getPosition(0), this.game.header)
       .then((_) => this.board.render());
+  }
+
+  watch(fn: (playing: boolean, ply: number) => void) {
+    this.callback = fn;
   }
 
   updateConfig(config: Partial<GameConfig>) {
@@ -44,6 +49,11 @@ class Player {
 
   async play() {
     this.playing = true;
+    this.callback(this.playing, this.ply);
+
+    if (this.ply === this.game.getMoves().length) {
+      this.first();
+    }
 
     while (true) {
       await delay(this.interval);
@@ -57,6 +67,7 @@ class Player {
 
   pause() {
     this.playing = false;
+    this.callback(this.playing, this.ply);
   }
 
   async prev() {
@@ -82,6 +93,7 @@ class Player {
     const ply = this.ply + 1;
 
     if (ply >= this.game.length) {
+      this.pause();
       return;
     }
 

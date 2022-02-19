@@ -24,6 +24,8 @@ const main = async () => {
   const board = new Board(state.boardConfig);
   const player = new Player(board, state.gameConfig);
 
+  player.watch((playing) => setState("playing", playing));
+
   /* Register handlers */
 
   const handlers = {
@@ -43,12 +45,18 @@ const main = async () => {
       player.pause();
       player.last();
     },
+    togglePlay() {
+      player.playing ? player.pause() : player.play();
+    },
+    goto(ply: number) {
+      player.pause();
+      player.goto(ply);
+    },
     toggleBorder() {
       board.toggleBorder();
       setState("boardConfig", "showBorder", !state.boardConfig.showBorder);
       saveConfig("board");
     },
-
     showBorder() {
       board.showBorder();
       setState("boardConfig", "showBorder", true);
@@ -88,13 +96,6 @@ const main = async () => {
       board.flip();
       setState("boardConfig", "flipped", !state.boardConfig.flipped);
     },
-    togglePlay() {
-      player.playing ? player.pause() : player.play();
-    },
-    goto(ply: number) {
-      player.pause();
-      player.goto(ply);
-    },
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
       setState("boardConfig", "boardStyle", style);
@@ -131,7 +132,13 @@ const main = async () => {
     },
     async loadFEN(fen: string, hash = true) {
       const game = new Game().loadFEN(fen);
-      setState({ pgn: "", fen, moves: game.getMoves(), ply: 0, game });
+      setState({
+        pgn: "",
+        fen,
+        moves: game.getMoves(),
+        ply: 0,
+        game,
+      });
 
       await player.load(game);
 
@@ -230,6 +237,7 @@ const main = async () => {
         target?.nodeName !== "INPUT" &&
         target?.nodeName !== "TEXTAREA"
       ) {
+        e.preventDefault();
         keyMapping[e.key]();
       }
     });

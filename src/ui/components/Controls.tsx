@@ -1,6 +1,8 @@
-import { Component } from "solid-js";
+import { Component, Show } from "solid-js";
 import { Handlers } from "../../types";
 import "./Controls.css";
+
+import { state } from "../../state";
 
 const Controls: Component<{ handlers: Handlers }> = (props) => {
   return (
@@ -22,9 +24,11 @@ const Controls: Component<{ handlers: Handlers }> = (props) => {
       <button
         class="controls__button"
         onClick={props.handlers.togglePlay}
-        title="PLAY"
+        title={state.playing ? "PAUSE" : "PLAY"}
       >
-        <i class="las la-play"></i>
+        <Show when={!state.playing} fallback={<i class="las la-pause"></i>}>
+          <i class="las la-play"></i>
+        </Show>
       </button>
       <button
         class="controls__button"
