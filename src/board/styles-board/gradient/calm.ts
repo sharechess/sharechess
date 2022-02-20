@@ -24,7 +24,7 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#ee59ff55",
+    data: "#0055ff33",
   },
   border: {
     type: "gradient",

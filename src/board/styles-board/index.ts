@@ -1,11 +1,15 @@
+import standard from "./mono/standard";
 import chesscom from "./mono/chesscom";
 import lichess from "./mono/lichess";
+import leko from "./mono/leko";
+import patina from "./mono/patina";
 import lila from "./mono/lila";
 import peach from "./mono/peach";
-import standard from "./mono/standard";
 import violet from "./mono/violet";
 import danya from "./mono/danya";
 import botez from "./mono/botez";
+import mud from "./mono/mud";
+import rose from "./mono/rose";
 
 import avocado from "./colorful/avocado";
 
@@ -21,6 +25,9 @@ import wood4 from "./pic/wood4";
 const styles = {
   standard,
   lila,
+  leko,
+  patina,
+  mud,
   peach,
   violet,
   chesscom,
@@ -28,6 +35,7 @@ const styles = {
   danya,
   botez,
   avocado,
+  rose,
   calm,
   laguna,
   sunset,

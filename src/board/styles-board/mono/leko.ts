@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Avocado",
-  category: "colorful",
+  name: "Leko",
+  category: "mono",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#72a843",
+      color: "#919caf",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#ececa4",
+      color: "#c0c2d0",
     },
   },
   moveIndicator: {
     type: "hueShift",
-    data: 70,
+    data: -90,
   },
   border: {
     type: "solid",
     data: {
-      color: "#2d3923",
+      color: "#58606e",
     },
   },
   coords: {
-    onLight: "#4d7a26",
-    onDark: "#ffffc4",
-    onBorder: "#ececa4",
+    onLight: "#58606e",
+    onDark: "#dbe8ff",
+    onBorder: "#dbe8ff",
   },
 };
 

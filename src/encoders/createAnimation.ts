@@ -44,8 +44,16 @@ const createAnimation = async (
     const position = game.getPosition(ply);
     await board.frame(position, header);
     board.render();
+
+    const frames =
+      position.end === 0
+        ? 5
+        : position.ply === 0 && !includeTitleScreen
+        ? 2
+        : 1;
+
     // @ts-ignore
-    await encoder.add(getData(board, encoder), position.end === 0 ? 5 : 1);
+    await encoder.add(getData(board, encoder), frames);
   }
 
   return await encoder.render();

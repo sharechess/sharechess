@@ -2,13 +2,14 @@ import alpha from "./alpha";
 import cardinal from "./cardinal";
 import cases from "./cases";
 import cburnett from "./cburnett";
-import color from "./color";
 import companion from "./companion";
 import fantasy from "./fantasy";
 import gioco from "./gioco";
 import governor from "./governor";
 import horsey from "./horsey";
 import maestro from "./maestro";
+import magnetic from "./magnetic";
+import maya from "./maya";
 import merida from "./merida";
 import simple from "./simple";
 import staunty from "./staunty";
@@ -19,13 +20,14 @@ const piecesSets = {
   cardinal,
   cases,
   cburnett,
-  color,
   companion,
   fantasy,
   gioco,
   governor,
   horsey,
   maestro,
+  magnetic,
+  maya,
   merida,
   simple,
   staunty,
