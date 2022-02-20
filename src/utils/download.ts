@@ -3,7 +3,7 @@ const download = (data: string | Blob, name: string, ext: string) => {
 
   const link = document.createElement("a");
   link.href = url;
-  link.download = `${name}_${Date.now()}.${ext}`;
+  link.download = `${name}.${ext}`;
   link.target = "_blank";
   link.click();
   URL.revokeObjectURL(url);

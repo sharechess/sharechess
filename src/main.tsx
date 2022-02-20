@@ -84,7 +84,7 @@ const main = async () => {
         const pgn = state.boardConfig.anonymous
           ? state.game.anonymousPGN
           : state.game.pgn;
-        window.location.hash = `v1/pgn/${compressPGN(pgn)}`;
+        window.location.hash = `pgn/${compressPGN(pgn)}`;
       }
     },
     toggleTitleScreen() {
@@ -115,7 +115,7 @@ const main = async () => {
         ply: 0,
         game,
       });
-      window.location.hash = `v1/pgn/${compressPGN(game.pgn)}`;
+      window.location.hash = `pgn/${compressPGN(game.pgn)}`;
 
       await player.load(game);
       setState("activeTab", "game");
@@ -143,7 +143,7 @@ const main = async () => {
       await player.load(game);
 
       if (hash) {
-        window.location.hash = `v1/fen/${state.fen}`;
+        window.location.hash = `fen/${state.fen}`;
         setState("activeTab", "game");
       }
 
@@ -177,7 +177,7 @@ const main = async () => {
         state.boardConfig,
         state.gameConfig.picSize
       );
-      download(data, "fen", "png");
+      download(data, `fen_${Date.now()}`, "png");
     },
     async downloadAnimation() {
       await new Promise((resolve) => setTimeout(resolve, 0));
@@ -188,7 +188,10 @@ const main = async () => {
         state.gameConfig.animationSize,
         state.gameConfig.titleScreen
       );
-      download(data, "game", state.gameConfig.format.toLowerCase());
+
+      const name = state.game.getFileName(state.boardConfig.anonymous);
+
+      download(data, name, state.gameConfig.format.toLowerCase());
     },
   };
 

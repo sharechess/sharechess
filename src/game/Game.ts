@@ -193,6 +193,21 @@ class Game {
     );
   }
 
+  getFileName(anonymous: boolean) {
+    const header = this.header;
+    const w = anonymous ? "Anonymous" : header.WhitePretty;
+    const b = anonymous ? "Anonymous" : header.BlackPretty;
+
+    return (
+      (header.Date
+        ? `${header.Date.replace(/\?/g, "X").replace(/\./g, "-")}_`
+        : "") +
+      `${w}_${b}` +
+      (header.Event ? `_${header.Event}` : "") +
+      (header.Round ? `_R${header.Round}` : "")
+    ).replace(/\s+/g, "-");
+  }
+
   get pgn() {
     return this.game.pgn();
   }

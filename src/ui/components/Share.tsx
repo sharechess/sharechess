@@ -115,7 +115,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
           <button
             class="share__btn share__btn--right"
             onClick={() => {
-              const link = `${location.origin}/#v1/fen/${encodeURI(state.fen)}`;
+              const link = `${location.origin}/#fen/${encodeURI(state.fen)}`;
               navigator.clipboard.writeText(link);
               blinkCopy("fen-link");
             }}
@@ -219,7 +219,10 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
                 const data = new Blob([state.pgn], {
                   type: "application/vnd.chess-pgn;charset=utf-8",
                 });
-                download(data, "pgn", "pgn");
+                const name = state.game.getFileName(
+                  state.boardConfig.anonymous
+                );
+                download(data, name, "pgn");
               }}
             >
               Export PGN
