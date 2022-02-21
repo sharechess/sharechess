@@ -123,66 +123,64 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             {copyId() === "fen-link" ? "Copied!" : "Copy link"}
           </button>
         </div>
-        <Show when={!state.mobile}>
-          <hr class="invisible" />
-          <button
-            classList={{
-              share__size: true,
-              "share__size--first": true,
-              "share__size--active": state.gameConfig.picSize === "XS",
-            }}
-            onClick={() => setState("gameConfig", "picSize", "XS")}
-          >
-            XS
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.gameConfig.picSize === "S",
-            }}
-            onClick={() => setState("gameConfig", "picSize", "S")}
-          >
-            S
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.gameConfig.picSize === "M",
-            }}
-            onClick={() => setState("gameConfig", "picSize", "M")}
-          >
-            M
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--active": state.gameConfig.picSize === "L",
-            }}
-            onClick={() => setState("gameConfig", "picSize", "L")}
-          >
-            L
-          </button>
-          <button
-            classList={{
-              share__size: true,
-              "share__size--last": true,
-              "share__size--active": state.gameConfig.picSize === "XL",
-            }}
-            onClick={() => setState("gameConfig", "picSize", "XL")}
-          >
-            XL
-          </button>
-          <button
-            class="share__btn"
-            onClick={async () => {
-              setImageRendering(true);
-              await props.handlers.downloadImage();
-              setImageRendering(false);
-            }}
-          >
-            {imageRendering() ? "Please wait..." : "Save as image"}
-          </button>
-        </Show>
+        <hr class="invisible" />
+        <button
+          classList={{
+            share__size: true,
+            "share__size--first": true,
+            "share__size--active": state.gameConfig.picSize === "XS",
+          }}
+          onClick={() => setState("gameConfig", "picSize", "XS")}
+        >
+          XS
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.gameConfig.picSize === "S",
+          }}
+          onClick={() => setState("gameConfig", "picSize", "S")}
+        >
+          S
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.gameConfig.picSize === "M",
+          }}
+          onClick={() => setState("gameConfig", "picSize", "M")}
+        >
+          M
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--active": state.gameConfig.picSize === "L",
+          }}
+          onClick={() => setState("gameConfig", "picSize", "L")}
+        >
+          L
+        </button>
+        <button
+          classList={{
+            share__size: true,
+            "share__size--last": true,
+            "share__size--active": state.gameConfig.picSize === "XL",
+          }}
+          onClick={() => setState("gameConfig", "picSize", "XL")}
+        >
+          XL
+        </button>
+        <button
+          class="share__btn"
+          onClick={async () => {
+            setImageRendering(true);
+            await props.handlers.downloadImage();
+            setImageRendering(false);
+          }}
+        >
+          {imageRendering() ? "Please wait..." : "Save as image"}
+        </button>
       </div>
       <Show when={state.pgn}>
         <hr />
@@ -244,97 +242,95 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
             </button>
           </div>
         </div>
-        <Show when={!state.mobile}>
-          <div class="share__animation">
-            <hr className="invisible" />
-            <button
-              classList={{
-                share__size: true,
-                "share__size--first": true,
-                "share__size--active": state.gameConfig.animationSize === "XS",
-              }}
-              onClick={() => setState("gameConfig", "animationSize", "XS")}
-            >
-              XS
-            </button>
-            <button
-              classList={{
-                share__size: true,
-                "share__size--active": state.gameConfig.animationSize === "S",
-              }}
-              onClick={() => setState("gameConfig", "animationSize", "S")}
-            >
-              S
-            </button>
-            <button
-              classList={{
-                share__size: true,
-                "share__size--active": state.gameConfig.animationSize === "M",
-              }}
-              onClick={() => setState("gameConfig", "animationSize", "M")}
-            >
-              M
-            </button>
-            <button
-              classList={{
-                share__size: true,
-                "share__size--active": state.gameConfig.animationSize === "L",
-              }}
-              onClick={() => setState("gameConfig", "animationSize", "L")}
-            >
-              L
-            </button>
-            <button
-              classList={{
-                share__size: true,
-                "share__size--last": true,
-                "share__size--active": state.gameConfig.animationSize === "XL",
-              }}
-              onClick={() => setState("gameConfig", "animationSize", "XL")}
-            >
-              XL
-            </button>
-            <button
-              classList={{
-                share__format: true,
-                "share__format--first": true,
-                "share__format--active": state.gameConfig.format === "GIF",
-              }}
-              onClick={() => setState("gameConfig", "format", "GIF")}
-            >
-              GIF
-            </button>
-            <button
-              classList={{
-                share__format: true,
-                "share__format--active": state.gameConfig.format === "MP4",
-              }}
-              onClick={() => setState("gameConfig", "format", "MP4")}
-            >
-              MP4
-            </button>
-            <button
-              classList={{
-                share__format: true,
-                "share__format--last": true,
-                "share__format--active": state.gameConfig.format === "WebM",
-              }}
-              onClick={() => setState("gameConfig", "format", "WebM")}
-            >
-              WebM
-            </button>
-            <button
-              class="share__create-animation"
-              onClick={async () => {
-                setAnimationRendering(true);
-                await props.handlers.downloadAnimation();
-                setAnimationRendering(false);
-              }}
-            >
-              {animationRendering() ? "Please wait..." : "Save animation"}
-            </button>
-          </div>
-        </Show>
+        <div class="share__animation">
+          <hr className="invisible" />
+          <button
+            classList={{
+              share__size: true,
+              "share__size--first": true,
+              "share__size--active": state.gameConfig.animationSize === "XS",
+            }}
+            onClick={() => setState("gameConfig", "animationSize", "XS")}
+          >
+            XS
+          </button>
+          <button
+            classList={{
+              share__size: true,
+              "share__size--active": state.gameConfig.animationSize === "S",
+            }}
+            onClick={() => setState("gameConfig", "animationSize", "S")}
+          >
+            S
+          </button>
+          <button
+            classList={{
+              share__size: true,
+              "share__size--active": state.gameConfig.animationSize === "M",
+            }}
+            onClick={() => setState("gameConfig", "animationSize", "M")}
+          >
+            M
+          </button>
+          <button
+            classList={{
+              share__size: true,
+              "share__size--active": state.gameConfig.animationSize === "L",
+            }}
+            onClick={() => setState("gameConfig", "animationSize", "L")}
+          >
+            L
+          </button>
+          <button
+            classList={{
+              share__size: true,
+              "share__size--last": true,
+              "share__size--active": state.gameConfig.animationSize === "XL",
+            }}
+            onClick={() => setState("gameConfig", "animationSize", "XL")}
+          >
+            XL
+          </button>
+          <button
+            classList={{
+              share__format: true,
+              "share__format--first": true,
+              "share__format--active": state.gameConfig.format === "GIF",
+            }}
+            onClick={() => setState("gameConfig", "format", "GIF")}
+          >
+            GIF
+          </button>
+          <button
+            classList={{
+              share__format: true,
+              "share__format--active": state.gameConfig.format === "MP4",
+            }}
+            onClick={() => setState("gameConfig", "format", "MP4")}
+          >
+            MP4
+          </button>
+          <button
+            classList={{
+              share__format: true,
+              "share__format--last": true,
+              "share__format--active": state.gameConfig.format === "WebM",
+            }}
+            onClick={() => setState("gameConfig", "format", "WebM")}
+          >
+            WebM
+          </button>
+          <button
+            class="share__create-animation"
+            onClick={async () => {
+              setAnimationRendering(true);
+              await props.handlers.downloadAnimation();
+              setAnimationRendering(false);
+            }}
+          >
+            {animationRendering() ? "Please wait..." : "Save animation"}
+          </button>
+        </div>
       </Show>
     </Scrollable>
   );

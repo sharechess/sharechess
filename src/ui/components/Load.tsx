@@ -1,12 +1,15 @@
-import { Component, createSignal } from "solid-js";
+import { Component, createSignal, Show } from "solid-js";
 import { Handlers } from "../../types";
 import readFile from "../../utils/readFile";
+import { state } from "../../state";
 import "./Load.css";
 
 const Load: Component<{ handlers: Handlers }> = (props) => {
   const [fen, setFEN] = createSignal("");
   const [pgn, setPGN] = createSignal("");
   const [link, setLink] = createSignal("");
+
+  let filePicker: HTMLInputElement | undefined = undefined;
 
   return (
     <div class="load">
@@ -73,9 +76,10 @@ const Load: Component<{ handlers: Handlers }> = (props) => {
       </button>
       <hr />
       <input
-        class="upload load__pgn-file"
+        style={{ display: "none" }}
         type="file"
         accept="application/vnd.chess-pgn,application/x-chess-pgn,.pgn"
+        ref={filePicker}
         onChange={async (e) => {
           const target = e.target as HTMLInputElement;
           if (target?.files && target.files.length > 0) {
@@ -84,10 +88,23 @@ const Load: Component<{ handlers: Handlers }> = (props) => {
           }
         }}
       ></input>
-      <div className="load__pgn-file-info">
-        <p>or</p>
-        <p>drop the PGN file anywhere on the page</p>
-      </div>
+      <button
+        class="load__pgn-btn load__pgn-file"
+        onClick={() => {
+          if (filePicker) {
+            filePicker.click();
+          }
+        }}
+      >
+        UPLOAD PGN FILE
+      </button>
+
+      <Show when={!state.mobile}>
+        <div className="load__pgn-file-info">
+          <p>or</p>
+          <p>drop the PGN file anywhere on the page</p>
+        </div>
+      </Show>
     </div>
   );
 };

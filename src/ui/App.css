@@ -70,19 +70,6 @@ body {
   --color-scrollbar-track: #00000022;
 }
 
-.upload {
-  visibility: hidden;
-  padding: 0;
-}
-
-.upload::before {
-  content: "UPLOAD PGN FILE";
-  visibility: visible;
-  display: inline-block;
-  text-align: center;
-  box-sizing: border-box;
-}
-
 button,
 .upload::before {
   padding: 1rem;
