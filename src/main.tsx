@@ -264,20 +264,19 @@ const main = async () => {
       }
     });
   } else {
-    const hammer = new Hammer.Manager(board.canvas);
-    hammer.add(new Hammer.Swipe());
-    hammer.add(new Hammer.Pinch());
-    hammer.add(new Hammer.Press({ time: 500 }));
-    hammer.add(new Hammer.Tap({ taps: 1 }));
-
-    hammer.on("swiperight", handlers.next);
-    hammer.on("swipeleft", handlers.prev);
-    hammer.on("swipeup", handlers.first);
-    hammer.on("swipedown", handlers.last);
-    hammer.on("pinchin", handlers.showBorder);
-    hammer.on("pinchout", handlers.hideBorder);
-    hammer.on("tap", handlers.next);
-    hammer.on("press", handlers.flip);
+    // const hammer = new Hammer.Manager(board.canvas);
+    // hammer.add(new Hammer.Swipe());
+    // hammer.add(new Hammer.Pinch());
+    // hammer.add(new Hammer.Press({ time: 500 }));
+    // hammer.add(new Hammer.Tap({ taps: 1 }));
+    // hammer.on("swiperight", handlers.next);
+    // hammer.on("swipeleft", handlers.prev);
+    // hammer.on("swipeup", handlers.first);
+    // hammer.on("swipedown", handlers.last);
+    // hammer.on("pinchin", handlers.showBorder);
+    // hammer.on("pinchout", handlers.hideBorder);
+    // hammer.on("tap", handlers.next);
+    // hammer.on("press", handlers.flip);
   }
 };
 
