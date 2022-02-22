@@ -5,7 +5,7 @@ import { state, setState } from "../../state";
 import "./Share.css";
 import download from "../../utils/download";
 
-const Share: Component<{ handlers: Handlers }> = (props) => {
+const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [copyId, setCopyId] = createSignal("");
   const [imageRendering, setImageRendering] = createSignal(false);
   const [animationRendering, setAnimationRendering] = createSignal(false);
@@ -16,7 +16,7 @@ const Share: Component<{ handlers: Handlers }> = (props) => {
   };
 
   return (
-    <Scrollable class="share">
+    <Scrollable class={"share" + (props.class ? ` ${props.class}` : "")}>
       <div className="share__view">
         <h2 class="header--first">Board options</h2>
         <button

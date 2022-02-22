@@ -46,13 +46,13 @@ const prepareBoards = async () => {
   return boards;
 };
 
-const Boards: Component<{ handlers: Handlers }> = (props) => {
+const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [boards, setBoards] = createSignal<BoardPreview[]>([]);
 
   prepareBoards().then((data) => setBoards(data));
 
   return (
-    <Scrollable class="boards">
+    <Scrollable class={"boards" + (props.class ? ` ${props.class}` : "")}>
       <For each={boards()}>
         {(board) => {
           return (

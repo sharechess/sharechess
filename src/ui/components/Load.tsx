@@ -4,7 +4,7 @@ import readFile from "../../utils/readFile";
 import { state } from "../../state";
 import "./Load.css";
 
-const Load: Component<{ handlers: Handlers }> = (props) => {
+const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [fen, setFEN] = createSignal("");
   const [pgn, setPGN] = createSignal("");
   const [link, setLink] = createSignal("");
@@ -12,7 +12,7 @@ const Load: Component<{ handlers: Handlers }> = (props) => {
   let filePicker: HTMLInputElement | undefined = undefined;
 
   return (
-    <div class="load">
+    <div class={"load" + (props.class ? ` ${props.class}` : "")}>
       <input
         class="load__fen-input"
         type="text"

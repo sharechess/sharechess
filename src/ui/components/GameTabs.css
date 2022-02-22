@@ -8,39 +8,24 @@
 
 @media screen and (max-width: 1024px) {
   .game-box {
-    height: auto;
+    padding: 0;
+    height: 800px;
   }
 }
 
-.game-tabs {
+.game {
   height: 100%;
   display: grid;
   grid-template-rows: 38px 195px 1fr 84px;
 }
 
-.game-tabs__btn {
-  width: 48%;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  height: 38px;
-  background: var(--color-tab);
+.game-tabs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
 }
 
-.game-tabs__btn:hover {
-  background: var(--color-tab-light);
-}
-
-.game-tabs__btn--active {
-  width: 50%;
-  background: var(--color-bg-block);
-  color: var(--color-text);
-  cursor: default;
-}
-
-.game-tabs__btn--active:hover {
-  background: var(--color-bg-block);
-}
-
-.game-tabs__btn:nth-child(1) {
-  margin-right: 2%;
+.span3 {
+  grid-row-end: span 3;
 }

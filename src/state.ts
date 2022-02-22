@@ -30,6 +30,8 @@ const initialGameConfig: GameConfig = {
   animationSize: "M",
 };
 
+export type TabName = "game" | "load" | "share" | "boards" | "pieces";
+
 export type State = {
   boardConfig: BoardConfig;
   gameConfig: GameConfig;
@@ -39,7 +41,8 @@ export type State = {
   moves: string[];
   ply: number;
   mobile: boolean;
-  activeTab: "game" | "load";
+  layout: "single" | "double" | "triple";
+  activeTab: TabName;
   playing: boolean;
 };
 
@@ -56,6 +59,7 @@ const initialState: State = {
   moves: [],
   ply: 0,
   mobile,
+  layout: mobile ? "single" : "triple",
   activeTab: "load",
   playing: false,
 };

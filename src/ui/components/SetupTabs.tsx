@@ -4,6 +4,7 @@ import "./SetupTabs.css";
 import Share from "./Share";
 import Boards from "./Boards";
 import Pieces from "./Pieces";
+import Tab from "./reusable/Tab";
 
 const SetupTabs: Component<{
   handlers: Handlers;
@@ -12,34 +13,16 @@ const SetupTabs: Component<{
 
   return (
     <div class="setup">
-      <div class="tabs">
-        <button
-          class={
-            "setup-tabs__btn" +
-            (tab() === "share" ? " setup-tabs__btn--active" : "")
-          }
-          onClick={() => setTab("share")}
-        >
+      <div class="setup-tabs">
+        <Tab name="share" setTab={setTab} isActive={tab() === "share"}>
           <i class="las la-share"></i> SHARE
-        </button>
-        <button
-          class={
-            "setup-tabs__btn" +
-            (tab() === "boards" ? " setup-tabs__btn--active" : "")
-          }
-          onClick={() => setTab("boards")}
-        >
+        </Tab>
+        <Tab name="boards" setTab={setTab} isActive={tab() === "boards"}>
           <i class="las la-chess-board"></i> BOARDS
-        </button>
-        <button
-          class={
-            "setup-tabs__btn" +
-            (tab() === "pieces" ? " setup-tabs__btn--active" : "")
-          }
-          onClick={() => setTab("pieces")}
-        >
+        </Tab>
+        <Tab name="pieces" setTab={setTab} isActive={tab() === "pieces"}>
           <i class="las la-chess"></i> PIECES
-        </button>
+        </Tab>
       </div>
       <Switch>
         <Match when={tab() === "share"}>

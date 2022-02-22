@@ -10,9 +10,9 @@ const pieces = Object.entries(piecesSets).map(([key, data]) => ({
   img: data.nw,
 })) as { key: PiecesStyle; img: string }[];
 
-const Pieces: Component<{ handlers: Handlers }> = (props) => {
+const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
   return (
-    <Scrollable class="pieces">
+    <Scrollable class={"pieces" + (props.class ? ` ${props.class}` : "")}>
       {
         <For each={pieces}>
           {(item) => (

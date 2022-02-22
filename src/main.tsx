@@ -203,7 +203,7 @@ const main = async () => {
   );
 
   const $board = document.querySelector<HTMLImageElement>("#board");
-  $board?.appendChild(board.canvas);
+  $board?.prepend(board.canvas);
 
   /* Restore game from the url */
 
@@ -219,6 +219,9 @@ const main = async () => {
       ));
 
   /* Register events */
+  document.addEventListener("dblclick", function (el) {
+    el.preventDefault();
+  });
 
   if (!state.mobile) {
     const keyMapping: { [key: string]: () => void } = {

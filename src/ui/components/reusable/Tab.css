@@ -1,0 +1,21 @@
+.tab {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 38px;
+  background: var(--color-tab);
+  min-width: 4rem;
+}
+
+.tab:hover {
+  background: var(--color-tab-light);
+}
+
+.tab--active {
+  background: var(--color-bg-block);
+  color: var(--color-text);
+  cursor: default;
+}
+
+.tab--active:hover {
+  background: var(--color-bg-block);
+}

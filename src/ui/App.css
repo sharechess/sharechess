@@ -188,6 +188,12 @@ a:hover {
 
   .board-box {
     height: auto;
+    padding: var(--header-height) 0 1rem 0;
+    font-size: 0;
+  }
+
+  .board {
+    border-radius: 0;
   }
 
   .setup-box {
