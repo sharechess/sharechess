@@ -5,9 +5,11 @@ import Scrollable from "./reusable/Scrollable";
 import "./Moves.css";
 import { state } from "../../state";
 
-const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
-  props
-) => {
+const Moves: Component<{
+  moves: readonly string[];
+  handlers: Handlers;
+  class?: string;
+}> = (props) => {
   createEffect(() => {
     if (!state.mobile) {
       document.querySelector(`[data-ply="${state.ply}"]`)?.scrollIntoView();
@@ -15,7 +17,7 @@ const Moves: Component<{ moves: readonly string[]; handlers: Handlers }> = (
   });
 
   return (
-    <Scrollable class="moves">
+    <Scrollable class={"moves" + (props.class ? ` ${props.class}` : "")}>
       <Show when={props.moves.length === 0}>
         <p class="moves__turn">
           {state.game.getPosition(0).turn === "w" ? "White" : "Black"} to move.

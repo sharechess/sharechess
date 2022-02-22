@@ -12,9 +12,9 @@ const Header: Component<{ handlers: Handlers }> = () => {
         <div class="header__logo-pic" />
       </div>
       <div class="header__options">
-        <div class="header__options-ico" onClick={() => {}}>
+        {/* <div class="header__options-ico" onClick={() => {}}>
           <i class="las la-question-circle"></i>
-        </div>
+        </div> */}
         <div
           class="header__options-ico"
           onClick={() => {

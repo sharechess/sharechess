@@ -54,8 +54,14 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
       <Switch>
         <Match when={state.activeTab === "game"}>
           <Info handlers={props.handlers}></Info>
-          <Moves moves={props.moves} handlers={props.handlers} />
-          <Controls handlers={props.handlers} />
+          <Moves
+            moves={props.moves}
+            handlers={props.handlers}
+            class={state.layout === "single" ? "span2" : undefined}
+          />
+          <Show when={state.layout !== "single"}>
+            <Controls handlers={props.handlers} />
+          </Show>
         </Match>
         <Match when={state.activeTab === "load"}>
           <Load handlers={props.handlers} class="span3" />

@@ -26,6 +26,10 @@
   column-gap: 0.5rem;
 }
 
+.span2 {
+  grid-row-end: span 2;
+}
+
 .span3 {
   grid-row-end: span 3;
 }
