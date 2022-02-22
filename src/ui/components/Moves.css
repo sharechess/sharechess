@@ -36,3 +36,18 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1024px) {
+  .moves {
+    text-align: left;
+  }
+  .move {
+    display: inline-block;
+  }
+  .move__id,
+  .move__ply {
+    display: inline;
+    margin-right: 0.6rem;
+    width: auto;
+  }
+}

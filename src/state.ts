@@ -20,7 +20,6 @@ const initialBoardConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   flipped: false,
-  anonymous: false,
 };
 
 const initialGameConfig: GameConfig = {
@@ -44,13 +43,13 @@ export type State = {
   layout: "single" | "double" | "triple";
   activeTab: TabName;
   playing: boolean;
+  anonymous: boolean;
 };
 
 const initialState: State = {
   boardConfig: {
     ...initialBoardConfig,
     ...saved.boardConfig,
-    anonymous: false,
   },
   gameConfig: { ...initialGameConfig, ...saved.gameConfig },
   game: new Game(),
@@ -62,6 +61,7 @@ const initialState: State = {
   layout: mobile ? "single" : "triple",
   activeTab: "load",
   playing: false,
+  anonymous: false,
 };
 
 const [state, setState] = createStore(initialState);

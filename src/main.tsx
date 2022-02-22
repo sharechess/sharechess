@@ -1,5 +1,5 @@
 import WebFont from "webfontloader";
-import * as Hammer from "hammerjs";
+// import * as Hammer from "hammerjs";
 import { render } from "solid-js/web";
 
 import { BoardStyle, PiecesStyle } from "./types";
@@ -77,13 +77,11 @@ const main = async () => {
       saveConfig("board");
     },
     toggleAnonymous() {
-      setState("boardConfig", "anonymous", !state.boardConfig.anonymous);
-      board.updateConfig({ anonymous: state.boardConfig.anonymous });
+      setState("anonymous", !state.anonymous);
+      board.anonymous = state.anonymous;
 
       if (state.pgn !== "") {
-        const pgn = state.boardConfig.anonymous
-          ? state.game.anonymousPGN
-          : state.game.pgn;
+        const pgn = state.anonymous ? state.game.anonymousPGN : state.game.pgn;
         window.location.hash = `pgn/${compressPGN(pgn)}`;
       }
     },
@@ -189,7 +187,7 @@ const main = async () => {
         state.gameConfig.titleScreen
       );
 
-      const name = state.game.getFileName(state.boardConfig.anonymous);
+      const name = state.game.getFileName(state.anonymous);
 
       download(data, name, state.gameConfig.format.toLowerCase());
     },

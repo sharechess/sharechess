@@ -79,7 +79,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           classList={{
             options__button: true,
             "options__button--last": true,
-            "options__button--active": state.boardConfig.anonymous,
+            "options__button--active": state.anonymous,
           }}
           onClick={props.handlers.toggleAnonymous}
           title="TOGGLE ANONYMOUS"
@@ -191,9 +191,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               class="share__btn"
               onClick={() => {
                 navigator.clipboard.writeText(
-                  state.boardConfig.anonymous
-                    ? state.game.anonymousPGN
-                    : state.pgn
+                  state.anonymous ? state.game.anonymousPGN : state.pgn
                 );
                 blinkCopy("pgn");
               }}
@@ -217,9 +215,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
                 const data = new Blob([state.pgn], {
                   type: "application/vnd.chess-pgn;charset=utf-8",
                 });
-                const name = state.game.getFileName(
-                  state.boardConfig.anonymous
-                );
+                const name = state.game.getFileName(state.anonymous);
                 download(data, name, "pgn");
               }}
             >
@@ -229,7 +225,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               class="share__btn"
               onClick={() => {
                 const title = state.game.getTitle({
-                  anonymous: state.boardConfig.anonymous,
+                  anonymous: state.anonymous,
                 });
 
                 const md = `[${title}](${window.location.href})`;

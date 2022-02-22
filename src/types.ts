@@ -111,7 +111,6 @@ export type BoardConfig = {
   showChecks: boolean;
   showCoords: boolean;
   flipped: boolean;
-  anonymous: boolean;
 };
 
 export type Size = "XS" | "S" | "M" | "L" | "XL";

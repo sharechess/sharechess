@@ -21,7 +21,6 @@ const defaultConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   flipped: false,
-  anonymous: false,
 };
 
 const defaultHeader: Header = {
@@ -41,6 +40,7 @@ const defaultHeader: Header = {
 
 class Board {
   private cfg: BoardConfig = defaultConfig;
+  private _anonymous: boolean = false;
 
   private scale: number = 1;
 
@@ -88,6 +88,11 @@ class Board {
     if (refresh) {
       await this.refresh();
     }
+  }
+
+  set anonymous(value: boolean) {
+    this._anonymous = value;
+    this.refresh();
   }
 
   async refresh() {
@@ -197,7 +202,7 @@ class Board {
   }
 
   private getFinalHeader() {
-    return this.cfg.anonymous
+    return this._anonymous
       ? {
           ...this.header,
           White: "Anonymous",

@@ -11,14 +11,14 @@ const Info: Component<{ handlers: Handlers }> = () => {
       <div className="info__players">
         <p>
           <button className="info__color info__color--white"></button>
-          <Show when={!state.boardConfig.anonymous} fallback="Anonymous">
+          <Show when={!state.anonymous} fallback="Anonymous">
             {state.game.header.WhitePretty}{" "}
           </Show>
           <span className="info__rating">{state.game.header.WhiteElo}</span>
         </p>
         <p>
           <button className="info__color info__color--black"></button>
-          <Show when={!state.boardConfig.anonymous} fallback="Anonymous">
+          <Show when={!state.anonymous} fallback="Anonymous">
             {state.game.header.BlackPretty}{" "}
           </Show>
           <span className="info__rating">{state.game.header.BlackElo}</span>
@@ -35,11 +35,7 @@ const Info: Component<{ handlers: Handlers }> = () => {
       <div className="info__site">
         <Show when={state.game.header.Site}>
           <p>
-            <Show
-              when={
-                !state.boardConfig.anonymous || !isLink(state.game.header.Site)
-              }
-            >
+            <Show when={!state.anonymous || !isLink(state.game.header.Site)}>
               <Show
                 when={isSafeLink(state.game.header.Site)}
                 fallback={state.game.header.Site}
