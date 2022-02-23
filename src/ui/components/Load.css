@@ -1,13 +1,13 @@
 .load {
   background: var(--color-bg-block);
-  padding: 20px;
+  padding: 2rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .load__pgn-input {
   height: 30vh;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .load__pgn-input::-webkit-scrollbar {
@@ -30,7 +30,7 @@
 }
 
 .load__pgn-file {
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .load__pgn-file-info {
@@ -38,10 +38,10 @@
 }
 
 .load__pgn-file-info p {
-  margin-top: 10px;
+  margin-top: 1rem;
   color: var(--color-text-dimmed);
 }
 
 .load__link-input {
-  margin-top: 20px;
+  margin-top: 2rem;
 }

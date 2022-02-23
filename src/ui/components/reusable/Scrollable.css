@@ -1,7 +1,7 @@
 .scrollable {
   background: var(--color-bg-block);
   height: auto;
-  padding: 20px 10px 20px 20px;
+  padding: 2rem 1rem 2rem 2rem;
   height: 100%;
   display: flex;
   overflow: auto;
@@ -11,7 +11,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
-  padding-right: 10px;
+  padding-right: 1rem;
   width: 100%;
 }
 

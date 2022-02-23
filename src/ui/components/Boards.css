@@ -5,10 +5,10 @@
 }
 
 .boards__ico {
-  border: solid 5px black;
-  margin: 5px;
+  border: solid 0.5rem black;
+  margin: 0.5rem;
   cursor: pointer;
-  width: 72px;
+  width: 7.2rem;
 }
 
 .boards__ico--active {

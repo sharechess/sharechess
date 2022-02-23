@@ -1,23 +1,23 @@
 .controls-box {
   grid-area: controls;
-  padding: 0 20px 20px 20px;
+  padding: 0 2rem 2rem 2rem;
 }
 
 .controls {
   background: var(--color-bg-block);
-  padding: 20px;
+  padding: 2rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .controls__button {
   margin: 0 3px;
-  padding: 5px;
+  padding: 0.5rem;
   font-size: 3rem;
   text-align: center;
   border-radius: 5px;
-  width: 44px;
-  height: 44px;
+  width: 4.4rem;
+  height: 4.4rem;
 }
 
 .controls__button:hover {

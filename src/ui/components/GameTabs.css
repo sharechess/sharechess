@@ -1,12 +1,12 @@
 .game-box {
   grid-area: moves;
-  padding: 20px;
+  padding: 2rem;
   padding-top: var(--header-margin);
-  min-width: 375px;
+  min-width: 37.5rem;
   height: 100vh;
 }
 
-@media screen and (max-width: 1024px) {
+@media (orientation: portrait) {
   .game-box {
     padding: 0;
     height: 800px;
@@ -16,7 +16,7 @@
 .game {
   height: 100%;
   display: grid;
-  grid-template-rows: 38px 195px 1fr 84px;
+  grid-template-rows: 3.8rem 19.5rem 1fr 8.4rem;
 }
 
 .game-tabs {

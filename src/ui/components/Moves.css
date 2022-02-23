@@ -15,15 +15,15 @@
 
 .move__id {
   display: inline-block;
-  width: 40px;
+  width: 4rem;
   text-align: right;
-  margin-right: 20px;
+  margin-right: 2rem;
   color: var(--color-text);
 }
 
 .move__ply {
   display: inline-block;
-  width: 70px;
+  width: 7rem;
   color: var(--color-btn);
 }
 
@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1024px) {
+@media (orientation: portrait) {
   .moves {
     text-align: left;
   }

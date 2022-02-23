@@ -9,9 +9,13 @@ import governor from "./governor";
 import horsey from "./horsey";
 import maestro from "./maestro";
 import magnetic from "./magnetic";
+import mark from "./mark";
 import maya from "./maya";
 import merida from "./merida";
-import simple from "./simple";
+import motif from "./motif";
+import pirat from "./pirat";
+import regular from "./regular";
+import smart from "./smart";
 import staunty from "./staunty";
 import tatiana from "./tatiana";
 
@@ -27,9 +31,13 @@ const piecesSets = {
   horsey,
   maestro,
   magnetic,
+  mark,
   maya,
   merida,
-  simple,
+  motif,
+  pirat,
+  regular,
+  smart,
   staunty,
   tatiana,
 };

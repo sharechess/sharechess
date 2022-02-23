@@ -221,6 +221,17 @@ const main = async () => {
     el.preventDefault();
   });
 
+  window.addEventListener("resize", () => {
+    setState(
+      "layout",
+      window.innerWidth < window.innerHeight
+        ? "single"
+        : window.innerWidth < 1366
+        ? "double"
+        : "triple"
+    );
+  });
+
   if (!state.mobile) {
     const keyMapping: { [key: string]: () => void } = {
       ArrowLeft: handlers.prev,

@@ -1,7 +1,7 @@
 .tab {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  height: 38px;
+  height: 3.8rem;
   background: var(--color-tab);
   min-width: 4rem;
 }

@@ -58,11 +58,18 @@ const initialState: State = {
   moves: [],
   ply: 0,
   mobile,
-  layout: mobile ? "single" : "triple",
+  layout:
+    window.innerWidth < window.innerHeight
+      ? "single"
+      : window.innerWidth < 1366
+      ? "double"
+      : "triple",
   activeTab: "load",
   playing: false,
   anonymous: false,
 };
+
+console.log(initialState);
 
 const [state, setState] = createStore(initialState);
 

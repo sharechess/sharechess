@@ -1,16 +1,16 @@
 .setup-box {
   height: 100vh;
   grid-area: setup;
-  padding: 20px;
+  padding: 2rem;
   padding-top: var(--header-margin);
-  min-width: 375px;
+  min-width: 37.5rem;
 }
 
 .setup {
   font-size: 1.6rem;
   height: 100%;
   display: grid;
-  grid-template-rows: 38px 1fr;
+  grid-template-rows: 3.8rem 1fr;
 }
 
 .setup-tabs {
