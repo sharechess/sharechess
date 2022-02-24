@@ -45,7 +45,6 @@ import spatial from "./spatial";
 import staunty from "./staunty";
 import tatiana from "./tatiana";
 import tfb from "./tfb";
-import tfb2 from "./tfb2";
 import traveller from "./traveller";
 import utrecht from "./utrecht";
 import wisdom from "./wisdom";
@@ -98,7 +97,6 @@ const piecesSets = {
   staunty,
   tatiana,
   tfb,
-  tfb2,
   traveller,
   utrecht,
   wisdom,
