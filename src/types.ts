@@ -52,13 +52,7 @@ export type MoveIndicator =
   | { type: "hueShift"; data: number }
   | { type: "color"; data: string };
 
-export type StyleCategory =
-  | "mono"
-  | "colorful"
-  | "gradient"
-  | "material"
-  | "pic"
-  | "custom";
+export type StyleCategory = "solid" | "gradient" | "pic" | "custom";
 
 export type Style = {
   name: string;

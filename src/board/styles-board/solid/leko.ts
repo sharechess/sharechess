@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Beige",
-  category: "mono",
+  name: "Leko",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#93b092",
+      color: "#919caf",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#becfc2",
+      color: "#c0c2d0",
     },
   },
   moveIndicator: {
     type: "hueShift",
-    data: 90,
+    data: -90,
   },
   border: {
     type: "solid",
     data: {
-      color: "#596e59",
+      color: "#58606e",
     },
   },
   coords: {
-    onLight: "#596e59",
-    onDark: "#e4f5e4",
-    onBorder: "#e4f5e4",
+    onLight: "#58606e",
+    onDark: "#dbe8ff",
+    onBorder: "#dbe8ff",
   },
 };
 

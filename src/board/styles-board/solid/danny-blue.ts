@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Chessc*m",
-  category: "mono",
+  name: "Danny Blue",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,7 +12,7 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#769656",
+      color: "#566696",
     },
   },
   light: {
@@ -28,11 +28,11 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#312e2b",
+      color: "#2B2E31",
     },
   },
   coords: {
-    onLight: "#40522f",
+    onLight: "#2F3752",
     onDark: "#fcfce1",
     onBorder: "#eeeed2",
   },

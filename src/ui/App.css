@@ -180,12 +180,6 @@ a:hover {
   }
 }
 
-@media (orientation: landscape) and (max-width: 1366px) {
-  html {
-    font-size: 8px;
-  }
-}
-
 @media (orientation: landscape) and (max-width: 1365px) {
   .layout {
     grid-template-columns: 2fr 1fr;

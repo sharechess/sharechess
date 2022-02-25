@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Lila",
-  category: "mono",
+  name: "Danny Purple",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#c0acb5",
+      color: "#765696",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#e5d0cb",
+      color: "#eeeed2",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: -120,
+    type: "color",
+    data: "#ffff007f",
   },
   border: {
     type: "solid",
     data: {
-      color: "#735c66",
+      color: "#2D2B31",
     },
   },
   coords: {
-    onLight: "#876b77",
-    onDark: "#fff5f2",
-    onBorder: "#e5d0cb",
+    onLight: "#412F52",
+    onDark: "#fcfce1",
+    onBorder: "#eeeed2",
   },
 };
 

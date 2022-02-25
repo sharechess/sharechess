@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Lichess",
-  category: "mono",
+  name: "Danny Red",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#b58863",
+      color: "#965656",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#f0d9b5",
+      color: "#eeeed2",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: -40,
+    type: "color",
+    data: "#ffff007f",
   },
   border: {
     type: "solid",
     data: {
-      color: "#80634d",
+      color: "#312B2D",
     },
   },
   coords: {
-    onLight: "#9c6f49",
-    onDark: "#f9f0e1",
-    onBorder: "#f9f0e1",
+    onLight: "#522F2F",
+    onDark: "#fcfce1",
+    onBorder: "#eeeed2",
   },
 };
 

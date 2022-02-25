@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Mono",
-  category: "mono",
+  name: "Rose",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#999",
+      color: "#f04a73",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#eee",
+      color: "#ffb8c9",
     },
   },
   moveIndicator: {
-    type: "color",
-    data: "#0088ff66",
+    type: "hueShift",
+    data: -30,
   },
   border: {
     type: "solid",
     data: {
-      color: "#444",
+      color: "#a62444",
     },
   },
   coords: {
-    onLight: "#999",
-    onDark: "#eee",
-    onBorder: "#eee",
+    onLight: "#f04a73",
+    onDark: "#ffb8c9",
+    onBorder: "#ffb8c9",
   },
 };
 

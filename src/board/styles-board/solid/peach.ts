@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Danya",
-  category: "mono",
+  name: "Peach",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#4c7399",
+      color: "#e54b4b",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#eae9d2",
+      color: "#ffa987",
     },
   },
   moveIndicator: {
-    type: "color",
-    data: "#00a5ff7f",
+    type: "hueShift",
+    data: 30,
   },
   border: {
     type: "solid",
     data: {
-      color: "#2a4057",
+      color: "#962c2c",
     },
   },
   coords: {
-    onLight: "#2a4057",
-    onDark: "#fffff0",
-    onBorder: "#eae9d2",
+    onLight: "#e54b4b",
+    onDark: "#ffa987",
+    onBorder: "#ffa987",
   },
 };
 

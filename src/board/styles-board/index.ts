@@ -1,17 +1,23 @@
-import standard from "./mono/standard";
-import chesscom from "./mono/chesscom";
-import lichess from "./mono/lichess";
-import leko from "./mono/leko";
-import patina from "./mono/patina";
-import lila from "./mono/lila";
-import peach from "./mono/peach";
-import violet from "./mono/violet";
-import danya from "./mono/danya";
-import botez from "./mono/botez";
-import mud from "./mono/mud";
-import rose from "./mono/rose";
-
-import avocado from "./colorful/avocado";
+import standard from "./solid/standard";
+import danny from "./solid/danny";
+import dannyGreen from "./solid/danny-green";
+import dannyCyan from "./solid/danny-cyan";
+import dannyBlue from "./solid/danny-blue";
+import dannyPurple from "./solid/danny-purple";
+import dannyPink from "./solid/danny-pink";
+import dannyRed from "./solid/danny-red";
+import dannyYellow from "./solid/danny-yellow";
+import lichess from "./solid/lichess";
+import leko from "./solid/leko";
+import patina from "./solid/patina";
+import lila from "./solid/lila";
+import peach from "./solid/peach";
+import violet from "./solid/violet";
+import danya from "./solid/danya";
+import botez from "./solid/botez";
+import mud from "./solid/mud";
+import rose from "./solid/rose";
+import avocado from "./solid/avocado";
 
 import calm from "./gradient/calm";
 import laguna from "./gradient/laguna";
@@ -30,7 +36,14 @@ const styles = {
   mud,
   peach,
   violet,
-  chesscom,
+  danny,
+  dannyGreen,
+  dannyCyan,
+  dannyBlue,
+  dannyPurple,
+  dannyPink,
+  dannyRed,
+  dannyYellow,
   lichess,
   danya,
   botez,

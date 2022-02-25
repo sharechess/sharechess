@@ -1,8 +1,8 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Leko",
-  category: "mono",
+  name: "Danny Pink",
+  category: "solid",
   background: {
     type: "solid",
     data: {
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#919caf",
+      color: "#965686",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#c0c2d0",
+      color: "#eeeed2",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: -90,
+    type: "color",
+    data: "#ffff007f",
   },
   border: {
     type: "solid",
     data: {
-      color: "#58606e",
+      color: "#312B31",
     },
   },
   coords: {
-    onLight: "#58606e",
-    onDark: "#dbe8ff",
-    onBorder: "#dbe8ff",
+    onLight: "#522F49",
+    onDark: "#fcfce1",
+    onBorder: "#eeeed2",
   },
 };
 

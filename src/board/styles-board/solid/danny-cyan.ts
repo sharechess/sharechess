@@ -1,40 +1,40 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Violet",
-  category: "mono",
+  name: "Danny Cyan",
+  category: "solid",
   background: {
     type: "solid",
     data: {
-      color: "#361b52",
+      color: "transparent",
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "#7b4fa8",
+      color: "#569696",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#cea9f5",
+      color: "#eeeed2",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: -60,
+    type: "color",
+    data: "#ffff007f",
   },
   border: {
     type: "solid",
     data: {
-      color: "#50346e",
+      color: "#2B3130",
     },
   },
   coords: {
-    onLight: "#50346e",
-    onDark: "#eedeff",
-    onBorder: "#e2c7ff",
+    onLight: "#2F5152",
+    onDark: "#fcfce1",
+    onBorder: "#eeeed2",
   },
 };
 
