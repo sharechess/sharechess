@@ -34,6 +34,10 @@ import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
 import wood3 from "./pic/wood3";
 import wood4 from "./pic/wood4";
+import wood5 from "./pic/wood5";
+import wood6 from "./pic/wood6";
+import wood7 from "./pic/wood7";
+import wood8 from "./pic/wood8";
 
 const styles = {
   standard,
@@ -71,6 +75,10 @@ const styles = {
   wood2,
   wood3,
   wood4,
+  wood5,
+  wood6,
+  wood7,
+  wood8,
 };
 
 export default styles;

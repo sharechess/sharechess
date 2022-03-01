@@ -1,12 +1,12 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Wood 3",
+  name: "Wood 8",
   category: "pic",
   background: {
     type: "image",
     data: {
-      src: "/textures/wood03.jpg",
+      src: "/textures/wood08.jpg",
     },
   },
   dark: {
@@ -23,20 +23,20 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#ff007733",
+    data: "#55ff0022",
   },
   border: {
     type: "image",
     data: {
-      src: "/textures/wood03_bg.jpg",
+      src: "/textures/wood08_bg.jpg",
     },
   },
   coords: {
-    onLight: "#986738",
-    onDark: "#e2d3b6",
-    onBorder: "#dac7a0",
+    onLight: "#723627",
+    onDark: "#cbad9a",
+    onBorder: "#cbad9a",
   },
-  ico: "/textures/wood03_ico.png",
+  ico: "/textures/wood08_ico.png",
 };
 
 export default style;
