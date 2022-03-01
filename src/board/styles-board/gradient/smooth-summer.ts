@@ -1,25 +1,25 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Sunset",
+  name: "Smooth Summer",
   category: "gradient",
   background: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["hsl(32, 88%, 67%)", "hsl(342, 83%, 57%)"],
+      colors: ["#F5CB61", "#F58D61"],
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "rgba(0, 0, 0, 0)",
+      color: "transparent",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "rgba(255, 255, 255, 0.5)",
+      color: "#ffffff7f",
     },
   },
   moveIndicator: {
@@ -30,11 +30,11 @@ const style: Style = {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["hsl(22, 68%, 57%)", "hsl(332, 63%, 47%)"],
+      colors: ["#D1AC4F", "#D07852"],
     },
   },
   coords: {
-    onLight: "hsl(332, 63%, 47%)",
+    onLight: "#B2793C",
     onDark: "#fff",
     onBorder: "#fff",
   },

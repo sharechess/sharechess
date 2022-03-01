@@ -1,7 +1,7 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Danny Green",
+  name: "Ukraine",
   category: "solid",
   background: {
     type: "solid",
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#569666",
+      color: "#3e81c9",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#eeeed2",
+      color: "#FFEB82",
     },
   },
   moveIndicator: {
     type: "color",
-    data: "#40ff007f",
+    data: "#00ff0055",
   },
   border: {
     type: "solid",
     data: {
-      color: "#2B312B",
+      color: "#003D7E",
     },
   },
   coords: {
-    onLight: "#2F5238",
-    onDark: "#fcfce1",
-    onBorder: "#eeeed2",
+    onLight: "#001D3C",
+    onDark: "#fff",
+    onBorder: "#FED500",
   },
 };
 

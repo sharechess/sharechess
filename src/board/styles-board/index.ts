@@ -19,9 +19,16 @@ import mud from "./solid/mud";
 import rose from "./solid/rose";
 import avocado from "./solid/avocado";
 
-import calm from "./gradient/calm";
-import laguna from "./gradient/laguna";
-import sunset from "./gradient/sunset";
+// import flagUkraine from "./solid/flag-ukraine";
+
+import smoothSunset from "./gradient/smooth-sunset";
+import smoothSummer from "./gradient/smooth-summer";
+import smoothSpring from "./gradient/smooth-spring";
+import smoothForest from "./gradient/smooth-forest";
+import smoothLaguna from "./gradient/smooth-laguna";
+import smoothSea from "./gradient/smooth-sea";
+import smoothViolet from "./gradient/smooth-violet";
+import smoothMono from "./gradient/smooth-mono";
 
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
@@ -30,12 +37,13 @@ import wood4 from "./pic/wood4";
 
 const styles = {
   standard,
+  peach,
+  violet,
+  rose,
   lila,
   leko,
   patina,
   mud,
-  peach,
-  violet,
   danny,
   dannyGreen,
   dannyCyan,
@@ -48,10 +56,17 @@ const styles = {
   danya,
   botez,
   avocado,
-  rose,
-  calm,
-  laguna,
-  sunset,
+
+  // flagUkraine,
+
+  smoothSunset,
+  smoothSummer,
+  smoothSpring,
+  smoothForest,
+  smoothLaguna,
+  smoothSea,
+  smoothViolet,
+  smoothMono,
   wood1,
   wood2,
   wood3,

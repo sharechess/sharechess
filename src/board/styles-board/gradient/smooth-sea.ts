@@ -1,13 +1,13 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Laguna",
+  name: "Smooth Sea",
   category: "gradient",
   background: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#00c4a0", "#096fe0"],
+      colors: ["#2881E4", "#9E52FF"],
     },
   },
   dark: {
@@ -19,7 +19,7 @@ const style: Style = {
   light: {
     type: "solid",
     data: {
-      color: "#ffffff77",
+      color: "#ffffff7f",
     },
   },
   moveIndicator: {
@@ -30,16 +30,14 @@ const style: Style = {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#009c7f", "#0052ad"],
+      colors: ["#1863B7", "#773DC1"],
     },
   },
   coords: {
-    onLight: "#006f75",
+    onLight: "#4750BC",
     onDark: "#fff",
     onBorder: "#fff",
   },
 };
 
 export default style;
-
-// background-image: linear-gradient( 109.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1% );

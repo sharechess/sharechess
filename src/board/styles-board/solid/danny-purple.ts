@@ -23,7 +23,7 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#ffff007f",
+    data: "#ff38af7f",
   },
   border: {
     type: "solid",
@@ -32,7 +32,7 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#412F52",
+    onLight: "#412F52b",
     onDark: "#fcfce1",
     onBorder: "#eeeed2",
   },

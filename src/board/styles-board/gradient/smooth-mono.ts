@@ -1,42 +1,42 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Calm",
+  name: "Smooth Mono",
   category: "gradient",
   background: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#96c93d", "#00b09b"],
+      colors: ["#BFBFBF", "#7D7D7D"],
     },
   },
   dark: {
     type: "solid",
     data: {
-      color: "rgba(0, 0, 0, 0)",
+      color: "transparent",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "rgba(255, 255, 255, 0.5)",
+      color: "#ffffff7f",
     },
   },
   moveIndicator: {
     type: "color",
-    data: "#0055ff33",
+    data: "#3cff0055",
   },
   border: {
     type: "gradient",
     data: {
       dir: "diagonal-top",
-      colors: ["#65a32e", "#007a80"],
+      colors: ["#A1A1A1", "#606060"],
     },
   },
   coords: {
-    onLight: "rgba(0, 0, 0, 0.5)",
-    onDark: "rgba(255, 255, 255, 0.9)",
-    onBorder: "rgba(255, 255, 255, 0.9)",
+    onLight: "#818181",
+    onDark: "#fff",
+    onBorder: "#fff",
   },
 };
 

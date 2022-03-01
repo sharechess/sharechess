@@ -23,7 +23,7 @@ const style: Style = {
   },
   moveIndicator: {
     type: "color",
-    data: "#ffff007f",
+    data: "#ffaf387f",
   },
   border: {
     type: "solid",
