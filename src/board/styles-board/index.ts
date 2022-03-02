@@ -29,6 +29,10 @@ import smoothLaguna from "./gradient/smooth-laguna";
 import smoothSea from "./gradient/smooth-sea";
 import smoothViolet from "./gradient/smooth-violet";
 import smoothMono from "./gradient/smooth-mono";
+import contrastA from "./gradient/contrast-a";
+import contrastB from "./gradient/contrast-b";
+import contrastC from "./gradient/contrast-c";
+import contrastD from "./gradient/contrast-d";
 
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
@@ -71,6 +75,10 @@ const styles = {
   smoothSea,
   smoothViolet,
   smoothMono,
+  contrastA,
+  contrastB,
+  contrastC,
+  contrastD,
   wood1,
   wood2,
   wood3,

@@ -44,6 +44,7 @@ export type State = {
   activeTab: TabName;
   playing: boolean;
   anonymous: boolean;
+  refreshHash: boolean;
 };
 
 const initialState: State = {
@@ -67,6 +68,7 @@ const initialState: State = {
   activeTab: "load",
   playing: false,
   anonymous: false,
+  refreshHash: true,
 };
 
 console.log(initialState);

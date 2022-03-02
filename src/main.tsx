@@ -83,6 +83,7 @@ const main = async () => {
       if (state.pgn !== "") {
         const pgn = state.anonymous ? state.game.anonymousPGN : state.game.pgn;
         window.location.hash = `pgn/${compressPGN(pgn)}`;
+        setState("refreshHash", false);
       }
     },
     toggleTitleScreen() {
@@ -114,6 +115,7 @@ const main = async () => {
         game,
       });
       window.location.hash = `pgn/${compressPGN(game.pgn)}`;
+      setState("refreshHash", false);
 
       await player.load(game);
       setState("activeTab", "game");
@@ -142,6 +144,7 @@ const main = async () => {
 
       if (hash) {
         window.location.hash = `fen/${state.fen}`;
+        setState("refreshHash", false);
         setState("activeTab", "game");
       }
 
@@ -203,18 +206,22 @@ const main = async () => {
   const $board = document.querySelector<HTMLImageElement>("#board");
   $board?.prepend(board.canvas);
 
-  /* Restore game from the url */
+  /* Load game from the url */
 
-  const { pgn, fen } = extractUrlData();
+  const loadFromUrl = async () => {
+    const { pgn, fen } = extractUrlData();
 
-  await (pgn
-    ? handlers.loadPGN(pgn)
-    : fen
-    ? handlers.loadFEN(fen)
-    : handlers.loadFEN(
-        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-        false
-      ));
+    await (pgn
+      ? handlers.loadPGN(pgn)
+      : fen
+      ? handlers.loadFEN(fen)
+      : handlers.loadFEN(
+          "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          false
+        ));
+  };
+
+  await loadFromUrl();
 
   /* Register events */
   document.addEventListener("dblclick", function (el) {
@@ -230,6 +237,17 @@ const main = async () => {
         ? "double"
         : "triple"
     );
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (!state.refreshHash) {
+      setState("refreshHash", true);
+      console.log("No refresh");
+      return;
+    }
+
+    console.log("Refresh!");
+    loadFromUrl();
   });
 
   if (!state.mobile) {
