@@ -19,8 +19,6 @@ import mud from "./solid/mud";
 import rose from "./solid/rose";
 import avocado from "./solid/avocado";
 
-// import flagUkraine from "./solid/flag-ukraine";
-
 import smoothSunset from "./gradient/smooth-sunset";
 import smoothSummer from "./gradient/smooth-summer";
 import smoothSpring from "./gradient/smooth-spring";
@@ -64,8 +62,6 @@ const styles = {
   danya,
   botez,
   avocado,
-
-  // flagUkraine,
 
   smoothSunset,
   smoothSummer,
