@@ -38,11 +38,29 @@ const Controls: Component<{ handlers: Handlers }> = (props) => {
         <i class="las la-angle-right"></i>
       </button>
       <button
-        class="controls__button controls__button--last"
+        class="controls__button"
         onClick={props.handlers.last}
         title="LAST"
       >
         <i class="las la-angle-double-right"></i>
+      </button>
+      <button
+        onClick={props.handlers.flip}
+        title="FLIP"
+        classList={{
+          options__button: true,
+          "options__button--last": true,
+          "options__button--active": true,
+        }}
+      >
+        <i
+          classList={{
+            rotated: state.boardConfig.flipped,
+            las: true,
+            "la-sync": true,
+            rotatable: true,
+          }}
+        ></i>
       </button>
     </div>
   );

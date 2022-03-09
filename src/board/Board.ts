@@ -205,6 +205,12 @@ class Board {
     return this;
   }
 
+  toggleShadows() {
+    this.cfg.showShadows = !this.cfg.showShadows;
+    this.refresh();
+    return this;
+  }
+
   private getFinalHeader() {
     return this._anonymous
       ? {
@@ -341,7 +347,8 @@ class Board {
       this.borderWidth,
       this.cfg.flipped,
       this.margin,
-      this.cfg.piecesStyle
+      this.cfg.piecesStyle,
+      this.cfg.showShadows
     );
 
     if (this.cfg.showExtraInfo && header) {

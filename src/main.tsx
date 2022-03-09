@@ -90,6 +90,11 @@ const main = async () => {
       setState("gameConfig", "titleScreen", !state.gameConfig.titleScreen);
       saveConfig("game");
     },
+    toggleShadows() {
+      board.toggleShadows();
+      setState("boardConfig", "showShadows", !state.boardConfig.showShadows);
+      saveConfig("board");
+    },
     flip() {
       console.log("FLIP");
       board.flip();

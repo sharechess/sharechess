@@ -104,6 +104,7 @@ export type BoardConfig = {
   showMoveIndicator: boolean;
   showChecks: boolean;
   showCoords: boolean;
+  showShadows: boolean;
   flipped: boolean;
 };
 
@@ -174,6 +175,7 @@ export type Handlers = {
   toggleExtraInfo(): void;
   toggleAnonymous(): void;
   toggleTitleScreen(): void;
+  toggleShadows(): void;
   flip(): void;
   togglePlay(): void;
   goto(ply: number): void;

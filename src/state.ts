@@ -19,6 +19,7 @@ const initialBoardConfig: BoardConfig = {
   showMoveIndicator: true,
   showChecks: true,
   showCoords: true,
+  showShadows: false,
   flipped: false,
 };
 

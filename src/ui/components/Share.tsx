@@ -20,24 +20,6 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
       <div className="share__view">
         <h2 class="header--first">Board options</h2>
         <button
-          onClick={props.handlers.flip}
-          title="FLIP"
-          classList={{
-            options__button: true,
-            "options__button--first": true,
-            "options__button--active": true,
-          }}
-        >
-          <i
-            classList={{
-              rotated: state.boardConfig.flipped,
-              las: true,
-              "la-sync": true,
-              rotatable: true,
-            }}
-          ></i>
-        </button>
-        <button
           classList={{
             options__button: true,
             "options__button--active": state.boardConfig.showBorder,
@@ -78,13 +60,26 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         <button
           classList={{
             options__button: true,
-            "options__button--last": true,
+            "options__button--last": false,
             "options__button--active": state.anonymous,
           }}
           onClick={props.handlers.toggleAnonymous}
           title="TOGGLE ANONYMOUS"
         >
           <i class="las la-user-secret"></i>
+        </button>
+        <button
+          classList={{
+            options__button: true,
+            "options__button--last": true,
+            "options__button--active": state.boardConfig.showShadows,
+          }}
+          onClick={props.handlers.toggleShadows}
+          title={
+            state.boardConfig.showShadows ? "HIDE SHADOWS" : "SHOW SHADOWS"
+          }
+        >
+          <i class="las la-cloud"></i>
         </button>
       </div>
       <hr />
