@@ -1,7 +1,7 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Peach",
+  name: "Mono Mulberry",
   category: "solid",
   background: {
     type: "solid",
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#E54B4B",
+      color: "#C24B84",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#EFB293",
+      color: "#D481A9",
     },
   },
   moveIndicator: {
     type: "hueShift",
-    data: 30,
+    data: -30,
   },
   border: {
     type: "solid",
     data: {
-      color: "#9E3131",
+      color: "#C24B84",
     },
   },
   coords: {
-    onLight: "#e54b4b",
-    onDark: "#EFB293",
-    onBorder: "#EFB293",
+    onLight: "#00000088",
+    onDark: "#ffffffcc",
+    onBorder: "#ffffffcc",
   },
 };
 

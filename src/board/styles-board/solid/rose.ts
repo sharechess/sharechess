@@ -12,13 +12,13 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#f04a73",
+      color: "#F04A73",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#ffb8c9",
+      color: "#F7A8A1",
     },
   },
   moveIndicator: {
@@ -28,7 +28,7 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#a62444",
+      color: "#A62444",
     },
   },
   coords: {

@@ -1,4 +1,8 @@
 import standard from "./solid/standard";
+import spring from "./solid/spring";
+import azure from "./solid/azure";
+import clay from "./solid/clay";
+import rock from "./solid/rock";
 import danny from "./solid/danny";
 import dannyGreen from "./solid/danny-green";
 import dannyCyan from "./solid/danny-cyan";
@@ -18,6 +22,14 @@ import botez from "./solid/botez";
 import mud from "./solid/mud";
 import rose from "./solid/rose";
 import avocado from "./solid/avocado";
+import monoTeal from "./solid/mono-teal";
+import monoChico from "./solid/mono-chico";
+import monoGoblin from "./solid/mono-goblin";
+import monoMahogany from "./solid/mono-mahogany";
+import monoMojo from "./solid/mono-mojo";
+import monoMulberry from "./solid/mono-mulberry";
+import monoSycamore from "./solid/mono-sycamore";
+import monoBlue from "./solid/mono-blue";
 
 import smoothSunset from "./gradient/smooth-sunset";
 import smoothSummer from "./gradient/smooth-summer";
@@ -43,9 +55,13 @@ import wood8 from "./pic/wood8";
 
 const styles = {
   standard,
-  peach,
+  spring,
+  azure,
   violet,
   rose,
+  peach,
+  clay,
+  rock,
   lila,
   leko,
   patina,
@@ -62,6 +78,14 @@ const styles = {
   danya,
   botez,
   avocado,
+  monoChico,
+  monoMojo,
+  monoMahogany,
+  monoMulberry,
+  monoBlue,
+  monoTeal,
+  monoGoblin,
+  monoSycamore,
 
   smoothSunset,
   smoothSummer,

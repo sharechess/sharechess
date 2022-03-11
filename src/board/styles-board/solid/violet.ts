@@ -18,7 +18,7 @@ const style: Style = {
   light: {
     type: "solid",
     data: {
-      color: "#cea9f5",
+      color: "#CB95CB",
     },
   },
   moveIndicator: {

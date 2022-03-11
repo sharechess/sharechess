@@ -1,7 +1,7 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Peach",
+  name: "Mono Mahogany",
   category: "solid",
   background: {
     type: "solid",
@@ -12,13 +12,13 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#E54B4B",
+      color: "#CA3838",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#EFB293",
+      color: "#DA7373",
     },
   },
   moveIndicator: {
@@ -28,13 +28,13 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#9E3131",
+      color: "#CA3838",
     },
   },
   coords: {
-    onLight: "#e54b4b",
-    onDark: "#EFB293",
-    onBorder: "#EFB293",
+    onLight: "#00000088",
+    onDark: "#ffffffcc",
+    onBorder: "#ffffffcc",
   },
 };
 

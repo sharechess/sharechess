@@ -1,7 +1,7 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Peach",
+  name: "Spring",
   category: "solid",
   background: {
     type: "solid",
@@ -12,29 +12,29 @@ const style: Style = {
   dark: {
     type: "solid",
     data: {
-      color: "#E54B4B",
+      color: "#6BB53E",
     },
   },
   light: {
     type: "solid",
     data: {
-      color: "#EFB293",
+      color: "#C1D997",
     },
   },
   moveIndicator: {
-    type: "hueShift",
-    data: 30,
+    type: "color",
+    data: "#ffff0055",
   },
   border: {
     type: "solid",
     data: {
-      color: "#9E3131",
+      color: "#40761E",
     },
   },
   coords: {
-    onLight: "#e54b4b",
-    onDark: "#EFB293",
-    onBorder: "#EFB293",
+    onLight: "#40761E",
+    onDark: "#DBF5AD",
+    onBorder: "#DBF5AD",
   },
 };
 
