@@ -1,13 +1,16 @@
 import { Component, For } from "solid-js";
-import { Handlers, PiecesStyle } from "../../types";
+import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
-import piecesSets from "../../board/styles-pieces";
+import piecesSets, {
+  PiecesStyle,
+} from "../../board/styles-pieces/piecesStyles";
 import { state, setState } from "../../state";
+
 import "./Pieces.css";
 
-const pieces = Object.entries(piecesSets).map(([key, data]) => ({
+const pieces = piecesSets.map((key) => ({
   key,
-  img: data.nw,
+  img: `/pieces/${key}/nw.svg`,
 })) as { key: PiecesStyle; img: string }[];
 
 const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
@@ -28,7 +31,7 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
                 props.handlers.changePiecesStyle(item.key);
               }}
               src={item.img}
-              title={item.key}
+              title={item.key as string}
               draggable={false}
             />
           )}

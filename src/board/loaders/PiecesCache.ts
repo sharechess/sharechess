@@ -1,14 +1,19 @@
-import { PieceType, PieceColor, Piece } from "../../types";
-import piecesSets from "../styles-pieces";
+import { PieceType, PieceColor } from "../../types";
+import {
+  PiecesStyle,
+  pieceNames,
+  PieceName,
+} from "../styles-pieces/piecesStyles";
 import loadImage from "./loadImage";
 
-let style: keyof typeof piecesSets | null = null;
+let style: PiecesStyle | null = null;
 let piecesImages: Map<string, HTMLImageElement> = new Map();
 
 const PiecesCache = {
-  async load(piecesSetName: keyof typeof piecesSets) {
+  async load(piecesSetName: PiecesStyle) {
     await Promise.all(
-      Object.entries(piecesSets[piecesSetName]).map(([key, src]) => {
+      pieceNames.map((key) => {
+        const src = `/pieces/${piecesSetName}/${key}.svg`;
         return loadImage(src).then((img) => {
           piecesImages.set(key, img);
         });
@@ -17,7 +22,7 @@ const PiecesCache = {
   },
 
   async get(
-    piecesSetName: keyof typeof piecesSets,
+    piecesSetName: PiecesStyle,
     pieceName: PieceType,
     pieceColor: PieceColor
   ) {
@@ -26,7 +31,7 @@ const PiecesCache = {
       style = piecesSetName;
     }
 
-    const piece = `${pieceName}${pieceColor}` as Piece;
+    const piece = `${pieceName}${pieceColor}` as PieceName;
 
     return piecesImages.get(piece) as HTMLImageElement;
   },

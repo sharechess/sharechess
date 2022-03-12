@@ -1,6 +1,6 @@
 import { Move } from "chess.js";
 import stylesBoard from "./board/styles-board";
-import stylesPieces from "./board/styles-pieces";
+import { PiecesStyle } from "./board/styles-pieces/piecesStyles";
 
 export type GradientDir =
   | "horizontal"
@@ -75,23 +75,7 @@ export type BoardData = ({
   color: PieceColor;
 } | null)[][];
 
-export type Piece =
-  | "kw"
-  | "qw"
-  | "rw"
-  | "bw"
-  | "nw"
-  | "pw"
-  | "kb"
-  | "qb"
-  | "rb"
-  | "bb"
-  | "nb"
-  | "pb";
-
 export type BoardStyle = keyof typeof stylesBoard;
-
-export type PiecesStyle = keyof typeof stylesPieces;
 
 export type BoardConfig = {
   size: number;
