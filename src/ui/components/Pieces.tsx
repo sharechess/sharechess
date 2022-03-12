@@ -16,7 +16,6 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
       {
         <For each={pieces}>
           {(item) => (
-            // @ts-ignore
             <img
               class={
                 "pieces__ico" +
