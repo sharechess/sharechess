@@ -11,7 +11,17 @@
 }
 
 .controls__button {
-  margin: 0 3px;
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 3rem;
+  text-align: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 0;
+}
+
+.flip__button {
+  margin-left: 3px;
   padding: 0.5rem;
   font-size: 3rem;
   text-align: center;
@@ -26,9 +36,13 @@
 }
 
 .controls__button--last {
-  margin-right: 0px;
+  margin-right: 3px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .controls__button--first {
   margin-left: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }

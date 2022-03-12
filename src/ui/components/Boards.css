@@ -5,13 +5,18 @@
 }
 
 .boards__ico {
-  border: solid 0.5rem black;
-  margin: 0.5rem;
+  margin: 0.2rem;
   cursor: pointer;
-  width: 7.2rem;
+  width: 8.2rem;
+  height: 8.2rem;
+  padding: 0;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: solid 0.5rem transparent;
 }
 
 .boards__ico--active {
-  border-color: white;
   cursor: default;
+  border: solid 5px var(--color-frame-marker-active);
 }

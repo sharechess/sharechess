@@ -46,6 +46,7 @@ body {
   --color-text-dimmed: #677794;
   --color-scrollbar: rgb(0, 59, 47);
   --color-scrollbar-track: #ffffff22;
+  --color-frame-marker-active: #fff;
 }
 
 .light {
@@ -69,11 +70,12 @@ body {
   --color-text-dimmed: #767980;
   --color-scrollbar: rgb(133, 184, 173);
   --color-scrollbar-track: #00000022;
+  --color-frame-marker-active: #000;
 }
 
 button,
 .upload::before {
-  padding: 1rem;
+  padding: 0.8rem;
   font-family: "Ubuntu";
   font-size: 1.5rem;
   background: var(--color-btn);
@@ -91,7 +93,7 @@ button:hover,
 input,
 textarea {
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem;
   font-family: "Fira Mono";
   font-size: 1.4rem;
   margin-bottom: 1rem;

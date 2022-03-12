@@ -5,14 +5,16 @@
 }
 
 .pieces__ico {
-  border: solid 5px black;
+  border: solid 5px transparent;
   margin: 5px;
   cursor: pointer;
   width: 7.2rem;
+  height: 7.2rem;
   background-color: var(--color-highlight);
+  border-radius: 0.5rem;
 }
 
 .pieces__ico--active {
-  border-color: white;
+  border-color: var(--color-frame-marker-active);
   cursor: default;
 }

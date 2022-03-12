@@ -56,7 +56,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
       <For each={boards()}>
         {(board) => {
           return (
-            <img
+            <div
               class={
                 "boards__ico" +
                 (state.boardConfig.boardStyle === board.key
@@ -67,7 +67,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
                 setState("boardConfig", "boardStyle", board.key);
                 props.handlers.changeBoardStyle(board.key);
               }}
-              src={board.img}
+              style={{ "background-image": `url(${board.img})` }}
               title={board.name}
               draggable={false}
             />
