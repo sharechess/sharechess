@@ -137,7 +137,7 @@ const main = async () => {
 
       setState("boardConfig", "flipped", side === "b");
 
-      document.title = `SHORTCASTLE - ${game.getTitle({ anonymous: false })}`;
+      document.title = `SHARECHESS - ${game.getTitle({ anonymous: false })}`;
     },
     async loadFEN(fen: string, hash = true) {
       const game = new Game().loadFEN(fen);
@@ -167,7 +167,7 @@ const main = async () => {
 
       setState("boardConfig", "flipped", side === "b");
 
-      document.title = `SHORTCASTLE - FEN ${fen}`;
+      document.title = `SHARECHESS - FEN ${fen}`;
     },
     async load(data: string) {
       if (isFEN(data)) {
