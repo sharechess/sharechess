@@ -23,15 +23,25 @@ const cleanPGN = (pgn: string) => {
   const game = new Chess();
   game.load_pgn(pgn);
   game.delete_comments();
-  const [_, moves] = game.pgn().split("\n\n");
 
-  const header = Object.entries(game.header())
+  const headerEntries = Object.entries(game.header());
+
+  const [_, moves] =
+    headerEntries.length > 0
+      ? game.pgn().split("\n\n")
+      : [undefined, game.pgn()];
+
+  const header = headerEntries
     .filter(([key, val]) => PGN_KEYS.includes(key) && val !== "?")
     .map(([key, val]) => `[${key} "${val}"]`)
     .sort()
     .join("\n");
 
-  return [header, moves].join("\n\n");
+  console.log(header);
+
+  const cleanedPGN = [header, moves].join("\n\n");
+  console.log(cleanedPGN);
+  return cleanedPGN;
 };
 
 const compressPGN = (pgn: string) => {
