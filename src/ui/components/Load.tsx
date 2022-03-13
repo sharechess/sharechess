@@ -5,74 +5,30 @@ import { state } from "../../state";
 import "./Load.css";
 
 const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
-  const [fen, setFEN] = createSignal("");
-  const [pgn, setPGN] = createSignal("");
-  const [link, setLink] = createSignal("");
+  const [data, setData] = createSignal("");
 
   let filePicker: HTMLInputElement | undefined = undefined;
 
   return (
     <div class={"load" + (props.class ? ` ${props.class}` : "")}>
-      <input
-        class="load__fen-input"
-        type="text"
-        name="load-fen"
-        placeholder="Paste FEN..."
-        spellcheck={false}
-        value={fen()}
-        onInput={(e) => setFEN(e.currentTarget.value)}
-      />
-      <button
-        class="load__fen-btn"
-        onClick={() => {
-          if (fen()) {
-            props.handlers.loadFEN(fen());
-            setFEN("");
-          }
-        }}
-      >
-        LOAD FEN
-      </button>
-      <hr />
-      <input
-        class="load__link-input"
-        type="text"
-        name="load-link"
-        placeholder="Paste lichess link..."
-        spellcheck={false}
-        value={link()}
-        onInput={(e) => setLink(e.currentTarget.value)}
-      />
-      <button
-        class="load__link-btn"
-        onClick={() => {
-          if (link()) {
-            props.handlers.importPGN(link());
-            setLink("");
-          }
-        }}
-      >
-        IMPORT GAME
-      </button>
-      <hr />
       <textarea
-        class="load__pgn-input"
-        name="load-pgn"
-        placeholder="Paste PGN..."
+        class="load__game-input"
+        name="load-game"
+        placeholder="Paste PGN, FEN or Lichess link..."
         spellcheck={false}
-        value={pgn()}
-        onInput={(e) => setPGN(e.currentTarget.value)}
+        value={data()}
+        onInput={(e) => setData(e.currentTarget.value)}
       ></textarea>
       <button
-        class="load__pgn-btn"
+        class="load__game-btn"
         onClick={() => {
-          if (pgn()) {
-            props.handlers.loadPGN(pgn());
-            setPGN("");
+          if (data()) {
+            props.handlers.load(data());
+            setData("");
           }
         }}
       >
-        LOAD PGN
+        LOAD
       </button>
       <hr />
       <input

@@ -168,6 +168,7 @@ export type Handlers = {
   loadPGN: (pgn: string) => Promise<void>;
   loadFEN: (fen: string) => Promise<void>;
   importPGN: (link: string) => Promise<void>;
+  load: (data: string) => Promise<boolean>;
   downloadImage: () => Promise<void>;
   downloadAnimation: () => Promise<void>;
 };

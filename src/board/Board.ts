@@ -1,4 +1,4 @@
-import { BoardConfig, Header, PiecesStyle, Position } from "./../types";
+import { BoardConfig, Header, Position } from "./../types";
 import { Style, BoardStyle } from "../types";
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
@@ -8,6 +8,7 @@ import drawHeader from "./layers/drawHeader";
 import drawExtraInfo from "./layers/drawExtraInfo";
 import boards from "./styles-board";
 import isLink from "../utils/isLink";
+import { PiecesStyle } from "./styles-pieces/piecesStyles";
 
 const defaultConfig: BoardConfig = {
   size: 720,
@@ -20,6 +21,7 @@ const defaultConfig: BoardConfig = {
   showMoveIndicator: true,
   showChecks: true,
   showCoords: true,
+  showShadows: false,
   flipped: false,
 };
 

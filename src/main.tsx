@@ -2,7 +2,7 @@ import WebFont from "webfontloader";
 // import * as Hammer from "hammerjs";
 import { render } from "solid-js/web";
 
-import { BoardStyle, PiecesStyle } from "./types";
+import { BoardStyle } from "./types";
 
 import Board from "./board/Board";
 import Game from "./game/Game";
@@ -19,6 +19,10 @@ import download from "./utils/download";
 import { compressPGN } from "./game/PGNHelpers";
 import extractUrlData from "./persistance/extractUrlData";
 import importFromLink from "./imports/importFromLink";
+import isFEN from "./utils/isFEN";
+import isPGN from "./utils/isPGN";
+import isSafeLink from "./utils/isSafeLink";
+import { PiecesStyle } from "./board/styles-pieces/piecesStyles";
 
 const main = async () => {
   const board = new Board(state.boardConfig);
@@ -164,6 +168,24 @@ const main = async () => {
       setState("boardConfig", "flipped", side === "b");
 
       document.title = `SHORTCASTLE - FEN ${fen}`;
+    },
+    async load(data: string) {
+      if (isFEN(data)) {
+        await this.loadFEN(data);
+        return true;
+      }
+
+      if (isPGN(data)) {
+        await this.loadPGN(data);
+        return true;
+      }
+
+      if (isSafeLink(data)) {
+        await this.importPGN(data);
+        return true;
+      }
+
+      return false;
     },
     async importPGN(link: string) {
       const result = await importFromLink(link);
