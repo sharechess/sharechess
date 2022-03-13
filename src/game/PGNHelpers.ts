@@ -24,6 +24,14 @@ const cleanPGN = (pgn: string) => {
   game.load_pgn(pgn);
   game.delete_comments();
 
+  if (!game.header().Result) {
+    const result = (pgn.trim().match(/(1-0)|(0-1)|(1\/2-1\/2)$/) || [])[0];
+
+    if (result) {
+      game.header("Result", result);
+    }
+  }
+
   const headerEntries = Object.entries(game.header());
 
   const [_, moves] =
@@ -37,11 +45,7 @@ const cleanPGN = (pgn: string) => {
     .sort()
     .join("\n");
 
-  console.log(header);
-
-  const cleanedPGN = [header, moves].join("\n\n");
-  console.log(cleanedPGN);
-  return cleanedPGN;
+  return [header, moves].join("\n\n");
 };
 
 const compressPGN = (pgn: string) => {
