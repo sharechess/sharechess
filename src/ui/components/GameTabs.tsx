@@ -20,7 +20,12 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
 ) => {
   return (
     <div class="game">
-      <div class="game-tabs">
+      <div
+        classList={{
+          "game-tabs": true,
+          "game-tabs--condensed": state.layout !== "triple",
+        }}
+      >
         <Tab name="game" setTab={setTab} isActive={state.activeTab === "game"}>
           GAME
         </Tab>
@@ -33,7 +38,7 @@ const GameTabs: Component<{ moves: readonly string[]; handlers: Handlers }> = (
             setTab={setTab}
             isActive={state.activeTab === "share"}
           >
-            <i class="las la-share"></i>
+            SHARE
           </Tab>
           <Tab
             name="boards"

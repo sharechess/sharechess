@@ -9,20 +9,48 @@ const Info: Component<{ handlers: Handlers }> = () => {
   return (
     <div class="info">
       <div className="info__players">
-        <p>
-          <button className="info__color info__color--white"></button>
-          <Show when={!state.anonymous} fallback="Anonymous">
-            {state.game.header.WhitePretty}{" "}
-          </Show>
-          <span className="info__rating">{state.game.header.WhiteElo}</span>
-        </p>
-        <p>
-          <button className="info__color info__color--black"></button>
-          <Show when={!state.anonymous} fallback="Anonymous">
-            {state.game.header.BlackPretty}{" "}
-          </Show>
-          <span className="info__rating">{state.game.header.BlackElo}</span>
-        </p>
+        <div class="info__player">
+          <div className="info__left">
+            <button className="info__color info__color--white"></button>
+            <Show when={!state.anonymous} fallback="Anonymous">
+              {state.game.header.WhitePretty}{" "}
+            </Show>
+            <span className="info__rating">
+              {" "}
+              ({state.game.header.WhiteElo})
+            </span>
+          </div>
+          <div className="info__right">
+            <span className="info__score">
+              {state.game.header.Result === "1-0"
+                ? "1"
+                : state.game.header.Result === "0-1"
+                ? "0"
+                : "1/2"}
+            </span>
+          </div>
+        </div>
+        <div class="info__player">
+          <div className="info__left">
+            <button className="info__color info__color--black"></button>
+            <Show when={!state.anonymous} fallback="Anonymous">
+              {state.game.header.BlackPretty}{" "}
+            </Show>
+            <span className="info__rating">
+              {" "}
+              ({state.game.header.BlackElo})
+            </span>
+          </div>
+          <div className="info__right">
+            <span className="info__score">
+              {state.game.header.Result === "1-0"
+                ? "0"
+                : state.game.header.Result === "0-1"
+                ? "1"
+                : "1/2"}
+            </span>
+          </div>
+        </div>
       </div>
       <div className="info__event">
         <Show when={state.game.header.Event}>

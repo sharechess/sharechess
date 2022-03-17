@@ -17,11 +17,27 @@
   padding: 0 1rem;
 }
 
+.info__player {
+  display: grid;
+  grid-template-columns: auto 40px;
+}
+
+.info__left {
+}
+
+.info__right {
+  text-align: right;
+}
+
 .info__rating {
   font-family: "Fira Code", monospace;
   color: var(--color-text-dimmed);
-  position: absolute;
-  right: 1rem;
+}
+
+.info__score {
+  font-family: "Fira Code", monospace;
+  color: var(--color-score);
+  margin-left: 1rem;
 }
 
 .info__color {

@@ -32,6 +32,7 @@ body {
   color: rgb(212, 221, 224);
   --logo-url: url(/img/logo.svg);
 
+  --color--score: #ffffff;
   --color-btn: rgb(0, 173, 136);
   --color-btn-light: rgb(0, 207, 162);
   --color-tab: #899399;

@@ -26,6 +26,10 @@
   column-gap: 0.5rem;
 }
 
+.game-tabs--condensed {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .span2 {
   grid-row-end: span 2;
 }
