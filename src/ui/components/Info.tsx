@@ -15,10 +15,12 @@ const Info: Component<{ handlers: Handlers }> = () => {
             <Show when={!state.anonymous} fallback="Anonymous">
               {state.game.header.WhitePretty}{" "}
             </Show>
-            <span className="info__rating">
-              {" "}
-              ({state.game.header.WhiteElo})
-            </span>
+            <Show when={state.game.header.WhiteElo}>
+              <span className="info__rating">
+                {" "}
+                ({state.game.header.WhiteElo})
+              </span>
+            </Show>
           </div>
           <div className="info__right">
             <span className="info__score">
@@ -36,10 +38,12 @@ const Info: Component<{ handlers: Handlers }> = () => {
             <Show when={!state.anonymous} fallback="Anonymous">
               {state.game.header.BlackPretty}{" "}
             </Show>
-            <span className="info__rating">
-              {" "}
-              ({state.game.header.BlackElo})
-            </span>
+            <Show when={state.game.header.BlackElo}>
+              <span className="info__rating">
+                {" "}
+                ({state.game.header.BlackElo})
+              </span>
+            </Show>
           </div>
           <div className="info__right">
             <span className="info__score">
