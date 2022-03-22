@@ -31,7 +31,7 @@ const Controls: Component<{ handlers: Handlers }> = (props) => {
         </Show>
       </button>
       <button
-        class="controls__button"
+        class="controls__button controls__button--next"
         onClick={props.handlers.next}
         title="NEXT"
       >
