@@ -60,12 +60,13 @@
   }
 
   .controls__button {
-    margin: 0.8vw;
+    margin: 0 0.8vw;
     padding: 0.5rem;
     font-size: 3rem;
     text-align: center;
     width: 12.8vw;
     height: 12.8vw;
+    max-height: 6rem;
     border-radius: 5px;
   }
 
@@ -74,12 +75,13 @@
   }
 
   .flip__button {
-    margin: 0.8vw;
+    margin: 0 0.8vw;
     padding: 0.5rem;
     font-size: 3rem;
     text-align: center;
     border-radius: 5px;
     width: 12.8vw;
     height: 12.8vw;
+    max-height: 6rem;
   }
 }

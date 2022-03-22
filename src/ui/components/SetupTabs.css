@@ -3,7 +3,7 @@
   grid-area: setup;
   padding: 2rem;
   padding-top: var(--header-margin);
-  min-width: 37.5rem;
+  min-width: 35rem;
 }
 
 .setup {
