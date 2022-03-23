@@ -2,6 +2,7 @@ import { GameConfig } from "../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
 import { setState } from "../state";
+import sfx from "./sfx";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -99,7 +100,24 @@ class Player {
 
     this.ply = ply;
 
-    await this.board.frame(this.getPosition(), this.game.header);
+    const position = this.getPosition();
+
+    if (this.ply > 0) {
+      if (/[ce]/.test(position.move?.flags as string)) {
+        sfx.take.play();
+        sfx.move.play();
+      } else if (/[kqp]/.test(position.move?.flags as string)) {
+        sfx.swap.play();
+        sfx.move.play();
+      } else if (position.mate) {
+        sfx.snap.play();
+        sfx.move.play();
+      } else {
+        sfx.move.play();
+      }
+    }
+
+    await this.board.frame(position, this.game.header);
     this.board.render();
   }
 
