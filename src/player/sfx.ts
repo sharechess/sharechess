@@ -7,15 +7,15 @@ const sfx = {
   }),
   take: new Howl({
     src: ["/sfx/take.wav"],
-    volume: 0.5,
+    volume: 0.9,
   }),
   swap: new Howl({
     src: ["/sfx/swap.wav"],
-    volume: 0.5,
+    volume: 0.6,
   }),
   snap: new Howl({
     src: ["/sfx/snap.wav"],
-    volume: 0.5,
+    volume: 0.6,
   }),
 };
 
