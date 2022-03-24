@@ -221,6 +221,10 @@ const main = async () => {
 
       download(data, name, state.gameConfig.format.toLowerCase());
     },
+    toggleSound() {
+      setState("boardConfig", "sounds", !state.boardConfig.sounds);
+      saveConfig("board");
+    },
   };
 
   /* Render the page */

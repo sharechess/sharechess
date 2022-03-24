@@ -1,7 +1,7 @@
 import { GameConfig } from "../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
-import { setState } from "../state";
+import { setState, state } from "../state";
 import sfx from "./sfx";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -102,7 +102,7 @@ class Player {
 
     const position = this.getPosition();
 
-    if (this.ply > 0) {
+    if (this.ply > 0 && state.boardConfig.sounds) {
       if (position.mate) {
         sfx.snap.play();
       } else if (/[ce]/.test(position.move?.flags as string)) {

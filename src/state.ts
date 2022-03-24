@@ -20,6 +20,7 @@ const initialBoardConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   showShadows: false,
+  sounds: true,
   flipped: false,
 };
 

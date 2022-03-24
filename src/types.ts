@@ -89,6 +89,7 @@ export type BoardConfig = {
   showChecks: boolean;
   showCoords: boolean;
   showShadows: boolean;
+  sounds: boolean;
   flipped: boolean;
 };
 
@@ -171,6 +172,7 @@ export type Handlers = {
   load: (data: string) => Promise<boolean>;
   downloadImage: () => Promise<void>;
   downloadAnimation: () => Promise<void>;
+  toggleSound(): void;
 };
 
 export type Header = {
