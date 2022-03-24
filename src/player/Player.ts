@@ -105,13 +105,10 @@ class Player {
     if (this.ply > 0) {
       if (position.mate) {
         sfx.snap.play();
-        // sfx.move.play();
       } else if (/[ce]/.test(position.move?.flags as string)) {
         sfx.take.play();
-        // sfx.move.play();
       } else if (/[kqp]/.test(position.move?.flags as string)) {
         sfx.swap.play();
-        // sfx.move.play();
       } else {
         sfx.move.play();
       }
