@@ -102,6 +102,9 @@ class Player {
 
     const position = this.getPosition();
 
+    await this.board.frame(position, this.game.header);
+    this.board.render();
+
     if (this.ply > 0 && state.boardConfig.sounds) {
       if (position.mate) {
         sfx.snap.play();
@@ -113,9 +116,6 @@ class Player {
         sfx.move.play();
       }
     }
-
-    await this.board.frame(position, this.game.header);
-    this.board.render();
   }
 
   async first() {
