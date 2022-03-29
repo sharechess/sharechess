@@ -17,6 +17,10 @@ const sfx = {
     src: ["/sfx/snap.wav"],
     volume: 0.6,
   }),
+  rewind: new Howl({
+    src: ["/sfx/rewind.wav"],
+    volume: 0.2,
+  }),
 };
 
 export default sfx;

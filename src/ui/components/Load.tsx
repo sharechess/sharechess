@@ -1,7 +1,7 @@
 import { Component, createSignal, Show } from "solid-js";
 import { Handlers } from "../../types";
 import readFile from "../../utils/readFile";
-import { state } from "../../state";
+import { setState, state } from "../../state";
 import "./Load.css";
 
 const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
@@ -40,6 +40,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
           const target = e.target as HTMLInputElement;
           if (target?.files && target.files.length > 0) {
             const content = await readFile(target.files[0]);
+            setState("refreshHash", false);
             props.handlers.loadPGN(content);
           }
         }}

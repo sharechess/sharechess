@@ -124,7 +124,6 @@ const main = async () => {
         game,
       });
       window.location.hash = `pgn/${compressPGN(game.pgn)}`;
-      setState("refreshHash", false);
 
       await player.load(game);
       setState("activeTab", "game");
@@ -153,7 +152,6 @@ const main = async () => {
 
       if (hash) {
         window.location.hash = `fen/${state.fen}`;
-        setState("refreshHash", false);
         setState("activeTab", "game");
       }
 
@@ -170,6 +168,8 @@ const main = async () => {
       document.title = `SHARECHESS - FEN ${fen}`;
     },
     async load(data: string) {
+      setState("refreshHash", false);
+
       if (isFEN(data)) {
         await this.loadFEN(data);
         return true;
@@ -239,7 +239,8 @@ const main = async () => {
 
   /* Load game from the url */
 
-  const loadFromUrl = async () => {
+  const loadFromUrl = async (refreshHash: boolean = true) => {
+    setState("refreshHash", refreshHash);
     const { pgn, fen } = extractUrlData();
 
     await (pgn
@@ -250,9 +251,11 @@ const main = async () => {
           "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
           false
         ));
+
+    setState("refreshHash", true);
   };
 
-  await loadFromUrl();
+  await loadFromUrl(false);
 
   /* Register events */
   document.addEventListener("dblclick", function (el) {
@@ -273,11 +276,9 @@ const main = async () => {
   window.addEventListener("hashchange", () => {
     if (!state.refreshHash) {
       setState("refreshHash", true);
-      console.log("No refresh");
       return;
     }
 
-    console.log("Refresh!");
     loadFromUrl();
   });
 
@@ -318,6 +319,7 @@ const main = async () => {
     document.addEventListener("drop", async (e) => {
       if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
         const content = await readFile(e.dataTransfer.files[0]);
+        setState("refreshHash", false);
         handlers.loadPGN(content);
       }
     });

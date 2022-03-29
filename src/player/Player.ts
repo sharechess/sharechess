@@ -88,6 +88,10 @@ class Player {
 
     await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
+
+    if (state.boardConfig.sounds) {
+      sfx.rewind.play();
+    }
   }
 
   async next() {
