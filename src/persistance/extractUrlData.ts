@@ -1,25 +1,25 @@
-import { decompressPGN } from "../game/PGNHelpers";
+// import { decompressPGN } from "../game/PGNHelpers";
 
-const HEADER_REGEX = /^#(pgn|fen)\//;
+// const HEADER_REGEX = /^#(pgn|fen)\//;
 
-const extractUrlData = () => {
-  const hash = window.location.hash;
+// const extractUrlData = () => {
+//   const hash = window.location.hash;
 
-  if (!HEADER_REGEX.test(hash)) {
-    return {
-      pgn: "",
-      fen: "",
-    };
-  }
+//   if (!HEADER_REGEX.test(hash)) {
+//     return {
+//       pgn: "",
+//       fen: "",
+//     };
+//   }
 
-  const [format, ...chunks] = hash.slice(1).split("/");
+//   const [format, ...chunks] = hash.slice(1).split("/");
 
-  const data = chunks.join("/");
+//   const data = chunks.join("/");
 
-  return {
-    pgn: format === "pgn" ? decompressPGN(data) : "",
-    fen: format === "fen" ? decodeURI(data) : "",
-  };
-};
+//   return {
+//     pgn: format === "pgn" ? decompressPGN(data) : "",
+//     fen: format === "fen" ? decodeURI(data) : "",
+//   };
+// };
 
-export default extractUrlData;
+// export default extractUrlData;

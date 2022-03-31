@@ -28,7 +28,9 @@ const Info: Component<{ handlers: Handlers }> = () => {
                 ? "1"
                 : state.game.header.Result === "0-1"
                 ? "0"
-                : "1/2"}
+                : state.game.header.Result === "1/2-1/2"
+                ? "1/2"
+                : ""}
             </span>
           </div>
         </div>
@@ -51,7 +53,9 @@ const Info: Component<{ handlers: Handlers }> = () => {
                 ? "0"
                 : state.game.header.Result === "0-1"
                 ? "1"
-                : "1/2"}
+                : state.game.header.Result === "1/2-1/2"
+                ? "1/2"
+                : ""}
             </span>
           </div>
         </div>

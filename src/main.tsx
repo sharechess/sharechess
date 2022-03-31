@@ -17,18 +17,21 @@ import createAnimation from "./encoders/createAnimation";
 import readFile from "./utils/readFile";
 import download from "./utils/download";
 import { compressPGN } from "./game/PGNHelpers";
-import extractUrlData from "./persistance/extractUrlData";
+// import extractUrlData from "./persistance/extractUrlData";
 import importFromLink from "./imports/importFromLink";
 import isFEN from "./utils/isFEN";
 import isPGN from "./utils/isPGN";
 import isSafeLink from "./utils/isSafeLink";
 import { PiecesStyle } from "./board/styles-pieces/piecesStyles";
+import link from "./persistance/link";
 
 const main = async () => {
   const board = new Board(state.boardConfig);
   const player = new Player(board, state.gameConfig);
 
   player.watch((playing) => setState("playing", playing));
+
+  link.read();
 
   /* Register handlers */
 
@@ -103,6 +106,8 @@ const main = async () => {
       console.log("FLIP");
       board.flip();
       setState("boardConfig", "flipped", !state.boardConfig.flipped);
+      setState("refreshHash", false);
+      link.set({ side: state.boardConfig.flipped ? "b" : "w" });
     },
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
@@ -114,7 +119,7 @@ const main = async () => {
       setState("boardConfig", "piecesStyle", style);
       saveConfig("board");
     },
-    async loadPGN(pgn: string, side: "w" | "b" = "w") {
+    async loadPGN(pgn: string, side: "w" | "b" = "w", ply: number = 0) {
       const game = new Game().loadPGN(pgn);
       setState({
         pgn: game.pgn,
@@ -123,7 +128,7 @@ const main = async () => {
         ply: 0,
         game,
       });
-      window.location.hash = `pgn/${compressPGN(game.pgn)}`;
+      link.set({ pgn: game.pgn, side, ply });
 
       await player.load(game);
       setState("activeTab", "game");
@@ -151,7 +156,7 @@ const main = async () => {
       await player.load(game);
 
       if (hash) {
-        window.location.hash = `fen/${state.fen}`;
+        link.set({ fen: state.fen });
         setState("activeTab", "game");
       }
 
@@ -241,16 +246,20 @@ const main = async () => {
 
   const loadFromUrl = async (refreshHash: boolean = true) => {
     setState("refreshHash", refreshHash);
-    const { pgn, fen } = extractUrlData();
+    const { pgn, fen, side, ply } = link.read();
 
     await (pgn
-      ? handlers.loadPGN(pgn)
+      ? handlers.loadPGN(pgn, side, ply)
       : fen
       ? handlers.loadFEN(fen)
       : handlers.loadFEN(
           "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
           false
         ));
+
+    if (ply !== 0) {
+      handlers.goto(ply);
+    }
 
     setState("refreshHash", true);
   };

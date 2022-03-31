@@ -166,7 +166,7 @@ export type Handlers = {
   goto(ply: number): void;
   changeBoardStyle: (style: BoardStyle) => void;
   changePiecesStyle: (style: PiecesStyle) => void;
-  loadPGN: (pgn: string) => Promise<void>;
+  loadPGN: (pgn: string, side?: "w" | "b", ply?: number) => Promise<void>;
   loadFEN: (fen: string) => Promise<void>;
   importPGN: (link: string) => Promise<void>;
   load: (data: string) => Promise<boolean>;
