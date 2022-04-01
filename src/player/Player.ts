@@ -134,9 +134,9 @@ class Player {
       if (result) {
         this.speech.say(
           result === "1-0"
-            ? "White won!"
+            ? "White wins!"
             : result === "0-1"
-            ? "Black won!"
+            ? "Black wins!"
             : "Draw"
         );
       }

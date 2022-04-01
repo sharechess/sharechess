@@ -10,21 +10,21 @@
 }
 
 .header__logo {
-  padding: 1rem 2rem;
+  padding: 1rem;
   text-align: left;
   color: var(--color-text-dimmed);
 }
 
 .header__logo-pic {
   height: 2rem;
-  max-width: 320px;
+  max-width: 200px;
   background-image: var(--logo-url);
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .header__options {
-  padding: 0 2rem 0;
+  padding: 0 1rem 0;
   text-align: right;
 }
 

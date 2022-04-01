@@ -46,7 +46,7 @@
   }
   .move__id,
   .move__ply {
-    display: inline;
+    display: inline-block;
     margin-right: 0.6rem;
     width: auto;
   }

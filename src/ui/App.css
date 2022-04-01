@@ -83,6 +83,9 @@ button,
   color: var(--color-text-contrast);
   border-radius: 5px;
   width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 button:hover,
