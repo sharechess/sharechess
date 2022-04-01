@@ -1,6 +1,6 @@
 import { Component, createSignal } from "solid-js";
 import { Handlers } from "../../types";
-import { state, setState } from "../../state";
+import { state } from "../../state";
 import "./Header.css";
 
 const Header: Component<{ handlers: Handlers }> = (props) => {
