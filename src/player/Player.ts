@@ -129,14 +129,14 @@ class Player {
       }
     }
 
-    if (position.end === 0) {
+    if (position.end === 0 && state.boardConfig.speech) {
       const result = this.game.header.Result;
       if (result) {
         this.speech.say(
           result === "1-0"
-            ? "White wins!"
+            ? "White won!"
             : result === "0-1"
-            ? "Black wins!"
+            ? "Black won!"
             : "Draw"
         );
       }
