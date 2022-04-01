@@ -113,7 +113,7 @@ class Player {
     await this.board.frame(position, this.game.header);
     this.board.render();
 
-    if (state.boardConfig.speech) {
+    if (this.ply > 0 && state.boardConfig.speech) {
       this.speech.say(sanToText(position.move?.san as string));
     }
 
@@ -126,6 +126,19 @@ class Player {
         sfx.swap.play();
       } else {
         sfx.move.play();
+      }
+    }
+
+    if (position.end === 0) {
+      const result = this.game.header.Result;
+      if (result) {
+        this.speech.say(
+          result === "1-0"
+            ? "White wins!"
+            : result === "0-1"
+            ? "Black wins!"
+            : "Draw"
+        );
       }
     }
   }

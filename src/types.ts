@@ -89,8 +89,8 @@ export type BoardConfig = {
   showChecks: boolean;
   showCoords: boolean;
   showShadows: boolean;
-  sounds: boolean;
-  speech: boolean;
+  sounds?: boolean;
+  speech?: boolean;
   flipped: boolean;
 };
 
