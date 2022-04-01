@@ -3,6 +3,7 @@ import Board from "../board/Board";
 import Game from "../game/Game";
 import { setState, state } from "../state";
 import sfx from "./sfx";
+import Speech, { sanToText } from "./speach";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -11,11 +12,14 @@ class Player {
   private game: Game = new Game();
   private ply: number = 0;
   private callback: (playing: boolean, ply: number) => void = () => {};
+  private speech: Speech;
   public playing: boolean = false;
 
   private firstRender: Promise<void>;
 
   constructor(private board: Board, private config: GameConfig) {
+    this.speech = new Speech();
+
     this.firstRender = this.board
       .frame(this.game.getPosition(0), this.game.header)
       .then((_) => this.board.render());
@@ -108,6 +112,10 @@ class Player {
 
     await this.board.frame(position, this.game.header);
     this.board.render();
+
+    if (state.boardConfig.speech) {
+      this.speech.say(sanToText(position.move?.san as string));
+    }
 
     if (this.ply > 0 && state.boardConfig.sounds) {
       if (position.mate) {

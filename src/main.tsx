@@ -1,5 +1,4 @@
 import WebFont from "webfontloader";
-// import * as Hammer from "hammerjs";
 import { render } from "solid-js/web";
 
 import { BoardStyle } from "./types";
@@ -17,7 +16,6 @@ import createAnimation from "./encoders/createAnimation";
 import readFile from "./utils/readFile";
 import download from "./utils/download";
 import { compressPGN } from "./game/PGNHelpers";
-// import extractUrlData from "./persistance/extractUrlData";
 import importFromLink from "./imports/importFromLink";
 import isFEN from "./utils/isFEN";
 import isPGN from "./utils/isPGN";
@@ -230,6 +228,10 @@ const main = async () => {
       setState("boardConfig", "sounds", !state.boardConfig.sounds);
       saveConfig("board");
     },
+    toggleSpeech() {
+      setState("boardConfig", "speech", !state.boardConfig.speech);
+      saveConfig("board");
+    },
   };
 
   /* Render the page */
@@ -332,32 +334,29 @@ const main = async () => {
         handlers.loadPGN(content);
       }
     });
-  } else {
-    // const hammer = new Hammer.Manager(board.canvas);
-    // hammer.add(new Hammer.Swipe());
-    // hammer.add(new Hammer.Pinch());
-    // hammer.add(new Hammer.Press({ time: 500 }));
-    // hammer.add(new Hammer.Tap({ taps: 1 }));
-    // hammer.on("swiperight", handlers.next);
-    // hammer.on("swipeleft", handlers.prev);
-    // hammer.on("swipeup", handlers.first);
-    // hammer.on("swipedown", handlers.last);
-    // hammer.on("pinchin", handlers.showBorder);
-    // hammer.on("pinchout", handlers.hideBorder);
-    // hammer.on("tap", handlers.next);
-    // hammer.on("press", handlers.flip);
   }
 };
 
 /* Boot */
 
-WebFont.load({
-  google: {
-    families: ["Ubuntu:500,700", "Fira Mono:500"],
-  },
-  custom: {
-    families: ["Chess"],
-    urls: ["/fonts.css"],
-  },
-  active: main,
-});
+Promise.all([
+  new Promise((resolve) =>
+    WebFont.load({
+      google: {
+        families: ["Ubuntu:500,700", "Fira Mono:500"],
+      },
+      custom: {
+        families: ["Chess"],
+        urls: ["/fonts.css"],
+      },
+      active: () => resolve(null),
+    })
+  ).catch(() => null),
+  new Promise((resolve) => {
+    if (speechSynthesis.getVoices().length > 0) {
+      resolve(null);
+    } else {
+      window.speechSynthesis.onvoiceschanged = resolve;
+    }
+  }).catch(() => null),
+]).then(() => main());

@@ -81,17 +81,6 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         >
           <i class="las la-cloud"></i>
         </button>
-        <button
-          classList={{
-            options__button: true,
-            "options__button--last": true,
-            "options__button--active": state.boardConfig.sounds,
-          }}
-          onClick={props.handlers.toggleSound}
-          title={state.boardConfig.sounds ? "MUTE" : "SOUND ON"}
-        >
-          <i class="las la-volume-up"></i>
-        </button>
       </div>
       <hr />
       <div className="share__fen">

@@ -1,9 +1,9 @@
 import { Component, createSignal } from "solid-js";
 import { Handlers } from "../../types";
-// import { state, setState } from "../../state";
+import { state, setState } from "../../state";
 import "./Header.css";
 
-const Header: Component<{ handlers: Handlers }> = () => {
+const Header: Component<{ handlers: Handlers }> = (props) => {
   const [darkMode, setDarkMode] = createSignal(true);
 
   return (
@@ -15,6 +15,36 @@ const Header: Component<{ handlers: Handlers }> = () => {
         {/* <div class="header__options-ico" onClick={() => {}}>
           <i class="las la-question-circle"></i>
         </div> */}
+        <div
+          class="header__options-ico"
+          onClick={() => {
+            props.handlers.toggleSound();
+          }}
+          title={state.boardConfig.sounds ? "MUTE" : "SOUND ON"}
+        >
+          <i
+            classList={{
+              las: true,
+              "la-volume-mute": !state.boardConfig.sounds,
+              "la-volume-up": state.boardConfig.sounds,
+            }}
+          ></i>
+        </div>
+        <div
+          class="header__options-ico"
+          onClick={() => {
+            props.handlers.toggleSpeech();
+          }}
+          title={state.boardConfig.speech ? "SPEECH OFF" : "SPEECH ON"}
+        >
+          <i
+            classList={{
+              las: true,
+              "la-deaf": !state.boardConfig.speech,
+              "la-assistive-listening-systems": state.boardConfig.speech,
+            }}
+          ></i>
+        </div>
         <div
           class="header__options-ico"
           onClick={() => {

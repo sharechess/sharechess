@@ -90,6 +90,7 @@ export type BoardConfig = {
   showCoords: boolean;
   showShadows: boolean;
   sounds: boolean;
+  speech: boolean;
   flipped: boolean;
 };
 
@@ -173,6 +174,7 @@ export type Handlers = {
   downloadImage: () => Promise<void>;
   downloadAnimation: () => Promise<void>;
   toggleSound(): void;
+  toggleSpeech(): void;
 };
 
 export type Header = {

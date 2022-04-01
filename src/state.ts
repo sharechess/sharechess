@@ -21,6 +21,7 @@ const initialBoardConfig: BoardConfig = {
   showCoords: true,
   showShadows: false,
   sounds: true,
+  speech: false,
   flipped: false,
 };
 
@@ -72,8 +73,6 @@ const initialState: State = {
   anonymous: false,
   refreshHash: true,
 };
-
-console.log(initialState);
 
 const [state, setState] = createStore(initialState);
 
