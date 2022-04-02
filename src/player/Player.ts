@@ -137,7 +137,7 @@ class Player {
             ? "White wins!"
             : result === "0-1"
             ? "Black wins!"
-            : "Draw"
+            : "Draw!"
         );
       }
     }
