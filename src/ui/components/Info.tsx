@@ -83,6 +83,18 @@ const Info: Component<{ handlers: Handlers }> = () => {
             </Show>
           </p>
         </Show>
+        <Show when={state.pgn === ""}>
+          <p>
+            <a
+              href={`https://lichess.org/analysis/${state.fen.replace(
+                /\s+/g,
+                "_"
+              )}`}
+            >
+              Analyze on Lichess
+            </a>
+          </p>
+        </Show>
         <Show when={state.game.header.DatePretty}>
           <p>{state.game.header.DatePretty}</p>
         </Show>

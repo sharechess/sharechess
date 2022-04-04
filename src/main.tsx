@@ -139,7 +139,7 @@ const main = async () => {
 
       setState("boardConfig", "flipped", side === "b");
 
-      document.title = `SHARECHESS - ${game.getTitle({ anonymous: false })}`;
+      document.title = `ShareChess - ${game.getTitle({ anonymous: false })}`;
     },
     async loadFEN(fen: string, hash = true) {
       const game = new Game().loadFEN(fen);
@@ -168,7 +168,7 @@ const main = async () => {
 
       setState("boardConfig", "flipped", side === "b");
 
-      document.title = `SHARECHESS - FEN ${fen}`;
+      document.title = `ShareChess - FEN ${fen}`;
     },
     async load(data: string) {
       setState("refreshHash", false);

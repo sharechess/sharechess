@@ -9,7 +9,9 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
   return (
     <header class="header-box">
       <div class="header__logo">
-        <div class="header__logo-pic" />
+        <a href="/">
+          <div class="header__logo-pic" />
+        </a>
       </div>
       <div class="header__options">
         {/* <div class="header__options-ico" onClick={() => {}}>

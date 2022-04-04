@@ -6,13 +6,6 @@
   height: 100vh;
 }
 
-@media (orientation: portrait) {
-  .game-box {
-    padding: 0;
-    height: 800px;
-  }
-}
-
 .game {
   height: 100%;
   display: grid;
@@ -36,4 +29,16 @@
 
 .span3 {
   grid-row-end: span 3;
+}
+
+@media (orientation: portrait) {
+  .game-box {
+    padding: 0;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .game {
+    display: block;
+  }
 }

@@ -1,6 +1,5 @@
 .scrollable {
   background: var(--color-bg-block);
-  height: auto;
   padding: 2rem 1rem 2rem 2rem;
   height: 100%;
   display: flex;
@@ -28,4 +27,11 @@
 .scrollable__content::-webkit-scrollbar-thumb {
   background-color: var(--color-scrollbar);
   outline: 1px solid var(--color-scrollbar);
+}
+
+@media (orientation: portrait) {
+  .scrollable {
+    height: auto;
+    display: block;
+  }
 }
