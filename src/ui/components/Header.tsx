@@ -17,6 +17,7 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
         {/* <div class="header__options-ico" onClick={() => {}}>
           <i class="las la-question-circle"></i>
         </div> */}
+
         <div
           class="header__options-ico"
           onClick={() => {
@@ -62,6 +63,11 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
               "la-moon": !darkMode(),
             }}
           ></i>
+        </div>
+        <div class="header__options-ico" title="SOURCE CODE">
+          <a href="https://github.com/sharechess/sharechess" target="_blank">
+            <i class="lab la-github"></i>
+          </a>
         </div>
       </div>
     </header>
