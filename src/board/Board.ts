@@ -64,11 +64,7 @@ class Board {
   private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
   public canvas: HTMLCanvasElement = document.createElement("canvas");
 
-  constructor(config: Partial<BoardConfig> = {}, canvas?: HTMLCanvasElement) {
-    if (canvas) {
-      this.canvas = canvas;
-    }
-
+  constructor(config: Partial<BoardConfig> = {}) {
     const ctx = this.canvas.getContext("2d");
     const tempCtx = this.tempCanvas.getContext("2d");
     this.canvas.classList.add("board");

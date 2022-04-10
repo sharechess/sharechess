@@ -1,6 +1,7 @@
 import { state } from "../../state";
-import { Position, PiecesStyle } from "../../types";
+import { Position } from "../../types";
 import ImagesCache from "../loaders/PiecesCache";
+import { PiecesStyle } from "../styles-pieces/piecesStyles";
 
 const drawPieces = async (
   ctx: CanvasRenderingContext2D,
