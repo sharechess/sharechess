@@ -5,9 +5,10 @@
 
 .info {
   background: var(--color-bg-block);
-  padding: 3rem 2rem;
+  padding: 2rem;
   font-size: 1.4rem;
   text-align: left;
+  position: relative;
 }
 
 .info__players {
@@ -64,4 +65,11 @@
   line-height: 1.5rem;
   color: var(--color-text);
   padding: 0 1rem;
+}
+
+.info__analyze {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  padding-right: 4rem;
 }

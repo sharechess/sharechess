@@ -1,6 +1,7 @@
 import { Header, Style } from "../../types";
 import drawRectangle from "./drawRectangle";
 import drawText from "./drawText";
+import loadImage from "../loaders/loadImage";
 
 const drawHeader = async (
   ctx: CanvasRenderingContext2D,
@@ -84,6 +85,25 @@ const drawHeader = async (
 
       fromTop += line;
     });
+
+  const logo = await loadImage("/img/logo-full.svg");
+  const logoHeight = size * 0.114 * 0.5;
+
+  ctx.shadowColor = "rgba(0, 0, 0, 1)";
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+  ctx.shadowBlur = 10 * scale;
+  ctx.drawImage(
+    logo,
+    size / 4,
+    margin + size + margin - logoHeight * 2,
+    size / 2,
+    logoHeight
+  );
+  ctx.shadowColor = "rgba(0, 0, 0, 0)";
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
 };
 
 export default drawHeader;

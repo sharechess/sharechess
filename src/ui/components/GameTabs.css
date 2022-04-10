@@ -9,7 +9,7 @@
 .game {
   height: 100%;
   display: grid;
-  grid-template-rows: 3.8rem 19.5rem 1fr 8.4rem;
+  grid-template-rows: 3.8rem 22rem auto 8.4rem;
 }
 
 .game-tabs {
@@ -40,5 +40,11 @@
 
   .game {
     display: block;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .game {
+    grid-template-rows: 3.8rem 1fr 6.4rem;
   }
 }

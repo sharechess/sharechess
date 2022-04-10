@@ -175,6 +175,7 @@ export type Handlers = {
   downloadAnimation: () => Promise<void>;
   toggleSound(): void;
   toggleSpeech(): void;
+  openOnLichess: () => Promise<boolean>;
 };
 
 export type Header = {

@@ -23,7 +23,14 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
             <SetupTabs handlers={props.handlers}></SetupTabs>
           </div>
         </Show>
-        <div id="board" class="board-box">
+        <div
+          id="board"
+          classList={{
+            "board-box": true,
+            "board-box--left": state.layout === "double",
+          }}
+        >
+          <canvas class="board" id="canvas"></canvas>
           <Show when={state.layout === "single"}>
             <Controls handlers={props.handlers} />
           </Show>

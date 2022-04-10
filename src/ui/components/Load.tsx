@@ -1,16 +1,35 @@
 import { Component, createSignal, Show } from "solid-js";
 import { Handlers } from "../../types";
 import readFile from "../../utils/readFile";
+import Scrollable from "./reusable/Scrollable";
 import { setState, state } from "../../state";
 import "./Load.css";
 
 const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [data, setData] = createSignal("");
+  const [clipError, setClipError] = createSignal(false);
+  const [inputError, setInputError] = createSignal(false);
 
   let filePicker: HTMLInputElement | undefined = undefined;
 
   return (
-    <div class={"load" + (props.class ? ` ${props.class}` : "")}>
+    <Scrollable class={"load" + (props.class ? ` ${props.class}` : "")}>
+      <button
+        classList={{ "load__game-btn": true, "btn--error": clipError() }}
+        onClick={async () => {
+          const clip = await navigator.clipboard.readText();
+          const success = await props.handlers.load(clip);
+
+          if (!success) {
+            setClipError(true);
+            setTimeout(() => setClipError(false), 1000);
+          }
+        }}
+      >
+        <i class="las la-paste"></i>{" "}
+        {clipError() ? "Incorrect data" : "Load from clipboard"}
+      </button>
+      <hr />
       <textarea
         class="load__game-input"
         name="load-game"
@@ -20,15 +39,18 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
         onInput={(e) => setData(e.currentTarget.value)}
       ></textarea>
       <button
-        class="load__game-btn"
-        onClick={() => {
-          if (data()) {
-            props.handlers.load(data());
-            setData("");
+        classList={{ "load__game-btn": true, "btn--error": inputError() }}
+        onClick={async () => {
+          const success = await props.handlers.load(data());
+
+          if (!success) {
+            setInputError(true);
+            setTimeout(() => setInputError(false), 1000);
           }
+          setData("");
         }}
       >
-        LOAD
+        {inputError() ? "Incorrect data" : "LOAD"}
       </button>
       <hr />
       <input
@@ -53,7 +75,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
           }
         }}
       >
-        UPLOAD PGN FILE
+        Upload PGN file
       </button>
 
       <Show when={!state.mobile}>
@@ -62,7 +84,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
           <p>drop the PGN file anywhere on the page</p>
         </div>
       </Show>
-    </div>
+    </Scrollable>
   );
 };
 

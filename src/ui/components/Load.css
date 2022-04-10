@@ -1,12 +1,11 @@
 .load {
   background: var(--color-bg-block);
-  padding: 2rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .load__game-input {
-  height: 50vh;
+  height: 40vh;
   margin-top: 2rem;
 }
 
@@ -43,4 +42,16 @@
 
 .load__link-input {
   margin-top: 2rem;
+}
+
+@media (orientation: portrait) {
+  .load__game-input {
+    height: 20vh;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .load__game-input {
+    height: 30vh;
+  }
 }

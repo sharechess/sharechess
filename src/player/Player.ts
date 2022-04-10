@@ -15,12 +15,18 @@ class Player {
   private speech: Speech;
   public playing: boolean = false;
 
-  private firstRender: Promise<void>;
+  // private firstRender: Promise<void>;
 
   constructor(private board: Board, private config: GameConfig) {
     this.speech = new Speech();
 
-    this.firstRender = this.board
+    // this.firstRender = this.board
+    //   .frame(this.game.getPosition(0), this.game.header)
+    //   .then((_) => this.board.render());
+  }
+
+  async init() {
+    await this.board
       .frame(this.game.getPosition(0), this.game.header)
       .then((_) => this.board.render());
   }
@@ -43,7 +49,7 @@ class Player {
 
   async load(game: Game) {
     this.pause();
-    await this.firstRender;
+    // await this.firstRender;
 
     this.game = game;
     this.ply = 0;

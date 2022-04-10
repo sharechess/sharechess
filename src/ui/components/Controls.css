@@ -5,7 +5,7 @@
 
 .controls {
   background: var(--color-bg-block);
-  padding: 2rem;
+  padding: 2rem 1rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -83,5 +83,11 @@
     width: 12.8vw;
     height: 12.8vw;
     max-height: 6rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .controls {
+    padding-top: 0;
   }
 }

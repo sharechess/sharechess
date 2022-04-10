@@ -94,6 +94,11 @@ button:hover,
   cursor: pointer;
 }
 
+.btn--error,
+.btn--error:hover {
+  background-color: #fc4444;
+}
+
 input,
 textarea {
   width: 100%;
@@ -153,6 +158,10 @@ a:hover {
   height: 100vh;
   grid-area: board;
   padding: var(--header-margin) 0 2rem 0;
+}
+
+.board-box--left {
+  padding-left: 2rem;
 }
 
 .board {

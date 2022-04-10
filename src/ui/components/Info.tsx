@@ -1,11 +1,13 @@
-import { Component, Show } from "solid-js";
+import { Component, Show, createSignal } from "solid-js";
 import { Handlers } from "../../types";
 import { state } from "../../state";
 import "./Info.css";
 import isSafeLink from "../../utils/isSafeLink";
 import isLink from "../../utils/isLink";
 
-const Info: Component<{ handlers: Handlers }> = () => {
+const Info: Component<{ handlers: Handlers }> = (props) => {
+  const [error, setError] = createSignal(false);
+
   return (
     <div class="info">
       <div className="info__players">
@@ -83,21 +85,25 @@ const Info: Component<{ handlers: Handlers }> = () => {
             </Show>
           </p>
         </Show>
-        <Show when={state.pgn === ""}>
-          <p>
-            <a
-              href={`https://lichess.org/analysis/${state.fen.replace(
-                /\s+/g,
-                "_"
-              )}`}
-            >
-              Analyze on Lichess
-            </a>
-          </p>
-        </Show>
         <Show when={state.game.header.DatePretty}>
           <p>{state.game.header.DatePretty}</p>
         </Show>
+      </div>
+      <div className="info__analyze">
+        <button
+          onClick={async () => {
+            const success = await props.handlers.openOnLichess();
+
+            if (!success) {
+              setError(true);
+              setTimeout(() => setError(false), 1000);
+            }
+          }}
+          classList={{ "btn--error": error() }}
+        >
+          <i className="las la-vial"></i>{" "}
+          {error() ? "Cannot import to lichess" : "Analyze on Lichess"}
+        </button>
       </div>
     </div>
   );

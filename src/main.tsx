@@ -22,6 +22,7 @@ import isPGN from "./utils/isPGN";
 import isSafeLink from "./utils/isSafeLink";
 import { PiecesStyle } from "./board/styles-pieces/piecesStyles";
 import link from "./persistance/link";
+import importToLichess from "./imports/importToLichess";
 
 const main = async () => {
   const board = new Board(state.boardConfig);
@@ -232,7 +233,26 @@ const main = async () => {
       setState("boardConfig", "speech", !state.boardConfig.speech);
       saveConfig("board");
     },
+    async openOnLichess() {
+      if (state.pgn === "") {
+        window.open(
+          `https://lichess.org/analysis/${state.fen.replace(/\s+/g, "_")}`
+        );
+        return true;
+      }
+
+      try {
+        const url = await importToLichess(state.pgn, state.game.header.Site);
+        window.open(`${url}/${state.boardConfig.flipped ? "black" : ""}`);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
   };
+
+  // @ts-ignore
+  window.handlers = handlers;
 
   /* Render the page */
 
@@ -241,8 +261,10 @@ const main = async () => {
     document.getElementById("root") as HTMLElement
   );
 
-  const $board = document.querySelector<HTMLImageElement>("#board");
-  $board?.prepend(board.canvas);
+  const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+
+  await board.setCanvas(canvas);
+  await player.init();
 
   /* Load game from the url */
 

@@ -83,6 +83,14 @@ class Board {
     this.updateConfig(config, false);
   }
 
+  async setCanvas(canvas: HTMLCanvasElement) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    this.setSize(this.cfg.size);
+
+    await this.refresh();
+  }
+
   async updateConfig(config: Partial<BoardConfig>, refresh: boolean = true) {
     const cfg = { ...this.cfg, ...config };
 
