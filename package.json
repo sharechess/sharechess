@@ -1,6 +1,7 @@
 {
   "name": "chesspic",
   "version": "0.0.0",
+  "license": "GNU GPL V3.0",
   "scripts": {
     "start": "vite --host",
     "dev": "vite --host",
@@ -30,6 +31,7 @@
     "i": "^0.3.7",
     "is-mobile": "^3.0.0",
     "npm": "^8.4.0",
+    "ua-parser-js": "^1.0.2",
     "webfontloader": "^1.6.28",
     "webm-writer": "^1.0.0"
   }

@@ -2,7 +2,7 @@ import isMobile from "is-mobile";
 import { createStore } from "solid-js/store";
 import Game from "./game/Game";
 import loadConfig from "./persistance/loadConfig";
-import { BoardConfig, GameConfig } from "./types";
+import { BoardConfig, GameConfig, SiteConfig } from "./types";
 
 const mobile = isMobile();
 
@@ -20,8 +20,6 @@ const initialBoardConfig: BoardConfig = {
   showChecks: true,
   showCoords: true,
   showShadows: false,
-  sounds: true,
-  speech: false,
   flipped: false,
 };
 
@@ -32,11 +30,18 @@ const initialGameConfig: GameConfig = {
   animationSize: "M",
 };
 
+const initialSiteConfig: SiteConfig = {
+  darkMode: true,
+  sounds: true,
+  speech: false,
+};
+
 export type TabName = "game" | "load" | "share" | "boards" | "pieces";
 
 export type State = {
   boardConfig: BoardConfig;
   gameConfig: GameConfig;
+  siteConfig: SiteConfig;
   game: Game;
   pgn: string;
   fen: string;
@@ -56,6 +61,7 @@ const initialState: State = {
     ...saved.boardConfig,
   },
   gameConfig: { ...initialGameConfig, ...saved.gameConfig },
+  siteConfig: { ...initialSiteConfig, ...saved.siteConfig },
   game: new Game(),
   pgn: "",
   fen: "",

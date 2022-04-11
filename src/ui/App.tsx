@@ -15,7 +15,7 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
   props
 ) => {
   return (
-    <>
+    <div classList={{ light: !state.siteConfig.darkMode }}>
       <Header handlers={props.handlers} />
       <div class="layout">
         <Show when={state.layout === "triple"}>
@@ -42,7 +42,7 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
           ></GameTabs>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

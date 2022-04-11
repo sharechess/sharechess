@@ -89,8 +89,6 @@ export type BoardConfig = {
   showChecks: boolean;
   showCoords: boolean;
   showShadows: boolean;
-  sounds?: boolean;
-  speech?: boolean;
   flipped: boolean;
 };
 
@@ -101,6 +99,12 @@ export type GameConfig = {
   format: "GIF" | "MP4" | "WebM";
   picSize: Size;
   animationSize: Size;
+};
+
+export type SiteConfig = {
+  darkMode: boolean;
+  sounds: boolean;
+  speech: boolean;
 };
 
 export type MaterialCount = {
@@ -175,6 +179,7 @@ export type Handlers = {
   downloadAnimation: () => Promise<void>;
   toggleSound(): void;
   toggleSpeech(): void;
+  toggleDarkMode(): void;
   openOnLichess: () => Promise<boolean>;
 };
 

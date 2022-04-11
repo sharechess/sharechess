@@ -226,12 +226,16 @@ const main = async () => {
       download(data, name, state.gameConfig.format.toLowerCase());
     },
     toggleSound() {
-      setState("boardConfig", "sounds", !state.boardConfig.sounds);
-      saveConfig("board");
+      setState("siteConfig", "sounds", !state.siteConfig.sounds);
+      saveConfig("site");
     },
     toggleSpeech() {
-      setState("boardConfig", "speech", !state.boardConfig.speech);
-      saveConfig("board");
+      setState("siteConfig", "speech", !state.siteConfig.speech);
+      saveConfig("site");
+    },
+    toggleDarkMode() {
+      setState("siteConfig", "darkMode", !state.siteConfig.darkMode);
+      saveConfig("site");
     },
     async openOnLichess() {
       if (state.pgn === "") {

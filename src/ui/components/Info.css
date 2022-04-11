@@ -67,9 +67,16 @@
   padding: 0 1rem;
 }
 
+.info__header {
+  height: 13.1rem;
+}
+
 .info__analyze {
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-  padding-right: 4rem;
+  margin-top: 2rem;
+}
+
+@media (orientation: portrait) {
+  .info__header {
+    height: auto;
+  }
 }

@@ -15,14 +15,8 @@ class Player {
   private speech: Speech;
   public playing: boolean = false;
 
-  // private firstRender: Promise<void>;
-
   constructor(private board: Board, private config: GameConfig) {
     this.speech = new Speech();
-
-    // this.firstRender = this.board
-    //   .frame(this.game.getPosition(0), this.game.header)
-    //   .then((_) => this.board.render());
   }
 
   async init() {
@@ -49,7 +43,6 @@ class Player {
 
   async load(game: Game) {
     this.pause();
-    // await this.firstRender;
 
     this.game = game;
     this.ply = 0;
@@ -99,7 +92,7 @@ class Player {
     await this.board.frame(this.getPosition(), this.game.header);
     this.board.render();
 
-    if (state.boardConfig.sounds) {
+    if (state.siteConfig.sounds) {
       sfx.rewind.play();
     }
   }
@@ -119,11 +112,11 @@ class Player {
     await this.board.frame(position, this.game.header);
     this.board.render();
 
-    if (this.ply > 0 && state.boardConfig.speech) {
+    if (this.ply > 0 && state.siteConfig.speech) {
       this.speech.say(sanToText(position.move?.san as string));
     }
 
-    if (this.ply > 0 && state.boardConfig.sounds) {
+    if (this.ply > 0 && state.siteConfig.sounds) {
       if (position.mate) {
         sfx.snap.play();
       } else if (/[ce]/.test(position.move?.flags as string)) {
@@ -135,7 +128,7 @@ class Player {
       }
     }
 
-    if (position.end === 0 && state.boardConfig.speech) {
+    if (position.end === 0 && state.siteConfig.speech) {
       const result = this.game.header.Result;
       if (result) {
         this.speech.say(
