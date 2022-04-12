@@ -105,6 +105,7 @@ export type SiteConfig = {
   darkMode: boolean;
   sounds: boolean;
   speech: boolean;
+  wrongBrowserPopup: boolean;
 };
 
 export type MaterialCount = {

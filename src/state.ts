@@ -3,9 +3,10 @@ import { createStore } from "solid-js/store";
 import Game from "./game/Game";
 import loadConfig from "./persistance/loadConfig";
 import { BoardConfig, GameConfig, SiteConfig } from "./types";
+import UAParser from "ua-parser-js";
 
+const userAgent = UAParser();
 const mobile = isMobile();
-
 const saved = loadConfig();
 
 const initialBoardConfig: BoardConfig = {
@@ -34,6 +35,7 @@ const initialSiteConfig: SiteConfig = {
   darkMode: true,
   sounds: true,
   speech: false,
+  wrongBrowserPopup: true,
 };
 
 export type TabName = "game" | "load" | "share" | "boards" | "pieces";
@@ -53,6 +55,8 @@ export type State = {
   playing: boolean;
   anonymous: boolean;
   refreshHash: boolean;
+  browser?: string;
+  os?: string;
 };
 
 const initialState: State = {
@@ -78,8 +82,12 @@ const initialState: State = {
   playing: false,
   anonymous: false,
   refreshHash: true,
+  browser: userAgent.browser.name,
+  os: userAgent.os.name,
 };
 
 const [state, setState] = createStore(initialState);
+
+console.log(state);
 
 export { state, setState };
