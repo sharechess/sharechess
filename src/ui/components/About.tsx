@@ -33,53 +33,55 @@ const About: Component = () => {
               <a href="https://github.com/sharechess/sharechess">GitHub page</a>
               .
             </p>
-            <hr />
-            <h2>Keyboard Shortcuts</h2>
-            <div className="about__shortcuts">
-              <ul>
-                <li>
-                  <kbd>→</kbd> Next move
-                </li>
-                <li>
-                  <kbd>←</kbd> Previous move
-                </li>
-                <li>
-                  <kbd>↑</kbd> Start position
-                </li>
-                <li>
-                  <kbd>↓</kbd> Final position
-                </li>
-                <li>
-                  <kbd>f</kbd> Flip the board
-                </li>
-                <li>
-                  <kbd>Space</kbd> Play / Pause
-                </li>
-                <li>
-                  <kbd>Enter</kbd> Analyze on Lichess
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <kbd>l</kbd> Load from clipboard
-                </li>
-                <li>
-                  <kbd>a</kbd> Toggle anonymous
-                </li>
-                <li>
-                  <kbd>b</kbd> Toggle border
-                </li>
-                <li>
-                  <kbd>i</kbd> Toggle extra info
-                </li>
-                <li>
-                  <kbd>h</kbd> Toggle header (title screen)
-                </li>
-                <li>
-                  <kbd>s</kbd> Toggle shadows
-                </li>
-              </ul>
-            </div>
+            <Show when={!state.mobile}>
+              <hr />
+              <h2>Keyboard Shortcuts</h2>
+              <div className="about__shortcuts">
+                <ul>
+                  <li>
+                    <kbd>→</kbd> Next move
+                  </li>
+                  <li>
+                    <kbd>←</kbd> Previous move
+                  </li>
+                  <li>
+                    <kbd>↑</kbd> Start position
+                  </li>
+                  <li>
+                    <kbd>↓</kbd> Final position
+                  </li>
+                  <li>
+                    <kbd>f</kbd> Flip the board
+                  </li>
+                  <li>
+                    <kbd>Space</kbd> Play / Pause
+                  </li>
+                  <li>
+                    <kbd>Enter</kbd> Analyze on Lichess
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <kbd>l</kbd> Load from clipboard
+                  </li>
+                  <li>
+                    <kbd>a</kbd> Toggle anonymous
+                  </li>
+                  <li>
+                    <kbd>b</kbd> Toggle border
+                  </li>
+                  <li>
+                    <kbd>i</kbd> Toggle extra info
+                  </li>
+                  <li>
+                    <kbd>h</kbd> Toggle header (title screen)
+                  </li>
+                  <li>
+                    <kbd>s</kbd> Toggle shadows
+                  </li>
+                </ul>
+              </div>
+            </Show>
           </div>
         </div>
       </div>
