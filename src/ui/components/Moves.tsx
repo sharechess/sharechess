@@ -20,7 +20,11 @@ const Moves: Component<{
     <Scrollable class={"moves" + (props.class ? ` ${props.class}` : "")}>
       <Show when={props.moves.length === 0}>
         <p class="moves__turn">
-          {state.game.getPosition(0).turn === "w" ? "White" : "Black"} to move.
+          {state.game.getPosition(0).mate
+            ? "Checkmate."
+            : state.game.getPosition(0).turn === "w"
+            ? "White to move."
+            : "Black to move."}
         </p>
       </Show>
       <For each={chunk_(2, props.moves as string[])}>
