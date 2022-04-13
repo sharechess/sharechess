@@ -2,16 +2,18 @@ import { Component, Show } from "solid-js";
 import type { DeepReadonly } from "solid-js/store";
 
 import { Handlers } from "../types";
-import { setState, State, state } from "../state";
+import { State, state } from "../state";
 
 import Header from "./components/Header";
 import GameTabs from "./components/GameTabs";
 import SetupTabs from "./components/SetupTabs";
 import Controls from "./components/Controls";
-import Popup from "./components/Popup";
 
 import "./App.css";
-import saveConfig from "../persistance/saveConfig";
+import WrongBrowserPopup from "./components/popups/WrongBrowserPopup";
+import AndroidAppPopup from "./components/popups/AndroidAppPopup";
+import IOSAppPopup from "./components/popups/IOSAppPopup";
+import About from "./components/About";
 
 const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
   props
@@ -44,17 +46,10 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
           ></GameTabs>
         </div>
       </div>
-      <Show when={state.siteConfig.wrongBrowserPopup}>
-        <Popup
-          handlers={props.handlers}
-          onClose={() => {
-            setState("siteConfig", "wrongBrowserPopup", false);
-            saveConfig("site");
-          }}
-        >
-          {state.browser} | {state.os}
-        </Popup>
-      </Show>
+      <About />
+      <WrongBrowserPopup />
+      <AndroidAppPopup />
+      <IOSAppPopup />
     </div>
   );
 };

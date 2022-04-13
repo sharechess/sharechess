@@ -106,6 +106,8 @@ export type SiteConfig = {
   sounds: boolean;
   speech: boolean;
   wrongBrowserPopup: boolean;
+  androidAppPopup: boolean;
+  iOSAppPopup: boolean;
 };
 
 export type MaterialCount = {
@@ -173,9 +175,10 @@ export type Handlers = {
   changeBoardStyle: (style: BoardStyle) => void;
   changePiecesStyle: (style: PiecesStyle) => void;
   loadPGN: (pgn: string, side?: "w" | "b", ply?: number) => Promise<void>;
-  loadFEN: (fen: string) => Promise<void>;
+  loadFEN: (fen: string, hash?: boolean) => Promise<void>;
   importPGN: (link: string) => Promise<void>;
   load: (data: string) => Promise<boolean>;
+  loadFromClipboard(): Promise<boolean>;
   downloadImage: () => Promise<void>;
   downloadAnimation: () => Promise<void>;
   toggleSound(): void;

@@ -1,4 +1,5 @@
-import { compressPGN, decompressPGN } from "../game/PGNHelpers";
+import { cleanPGN, compressPGN, decompressPGN } from "../game/PGNHelpers";
+import { importFromLichess } from "../imports/importFromLink";
 
 type LinkData = {
   pgn: string;
@@ -29,7 +30,7 @@ const link = {
       linkData = { ...defaultLinkData } as LinkData;
       linkData.fen = data.fen;
 
-      location.hash = `fen/${linkData.fen}`;
+      location.hash = `fen/${linkData.fen.replace(/ /g, "_")}`;
       return;
     }
 
@@ -53,18 +54,38 @@ const link = {
     return location.href;
   },
 
-  read() {
+  getFENLink(fen: string) {
+    return `${location.origin}/#fen/${fen.replace(/ /g, "_")}`;
+  },
+
+  async read() {
     const [type, ...rest] = location.hash.split("/");
 
     if (/fen/.test(type)) {
       linkData = { ...defaultLinkData } as LinkData;
-      linkData.fen = decodeURI(rest.join("/"));
+      linkData.fen = decodeURI(rest.join("/")).replace(/_/g, " ");
     } else if (/pgn/.test(type)) {
       const [side, ply, ...pgn] = rest;
       linkData.side = side as "w" | "b";
       linkData.ply = Number(ply);
       linkData.pgn = pgn.join("/");
       linkData.fen = "";
+    } else if (/lid/.test(type)) {
+      const [side, ply, ...id] = rest;
+      linkData.side = side as "w" | "b";
+      linkData.ply = Number(ply);
+
+      const result = await importFromLichess(
+        new URL(`https://lichess.org/${id[0]}`)
+      );
+
+      if (!result.error) {
+        linkData.pgn = compressPGN(cleanPGN(result.pgn));
+        linkData.fen = "";
+      } else {
+        linkData.pgn = "";
+        linkData.fen = "";
+      }
     }
 
     return {

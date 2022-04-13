@@ -15,7 +15,7 @@ const words: { [key: string]: string } = {
 
 const config = {
   volume: 50,
-  rate: 2,
+  rate: 1,
   lang: "en-US",
 };
 

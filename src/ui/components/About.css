@@ -1,0 +1,77 @@
+.about {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  display: grid;
+  vertical-align: middle;
+  padding-top: var(--header-height);
+  pointer-events: none;
+}
+
+.about__box {
+  background-color: var(--color-bg-input);
+  min-height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 6rem;
+  border-radius: 0.5rem;
+  position: relative;
+  pointer-events: all;
+}
+
+.about__close {
+  width: 3.2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.about__title {
+  text-align: left;
+  margin: 0 4.2rem 3rem 0;
+}
+
+.about__content {
+  text-align: left;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.about__content p {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.about__content ul {
+  margin-top: 2rem;
+  list-style: none;
+  font-size: 1.4rem;
+  line-height: 3rem;
+}
+
+.about__content li {
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+}
+
+.about__content kbd {
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+  background-color: var(--color-tab);
+  color: var(--color-text-contrast);
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 1rem #00000033;
+  font-family: "Fira Mono", monospace;
+  font-weight: 500;
+}
+
+.about__shortcuts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

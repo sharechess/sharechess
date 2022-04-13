@@ -36,6 +36,8 @@ const initialSiteConfig: SiteConfig = {
   sounds: true,
   speech: false,
   wrongBrowserPopup: true,
+  androidAppPopup: true,
+  iOSAppPopup: true,
 };
 
 export type TabName = "game" | "load" | "share" | "boards" | "pieces";
@@ -57,6 +59,7 @@ export type State = {
   refreshHash: boolean;
   browser?: string;
   os?: string;
+  about: boolean;
 };
 
 const initialState: State = {
@@ -84,10 +87,9 @@ const initialState: State = {
   refreshHash: true,
   browser: userAgent.browser.name,
   os: userAgent.os.name,
+  about: false,
 };
 
 const [state, setState] = createStore(initialState);
-
-console.log(state);
 
 export { state, setState };

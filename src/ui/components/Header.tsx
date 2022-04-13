@@ -1,11 +1,9 @@
-import { Component, createSignal } from "solid-js";
+import { Component } from "solid-js";
 import { Handlers } from "../../types";
-import { state } from "../../state";
+import { setState, state } from "../../state";
 import "./Header.css";
 
 const Header: Component<{ handlers: Handlers }> = (props) => {
-  const [darkMode, setDarkMode] = createSignal(true);
-
   return (
     <header class="header-box">
       <div class="header__logo">
@@ -14,9 +12,13 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
         </a>
       </div>
       <div class="header__options">
-        {/* <div class="header__options-ico" onClick={() => {}}>
+        <div
+          class="header__options-ico"
+          onClick={() => setState("about", !state.about)}
+          title="ABOUT"
+        >
           <i class="las la-question-circle"></i>
-        </div> */}
+        </div>
 
         <div
           class="header__options-ico"

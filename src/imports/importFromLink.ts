@@ -50,4 +50,6 @@ const importFromLink = async (link: string): Promise<Result> => {
   return { error: true, errorType: "INCORRECT_LINK" };
 };
 
+export { importFromLichess };
+
 export default importFromLink;

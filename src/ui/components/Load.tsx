@@ -17,8 +17,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
       <button
         classList={{ "load__game-btn": true, "btn--error": clipError() }}
         onClick={async () => {
-          const clip = await navigator.clipboard.readText();
-          const success = await props.handlers.load(clip);
+          const success = await props.handlers.loadFromClipboard();
 
           if (!success) {
             setClipError(true);

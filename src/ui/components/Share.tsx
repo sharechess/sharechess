@@ -4,6 +4,7 @@ import Scrollable from "./reusable/Scrollable";
 import { state, setState } from "../../state";
 import "./Share.css";
 import download from "../../utils/download";
+import link from "../../persistance/link";
 
 const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [copyId, setCopyId] = createSignal("");
@@ -19,6 +20,17 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
     <Scrollable class={"share" + (props.class ? ` ${props.class}` : "")}>
       <div className="share__view">
         <h2 class="header--first">Board options</h2>
+        <button
+          classList={{
+            options__button: true,
+            "options__button--last": false,
+            "options__button--active": state.anonymous,
+          }}
+          onClick={props.handlers.toggleAnonymous}
+          title="TOGGLE ANONYMOUS"
+        >
+          <i class="las la-user-secret"></i>
+        </button>
         <button
           classList={{
             options__button: true,
@@ -56,17 +68,6 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           }
         >
           <i class="las la-heading"></i>
-        </button>
-        <button
-          classList={{
-            options__button: true,
-            "options__button--last": false,
-            "options__button--active": state.anonymous,
-          }}
-          onClick={props.handlers.toggleAnonymous}
-          title="TOGGLE ANONYMOUS"
-        >
-          <i class="las la-user-secret"></i>
         </button>
         <button
           classList={{
@@ -110,8 +111,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           <button
             class="share__btn share__btn--right"
             onClick={() => {
-              const link = `${location.origin}/#fen/${encodeURI(state.fen)}`;
-              navigator.clipboard.writeText(link);
+              navigator.clipboard.writeText(link.getFENLink(state.fen));
               blinkCopy("fen-link");
             }}
           >

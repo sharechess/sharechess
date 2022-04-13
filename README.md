@@ -6,9 +6,9 @@ This repo contains the source code for [sharechess.github.io](https://sharechess
 
 ## About
 
-[ShareChess](https://sharechess.github.io/) is an open source website that allows you to share chess games as self-contained replay links (the whole game is stored in the url without the need for a database), PNG images, or GIF / MP4 / WebM animations.
+[ShareChess](https://sharechess.github.io/) is a free, open source website that allows you to share chess games as self-contained replay links (the whole game is stored in the url without the need for a database), PNG images, or GIF / MP4 / WebM animations.
 
-The website provides a high variety of chessboard and piece designs to serve as an open alternative for commercial chess GIF makers. The projects is free and open source.
+The website provides a high variety of chessboard and piece designs to serve as an open alternative for commercial chess GIF makers.
 
 ## License
 
