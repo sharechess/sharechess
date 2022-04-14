@@ -2,6 +2,7 @@ const piecesStyles = [
   "adventurer",
   "alfonso_x",
   "alpha",
+  "anarchy",
   "berlin",
   "california",
   "cardinal",
