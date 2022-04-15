@@ -21,6 +21,26 @@ const sfx = {
     src: ["/sfx/rewind.wav"],
     volume: 0.2,
   }),
+  snort: new Howl({
+    src: ["/sfx/snort.wav"],
+    volume: 0.5,
+  }),
+  neigh: new Howl({
+    src: ["/sfx/neigh.wav"],
+    volume: 0.5,
+  }),
+  fanfare: new Howl({
+    src: ["/sfx/fanfare.wav"],
+    volume: 0.5,
+  }),
+  brickMove: new Howl({
+    src: ["/sfx/brick-move.wav"],
+    volume: 0.5,
+  }),
+  brickTake: new Howl({
+    src: ["/sfx/brick-take.wav"],
+    volume: 0.5,
+  }),
 };
 
 export default sfx;

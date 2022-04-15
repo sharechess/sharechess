@@ -119,12 +119,43 @@ class Player {
     if (this.ply > 0 && state.siteConfig.sounds) {
       if (position.mate) {
         sfx.snap.play();
+        if (position.move?.flags && position.move.flags.includes("e")) {
+          sfx.fanfare.play();
+        } else if (position.move?.piece === "r") {
+          position.move.flags.includes("c")
+            ? sfx.brickTake.play()
+            : sfx.brickMove.play();
+        }
       } else if (/[ce]/.test(position.move?.flags as string)) {
-        sfx.take.play();
+        if (position.move?.piece === "r") {
+          sfx.brickTake.play();
+        } else {
+          sfx.take.play();
+        }
+
+        if (
+          position.move?.piece === "n" &&
+          state.boardConfig.piecesStyle === "anarchy"
+        ) {
+          sfx.neigh.play();
+        } else if (position.move?.flags && position.move.flags.includes("e")) {
+          sfx.fanfare.play();
+        }
       } else if (/[kqp]/.test(position.move?.flags as string)) {
         sfx.swap.play();
       } else {
-        sfx.move.play();
+        if (position.move?.piece === "r") {
+          sfx.brickMove.play();
+        } else {
+          sfx.move.play();
+        }
+
+        if (
+          position.move?.piece === "n" &&
+          state.boardConfig.piecesStyle === "anarchy"
+        ) {
+          sfx.snort.play();
+        }
       }
     }
 
