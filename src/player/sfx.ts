@@ -41,6 +41,18 @@ const sfx = {
     src: ["/sfx/brick-take.wav"],
     volume: 0.5,
   }),
+  brickCastle: new Howl({
+    src: ["/sfx/brick-castle.wav"],
+    volume: 0.5,
+  }),
+  coneMove: new Howl({
+    src: ["/sfx/cone-move.wav"],
+    volume: 0.5,
+  }),
+  coneTake: new Howl({
+    src: ["/sfx/cone-take.wav"],
+    volume: 0.5,
+  }),
 };
 
 export default sfx;

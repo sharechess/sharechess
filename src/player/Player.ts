@@ -1,3 +1,4 @@
+import { Position } from "./../types";
 import { GameConfig } from "../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
@@ -97,6 +98,65 @@ class Player {
     }
   }
 
+  playSFX(position: Position) {
+    if (position.mate) {
+      sfx.snap.play();
+    } else if (/[ce]/.test(position.move?.flags as string)) {
+      sfx.take.play();
+    } else if (/[kqp]/.test(position.move?.flags as string)) {
+      sfx.swap.play();
+    } else {
+      sfx.move.play();
+    }
+  }
+
+  playAnarchySFX(position: Position) {
+    if (position.mate) {
+      sfx.snap.play();
+    }
+
+    if (position.move?.flags && position.move.flags.includes("e")) {
+      sfx.fanfare.play();
+    }
+
+    if (position.move?.flags && position.move.flags.includes("p")) {
+      sfx.brickCastle.play();
+    }
+
+    if (position.move?.flags && position.move.flags.includes("c")) {
+      switch (position.move.piece) {
+        case "p":
+          sfx.coneTake.play();
+          break;
+        case "r":
+          sfx.brickTake.play();
+          break;
+        case "n":
+          sfx.take.play();
+          sfx.neigh.play();
+          break;
+        default:
+          sfx.take.play();
+      }
+    } else if (/[kq]/.test(position.move?.flags as string)) {
+      sfx.brickCastle.play();
+    } else {
+      switch (position.move?.piece) {
+        case "p":
+          sfx.coneMove.play();
+          break;
+        case "r":
+          sfx.brickMove.play();
+          break;
+        case "n":
+          sfx.snort.play();
+          break;
+        default:
+          sfx.move.play();
+      }
+    }
+  }
+
   async next() {
     const ply = this.ply + 1;
 
@@ -117,46 +177,9 @@ class Player {
     }
 
     if (this.ply > 0 && state.siteConfig.sounds) {
-      if (position.mate) {
-        sfx.snap.play();
-        if (position.move?.flags && position.move.flags.includes("e")) {
-          sfx.fanfare.play();
-        } else if (position.move?.piece === "r") {
-          position.move.flags.includes("c")
-            ? sfx.brickTake.play()
-            : sfx.brickMove.play();
-        }
-      } else if (/[ce]/.test(position.move?.flags as string)) {
-        if (position.move?.piece === "r") {
-          sfx.brickTake.play();
-        } else {
-          sfx.take.play();
-        }
-
-        if (
-          position.move?.piece === "n" &&
-          state.boardConfig.piecesStyle === "anarchy"
-        ) {
-          sfx.neigh.play();
-        } else if (position.move?.flags && position.move.flags.includes("e")) {
-          sfx.fanfare.play();
-        }
-      } else if (/[kqp]/.test(position.move?.flags as string)) {
-        sfx.swap.play();
-      } else {
-        if (position.move?.piece === "r") {
-          sfx.brickMove.play();
-        } else {
-          sfx.move.play();
-        }
-
-        if (
-          position.move?.piece === "n" &&
-          state.boardConfig.piecesStyle === "anarchy"
-        ) {
-          sfx.snort.play();
-        }
-      }
+      state.boardConfig.piecesStyle === "anarchy"
+        ? this.playAnarchySFX(position)
+        : this.playSFX(position);
     }
 
     if (position.end === 0 && state.siteConfig.speech) {
