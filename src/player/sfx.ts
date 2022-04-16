@@ -35,23 +35,23 @@ const sfx = {
   }),
   brickMove: new Howl({
     src: ["/sfx/brick-move.wav"],
-    volume: 0.5,
+    volume: 0.3,
   }),
   brickTake: new Howl({
     src: ["/sfx/brick-take.wav"],
-    volume: 0.5,
+    volume: 0.2,
   }),
   brickCastle: new Howl({
     src: ["/sfx/brick-castle.wav"],
-    volume: 0.5,
+    volume: 0.3,
   }),
   coneMove: new Howl({
     src: ["/sfx/cone-move.wav"],
-    volume: 0.5,
+    volume: 0.3,
   }),
   coneTake: new Howl({
     src: ["/sfx/cone-take.wav"],
-    volume: 0.5,
+    volume: 0.3,
   }),
 };
 
