@@ -138,6 +138,9 @@ class Player {
         case "k":
           sfx.pipiTake.play();
           break;
+        case "b":
+          sfx.toyTake.play();
+          break;
         default:
           sfx.take.play();
       }
@@ -156,6 +159,9 @@ class Player {
           break;
         case "k":
           sfx.pipiMove.play();
+          break;
+        case "b":
+          sfx.toyMove.play();
           break;
         default:
           sfx.move.play();

@@ -61,6 +61,14 @@ const sfx = {
     src: ["/sfx/mp3/pipi-take.mp3"],
     volume: 0.3,
   }),
+  toyMove: new Howl({
+    src: ["/sfx/mp3/toy-move.mp3"],
+    volume: 0.5,
+  }),
+  toyTake: new Howl({
+    src: ["/sfx/toy-take.wav"],
+    volume: 0.5,
+  }),
 };
 
 export default sfx;
