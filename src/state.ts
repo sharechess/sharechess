@@ -14,7 +14,7 @@ const initialBoardConfig: BoardConfig = {
   tiles: 8,
   boardStyle: "standard",
   piecesStyle: "tatiana",
-  showBorder: !mobile,
+  showBorder: false,
   showExtraInfo: true,
   showMaterial: true,
   showMoveIndicator: true,

@@ -2,7 +2,7 @@ import { Component, For, createSignal } from "solid-js";
 import { Handlers, StyleCategory, BoardStyle, Style } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
-import styles from "../../board/styles-board";
+import styles from "../../board/styles-board/boardStyles";
 import Board from "../../board/Board";
 import { state, setState } from "../../state";
 

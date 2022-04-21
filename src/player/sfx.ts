@@ -63,19 +63,19 @@ const sfx = {
   }),
   toyMove: new Howl({
     src: ["/sfx/anarchy/toy-move.mp3"],
-    volume: 0.6,
+    volume: 0.9,
   }),
   toyTake: new Howl({
     src: ["/sfx/anarchy/toy-take.mp3"],
-    volume: 0.5,
+    volume: 0.8,
   }),
   deathMove: new Howl({
     src: ["/sfx/anarchy/death-move.mp3"],
-    volume: 0.3,
+    volume: 0.4,
   }),
   deathTake: new Howl({
     src: ["/sfx/anarchy/death-take.mp3"],
-    volume: 0.2,
+    volume: 0.25,
   }),
   death: new Howl({
     src: ["/sfx/anarchy/checkmate.mp3"],
@@ -83,7 +83,7 @@ const sfx = {
   }),
   hit: new Howl({
     src: ["/sfx/anarchy/hit.mp3"],
-    volume: 0.4,
+    volume: 0.25,
   }),
 };
 

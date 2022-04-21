@@ -59,6 +59,7 @@ const link = {
   },
 
   async read() {
+    const url = new URL(location.href);
     const [type, ...rest] = location.hash.split("/");
 
     if (/fen/.test(type)) {
@@ -93,6 +94,8 @@ const link = {
       fen: linkData.fen,
       side: linkData.side,
       ply: linkData.ply,
+      boardStyle: url.searchParams.get("b"),
+      piecesStyle: url.searchParams.get("p"),
     };
   },
 

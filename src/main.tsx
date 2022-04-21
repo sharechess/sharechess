@@ -7,7 +7,6 @@ import App from "./ui/App";
 
 import { state, setState } from "./state";
 
-import link from "./persistance/link";
 import registerHandlers from "./boot/registerHandlers";
 import loadFromUrl from "./boot/loadFromUrl";
 import registerEvents from "./boot/registerEvents";
@@ -19,10 +18,6 @@ const main = async () => {
   /* Connect player to the state */
 
   player.watch((playing) => setState("playing", playing));
-
-  /* Load game from url hash */
-
-  link.read();
 
   /* Register handlers */
 
@@ -42,7 +37,7 @@ const main = async () => {
   /* Initialize the game */
 
   await player.init();
-  await loadFromUrl(false, handlers);
+  await loadFromUrl(false, handlers, board);
 
   /* Register events */
 

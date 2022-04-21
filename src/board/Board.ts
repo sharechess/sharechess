@@ -6,7 +6,7 @@ import drawMoveIndicators from "./layers/drawMoveIndicators";
 import drawPieces from "./layers/drawPieces";
 import drawHeader from "./layers/drawHeader";
 import drawExtraInfo from "./layers/drawExtraInfo";
-import boards from "./styles-board";
+import boards from "./styles-board/boardStyles";
 import isLink from "../utils/isLink";
 import { PiecesStyle } from "./styles-pieces/piecesStyles";
 
