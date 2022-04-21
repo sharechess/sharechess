@@ -54,11 +54,11 @@ const sfx = {
     volume: 0.3,
   }),
   pipiMove: new Howl({
-    src: ["/sfx/anarchy/pipi-take.mp3"],
+    src: ["/sfx/anarchy/pipi-move.mp3"],
     volume: 0.2,
   }),
   pipiTake: new Howl({
-    src: ["/sfx/anarchy/pipi-move.mp3"],
+    src: ["/sfx/anarchy/pipi-take.mp3"],
     volume: 0.4,
   }),
   toyMove: new Howl({
