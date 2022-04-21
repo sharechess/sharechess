@@ -3,6 +3,7 @@ const piecesStyles = [
   "alfonso_x",
   "alpha",
   "anarchy",
+  "anarchy_color",
   "berlin",
   "california",
   "cardinal",
