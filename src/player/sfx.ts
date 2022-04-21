@@ -83,7 +83,7 @@ const sfx = {
   }),
   hit: new Howl({
     src: ["/sfx/anarchy/hit.mp3"],
-    volume: 0.5,
+    volume: 0.4,
   }),
 };
 
