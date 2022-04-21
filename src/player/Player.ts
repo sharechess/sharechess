@@ -195,7 +195,7 @@ class Player {
     }
 
     if (this.ply > 0 && state.siteConfig.sounds) {
-      state.boardConfig.piecesStyle === "anarchy"
+      state.boardConfig.piecesStyle.includes("anarchy")
         ? this.playAnarchySFX(position)
         : this.playSFX(position);
     }
