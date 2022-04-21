@@ -112,11 +112,11 @@ class Player {
 
   playAnarchySFX(position: Position) {
     if (position.mate) {
-      sfx.snap.play();
+      sfx.death.play();
     }
 
     if (position.move?.flags && position.move.flags.includes("e")) {
-      sfx.fanfare.play();
+      sfx.enPassant.play();
     }
 
     if (position.move?.flags && position.move.flags.includes("p")) {
@@ -132,11 +132,14 @@ class Player {
           sfx.brickTake.play();
           break;
         case "n":
-          sfx.take.play();
-          sfx.neigh.play();
+          sfx.hit.play();
+          sfx.horsyTake.play();
           break;
         case "k":
           sfx.pipiTake.play();
+          break;
+        case "q":
+          sfx.deathTake.play();
           break;
         case "b":
           sfx.toyTake.play();
@@ -155,10 +158,13 @@ class Player {
           sfx.brickMove.play();
           break;
         case "n":
-          sfx.snort.play();
+          sfx.horsyMove.play();
           break;
         case "k":
           sfx.pipiMove.play();
+          break;
+        case "q":
+          sfx.deathMove.play();
           break;
         case "b":
           sfx.toyMove.play();

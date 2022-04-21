@@ -2,71 +2,87 @@ import { Howl } from "howler";
 
 const sfx = {
   move: new Howl({
-    src: ["/sfx/mp3/move.mp3"],
+    src: ["/sfx/move.mp3"],
     volume: 0.3,
   }),
   take: new Howl({
-    src: ["/sfx/mp3/take.mp3"],
+    src: ["/sfx/take.mp3"],
     volume: 0.9,
   }),
   swap: new Howl({
-    src: ["/sfx/mp3/swap.mp3"],
+    src: ["/sfx/swap.mp3"],
     volume: 0.6,
   }),
   snap: new Howl({
-    src: ["/sfx/mp3/snap.mp3"],
+    src: ["/sfx/snap.mp3"],
     volume: 0.6,
   }),
   rewind: new Howl({
-    src: ["/sfx/mp3/rewind.mp3"],
+    src: ["/sfx/rewind.mp3"],
     volume: 0.2,
   }),
-  snort: new Howl({
-    src: ["/sfx/mp3/snort.mp3"],
+  enPassant: new Howl({
+    src: ["/sfx/anarchy/en-passant.mp3"],
+    volume: 0.2,
+  }),
+  horsyMove: new Howl({
+    src: ["/sfx/anarchy/horsy-move.mp3"],
     volume: 0.5,
   }),
-  neigh: new Howl({
-    src: ["/sfx/mp3/neigh.mp3"],
-    volume: 0.5,
-  }),
-  fanfare: new Howl({
-    src: ["/sfx/mp3/fanfare.mp3"],
+  horsyTake: new Howl({
+    src: ["/sfx/anarchy/horsy-take.mp3"],
     volume: 0.5,
   }),
   brickMove: new Howl({
-    src: ["/sfx/mp3/brick-move.mp3"],
+    src: ["/sfx/anarchy/brick-move.mp3"],
     volume: 0.3,
   }),
   brickTake: new Howl({
-    src: ["/sfx/mp3/brick-take.mp3"],
+    src: ["/sfx/anarchy/brick-take.mp3"],
     volume: 0.2,
   }),
   brickCastle: new Howl({
-    src: ["/sfx/mp3/brick-castle.mp3"],
+    src: ["/sfx/anarchy/brick-castle.mp3"],
     volume: 0.3,
   }),
   coneMove: new Howl({
-    src: ["/sfx/mp3/cone-move.mp3"],
+    src: ["/sfx/anarchy/cone-move.mp3"],
     volume: 1,
   }),
   coneTake: new Howl({
-    src: ["/sfx/mp3/cone-take.mp3"],
+    src: ["/sfx/anarchy/cone-take.mp3"],
     volume: 0.3,
   }),
   pipiMove: new Howl({
-    src: ["/sfx/mp3/pipi-move.mp3"],
-    volume: 0.5,
+    src: ["/sfx/anarchy/pipi-take.mp3"],
+    volume: 0.2,
   }),
   pipiTake: new Howl({
-    src: ["/sfx/mp3/pipi-take.mp3"],
-    volume: 0.3,
+    src: ["/sfx/anarchy/pipi-move.mp3"],
+    volume: 0.4,
   }),
   toyMove: new Howl({
-    src: ["/sfx/mp3/toy-move.mp3"],
-    volume: 0.5,
+    src: ["/sfx/anarchy/toy-move.mp3"],
+    volume: 0.6,
   }),
   toyTake: new Howl({
-    src: ["/sfx/toy-take.wav"],
+    src: ["/sfx/anarchy/toy-take.mp3"],
+    volume: 0.5,
+  }),
+  deathMove: new Howl({
+    src: ["/sfx/anarchy/death-move.mp3"],
+    volume: 0.3,
+  }),
+  deathTake: new Howl({
+    src: ["/sfx/anarchy/death-take.mp3"],
+    volume: 0.2,
+  }),
+  death: new Howl({
+    src: ["/sfx/anarchy/checkmate.mp3"],
+    volume: 1,
+  }),
+  hit: new Howl({
+    src: ["/sfx/anarchy/hit.mp3"],
     volume: 0.5,
   }),
 };
