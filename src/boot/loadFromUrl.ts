@@ -32,8 +32,6 @@ const loadFromUrl = async (
     board.setStyle(boardStyle as BoardStyle);
   }
 
-  console.log({ piecesStyle });
-
   if (piecesStyle && piecesStyles.includes(piecesStyle as PiecesStyle)) {
     setState("boardConfig", "piecesStyle", piecesStyle as PiecesStyle);
     board.setPiecesStyle(piecesStyle as PiecesStyle);
