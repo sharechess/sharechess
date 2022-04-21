@@ -1,6 +1,6 @@
 {
   "name": "chesspic",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "GNU GPL V3.0",
   "scripts": {
     "start": "vite --host",
