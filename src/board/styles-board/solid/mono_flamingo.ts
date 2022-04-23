@@ -4,7 +4,7 @@ const bgColor = "#F65656";
 const fgColor = "#FAAAAA";
 const darkFontColor = "#BC2D2D";
 const lightFontColor = "#ffffff";
-const borderFontColor = "#00000099";
+const borderFontColor = "#00000088";
 
 const style: Style = {
   category: "solid",
