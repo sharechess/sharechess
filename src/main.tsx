@@ -41,7 +41,7 @@ const main = async () => {
 
   /* Register events */
 
-  registerEvents(handlers);
+  registerEvents(handlers, board);
 };
 
 /* Initialize */

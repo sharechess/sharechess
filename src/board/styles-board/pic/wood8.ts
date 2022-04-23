@@ -1,7 +1,6 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Wood 8",
   category: "pic",
   background: {
     type: "image",

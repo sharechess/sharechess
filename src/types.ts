@@ -55,7 +55,6 @@ export type MoveIndicator =
 export type StyleCategory = "solid" | "gradient" | "pic" | "custom";
 
 export type Style = {
-  name: string;
   category: StyleCategory;
   background: SquareStyle;
   light: SquareStyle;
@@ -109,6 +108,11 @@ export type SiteConfig = {
   androidAppPopup: boolean;
   iOSAppPopup: boolean;
 };
+
+export type Recent = {
+  title: string;
+  hash: string;
+}[];
 
 export type MaterialCount = {
   w: {

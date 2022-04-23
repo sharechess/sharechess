@@ -1,6 +1,6 @@
 import { state } from "../state";
 
-const saveConfig = (type: "board" | "game" | "site") => {
+const saveConfig = (type: "board" | "game" | "site" | "recent") => {
   switch (type) {
     case "board":
       localStorage.setItem("boardConfig", JSON.stringify(state.boardConfig));
@@ -10,6 +10,9 @@ const saveConfig = (type: "board" | "game" | "site") => {
       break;
     case "site":
       localStorage.setItem("siteConfig", JSON.stringify(state.siteConfig));
+      break;
+    case "recent":
+      localStorage.setItem("recent", JSON.stringify(state.recent));
       break;
   }
 };

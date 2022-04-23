@@ -2,12 +2,12 @@ import { Component, For, createSignal } from "solid-js";
 import { Handlers, StyleCategory, BoardStyle, Style } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
-import styles from "../../board/styles-board/boardStyles";
+import boardStyles from "../../board/styles-board/boardStyles";
 import Board from "../../board/Board";
 import { state, setState } from "../../state";
 
 type BoardPreview = {
-  key: keyof typeof styles;
+  key: keyof typeof boardStyles;
   name: string;
   category: StyleCategory;
   img: string;
@@ -23,7 +23,12 @@ const prepareBoards = async () => {
     showExtraInfo: false,
   });
 
-  for (const [key, style] of Object.entries(styles) as [BoardStyle, Style][]) {
+  board.setBorderScale(3);
+
+  for (const [key, style] of Object.entries(boardStyles) as [
+    BoardStyle,
+    Style
+  ][]) {
     let img: string;
 
     if (style.ico) {
@@ -37,8 +42,6 @@ const prepareBoards = async () => {
 
     boards.push({
       key,
-      name: style.name,
-      category: style.category,
       img,
     } as BoardPreview);
   }
@@ -68,7 +71,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
                 props.handlers.changeBoardStyle(board.key);
               }}
               style={{ "background-image": `url(${board.img})` }}
-              title={board.name}
+              title={board.key}
               draggable={false}
             />
           );

@@ -4,13 +4,13 @@ import azure from "./solid/azure";
 import clay from "./solid/clay";
 import rock from "./solid/rock";
 import danny from "./solid/danny";
-import dannyGreen from "./solid/danny-green";
-import dannyCyan from "./solid/danny-cyan";
-import dannyBlue from "./solid/danny-blue";
-import dannyPurple from "./solid/danny-purple";
-import dannyPink from "./solid/danny-pink";
-import dannyRed from "./solid/danny-red";
-import dannyYellow from "./solid/danny-yellow";
+import danny_green from "./solid/danny_green";
+import danny_cyan from "./solid/danny_cyan";
+import danny_blue from "./solid/danny_blue";
+import danny_purple from "./solid/danny_purple";
+import danny_pink from "./solid/danny_pink";
+import danny_red from "./solid/danny_red";
+import danny_yellow from "./solid/danny_yellow";
 import lichess from "./solid/lichess";
 import leko from "./solid/leko";
 import patina from "./solid/patina";
@@ -22,27 +22,40 @@ import botez from "./solid/botez";
 import mud from "./solid/mud";
 import rose from "./solid/rose";
 import avocado from "./solid/avocado";
-import monoTeal from "./solid/mono-teal";
-import monoChico from "./solid/mono-chico";
-import monoGoblin from "./solid/mono-goblin";
-import monoMahogany from "./solid/mono-mahogany";
-import monoMojo from "./solid/mono-mojo";
-import monoMulberry from "./solid/mono-mulberry";
-import monoSycamore from "./solid/mono-sycamore";
-import monoBlue from "./solid/mono-blue";
 
-import smoothSunset from "./gradient/smooth-sunset";
-import smoothSummer from "./gradient/smooth-summer";
-import smoothSpring from "./gradient/smooth-spring";
-import smoothForest from "./gradient/smooth-forest";
-import smoothLaguna from "./gradient/smooth-laguna";
-import smoothSea from "./gradient/smooth-sea";
-import smoothViolet from "./gradient/smooth-violet";
-import smoothMono from "./gradient/smooth-mono";
-import contrastA from "./gradient/contrast-a";
-import contrastB from "./gradient/contrast-b";
-import contrastC from "./gradient/contrast-c";
-import contrastD from "./gradient/contrast-d";
+import mono_teal from "./solid/mono_teal";
+import mono_chico from "./solid/mono_chico";
+import mono_goblin from "./solid/mono_goblin";
+import mono_mahogany from "./solid/mono_mahogany";
+import mono_mojo from "./solid/mono_mojo";
+import mono_mulberry from "./solid/mono_mulberry";
+import mono_sycamore from "./solid/mono_sycamore";
+import mono_blue from "./solid/mono_blue";
+import mono_coral from "./solid/mono_coral";
+import mono_flamingo from "./solid/mono_flamingo";
+import mono_rose from "./solid/mono_rose";
+import mono_heliotrope from "./solid/mono_heliotrope";
+import mono_cornflower from "./solid/mono_cornflower";
+import mono_dodger from "./solid/mono_dodger";
+import mono_meadow from "./solid/mono_meadow";
+import mono_mantis from "./solid/mono_mantis";
+import mono_coper from "./solid/mono_coper";
+import mono_contessa from "./solid/mono_contessa";
+import mono_terracotta from "./solid/mono_terracotta";
+import mono_harvest from "./solid/mono_harvest";
+
+import smooth_sunset from "./gradient/smooth_sunset";
+import smooth_summer from "./gradient/smooth_summer";
+import smooth_spring from "./gradient/smooth_spring";
+import smooth_forest from "./gradient/smooth_forest";
+import smooth_laguna from "./gradient/smooth_laguna";
+import smooth_sea from "./gradient/smooth_sea";
+import smooth_violet from "./gradient/smooth_violet";
+import smooth_mono from "./gradient/smooth_mono";
+import contrast_a from "./gradient/contrast_a";
+import contrast_b from "./gradient/contrast_b";
+import contrast_c from "./gradient/contrast_c";
+import contrast_d from "./gradient/contrast_d";
 
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
@@ -53,7 +66,7 @@ import wood6 from "./pic/wood6";
 import wood7 from "./pic/wood7";
 import wood8 from "./pic/wood8";
 
-const styles = {
+const boardStyles = {
   standard,
   spring,
   azure,
@@ -67,38 +80,51 @@ const styles = {
   patina,
   mud,
   danny,
-  dannyGreen,
-  dannyCyan,
-  dannyBlue,
-  dannyPurple,
-  dannyPink,
-  dannyRed,
-  dannyYellow,
+  danny_green,
+  danny_cyan,
+  danny_blue,
+  danny_purple,
+  danny_pink,
+  danny_red,
+  danny_yellow,
   lichess,
   danya,
   botez,
   avocado,
-  monoChico,
-  monoMojo,
-  monoMahogany,
-  monoMulberry,
-  monoBlue,
-  monoTeal,
-  monoGoblin,
-  monoSycamore,
 
-  smoothSunset,
-  smoothSummer,
-  smoothSpring,
-  smoothForest,
-  smoothLaguna,
-  smoothSea,
-  smoothViolet,
-  smoothMono,
-  contrastA,
-  contrastB,
-  contrastC,
-  contrastD,
+  mono_chico,
+  mono_mojo,
+  mono_mahogany,
+  mono_mulberry,
+  mono_blue,
+  mono_teal,
+  mono_goblin,
+  mono_sycamore,
+  mono_coral,
+  mono_flamingo,
+  mono_rose,
+  mono_heliotrope,
+  mono_cornflower,
+  mono_dodger,
+  mono_meadow,
+  mono_mantis,
+  mono_coper,
+  mono_contessa,
+  mono_terracotta,
+  mono_harvest,
+
+  smooth_sunset,
+  smooth_summer,
+  smooth_spring,
+  smooth_forest,
+  smooth_laguna,
+  smooth_sea,
+  smooth_violet,
+  smooth_mono,
+  contrast_a,
+  contrast_b,
+  contrast_c,
+  contrast_d,
   wood1,
   wood2,
   wood3,
@@ -109,4 +135,7 @@ const styles = {
   wood8,
 };
 
-export default styles;
+const boardNames = Object.keys(boardStyles);
+
+export { boardNames };
+export default boardStyles;

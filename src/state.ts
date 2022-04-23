@@ -2,7 +2,7 @@ import isMobile from "is-mobile";
 import { createStore } from "solid-js/store";
 import Game from "./game/Game";
 import loadConfig from "./persistance/loadConfig";
-import { BoardConfig, GameConfig, SiteConfig } from "./types";
+import { BoardConfig, GameConfig, SiteConfig, Recent } from "./types";
 import UAParser from "ua-parser-js";
 
 const userAgent = UAParser();
@@ -60,6 +60,7 @@ export type State = {
   browser?: string;
   os?: string;
   about: boolean;
+  recent: Recent;
 };
 
 const initialState: State = {
@@ -88,8 +89,11 @@ const initialState: State = {
   browser: userAgent.browser.name,
   os: userAgent.os.name,
   about: false,
+  recent: saved.recent,
 };
 
 const [state, setState] = createStore(initialState);
+
+console.log(state);
 
 export { state, setState };

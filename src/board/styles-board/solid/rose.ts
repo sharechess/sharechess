@@ -1,7 +1,6 @@
 import { Style } from "../../../types";
 
 const style: Style = {
-  name: "Rose",
   category: "solid",
   background: {
     type: "solid",

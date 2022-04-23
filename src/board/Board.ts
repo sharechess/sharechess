@@ -45,6 +45,7 @@ class Board {
   private _anonymous: boolean = false;
 
   private scale: number = 1;
+  private borderScale: number = 1;
 
   private size: number = 0;
   private squareSize: number = 0;
@@ -131,7 +132,9 @@ class Board {
       this.tempCanvas.height = height;
     }
 
-    const tempBorderWidth = this.cfg.showBorder ? this.size / 32 : 0;
+    const tempBorderWidth = this.cfg.showBorder
+      ? (this.size / 32) * this.borderScale
+      : 0;
     const tempInnerSize = this.size - tempBorderWidth * 2;
     this.squareSize = Math.floor(tempInnerSize / this.cfg.tiles);
     this.innerSize = this.squareSize * this.cfg.tiles;
@@ -142,6 +145,10 @@ class Board {
 
   getSize() {
     return this.size;
+  }
+
+  setBorderScale(scale: number) {
+    this.borderScale = scale;
   }
 
   setStyle(style: BoardStyle) {

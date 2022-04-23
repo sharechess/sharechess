@@ -2,8 +2,9 @@ import { Handlers } from "./../types";
 import { state, setState } from "../state";
 import loadFromUrl from "./loadFromUrl";
 import readFile from "../utils/readFile";
+import Board from "../board/Board";
 
-const registerEvents = (handlers: Handlers) => {
+const registerEvents = (handlers: Handlers, board: Board) => {
   document.addEventListener("dblclick", function (el) {
     el.preventDefault();
   });
@@ -25,7 +26,7 @@ const registerEvents = (handlers: Handlers) => {
       return;
     }
 
-    loadFromUrl(true, handlers);
+    loadFromUrl(true, handlers, board);
   });
 
   if (!state.mobile) {
