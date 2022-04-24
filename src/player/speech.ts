@@ -43,11 +43,15 @@ const sanToText = (move: string) => {
   return move;
 };
 
-class Speach {
+class Speech {
   private voice: SpeechSynthesisVoice | undefined;
   constructor() {
-    const voices = speechSynthesis.getVoices();
-    this.voice = voices.find((voice) => voice.lang === config.lang);
+    if (!window.speechSynthesis) {
+      this.voice = undefined;
+    } else {
+      const voices = speechSynthesis.getVoices();
+      this.voice = voices.find((voice) => voice.lang === config.lang);
+    }
   }
 
   say(text: string) {
@@ -63,4 +67,4 @@ class Speach {
 }
 
 export { sanToText };
-export default Speach;
+export default Speech;

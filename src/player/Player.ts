@@ -4,7 +4,7 @@ import Board from "../board/Board";
 import Game from "../game/Game";
 import { setState, state } from "../state";
 import sfx from "./sfx";
-import Speech, { sanToText } from "./speach";
+import Speech, { sanToText } from "./speech";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -190,26 +190,28 @@ class Player {
     await this.board.frame(position, this.game.header);
     this.board.render();
 
-    if (this.ply > 0 && state.siteConfig.speech) {
-      this.speech.say(sanToText(position.move?.san as string));
-    }
+    if (window.speechSynthesis) {
+      if (this.ply > 0 && state.siteConfig.speech) {
+        this.speech.say(sanToText(position.move?.san as string));
+      }
 
-    if (this.ply > 0 && state.siteConfig.sounds) {
-      state.boardConfig.piecesStyle.includes("anarchy")
-        ? this.playAnarchySFX(position)
-        : this.playSFX(position);
-    }
+      if (this.ply > 0 && state.siteConfig.sounds) {
+        state.boardConfig.piecesStyle.includes("anarchy")
+          ? this.playAnarchySFX(position)
+          : this.playSFX(position);
+      }
 
-    if (position.end === 0 && state.siteConfig.speech) {
-      const result = this.game.header.Result;
-      if (result) {
-        this.speech.say(
-          result === "1-0"
-            ? "White wins!"
-            : result === "0-1"
-            ? "Black wins!"
-            : "Draw!"
-        );
+      if (position.end === 0 && state.siteConfig.speech) {
+        const result = this.game.header.Result;
+        if (result) {
+          this.speech.say(
+            result === "1-0"
+              ? "White wins!"
+              : result === "0-1"
+              ? "Black wins!"
+              : "Draw!"
+          );
+        }
       }
     }
   }

@@ -94,6 +94,4 @@ const initialState: State = {
 
 const [state, setState] = createStore(initialState);
 
-console.log(state);
-
 export { state, setState };

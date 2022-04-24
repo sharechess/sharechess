@@ -1,4 +1,3 @@
-import WebFont from "webfontloader";
 import { render } from "solid-js/web";
 
 import Board from "./board/Board";
@@ -47,19 +46,11 @@ const main = async () => {
 /* Initialize */
 
 Promise.all([
-  new Promise((resolve) =>
-    WebFont.load({
-      google: {
-        families: ["Ubuntu:500,700", "Fira Mono:500"],
-      },
-      custom: {
-        families: ["Chess"],
-        urls: ["/fonts.css"],
-      },
-      active: () => resolve(null),
-    })
-  ).catch(() => null),
   new Promise((resolve) => {
+    if (!window.speechSynthesis) {
+      resolve(null);
+    }
+
     if (speechSynthesis.getVoices().length > 0) {
       resolve(null);
     } else {

@@ -1,6 +1,28 @@
 @font-face {
   font-family: "Chess";
-  src: url("chess.ttf") format("ttf");
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Chess.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Ubuntu-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  font-display: swap;
+  src: url("/fonts/FiraMono-Medium.ttf") format("truetype");
 }
 
 * {
@@ -23,6 +45,31 @@ body {
 
   --header-height: 4rem;
   --header-margin: 6rem;
+}
+
+.invisible {
+  font-size: 0;
+  height: 0;
+}
+
+.ubuntu-font-init {
+  font-family: Ubuntu;
+  font-weight: 500;
+}
+
+.ubuntu-bold-font-init {
+  font-family: Ubuntu;
+  font-weight: 700;
+}
+
+.fira-font-init {
+  font-family: "Fira Mono";
+  font-weight: 500;
+}
+
+.chess-font-init {
+  font-family: Chess;
+  font-weight: 400;
 }
 
 .dark {

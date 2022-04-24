@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component, Show } from "solid-js";
 import { Handlers } from "../../types";
 import { setState, state } from "../../state";
 import "./Header.css";
@@ -33,19 +33,21 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
             }}
           ></i>
         </div>
-        <div
-          class="header__options-ico"
-          onClick={props.handlers.toggleSpeech}
-          title={state.siteConfig.speech ? "SPEECH OFF" : "SPEECH ON"}
-        >
-          <i
-            classList={{
-              las: true,
-              "la-deaf": !state.siteConfig.speech,
-              "la-assistive-listening-systems": state.siteConfig.speech,
-            }}
-          ></i>
-        </div>
+        <Show when={window.speechSynthesis}>
+          <div
+            class="header__options-ico"
+            onClick={props.handlers.toggleSpeech}
+            title={state.siteConfig.speech ? "SPEECH OFF" : "SPEECH ON"}
+          >
+            <i
+              classList={{
+                las: true,
+                "la-deaf": !state.siteConfig.speech,
+                "la-assistive-listening-systems": state.siteConfig.speech,
+              }}
+            ></i>
+          </div>
+        </Show>
         <div
           class="header__options-ico"
           onClick={props.handlers.toggleDarkMode}
