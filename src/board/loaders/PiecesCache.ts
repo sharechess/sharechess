@@ -35,6 +35,26 @@ const PiecesCache = {
 
     return piecesImages.get(piece) as HTMLImageElement;
   },
+
+  async getDataURLs() {
+    return Promise.all(
+      [...piecesImages.entries()].map(
+        async ([key, img]: [string, HTMLImageElement]) => {
+          let blob = await fetch(img.src).then((r) => r.blob());
+          let dataUrl = await new Promise((resolve) => {
+            let reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(blob);
+          });
+
+          return [key, dataUrl];
+        }
+      )
+    );
+  },
 };
+
+// @ts-ignore
+window.PiecesCache = PiecesCache;
 
 export default PiecesCache;
