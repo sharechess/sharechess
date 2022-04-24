@@ -6,7 +6,7 @@
   "scope": "/",
   "display": "fullscreen",
   "url": "https://sharechess.github.io",
-  "start_url": "https://game.voidvoyage.com/",
+  "start_url": "https://game.voidvoyage.com",
   "theme_color": "transparent",
   "description": "Share chess games",
   "orientation": "any",
