@@ -10,6 +10,19 @@ This repo contains the source code for [sharechess.github.io](https://sharechess
 
 The website provides a high variety of chessboard and piece designs to serve as an open alternative for commercial chess GIF makers.
 
+## Installation
+
+Latest build is available on [github.com/sharechess/sharechess.github.io](https://github.com/sharechess/sharechess.github.io) and is ready to deploy on any hosting service (if you want to self-host the project).
+
+For development:
+
+- fork this repo and clone the fork to your local environment,
+- go to the project's directory and run `npm i` (requires Node 16 LTS or higher, available [here](https://nodejs.org/en/)),
+- run `npm start` - it will start the development server,
+- start coding ;)
+
+Preview of the current dev version is available here: [https://sharechess-dev.netlify.app/](sharechess-dev.netlify.app)
+
 ## License
 
 The project is under open [GNU GPL V3.0 license](/LICENSE.md).
