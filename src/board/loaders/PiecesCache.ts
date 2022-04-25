@@ -54,7 +54,4 @@ const PiecesCache = {
   },
 };
 
-// @ts-ignore
-window.PiecesCache = PiecesCache;
-
 export default PiecesCache;

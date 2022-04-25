@@ -190,18 +190,12 @@ class Player {
     await this.board.frame(position, this.game.header);
     this.board.render();
 
-    if (window.speechSynthesis) {
-      if (this.ply > 0 && state.siteConfig.speech) {
+    if (window.speechSynthesis && state.siteConfig.speech) {
+      if (this.ply > 0) {
         this.speech.say(sanToText(position.move?.san as string));
       }
 
-      if (this.ply > 0 && state.siteConfig.sounds) {
-        state.boardConfig.piecesStyle.includes("anarchy")
-          ? this.playAnarchySFX(position)
-          : this.playSFX(position);
-      }
-
-      if (position.end === 0 && state.siteConfig.speech) {
+      if (position.end === 0) {
         const result = this.game.header.Result;
         if (result) {
           this.speech.say(
@@ -213,6 +207,12 @@ class Player {
           );
         }
       }
+    }
+
+    if (this.ply > 0 && state.siteConfig.sounds) {
+      state.boardConfig.piecesStyle.includes("anarchy")
+        ? this.playAnarchySFX(position)
+        : this.playSFX(position);
     }
   }
 
