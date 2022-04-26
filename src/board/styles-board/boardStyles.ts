@@ -65,6 +65,10 @@ import wood5 from "./pic/wood5";
 import wood6 from "./pic/wood6";
 import wood7 from "./pic/wood7";
 import wood8 from "./pic/wood8";
+import lines_parchment from "./pic/lines_parchment";
+import lines_alabaster from "./pic/lines_alabaster";
+import lines_paper from "./pic/lines_paper";
+import lines_cardboard from "./pic/lines_cardboard";
 
 const boardStyles = {
   standard,
@@ -133,6 +137,10 @@ const boardStyles = {
   wood6,
   wood7,
   wood8,
+  lines_parchment,
+  lines_alabaster,
+  lines_paper,
+  lines_cardboard,
 };
 
 const boardNames = Object.keys(boardStyles);
