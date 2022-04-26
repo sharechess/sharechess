@@ -9,6 +9,7 @@ const PGN_KEYS_TO_SHORT = {
   Date: "D",
   Result: "R",
   FEN: "F",
+  SetUp: "SU",
   WhiteElo: "WE",
   BlackElo: "BE",
 };
