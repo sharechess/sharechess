@@ -92,7 +92,7 @@
 | ------------------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------- | ------------------------------------------------------------- |
 | [fonts/Chess.ttf ](fonts/Chess.ttf)                    | Alastair Scott                             | "freeware"                                                     | [dafont.com](https://www.dafont.com/chess.font)               |
 | [fonts/FiraMono-Medium.ttf](fonts/FiraMono-Medium.ttf) | The Mozilla Foundation and Telefonica S.A. | [OFL-1.1](https://github.com/mozilla/Fira/blob/master/LICENSE) | [github.com](https://github.com/mozilla/Fira/tree/master/ttf) |
-| [fonts/Ubuntu-Bold.ttf ](fonts/Ubuntu-Bold.ttf)        | Canonical Ltd.                             | [UFL v1.0](fonts/ULF.txt)                                      | [ubuntu.com](https://design.ubuntu.com/font/)                 |
+| [fonts/Ubuntu-Bold.ttf ](fonts/Ubuntu-Bold.ttf)        | Canonical Ltd.                             | [UFL v1.0](fonts/UFL.txt)                                      | [ubuntu.com](https://design.ubuntu.com/font/)                 |
 | [fonts/Ubuntu-Medium.ttf ](fonts/Ubuntu-Medium.ttf)    | Canonical Ltd.                             | [UFL v1.0](fonts/UFL.txt)                                      | [ubuntu.com](https://design.ubuntu.com/font/)                 |
 
 ## Other
