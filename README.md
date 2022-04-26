@@ -23,6 +23,10 @@ For development:
 
 Preview of the current dev version is available here: [https://sharechess-dev.netlify.app/](sharechess-dev.netlify.app)
 
+## Contributors
+
+[![GitHub contributors](https://contrib.rocks/image?repo=sharechess/sharechess)](https://github.com/sharechess/sharechess/graphs/contributors)
+
 ## License
 
 The project is under open [GNU GPL V3.0 license](/LICENSE.md).
