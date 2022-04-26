@@ -26,3 +26,5 @@ Preview of the current dev version is available here: [https://sharechess-dev.ne
 ## License
 
 The project is under open [GNU GPL V3.0 license](/LICENSE.md).
+
+Some of the assets are under separate licenses. Full list of credits, copyrights and licenses is located here: [CREDITS](/public/CREDITS.md).
