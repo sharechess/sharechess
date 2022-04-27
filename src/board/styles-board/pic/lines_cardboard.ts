@@ -32,8 +32,8 @@ const style: Style = {
   },
   coords: {
     onLight: "#0000007f",
-    onDark: "#00000099",
-    onBorder: "#00000099",
+    onDark: "#000000bb",
+    onBorder: "#000000bb",
   },
   ico: "/textures/cardboard_ico.png",
 };
