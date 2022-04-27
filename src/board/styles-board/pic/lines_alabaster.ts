@@ -5,7 +5,7 @@ const style: Style = {
   background: {
     type: "solid",
     data: {
-      color: "transparent",
+      color: "#EDEDED",
     },
   },
   dark: {
@@ -27,7 +27,7 @@ const style: Style = {
   border: {
     type: "solid",
     data: {
-      color: "#EDEDED",
+      color: "#dcdcdc",
     },
   },
   coords: {
