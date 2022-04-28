@@ -1,3 +1,11 @@
+/* ==UserStyle==
+@name           Anarchy Sepia chess set
+@namespace      chess.com
+@version        1.0.0
+@description    Chess set for chess.com
+@author         Maciej Caderek
+==/UserStyle== */
+
 @-moz-document domain("chess.com") {
   .piece.bb,
   .promotion-piece.bb {
