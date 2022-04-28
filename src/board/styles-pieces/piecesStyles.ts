@@ -1,10 +1,10 @@
 const piecesStyles = [
   "adventurer",
-  "alfonso-x",
+  "alfonso_x",
   "alpha",
   "anarchy",
-  "anarchy-candy",
-  "anarchy-sepia",
+  "anarchy_candy",
+  "anarchy_sepia",
   "berlin",
   "california",
   "cardinal",
