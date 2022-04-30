@@ -1,7 +1,6 @@
-import { Header, Style } from "../../types";
+import { Header, LoadImage, Style } from "../../types";
 import drawRectangle from "./drawRectangle";
 import drawText from "./drawText";
-import loadImage from "../loaders/loadImage";
 
 const drawHeader = async (
   ctx: CanvasRenderingContext2D,
@@ -9,10 +8,19 @@ const drawHeader = async (
   scale: number,
   margin: number,
   style: Style,
-  data: Header
+  data: Header,
+  loadImage: LoadImage
 ) => {
   ctx.clearRect(0, 0, size, size);
-  await drawRectangle(ctx, size, size + margin * 2, 0, 0, style.border);
+  await drawRectangle(
+    ctx,
+    size,
+    size + margin * 2,
+    0,
+    0,
+    style.border,
+    loadImage
+  );
 
   const font = "Ubuntu";
 

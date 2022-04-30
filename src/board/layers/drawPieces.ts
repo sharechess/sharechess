@@ -1,6 +1,5 @@
-import { state } from "../../state";
-import { Position } from "../../types";
-import ImagesCache from "../loaders/PiecesCache";
+import { LoadImage, Position } from "../../types";
+import PiecesCache from "../loaders/PiecesCache";
 import { PiecesStyle } from "../styles-pieces/piecesStyles";
 
 const drawPieces = async (
@@ -11,7 +10,8 @@ const drawPieces = async (
   flipped: boolean,
   margin: number,
   piecesStyle: PiecesStyle,
-  shadow: boolean = true
+  shadow: boolean = true,
+  loadImage: LoadImage
 ) => {
   const { placement, check, mate, turn } = position;
   ctx.shadowColor = "rgba(0, 0, 0, 0)";
@@ -20,7 +20,7 @@ const drawPieces = async (
   ctx.shadowOffsetY = 0;
 
   for (const { x, y, type, color } of placement) {
-    const img = await ImagesCache.get(piecesStyle, type, color);
+    const img = await PiecesCache.get(piecesStyle, type, color, loadImage);
     const rank = flipped ? 8 - 1 - y : y;
     const file = flipped ? 8 - 1 - x : x;
 
@@ -28,7 +28,7 @@ const drawPieces = async (
       const hex = mate ? "#ff002f" : "#ffa600";
 
       ctx.shadowColor = hex;
-      ctx.shadowBlur = squareSize * (state.mobile ? 0.15 : 0.15);
+      ctx.shadowBlur = squareSize * 0.15;
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       ctx.drawImage(

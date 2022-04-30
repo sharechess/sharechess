@@ -4,3 +4,5 @@ dist
 dist-ssr
 *.local
 _release_assets
+*/**/*.temp.*
+*.temp.*

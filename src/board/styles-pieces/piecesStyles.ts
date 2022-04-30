@@ -11,6 +11,7 @@ const piecesStyles = [
   "cardinal",
   "cases",
   "cburnett",
+  "checkers",
   "chess7",
   "chessnut",
   "companion",

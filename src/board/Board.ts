@@ -1,5 +1,13 @@
-import { BoardConfig, Header, Position } from "./../types";
-import { Style, BoardStyle } from "../types";
+import {
+  BoardConfig,
+  CreateCanvas,
+  Header,
+  LoadImage,
+  Position,
+  Style,
+  BoardStyle,
+} from "./../types";
+// @ts-ignore
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
@@ -9,6 +17,7 @@ import drawExtraInfo from "./layers/drawExtraInfo";
 import boards from "./styles-board/boardStyles";
 import isLink from "../utils/isLink";
 import { PiecesStyle } from "./styles-pieces/piecesStyles";
+import loadImageBrowser from "./loaders/loadImage";
 
 const defaultConfig: BoardConfig = {
   size: 720,
@@ -62,13 +71,19 @@ class Board {
   private ctx: CanvasRenderingContext2D;
   private tempCtx: CanvasRenderingContext2D;
 
-  private tempCanvas: HTMLCanvasElement = document.createElement("canvas");
-  public canvas: HTMLCanvasElement = document.createElement("canvas");
+  private tempCanvas: HTMLCanvasElement;
+  public canvas: HTMLCanvasElement;
 
-  constructor(config: Partial<BoardConfig> = {}) {
+  constructor(
+    config: Partial<BoardConfig> = {},
+    private loadImage: LoadImage = loadImageBrowser,
+    private createCanvas: CreateCanvas = () => document.createElement("canvas")
+  ) {
+    this.canvas = this.createCanvas();
+    this.tempCanvas = this.createCanvas();
+
     const ctx = this.canvas.getContext("2d");
     const tempCtx = this.tempCanvas.getContext("2d");
-    this.canvas.classList.add("board");
 
     if (ctx === null || tempCtx === null) {
       throw new Error("Cannot create canvas 2D context");
@@ -94,7 +109,7 @@ class Board {
     this.cfg = cfg;
 
     this.setSize(cfg.size);
-    this.setStyle(cfg.boardStyle);
+    this.setStyle(cfg.boardStyle, refresh);
 
     if (refresh) {
       await this.refresh();
@@ -151,10 +166,12 @@ class Board {
     this.borderScale = scale;
   }
 
-  setStyle(style: BoardStyle) {
+  setStyle(style: BoardStyle, refresh: boolean = true) {
     this.style = boards[style];
     this.cfg.boardStyle = style;
-    this.refresh();
+    if (refresh) {
+      this.refresh();
+    }
     return this;
   }
 
@@ -252,12 +269,13 @@ class Board {
       this.scale,
       this.margin,
       this.style,
-      this.getFinalHeader()
+      this.getFinalHeader(),
+      this.loadImage
     );
   }
 
   async renderBackground() {
-    const canvas = document.createElement("canvas");
+    const canvas = this.createCanvas();
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     canvas.width = this.size;
@@ -265,7 +283,19 @@ class Board {
 
     const { background, dark, light, border, coords } = this.style;
 
-    await drawRectangle(ctx, this.width, this.height, 0, 0, border);
+    ctx.clearRect(0, 0, this.size, this.size);
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(0, 0, this.size, this.size);
+
+    await drawRectangle(
+      ctx,
+      this.width,
+      this.height,
+      0,
+      0,
+      border,
+      this.loadImage
+    );
 
     await drawRectangle(
       ctx,
@@ -274,6 +304,7 @@ class Board {
       this.cfg.showBorder ? this.borderWidth : 0,
       (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
       background,
+      this.loadImage,
       this.cfg.tiles
     );
 
@@ -288,7 +319,15 @@ class Board {
         const x = file * this.squareSize + this.borderWidth;
         const y = rank * this.squareSize + this.borderWidth + this.margin;
 
-        await drawRectangle(ctx, this.squareSize, this.squareSize, x, y, style);
+        await drawRectangle(
+          ctx,
+          this.squareSize,
+          this.squareSize,
+          x,
+          y,
+          style,
+          this.loadImage
+        );
       }
     }
 
@@ -306,6 +345,7 @@ class Board {
       );
     }
 
+    console.log("Background rendered!");
     this.background = canvas;
   }
 
@@ -331,7 +371,8 @@ class Board {
         this.borderWidth,
         this.cfg.tiles,
         this.cfg.flipped,
-        this.margin
+        this.margin,
+        this.loadImage
       );
     }
 
@@ -361,7 +402,8 @@ class Board {
       this.cfg.flipped,
       this.margin,
       this.cfg.piecesStyle,
-      this.cfg.showShadows
+      this.cfg.showShadows,
+      this.loadImage
     );
 
     if (this.cfg.showExtraInfo && header) {
@@ -382,6 +424,55 @@ class Board {
   render() {
     this.ctx.clearRect(0, 0, this.size, this.size);
     this.ctx.drawImage(this.tempCanvas, 0, 0);
+  }
+
+  async renderStatic() {
+    this.ctx.clearRect(0, 0, this.size, this.size);
+    const { background, dark, light, border } = this.style;
+
+    drawRectangle(
+      this.ctx,
+      this.width,
+      this.height,
+      0,
+      0,
+      border,
+      this.loadImage
+    );
+
+    drawRectangle(
+      this.ctx,
+      this.innerSize,
+      this.innerSize,
+      this.cfg.showBorder ? this.borderWidth : 0,
+      (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
+      background,
+      this.loadImage,
+      this.cfg.tiles
+    );
+
+    for (let rank = 0; rank < this.cfg.tiles; rank++) {
+      for (let file = 0; file < this.cfg.tiles; file++) {
+        const style =
+          (file % 2 === 0 && rank % 2 === 0) ||
+          (file % 2 !== 0 && rank % 2 !== 0)
+            ? light
+            : dark;
+
+        const x = file * this.squareSize + this.borderWidth;
+        const y = rank * this.squareSize + this.borderWidth + this.margin;
+
+        drawRectangle(
+          this.ctx,
+          this.squareSize,
+          this.squareSize,
+          x,
+          y,
+          style,
+          this.loadImage
+        );
+      }
+    }
   }
 
   toImgUrl() {

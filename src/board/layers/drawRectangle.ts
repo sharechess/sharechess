@@ -1,6 +1,5 @@
-import { SquareStyle } from "../../types";
+import { LoadImage, SquareStyle } from "../../types";
 import createGradient from "../fill/createGradient";
-import loadImage from "../loaders/loadImage";
 
 const drawRectangle = async (
   ctx: CanvasRenderingContext2D,
@@ -9,6 +8,7 @@ const drawRectangle = async (
   x: number,
   y: number,
   squareStyle: SquareStyle,
+  loadImage: LoadImage,
   tiles: number = 8
 ) => {
   if (squareStyle.type === "image") {

@@ -1,4 +1,4 @@
-import { Solid } from "./../../types";
+import { Solid, LoadImage } from "./../../types";
 import { Move } from "chess.js";
 import { Style, SquareStyle } from "../../types";
 import drawRectangle from "./drawRectangle";
@@ -21,7 +21,8 @@ const drawMoveIndicators = async (
   borderWidth: number,
   tiles: number,
   flipped: boolean,
-  margin: number
+  margin: number,
+  loadImage: LoadImage
 ) => {
   const [x0, y0] = notationToXY(move.from, flipped, tiles);
   const [x1, y1] = notationToXY(move.to, flipped, tiles);
@@ -62,8 +63,24 @@ const drawMoveIndicators = async (
     toStyle = fromStyle;
   }
 
-  drawRectangle(ctx, squareSize, squareSize, fromX, fromY + margin, fromStyle);
-  drawRectangle(ctx, squareSize, squareSize, toX, toY + margin, toStyle);
+  drawRectangle(
+    ctx,
+    squareSize,
+    squareSize,
+    fromX,
+    fromY + margin,
+    fromStyle,
+    loadImage
+  );
+  drawRectangle(
+    ctx,
+    squareSize,
+    squareSize,
+    toX,
+    toY + margin,
+    toStyle,
+    loadImage
+  );
 };
 
 export default drawMoveIndicators;

@@ -15,7 +15,7 @@
     "noImplicitReturns": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["vite/client"]
+    "types": ["vite/client", "node"]
   },
   "include": ["./src", "public/gif.worker.js", "public/gif.worker.js"]
 }

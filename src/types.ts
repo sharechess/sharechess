@@ -205,3 +205,7 @@ export type Header = {
   Site: string | null;
   Result: string | null;
 };
+
+export type LoadImage = (src: string) => Promise<HTMLImageElement>;
+
+export type CreateCanvas = () => HTMLCanvasElement;
