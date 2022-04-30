@@ -48,9 +48,10 @@ export type Coords = {
 
 export type SquareStyle = Gradient | Solid | Image;
 
-export type MoveIndicator =
-  | { type: "hueShift"; data: number }
-  | { type: "color"; data: string };
+export type MoveIndicator = {
+  hueShift: number;
+  color: string;
+};
 
 export type StyleCategory = "solid" | "gradient" | "pic" | "custom";
 

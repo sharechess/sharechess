@@ -34,12 +34,12 @@ const drawMoveIndicators = async (
   let fromStyle;
   let toStyle;
 
-  if (moveIndicator.type === "hueShift") {
+  if (moveIndicator.hueShift !== 0) {
     const newLight: Solid = {
       type: "solid",
       data: {
         color: light.data.color
-          ? changeHSL(light.data.color, moveIndicator.data)
+          ? changeHSL(light.data.color, moveIndicator.hueShift)
           : "#00ff0055",
       },
     };
@@ -48,7 +48,7 @@ const drawMoveIndicators = async (
       type: "solid",
       data: {
         color: dark.data.color
-          ? changeHSL(dark.data.color, moveIndicator.data)
+          ? changeHSL(dark.data.color, moveIndicator.hueShift)
           : "#00ff0055",
       },
     };
@@ -58,7 +58,7 @@ const drawMoveIndicators = async (
   } else {
     fromStyle = {
       type: "solid",
-      data: { color: moveIndicator.data },
+      data: { color: moveIndicator.color },
     } as SquareStyle;
     toStyle = fromStyle;
   }
