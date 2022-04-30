@@ -5,7 +5,7 @@ import { CreateCanvas, LoadImage } from "../src/types";
 import boardStyles from "../src/board/styles-board/boardStyles";
 import fs from "fs";
 
-const size = 1024;
+const size = 128;
 const OUT_DIR = "public/boards";
 
 const main = async () => {
