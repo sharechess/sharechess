@@ -111,12 +111,10 @@ class Player {
   }
 
   playAnarchySFX(position: Position) {
-    if (position.mate) {
-      sfx.death.play();
-    }
-
     if (position.move?.flags && position.move.flags.includes("e")) {
       sfx.enPassant.play();
+    } else if (position.mate) {
+      sfx.death.play();
     }
 
     if (position.move?.flags && position.move.flags.includes("p")) {

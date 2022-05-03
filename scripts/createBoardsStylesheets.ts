@@ -4,9 +4,10 @@ import Board from "../src/board/Board";
 import { CreateCanvas, LoadImage } from "../src/types";
 import boardStyles from "../src/board/styles-board/boardStyles";
 import fs from "fs";
+import imagemin from "imagemin";
+import imageminPngquant from "imagemin-pngquant";
 
 const size = 1200;
-// const OUT_DIR = "public/boards";
 const OUT_DIR_LICHESS = "public/stylus/lichess/boards";
 const OUT_DIR_CHESSCOM = "public/stylus/chesscom/boards";
 
@@ -34,6 +35,9 @@ const ChesscomStylesheet = (
 };
 
 const main = async () => {
+  // const imagemin = await import("imagemin");
+  // console.log(imagemin);
+
   if (!fs.existsSync(OUT_DIR_CHESSCOM)) {
     fs.mkdirSync(OUT_DIR_CHESSCOM, { recursive: true });
   }
@@ -53,6 +57,8 @@ const main = async () => {
       .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
       .join(" ");
 
+    const styleObj = boardStyles[boardStyle as BoardStyle];
+
     const board = new Board(
       {
         size,
@@ -67,12 +73,22 @@ const main = async () => {
 
     await board.renderStatic();
     // @ts-ignore
-    // const image = board.canvas.toBuffer();
+    const image = board.canvas.toBuffer();
+    const minified =
+      styleObj.category === "gradient" // Don't minify gradients, as it results in a BIGGER file
+        ? image
+        : await imagemin.buffer(image, {
+            plugins: [imageminPngquant({ quality: [0.7, 0.9] })],
+          });
+
+    // fs.writeFileSync(`${OUT_DIR_CHESSCOM}/${boardStyle}.min.png`, minified);
+
+    const imgURL = `data:image/png;base64,${minified.toString("base64")}`;
 
     const chesscomStylesheet = ChesscomStylesheet(
-      board.toImgUrl(),
+      imgURL,
       boardNamePretty,
-      boardStyles[boardStyle as BoardStyle]
+      styleObj
     );
 
     fs.writeFileSync(

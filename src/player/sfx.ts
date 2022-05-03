@@ -23,7 +23,7 @@ const sfx = {
   }),
   enPassant: new Howl({
     src: ["/sfx/anarchy/en-passant.mp3"],
-    volume: 0.2,
+    volume: 0.5,
   }),
   horsyMove: new Howl({
     src: ["/sfx/anarchy/horsy-move.mp3"],
