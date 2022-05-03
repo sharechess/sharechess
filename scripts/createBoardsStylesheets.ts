@@ -1,5 +1,5 @@
 import { BoardStyle, Style } from "./../src/types";
-import { loadImage, createCanvas } from "canvas";
+import { loadImage, createCanvas, Canvas } from "canvas";
 import Board from "../src/board/Board";
 import { CreateCanvas, LoadImage } from "../src/types";
 import boardStyles from "../src/board/styles-board/boardStyles";
@@ -8,8 +8,32 @@ import imagemin from "imagemin";
 import imageminPngquant from "imagemin-pngquant";
 
 const size = 1200;
-const OUT_DIR_LICHESS = "public/stylus/lichess/boards";
-const OUT_DIR_CHESSCOM = "public/stylus/chesscom/boards";
+const OUT_DIR = "public/stylus/boards";
+
+const LichessStylesheet = (
+  dataURL: string,
+  boardName: string,
+  style: Style
+) => {
+  return `
+    /* ==UserStyle==
+    @name           Lichess ${boardName} chessboard
+    @namespace      lichess.org
+    @version        1.0.0
+    @description    Chessboard for lichess.org
+    @author         sharechess.github.io
+    ==/UserStyle== */
+
+    @-moz-document domain("lichess.org") {
+      .is2d cg-board {background-image: url(${dataURL}) !important}
+      .is2d coords {
+        --cg-ccw: ${style.coords.onDark} !important;
+        --cg-ccb: ${style.coords.onLight} !important;
+      }
+      square.last-move {background-color: ${style.moveIndicator.color} !important}
+    }
+  `;
+};
 
 const ChesscomStylesheet = (
   dataURL: string,
@@ -18,10 +42,10 @@ const ChesscomStylesheet = (
 ) => {
   return `
     /* ==UserStyle==
-    @name           ${boardName} chess set
+    @name           Chess.com ${boardName} chessboard
     @namespace      chess.com
     @version        1.0.0
-    @description    Chess set for chess.com
+    @description    Chessboard for chess.com
     @author         sharechess.github.io
     ==/UserStyle== */
 
@@ -35,15 +59,8 @@ const ChesscomStylesheet = (
 };
 
 const main = async () => {
-  // const imagemin = await import("imagemin");
-  // console.log(imagemin);
-
-  if (!fs.existsSync(OUT_DIR_CHESSCOM)) {
-    fs.mkdirSync(OUT_DIR_CHESSCOM, { recursive: true });
-  }
-
-  if (!fs.existsSync(OUT_DIR_LICHESS)) {
-    fs.mkdirSync(OUT_DIR_LICHESS, { recursive: true });
+  if (!fs.existsSync(OUT_DIR)) {
+    fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
   const create = () => createCanvas(size, size);
@@ -72,8 +89,7 @@ const main = async () => {
     );
 
     await board.renderStatic();
-    // @ts-ignore
-    const image = board.canvas.toBuffer();
+    const image = (board.canvas as unknown as Canvas).toBuffer();
     const minified =
       styleObj.category === "gradient" // Don't minify gradients, as it results in a BIGGER file
         ? image
@@ -83,6 +99,12 @@ const main = async () => {
 
     const imgURL = `data:image/png;base64,${minified.toString("base64")}`;
 
+    const lichessStylesheet = LichessStylesheet(
+      imgURL,
+      boardNamePretty,
+      styleObj
+    );
+
     const chesscomStylesheet = ChesscomStylesheet(
       imgURL,
       boardNamePretty,
@@ -90,7 +112,12 @@ const main = async () => {
     );
 
     fs.writeFileSync(
-      `${OUT_DIR_CHESSCOM}/${boardStyle}.user.css`,
+      `${OUT_DIR}/${boardStyle}_lichess.user.css`,
+      lichessStylesheet
+    );
+
+    fs.writeFileSync(
+      `${OUT_DIR}/${boardStyle}_chesscom.user.css`,
       chesscomStylesheet
     );
   }

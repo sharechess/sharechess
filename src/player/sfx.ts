@@ -19,7 +19,7 @@ const sfx = {
   }),
   rewind: new Howl({
     src: ["/sfx/rewind.mp3"],
-    volume: 0.2,
+    volume: 1,
   }),
   enPassant: new Howl({
     src: ["/sfx/anarchy/en-passant.mp3"],

@@ -6,7 +6,10 @@
     "start": "vite --host",
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gen:styles": "npm run gen:styles:boards && npm run gen:styles:pieces",
+    "gen:styles:boards": "ts-node scripts/createBoardsStylesheets.ts",
+    "gen:styles:pieces": "ts-node scripts/createPiecesStylesheets.ts"
   },
   "devDependencies": {
     "@types/chess.js": "^0.11.2",
@@ -15,6 +18,7 @@
     "@types/hammerjs": "^2.0.41",
     "@types/howler": "^2.2.6",
     "@types/imagemin": "^8.0.0",
+    "@types/mime": "^2.0.3",
     "@types/node": "^17.0.30",
     "@types/ua-parser-js": "^0.7.36",
     "@vitejs/plugin-legacy": "^1.8.1",
@@ -23,6 +27,7 @@
     "imagemin-pngquant": "^9.0.2",
     "mime": "^3.0.0",
     "npm": "^8.8.0",
+    "ts-node": "^10.7.0",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vite-plugin-solid": "^2.2.5"
