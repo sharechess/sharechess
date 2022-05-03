@@ -81,8 +81,6 @@ const main = async () => {
             plugins: [imageminPngquant({ quality: [0.7, 0.9] })],
           });
 
-    // fs.writeFileSync(`${OUT_DIR_CHESSCOM}/${boardStyle}.min.png`, minified);
-
     const imgURL = `data:image/png;base64,${minified.toString("base64")}`;
 
     const chesscomStylesheet = ChesscomStylesheet(
