@@ -31,37 +31,10 @@ const drawMoveIndicators = async (
     (v) => v * squareSize + borderWidth
   );
 
-  let fromStyle;
-  let toStyle;
-
-  if (moveIndicator.hueShift !== 0) {
-    const newLight: Solid = {
-      type: "solid",
-      data: {
-        color: light.data.color
-          ? changeHSL(light.data.color, moveIndicator.hueShift)
-          : "#00ff0055",
-      },
-    };
-
-    const newDark: Solid = {
-      type: "solid",
-      data: {
-        color: dark.data.color
-          ? changeHSL(dark.data.color, moveIndicator.hueShift)
-          : "#00ff0055",
-      },
-    };
-
-    fromStyle = (x0 + y0) % 2 === 0 ? newLight : newDark;
-    toStyle = (x1 + y1) % 2 === 0 ? newLight : newDark;
-  } else {
-    fromStyle = {
-      type: "solid",
-      data: { color: moveIndicator.color },
-    } as SquareStyle;
-    toStyle = fromStyle;
-  }
+  const style = {
+    type: "solid",
+    data: { color: moveIndicator.color },
+  } as SquareStyle;
 
   drawRectangle(
     ctx,
@@ -69,7 +42,7 @@ const drawMoveIndicators = async (
     squareSize,
     fromX,
     fromY + margin,
-    fromStyle,
+    style,
     loadImage
   );
   drawRectangle(
@@ -78,7 +51,7 @@ const drawMoveIndicators = async (
     squareSize,
     toX,
     toY + margin,
-    toStyle,
+    style,
     loadImage
   );
 };

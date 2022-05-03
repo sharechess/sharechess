@@ -27,7 +27,6 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    hueShift: 0,
     color: "#ff770055",
   },
   border: {
