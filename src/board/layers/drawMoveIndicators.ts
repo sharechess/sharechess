@@ -1,8 +1,7 @@
-import { Solid, LoadImage } from "./../../types";
+import { LoadImage } from "./../../types";
 import { Move } from "chess.js";
 import { Style, SquareStyle } from "../../types";
 import drawRectangle from "./drawRectangle";
-import { changeHSL } from "../../utils/colors";
 
 const FILES = "abcdefghijklmnopqrstuwvxyz";
 
@@ -17,7 +16,7 @@ const drawMoveIndicators = async (
   ctx: CanvasRenderingContext2D,
   move: Move,
   squareSize: number,
-  { dark, light, moveIndicator }: Style,
+  { moveIndicator }: Style,
   borderWidth: number,
   tiles: number,
   flipped: boolean,
