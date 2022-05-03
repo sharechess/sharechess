@@ -21,8 +21,8 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    hueShift: 30,
-    color: "#",
+    hueShift: 0,
+    color: "#7b00ff33",
   },
   border: {
     type: "solid",

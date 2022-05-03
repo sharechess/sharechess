@@ -49,7 +49,7 @@ export type Coords = {
 export type SquareStyle = Gradient | Solid | Image;
 
 export type MoveIndicator = {
-  hueShift: number;
+  hueShift: 0;
   color: string;
 };
 

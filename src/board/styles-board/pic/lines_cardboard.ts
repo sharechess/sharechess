@@ -22,7 +22,7 @@ const style: Style = {
   },
   moveIndicator: {
     hueShift: 0,
-    color: "#55ff0022",
+    color: "#1c67c933",
   },
   border: {
     type: "image",
@@ -32,8 +32,8 @@ const style: Style = {
   },
   coords: {
     onLight: "#0000007f",
-    onDark: "#000000bb",
-    onBorder: "#000000bb",
+    onDark: "#00000099",
+    onBorder: "#00000099",
   },
   ico: "/textures/cardboard_ico.png",
 };
