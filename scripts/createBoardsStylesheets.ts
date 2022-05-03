@@ -8,6 +8,7 @@ import imagemin from "imagemin";
 import imageminPngquant from "imagemin-pngquant";
 
 const size = 1200;
+const icoSize = 256;
 const OUT_DIR = "public/stylus/boards";
 
 const LichessStylesheet = (
@@ -17,7 +18,7 @@ const LichessStylesheet = (
 ) => {
   return `
     /* ==UserStyle==
-    @name           Lichess ${boardName} chessboard
+    @name           Lichess ${boardName} board
     @namespace      lichess.org
     @version        1.0.0
     @description    Chessboard for lichess.org
@@ -42,7 +43,7 @@ const ChesscomStylesheet = (
 ) => {
   return `
     /* ==UserStyle==
-    @name           Chess.com ${boardName} chessboard
+    @name           Chess.com ${boardName} board
     @namespace      chess.com
     @version        1.0.0
     @description    Chessboard for chess.com
@@ -58,13 +59,45 @@ const ChesscomStylesheet = (
   `;
 };
 
+const create = () => createCanvas(size, size);
+const load = (src: string) => loadImage(`public${src}`);
+
+const createBoard = async (
+  size: number,
+  tiles: number,
+  boardStyle: string,
+  styleObj: Style
+) => {
+  const board = new Board(
+    {
+      size,
+      tiles,
+      showBorder: false,
+      showExtraInfo: false,
+      boardStyle: boardStyle as BoardStyle,
+    },
+    load as unknown as LoadImage,
+    create as unknown as CreateCanvas
+  );
+
+  await board.renderStatic();
+
+  const image = (board.canvas as unknown as Canvas).toBuffer();
+
+  const minified =
+    styleObj.category === "gradient" // Don't minify gradients, as it results in a BIGGER file
+      ? image
+      : await imagemin.buffer(image, {
+          plugins: [imageminPngquant({ quality: [0.7, 0.9] })],
+        });
+
+  return minified;
+};
+
 const main = async () => {
   if (!fs.existsSync(OUT_DIR)) {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
-
-  const create = () => createCanvas(size, size);
-  const load = (src: string) => loadImage(`public${src}`);
 
   for (const boardStyle of Object.keys(boardStyles)) {
     console.log(`Generating stylesheets for board: ${boardStyle}...`);
@@ -76,28 +109,10 @@ const main = async () => {
 
     const styleObj = boardStyles[boardStyle as BoardStyle];
 
-    const board = new Board(
-      {
-        size,
-        tiles: 8,
-        showBorder: false,
-        showExtraInfo: false,
-        boardStyle: boardStyle as BoardStyle,
-      },
-      load as unknown as LoadImage,
-      create as unknown as CreateCanvas
-    );
+    const board = await createBoard(size, 8, boardStyle, styleObj);
+    const ico = await createBoard(icoSize, 2, boardStyle, styleObj);
 
-    await board.renderStatic();
-    const image = (board.canvas as unknown as Canvas).toBuffer();
-    const minified =
-      styleObj.category === "gradient" // Don't minify gradients, as it results in a BIGGER file
-        ? image
-        : await imagemin.buffer(image, {
-            plugins: [imageminPngquant({ quality: [0.7, 0.9] })],
-          });
-
-    const imgURL = `data:image/png;base64,${minified.toString("base64")}`;
+    const imgURL = `data:image/png;base64,${board.toString("base64")}`;
 
     const lichessStylesheet = LichessStylesheet(
       imgURL,
@@ -120,6 +135,8 @@ const main = async () => {
       `${OUT_DIR}/${boardStyle}_chesscom.user.css`,
       chesscomStylesheet
     );
+
+    fs.writeFileSync(`${OUT_DIR}/${boardStyle}_ico.png`, ico);
   }
 };
 
