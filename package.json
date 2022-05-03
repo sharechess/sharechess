@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite --host",
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "npm run gen:styles && vite build",
     "preview": "vite preview",
     "gen:styles": "npm run gen:styles:boards && npm run gen:styles:pieces",
     "gen:styles:boards": "ts-node scripts/createBoardsStylesheets.ts",

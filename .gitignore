@@ -7,3 +7,4 @@ _release_assets
 */**/*.temp.*
 *.temp.*
 temp
+public/stylus
