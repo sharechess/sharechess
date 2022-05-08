@@ -323,6 +323,61 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           </button>
         </div>
       </Show>
+      <Show
+        when={
+          !state.mobile &&
+          ["Chrome", "Firefox", "Opera"].includes(state.browser as string)
+        }
+      >
+        <hr />
+        <h2>
+          Install this style via{" "}
+          <a
+            href={
+              state.browser === "Chrome"
+                ? "https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne"
+                : state.browser === "Firefox"
+                ? "https://addons.mozilla.org/pl/firefox/addon/styl-us/"
+                : "https://addons.opera.com/pl/extensions/details/stylus/"
+            }
+            target="_blank"
+          >
+            Stylus
+          </a>
+        </h2>
+        <p class="stylus">
+          Pieces:{" "}
+          <a
+            href={`stylus/pieces/${state.boardConfig.piecesStyle}_lichess.user.css`}
+            target="_blank"
+          >
+            lichess.org
+          </a>
+          <span className="delimiter"> | </span>
+          <a
+            href={`stylus/pieces/${state.boardConfig.piecesStyle}_chesscom.user.css`}
+            target="_blank"
+          >
+            chess.com
+          </a>
+        </p>
+        <p class="stylus">
+          Board: &nbsp;
+          <a
+            href={`stylus/boards/${state.boardConfig.boardStyle}_lichess.user.css`}
+            target="_blank"
+          >
+            lichess.org
+          </a>
+          <span className="delimiter"> | </span>
+          <a
+            href={`stylus/boards/${state.boardConfig.boardStyle}_chesscom.user.css`}
+            target="_blank"
+          >
+            chess.com
+          </a>
+        </p>
+      </Show>
     </Scrollable>
   );
 };

@@ -85,3 +85,15 @@
 .rotated {
   transform: rotate(180deg);
 }
+
+.stylus {
+  text-align: left;
+  font-size: 1.4rem;
+  margin-left: 1.5rem;
+  color: var(--color-text);
+  font-family: "Fira Mono", monospace;
+}
+
+.delimiter {
+  color: var(--color-highlight);
+}
