@@ -22,7 +22,7 @@ const PGN_KEYS_TO_LONG = Object.fromEntries(
 
 const cleanPGN = (pgn: string) => {
   const game = new Chess();
-  game.load_pgn(pgn);
+  game.load_pgn(pgn, { sloppy: true });
   game.delete_comments();
 
   if (!game.header().Result) {
