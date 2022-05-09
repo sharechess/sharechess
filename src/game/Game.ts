@@ -29,7 +29,7 @@ class Game {
     const game = new Chess();
     const replay = new Chess();
 
-    game.load_pgn(cleanPGN(pgn), { sloppy: true });
+    game.load_pgn(cleanPGN(pgn));
     game.delete_comments();
 
     const moves = game.history({ verbose: true });

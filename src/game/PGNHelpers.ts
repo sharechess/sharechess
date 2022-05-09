@@ -9,6 +9,7 @@ const PGN_KEYS_TO_SHORT = {
   Date: "D",
   Result: "R",
   FEN: "F",
+  SetUp: "SU",
   WhiteElo: "WE",
   BlackElo: "BE",
 };
@@ -21,7 +22,7 @@ const PGN_KEYS_TO_LONG = Object.fromEntries(
 
 const cleanPGN = (pgn: string) => {
   const game = new Chess();
-  game.load_pgn(pgn, { sloppy: true });
+  game.load_pgn(pgn);
   game.delete_comments();
 
   if (!game.header().Result) {
