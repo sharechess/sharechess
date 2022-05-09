@@ -5,6 +5,7 @@ const piecesStyles = [
   // "anarcandy",
   "anarchy",
   "anarchy_candy",
+  "anarchy_fresh",
   "anarchy_sepia",
   "berlin",
   "california",

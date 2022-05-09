@@ -126,6 +126,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
             "share__size--active": state.gameConfig.picSize === "XS",
           }}
           onClick={() => setState("gameConfig", "picSize", "XS")}
+          title="360px"
         >
           XS
         </button>
@@ -135,6 +136,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
             "share__size--active": state.gameConfig.picSize === "S",
           }}
           onClick={() => setState("gameConfig", "picSize", "S")}
+          title="512px"
         >
           S
         </button>
@@ -144,6 +146,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
             "share__size--active": state.gameConfig.picSize === "M",
           }}
           onClick={() => setState("gameConfig", "picSize", "M")}
+          title="720px"
         >
           M
         </button>
@@ -153,6 +156,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
             "share__size--active": state.gameConfig.picSize === "L",
           }}
           onClick={() => setState("gameConfig", "picSize", "L")}
+          title="1024px"
         >
           L
         </button>
@@ -163,6 +167,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
             "share__size--active": state.gameConfig.picSize === "XL",
           }}
           onClick={() => setState("gameConfig", "picSize", "XL")}
+          title="1440px"
         >
           XL
         </button>
@@ -242,6 +247,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               "share__size--active": state.gameConfig.animationSize === "XS",
             }}
             onClick={() => setState("gameConfig", "animationSize", "XS")}
+            title="360px"
           >
             XS
           </button>
@@ -251,6 +257,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               "share__size--active": state.gameConfig.animationSize === "S",
             }}
             onClick={() => setState("gameConfig", "animationSize", "S")}
+            title="512px"
           >
             S
           </button>
@@ -260,6 +267,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               "share__size--active": state.gameConfig.animationSize === "M",
             }}
             onClick={() => setState("gameConfig", "animationSize", "M")}
+            title="720px"
           >
             M
           </button>
@@ -269,6 +277,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               "share__size--active": state.gameConfig.animationSize === "L",
             }}
             onClick={() => setState("gameConfig", "animationSize", "L")}
+            title="1024px"
           >
             L
           </button>
@@ -279,6 +288,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
               "share__size--active": state.gameConfig.animationSize === "XL",
             }}
             onClick={() => setState("gameConfig", "animationSize", "XL")}
+            title="1440px"
           >
             XL
           </button>
@@ -350,13 +360,15 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           <a
             href={`stylus/pieces/${state.boardConfig.piecesStyle}_lichess.user.css`}
             target="_blank"
+            title="Install"
           >
-            lichess.org
+            lichess
           </a>
           <span className="delimiter"> | </span>
           <a
             href={`stylus/pieces/${state.boardConfig.piecesStyle}_chesscom.user.css`}
             target="_blank"
+            title="Install"
           >
             chess.com
           </a>
@@ -366,13 +378,15 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           <a
             href={`stylus/boards/${state.boardConfig.boardStyle}_lichess.user.css`}
             target="_blank"
+            title="Install"
           >
-            lichess.org
+            lichess
           </a>
           <span className="delimiter"> | </span>
           <a
             href={`stylus/boards/${state.boardConfig.boardStyle}_chesscom.user.css`}
             target="_blank"
+            title="Install"
           >
             chess.com
           </a>
