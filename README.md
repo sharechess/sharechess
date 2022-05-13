@@ -2,7 +2,7 @@
 
 This repo contains the source code for [sharechess.github.io](https://sharechess.github.io/).
 
-![Screenshot](/public/img/screenshot.png)
+![Screenshot](/public/img/preview/screenshot.png)
 
 ## About
 
