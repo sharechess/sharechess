@@ -73,6 +73,10 @@ import grass1 from "./pic/grass1";
 import grass2 from "./pic/grass2";
 import grass3 from "./pic/grass3";
 import grass4 from "./pic/grass4";
+import asphalt1 from "./pic/asphalt1";
+import asphalt2 from "./pic/asphalt2";
+import asphalt3 from "./pic/asphalt3";
+import asphalt4 from "./pic/asphalt4";
 
 const boardStyles = {
   standard,
@@ -149,6 +153,10 @@ const boardStyles = {
   grass2,
   grass3,
   grass4,
+  asphalt1,
+  asphalt2,
+  asphalt3,
+  asphalt4,
 };
 
 const boardNames = Object.keys(boardStyles);

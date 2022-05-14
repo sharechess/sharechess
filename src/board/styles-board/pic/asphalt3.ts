@@ -5,7 +5,7 @@ const style: Style = {
   background: {
     type: "image",
     data: {
-      src: "/textures/grass01.jpg",
+      src: "/textures/asphalt_paint_white.png",
     },
   },
   dark: {
@@ -21,20 +21,20 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    color: "#0099bb22",
+    color: "#0055ff33",
   },
   border: {
     type: "image",
     data: {
-      src: "/textures/grass01_bg.jpg",
+      src: "/textures/asphalt_smooth_light.jpg",
     },
   },
   coords: {
-    onLight: "#090f0299",
-    onDark: "#d3ff9e99",
-    onBorder: "#d3ff9e99",
+    onLight: "#303136ee",
+    onDark: "#ffffffdd",
+    onBorder: "#ffffffdd",
   },
-  // ico: "/textures/grass01_ico.png",
+  ico: "/textures/asphalt03_ico.png",
 };
 
 export default style;
