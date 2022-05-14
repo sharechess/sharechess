@@ -77,6 +77,10 @@ import asphalt1 from "./pic/asphalt1";
 import asphalt2 from "./pic/asphalt2";
 import asphalt3 from "./pic/asphalt3";
 import asphalt4 from "./pic/asphalt4";
+import leather1 from "./pic/leather1";
+import leather2 from "./pic/leather2";
+import leather3 from "./pic/leather3";
+import leather4 from "./pic/leather4";
 
 const boardStyles = {
   standard,
@@ -157,6 +161,10 @@ const boardStyles = {
   asphalt2,
   asphalt3,
   asphalt4,
+  leather1,
+  leather2,
+  leather3,
+  leather4,
 };
 
 const boardNames = Object.keys(boardStyles);
