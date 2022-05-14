@@ -32,7 +32,7 @@ const style: Style = {
   coords: {
     onLight: "#262624ee",
     onDark: "#ffb30bee",
-    onBorder: "#ffb30bbee",
+    onBorder: "#ffb30bee",
   },
   ico: "/textures/asphalt02_ico.png",
 };
