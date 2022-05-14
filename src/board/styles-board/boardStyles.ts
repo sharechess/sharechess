@@ -69,6 +69,10 @@ import lines_parchment from "./pic/lines_parchment";
 import lines_alabaster from "./pic/lines_alabaster";
 import lines_paper from "./pic/lines_paper";
 import lines_cardboard from "./pic/lines_cardboard";
+import grass1 from "./pic/grass1";
+import grass2 from "./pic/grass2";
+import grass3 from "./pic/grass3";
+import grass4 from "./pic/grass4";
 
 const boardStyles = {
   standard,
@@ -141,6 +145,10 @@ const boardStyles = {
   lines_alabaster,
   lines_paper,
   lines_cardboard,
+  grass1,
+  grass2,
+  grass3,
+  grass4,
 };
 
 const boardNames = Object.keys(boardStyles);
