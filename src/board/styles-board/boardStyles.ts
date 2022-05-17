@@ -51,6 +51,10 @@ import mono_asparagus from "./solid/mono_asparagus";
 import mono_amazon from "./solid/mono_amazon";
 import mono_nevada from "./solid/mono_nevada";
 import mono_mobster from "./solid/mono_mobster";
+import mono_bw from "./solid/mono_bw";
+import mono_bw2 from "./solid/mono_bw2";
+import mono_sharechess_dark from "./solid/mono_sharechess_dark";
+import mono_sharechess_light from "./solid/mono_sharechess_light";
 
 import smooth_sunset from "./gradient/smooth_sunset";
 import smooth_summer from "./gradient/smooth_summer";
@@ -144,6 +148,10 @@ const boardStyles = {
   mono_amazon,
   mono_nevada,
   mono_mobster,
+  mono_bw,
+  mono_bw2,
+  mono_sharechess_dark,
+  mono_sharechess_light,
 
   smooth_sunset,
   smooth_summer,
