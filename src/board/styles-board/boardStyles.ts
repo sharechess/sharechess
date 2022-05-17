@@ -43,6 +43,14 @@ import mono_coper from "./solid/mono_coper";
 import mono_contessa from "./solid/mono_contessa";
 import mono_terracotta from "./solid/mono_terracotta";
 import mono_harvest from "./solid/mono_harvest";
+import mono_kashmir from "./solid/mono_kashmir";
+import mono_affair from "./solid/mono_affair";
+import mono_cadillac from "./solid/mono_cadillac";
+import mono_beaver from "./solid/mono_beaver";
+import mono_asparagus from "./solid/mono_asparagus";
+import mono_amazon from "./solid/mono_amazon";
+import mono_nevada from "./solid/mono_nevada";
+import mono_mobster from "./solid/mono_mobster";
 
 import smooth_sunset from "./gradient/smooth_sunset";
 import smooth_summer from "./gradient/smooth_summer";
@@ -128,6 +136,14 @@ const boardStyles = {
   mono_contessa,
   mono_terracotta,
   mono_harvest,
+  mono_kashmir,
+  mono_affair,
+  mono_cadillac,
+  mono_beaver,
+  mono_asparagus,
+  mono_amazon,
+  mono_nevada,
+  mono_mobster,
 
   smooth_sunset,
   smooth_summer,
