@@ -345,7 +345,6 @@ class Board {
       );
     }
 
-    console.log("Background rendered!");
     this.background = canvas;
   }
 
