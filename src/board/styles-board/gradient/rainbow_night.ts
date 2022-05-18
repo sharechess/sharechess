@@ -39,7 +39,7 @@ const style: Style = {
     },
   },
   moveIndicator: {
-    color: "#ff00ff55",
+    color: "#ff00ff33",
   },
   border: [
     {
