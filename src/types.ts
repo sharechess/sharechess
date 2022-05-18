@@ -46,7 +46,8 @@ export type Coords = {
   onBorder: string;
 };
 
-export type SquareStyle = Gradient | Solid | Image;
+export type SquareLayer = Gradient | Solid | Image;
+export type SquareStyle = SquareLayer | SquareLayer[];
 
 export type MoveIndicator = {
   color: string;
