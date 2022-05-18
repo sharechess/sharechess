@@ -30,7 +30,7 @@ const style: Style = {
     },
   },
   coords: {
-    onLight: "#412F52b",
+    onLight: "#412F52",
     onDark: "#fcfce1",
     onBorder: "#eeeed2",
   },
