@@ -56,7 +56,7 @@ const style: Style = {
   coords: {
     onLight: "#00000077",
     onDark: "#ffffffaa",
-    onBorder: "#fff",
+    onBorder: "#00000099",
   },
 };
 
