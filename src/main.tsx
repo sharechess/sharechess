@@ -45,16 +45,4 @@ const main = async () => {
 
 /* Initialize */
 
-Promise.all([
-  new Promise((resolve) => {
-    if (!window.speechSynthesis) {
-      resolve(null);
-    }
-
-    if (speechSynthesis.getVoices().length > 0) {
-      resolve(null);
-    } else {
-      window.speechSynthesis.onvoiceschanged = resolve;
-    }
-  }).catch(() => null),
-]).then(() => main());
+main();

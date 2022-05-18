@@ -49,9 +49,18 @@ class Speech {
     if (!window.speechSynthesis) {
       this.voice = undefined;
     } else {
-      const voices = speechSynthesis.getVoices();
-      this.voice = voices.find((voice) => voice.lang === config.lang);
+      this.setVoice();
+
+      window.speechSynthesis.onvoiceschanged = this.setVoice.bind(this);
     }
+  }
+
+  setVoice() {
+    const voices = speechSynthesis.getVoices();
+    this.voice =
+      voices.length > 0
+        ? voices.find((voice) => voice.lang === config.lang)
+        : undefined;
   }
 
   say(text: string) {
