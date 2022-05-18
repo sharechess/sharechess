@@ -15,21 +15,27 @@ const style: Style = {
     {
       type: "gradient",
       data: {
-        dir: "radial",
+        dir: "horizontal",
         colors: rainbowColors,
       },
     },
   ],
-  dark: {
-    type: "solid",
-    data: {
-      color: "#00000020",
+  dark: [
+    {
+      type: "solid",
+      data: {
+        color: "#00000099",
+      },
     },
-  },
+    {
+      type: "image",
+      data: { src: "/textures/squares/noise.png" },
+    },
+  ],
   light: {
     type: "solid",
     data: {
-      color: "#ffffff40",
+      color: "#00000077",
     },
   },
   moveIndicator: {
@@ -39,22 +45,23 @@ const style: Style = {
     {
       type: "gradient",
       data: {
-        dir: "radial",
-        colors: [...rainbowColors],
+        dir: "horizontal",
+        colors: rainbowColors,
       },
     },
     {
       type: "solid",
       data: {
-        color: "#00000040",
+        color: "#000000cc",
       },
     },
   ],
   coords: {
     onLight: "#00000077",
     onDark: "#ffffffaa",
-    onBorder: "#fff",
+    onBorder: "#ffffffaa",
   },
+  ico: "/textures/rainbow_night_ico.png",
 };
 
 export default style;
