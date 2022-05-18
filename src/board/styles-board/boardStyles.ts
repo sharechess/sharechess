@@ -68,6 +68,10 @@ import contrast_a from "./gradient/contrast_a";
 import contrast_b from "./gradient/contrast_b";
 import contrast_c from "./gradient/contrast_c";
 import contrast_d from "./gradient/contrast_d";
+import rainbow from "./gradient/rainbow";
+import rainbow_light from "./gradient/rainbow_light";
+import rainbow_dark from "./gradient/rainbow_dark";
+import rainbow_radial from "./gradient/rainbow_radial";
 
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
@@ -165,6 +169,11 @@ const boardStyles = {
   contrast_b,
   contrast_c,
   contrast_d,
+  rainbow_light,
+  rainbow,
+  rainbow_dark,
+  rainbow_radial,
+
   wood1,
   wood2,
   wood3,
