@@ -358,7 +358,9 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         <p class="stylus">
           Pieces:{" "}
           <a
-            href={`stylus/pieces/${state.boardConfig.piecesStyle}_lichess.user.css`}
+            href={`stylus/pieces/${state.boardConfig.piecesStyle}${
+              state.boardConfig.showShadows ? "_sh" : ""
+            }_lichess.user.css`}
             target="_blank"
             title="Install"
           >
@@ -366,7 +368,9 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           </a>
           <span className="delimiter"> | </span>
           <a
-            href={`stylus/pieces/${state.boardConfig.piecesStyle}_chesscom.user.css`}
+            href={`stylus/pieces/${state.boardConfig.piecesStyle}${
+              state.boardConfig.showShadows ? "_sh" : ""
+            }_chesscom.user.css`}
             target="_blank"
             title="Install"
           >

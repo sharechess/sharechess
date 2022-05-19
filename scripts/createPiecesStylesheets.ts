@@ -7,7 +7,7 @@ const PIECES_FOLDER = "public/pieces";
 const OUT_DIR = "public/stylus/pieces";
 
 type CSSEntry = (key: string, dataURL: string, forceStyle?: boolean) => string;
-type Header = (netName: string, entries: string[]) => string;
+type Header = (netName: string, entries: string[], shadows?: boolean) => string;
 
 const LichessCSSEntry: CSSEntry = (key, dataURL, forceStyle = true) => {
   const [piece, color] = key.split("") as [PieceType, PieceColor];
@@ -26,7 +26,7 @@ const ChesscomCSSEntry: CSSEntry = (key, dataURL, forceStyle = true) => {
   }}`;
 };
 
-const LichessHeader: Header = (setName, entries) => {
+const LichessHeader: Header = (setName, entries, shadows = false) => {
   return `
     /* ==UserStyle==
     @name           Lichess ${setName} chess set
@@ -37,12 +37,24 @@ const LichessHeader: Header = (setName, entries) => {
     ==/UserStyle== */
 
     @-moz-document domain("lichess.org") {
+      .is2d piece {
+        filter: ${
+          shadows ? "drop-shadow(0.7vh 0.7vh 0.5vh #00000088)" : "none"
+        };
+      }
+
+      .is2d.mini-board piece, .is2d.mini-game piece {
+        filter: ${
+          shadows ? "drop-shadow(0.3vh 0.3vh 0.2vh #00000088)" : "none"
+        };
+      }
+
       ${entries.join("\n")}
     }
   `;
 };
 
-const ChesscomHeader: Header = (setName, entries) => {
+const ChesscomHeader: Header = (setName, entries, shadows = false) => {
   return `
     /* ==UserStyle==
     @name           Chess.com ${setName} chess set
@@ -53,6 +65,12 @@ const ChesscomHeader: Header = (setName, entries) => {
     ==/UserStyle== */
 
     @-moz-document domain("chess.com") {
+      .board-layout-main .piece {
+        filter: ${
+          shadows ? "drop-shadow(0.7vh 0.7vh 0.5vh #00000088)" : "none"
+        };
+      }
+
       ${entries.join("\n")}
     }
   `;
@@ -65,10 +83,10 @@ const createUserStyles = () => {
 
   const sets = fs.readdirSync(PIECES_FOLDER);
 
-  for (const setName of sets) {
-    const files = fs.readdirSync(`${PIECES_FOLDER}/${setName}`);
+  for (const name of sets) {
+    const files = fs.readdirSync(`${PIECES_FOLDER}/${name}`);
 
-    const setNamePretty = setName
+    const namePretty = name
       .split(/[-_]/)
       .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
       .join(" ");
@@ -78,17 +96,21 @@ const createUserStyles = () => {
 
     for (const fileName of files) {
       const key = fileName.split(".")[0];
-      const dataURL = encode(`${PIECES_FOLDER}/${setName}/${fileName}`);
+      const dataURL = encode(`${PIECES_FOLDER}/${name}/${fileName}`);
 
       entriesLichess.push(LichessCSSEntry(key, dataURL));
       entriesChesscom.push(ChesscomCSSEntry(key, dataURL));
     }
 
-    const cssLichess = LichessHeader(setNamePretty, entriesLichess);
-    const cssChesscom = ChesscomHeader(setNamePretty, entriesChesscom);
+    const cssLichess = LichessHeader(namePretty, entriesLichess);
+    const cssLichessSh = LichessHeader(namePretty, entriesLichess, true);
+    const cssChesscom = ChesscomHeader(namePretty, entriesChesscom);
+    const cssChesscomSh = ChesscomHeader(namePretty, entriesChesscom, true);
 
-    fs.writeFileSync(`${OUT_DIR}/${setName}_lichess.user.css`, cssLichess);
-    fs.writeFileSync(`${OUT_DIR}/${setName}_chesscom.user.css`, cssChesscom);
+    fs.writeFileSync(`${OUT_DIR}/${name}_lichess.user.css`, cssLichess);
+    fs.writeFileSync(`${OUT_DIR}/${name}_sh_lichess.user.css`, cssLichessSh);
+    fs.writeFileSync(`${OUT_DIR}/${name}_chesscom.user.css`, cssChesscom);
+    fs.writeFileSync(`${OUT_DIR}/${name}_sh_chesscom.user.css`, cssChesscomSh);
   }
 };
 
