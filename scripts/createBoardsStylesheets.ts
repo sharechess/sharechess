@@ -8,8 +8,9 @@ import imagemin from "imagemin";
 import imageminPngquant from "imagemin-pngquant";
 
 const size = 1200;
-const icoSize = 256;
+const icoSize = 144;
 const OUT_DIR = "public/stylus/boards";
+const OUT_IMG_DIR = "public/boards";
 
 const LichessStylesheet = (
   dataURL: string,
@@ -66,19 +67,24 @@ const createBoard = async (
   size: number,
   tiles: number,
   boardStyle: string,
-  styleObj: Style
+  styleObj: Style,
+  borderSize: number = 0
 ) => {
   const board = new Board(
     {
       size,
       tiles,
-      showBorder: false,
+      showBorder: borderSize > 0,
       showExtraInfo: false,
       boardStyle: boardStyle as BoardStyle,
     },
     load as unknown as LoadImage,
     create as unknown as CreateCanvas
   );
+
+  if (borderSize > 0) {
+    board.setBorderScale(borderSize);
+  }
 
   await board.renderStatic();
 
@@ -99,6 +105,10 @@ const main = async () => {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
+  if (!fs.existsSync(OUT_IMG_DIR)) {
+    fs.mkdirSync(OUT_IMG_DIR, { recursive: true });
+  }
+
   for (const boardStyle of Object.keys(boardStyles)) {
     console.log(`Generating stylesheets for board: ${boardStyle}...`);
 
@@ -110,7 +120,7 @@ const main = async () => {
     const styleObj = boardStyles[boardStyle as BoardStyle];
 
     const board = await createBoard(size, 8, boardStyle, styleObj);
-    const ico = await createBoard(icoSize, 2, boardStyle, styleObj);
+    const ico = await createBoard(icoSize, 2, boardStyle, styleObj, 3);
 
     const imgURL = `data:image/png;base64,${board.toString("base64")}`;
 
@@ -136,7 +146,7 @@ const main = async () => {
       chesscomStylesheet
     );
 
-    fs.writeFileSync(`${OUT_DIR}/${boardStyle}_ico.png`, ico);
+    fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}_ico.png`, ico);
   }
 };
 

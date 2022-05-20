@@ -34,7 +34,6 @@ const style: Style = {
     onDark: "#ffffffee",
     onBorder: "#ffffffee",
   },
-  ico: "/textures/asphalt01_ico.png",
 };
 
 export default style;

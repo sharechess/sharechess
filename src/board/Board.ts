@@ -164,6 +164,7 @@ class Board {
 
   setBorderScale(scale: number) {
     this.borderScale = scale;
+    this.setSize(this.cfg.size);
   }
 
   setStyle(style: BoardStyle, refresh: boolean = true) {

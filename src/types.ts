@@ -63,7 +63,6 @@ export type Style = {
   moveIndicator: MoveIndicator;
   border: SquareStyle;
   coords: Coords;
-  ico?: string;
 };
 
 export type PieceType = "k" | "q" | "r" | "b" | "n" | "p";

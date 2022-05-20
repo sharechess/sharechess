@@ -61,7 +61,6 @@ const style: Style = {
     onDark: "#ffffffaa",
     onBorder: "#ffffffaa",
   },
-  ico: "/textures/rainbow_night_ico.png",
 };
 
 export default style;

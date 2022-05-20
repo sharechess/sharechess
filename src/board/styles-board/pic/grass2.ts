@@ -34,7 +34,6 @@ const style: Style = {
     onDark: "#d3ff9ecc",
     onBorder: "#d3ff9ecc",
   },
-  ico: "/textures/grass02_ico.png",
 };
 
 export default style;

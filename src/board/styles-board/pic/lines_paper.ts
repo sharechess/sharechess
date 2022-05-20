@@ -34,7 +34,6 @@ const style: Style = {
     onDark: "#00000099",
     onBorder: "#00000099",
   },
-  ico: "/textures/paper_ico.png",
 };
 
 export default style;

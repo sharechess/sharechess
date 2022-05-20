@@ -34,7 +34,6 @@ const style: Style = {
     onDark: "#dcbea7",
     onBorder: "#211b17ee",
   },
-  ico: "/textures/leather04_ico.png",
 };
 
 export default style;

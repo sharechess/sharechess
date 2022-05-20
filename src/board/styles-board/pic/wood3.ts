@@ -34,7 +34,6 @@ const style: Style = {
     onDark: "#e2d3b6",
     onBorder: "#dac7a0",
   },
-  ico: "/textures/wood03_ico.png",
 };
 
 export default style;
