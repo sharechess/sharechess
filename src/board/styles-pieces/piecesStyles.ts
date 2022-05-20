@@ -1,4 +1,8 @@
 const piecesStyles = [
+  "magnetic",
+  "magnetic_brown",
+  "magnetic_lila",
+  "magnetic_orange",
   "tatiana",
   "tatiana_wood",
   "tatiana_calm",
@@ -101,7 +105,6 @@ const piecesStyles = [
   "letter",
   "line",
   "lucena",
-  "magnetic",
   "mark",
   "marroquin",
   "maya",
