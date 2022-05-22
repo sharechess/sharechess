@@ -1,10 +1,14 @@
-import { PieceType, PieceColor } from "../src/types";
 import fs from "fs";
+import imagemin from "imagemin";
+import imageminPngquant from "imagemin-pngquant";
+import { loadImage, createCanvas } from "canvas";
+import { PieceType, PieceColor } from "../src/types";
 import pieces from "./utils/pieces";
 import encode from "./utils/encode";
 
 const PIECES_FOLDER = "public/pieces";
 const OUT_DIR = "public/stylus/pieces";
+const OUT_ICO_DIR = "public/pieces/_ico";
 
 type CSSEntry = (key: string, dataURL: string, forceStyle?: boolean) => string;
 type Header = (netName: string, entries: string[], shadows?: boolean) => string;
@@ -76,12 +80,43 @@ const ChesscomHeader: Header = (setName, entries, shadows = false) => {
   `;
 };
 
-const createUserStyles = () => {
+const createMiniature = async (name: string) => {
+  // @TODO - some images have poor quality (svg scaling doesn't seem to work)
+  const canvasSize = 240;
+  const squareSize = 180;
+
+  const nw = await loadImage(`${PIECES_FOLDER}/${name}/nw.svg`);
+  const nb = await loadImage(`${PIECES_FOLDER}/${name}/nb.svg`);
+  const canvas = createCanvas(canvasSize, canvasSize, "svg");
+
+  const ctx = canvas.getContext("2d");
+
+  ctx.shadowColor = "rgba(0, 0, 0, 1)";
+  ctx.shadowOffsetX = squareSize * 0.07;
+  ctx.shadowOffsetY = squareSize * 0.07;
+  ctx.shadowBlur = squareSize * 0.1;
+
+  ctx.drawImage(nb, 60, 10, 180, 180);
+  ctx.drawImage(nw, 0, 50, 180, 180);
+
+  const image = canvas.toBuffer();
+  const minified = await imagemin.buffer(image, {
+    plugins: [imageminPngquant({ quality: [0.7, 0.9] })],
+  });
+
+  return image;
+};
+
+const createUserStyles = async () => {
   if (!fs.existsSync(OUT_DIR)) {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
-  const sets = fs.readdirSync(PIECES_FOLDER);
+  if (!fs.existsSync(OUT_ICO_DIR)) {
+    fs.mkdirSync(OUT_ICO_DIR, { recursive: true });
+  }
+
+  const sets = fs.readdirSync(PIECES_FOLDER).filter((name) => name !== "_ico");
 
   for (const name of sets) {
     const files = fs.readdirSync(`${PIECES_FOLDER}/${name}`);
@@ -111,6 +146,10 @@ const createUserStyles = () => {
     fs.writeFileSync(`${OUT_DIR}/${name}_sh_lichess.user.css`, cssLichessSh);
     fs.writeFileSync(`${OUT_DIR}/${name}_chesscom.user.css`, cssChesscom);
     fs.writeFileSync(`${OUT_DIR}/${name}_sh_chesscom.user.css`, cssChesscomSh);
+
+    // const miniature = await createMiniature(name);
+
+    // fs.writeFileSync(`${OUT_ICO_DIR}/${name}_ico.png`, miniature);
   }
 };
 
