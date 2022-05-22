@@ -12,6 +12,7 @@
   height: 7.2rem;
   background-color: var(--color-highlight);
   border-radius: 0.5rem;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem black);
 }
 
 .pieces__ico--active {
