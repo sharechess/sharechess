@@ -14,6 +14,7 @@ import WrongBrowserPopup from "./components/popups/WrongBrowserPopup";
 import AndroidAppPopup from "./components/popups/AndroidAppPopup";
 import IOSAppPopup from "./components/popups/IOSAppPopup";
 import About from "./components/About";
+import PiecesGallery from "./components/PiecesGallery";
 
 const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
   props
@@ -50,6 +51,7 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
       <WrongBrowserPopup />
       <AndroidAppPopup />
       <IOSAppPopup />
+      {/* <PiecesGallery /> */}
     </div>
   );
 };
