@@ -8,3 +8,4 @@ _release_assets
 *.temp.*
 temp
 public/stylus
+public/boards/*.png
