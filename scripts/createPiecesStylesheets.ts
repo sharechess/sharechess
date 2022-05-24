@@ -25,7 +25,11 @@ const ChesscomCSSEntry: CSSEntry = (key, dataURL, forceStyle = true) => {
   const [piece, color] = key.split("") as [PieceType, PieceColor];
   const selector = `${color}${piece}`;
 
-  return `.piece.${selector}, .promotion-piece.${selector} {background-image:url('${dataURL}')${
+  const liveSelectors = pieces.chessComLiveIds[selector]
+    .map((n) => `.piece#piece-${n}`)
+    .join(", ");
+
+  return `.piece.${selector}, .promotion-piece.${selector}, ${liveSelectors} {background-image:url('${dataURL}')${
     forceStyle ? " !important" : ""
   }}`;
 };

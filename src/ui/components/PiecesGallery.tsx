@@ -12,7 +12,7 @@ const pieces = piecesSets
     imgW: `/pieces/${key}/nw.svg`,
     imgB: `/pieces/${key}/nb.svg`,
   }))
-  .slice(128 + 64) as {
+  .slice(0) as {
   n: number;
   key: PiecesStyle;
   imgW: string;

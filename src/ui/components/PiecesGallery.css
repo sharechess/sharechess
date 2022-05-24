@@ -4,7 +4,7 @@
   left: 0;
   background-color: #222831;
   width: 1024px;
-  height: 1024px;
+  min-height: 1024px;
   font-size: 0;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
