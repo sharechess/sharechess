@@ -11,6 +11,7 @@ const size = 1200;
 const icoSize = 144;
 const OUT_DIR = "public/stylus/boards";
 const OUT_IMG_DIR = "public/boards";
+const OUT_ICO_DIR = "public/boards/_ico";
 
 const LichessStylesheet = (
   dataURL: string,
@@ -55,6 +56,8 @@ const ChesscomStylesheet = (
       .board {background-image: url(${dataURL}) !important}
       .coordinate-light {fill: ${style.coords.onLight} !important}
       .coordinate-dark {fill: ${style.coords.onDark} !important}
+      .coords-light {color: ${style.coords.onLight} !important}
+      .coords-dark {color: ${style.coords.onDark} !important}
       .highlight {opacity: 1 !important; background-color: ${style.moveIndicator.color} !important}
     }
   `;
@@ -105,8 +108,8 @@ const main = async () => {
     fs.mkdirSync(OUT_DIR, { recursive: true });
   }
 
-  if (!fs.existsSync(OUT_IMG_DIR)) {
-    fs.mkdirSync(OUT_IMG_DIR, { recursive: true });
+  if (!fs.existsSync(OUT_ICO_DIR)) {
+    fs.mkdirSync(OUT_ICO_DIR, { recursive: true });
   }
 
   for (const boardStyle of Object.keys(boardStyles)) {
@@ -146,7 +149,8 @@ const main = async () => {
       chesscomStylesheet
     );
 
-    fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}_ico.png`, ico);
+    fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}.png`, board);
+    fs.writeFileSync(`${OUT_ICO_DIR}/${boardStyle}_ico.png`, ico);
   }
 };
 

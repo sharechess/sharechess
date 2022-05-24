@@ -430,7 +430,7 @@ class Board {
     this.ctx.clearRect(0, 0, this.size, this.size);
     const { background, dark, light, border } = this.style;
 
-    drawRectangle(
+    await drawRectangle(
       this.ctx,
       this.width,
       this.height,
@@ -440,7 +440,7 @@ class Board {
       this.loadImage
     );
 
-    drawRectangle(
+    await drawRectangle(
       this.ctx,
       this.innerSize,
       this.innerSize,

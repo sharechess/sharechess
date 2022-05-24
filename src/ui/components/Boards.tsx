@@ -32,7 +32,7 @@ const prepareBoards = async () => {
     let img: string;
 
     if (style.category !== "custom") {
-      img = `/boards/${key}_ico.png`;
+      img = `/boards/_ico/${key}_ico.png`;
     } else {
       await board.updateConfig({ boardStyle: key });
       await board.frame(null);
