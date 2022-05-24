@@ -28,7 +28,7 @@
 
 ## Chess pieces
 
-All color variants are created by [caderek](https://github.com/caderek), and are under the sime license as the original pieces.
+All color variants are created by [caderek](https://github.com/caderek), and are under the same license as the original pieces.
 
 | Files                                    | Author(s)                                                          | License                                                                               | Source                                                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
