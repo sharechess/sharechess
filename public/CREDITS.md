@@ -28,6 +28,8 @@
 
 ## Chess pieces
 
+All color variants are created by [caderek](https://github.com/caderek), and are under the sime license as the original pieces.
+
 | Files                                    | Author(s)                                                          | License                                                                               | Source                                                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [pieces/adventurer](pieces/adventurer)   | Armando Hernandez Marroquin                                        | "freeware"                                                                            | [enpassant.dk](http://www.enpassant.dk/chess/fontimg/advent.htm)                               |

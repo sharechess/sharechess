@@ -11,7 +11,7 @@ const size = 1200;
 const icoSize = 144;
 const OUT_DIR = "public/stylus/boards";
 const OUT_IMG_DIR = "public/boards";
-const OUT_ICO_DIR = "public/boards/_ico";
+const OUT_ICO_DIR = "public/boards/ico";
 
 const LichessStylesheet = (
   dataURL: string,
