@@ -1,0 +1,992 @@
+{
+  "adventurer": {
+    "files": {
+      "name": "adventurer",
+      "link": "pieces/adventurer"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/advent.htm"
+    }
+  },
+  "alfonso-x": {
+    "files": {
+      "name": "alfonso-x",
+      "link": "pieces/alfonso_x"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/alfonso.htm"
+    }
+  },
+  "alpha": {
+    "files": {
+      "name": "alpha",
+      "link": "pieces/alpha"
+    },
+    "author": {
+      "name": "Eric Bentzen",
+      "link": null
+    },
+    "license": {
+      "name": "\"free for personal non commercial use\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/alpha.htm"
+    }
+  },
+  "anarchy": {
+    "files": {
+      "name": "anarchy",
+      "link": "pieces/anarchy"
+    },
+    "author": {
+      "name": "caderek",
+      "link": "https://github.com/caderek"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "original",
+      "link": null
+    }
+  },
+  "anarchy-plug": {
+    "files": {
+      "name": "anarchy-plug",
+      "link": "pieces/anarchy-plug"
+    },
+    "author": {
+      "name": "caderek",
+      "link": "https://github.com/caderek"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "original",
+      "link": null
+    }
+  },
+  "berlin": {
+    "files": {
+      "name": "berlin",
+      "link": "pieces/berlin"
+    },
+    "author": {
+      "name": "Eric Bentzen",
+      "link": null
+    },
+    "license": {
+      "name": "\"free for personal non commercial use\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/berlin.htm"
+    }
+  },
+  "california": {
+    "files": {
+      "name": "california",
+      "link": "pieces/california"
+    },
+    "author": {
+      "name": "Jerry S.",
+      "link": "https://sites.google.com/view/jerrychess/home"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/california"
+    }
+  },
+  "cardinal": {
+    "files": {
+      "name": "cardinal",
+      "link": "pieces/cardinal"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/cardinal"
+    }
+  },
+  "cases": {
+    "files": {
+      "name": "cases",
+      "link": "pieces/cases"
+    },
+    "author": {
+      "name": "Matthieu Leschemelle, Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-cases.font"
+    }
+  },
+  "cburnett": {
+    "files": {
+      "name": "cburnett",
+      "link": "pieces/cburnett"
+    },
+    "author": {
+      "name": "Colin M.L. Burnett",
+      "link": "https://en.wikipedia.org/wiki/User:Cburnett"
+    },
+    "license": {
+      "name": "GPLv2+",
+      "link": "https://www.gnu.org/licenses/gpl-2.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/cburnett"
+    }
+  },
+  "checkers": {
+    "files": {
+      "name": "checkers",
+      "link": "pieces/anarchy"
+    },
+    "author": {
+      "name": "caderek",
+      "link": "https://github.com/caderek"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "",
+      "link": null
+    }
+  },
+  "chess7": {
+    "files": {
+      "name": "chess7",
+      "link": "pieces/chess7"
+    },
+    "author": {
+      "name": "Sizenko Alexander aka Style-7",
+      "link": "http://www.styleseven.com/"
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-7.font"
+    }
+  },
+  "chessnut": {
+    "files": {
+      "name": "chessnut",
+      "link": "pieces/chessnut"
+    },
+    "author": {
+      "name": "Alexis Luengas",
+      "link": "https://github.com/LexLuengas"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "link": "https://github.com/LexLuengas/chessnut-pieces/blob/master/LICENSE.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/LexLuengas/chessnut-pieces/"
+    }
+  },
+  "companion": {
+    "files": {
+      "name": "companion",
+      "link": "pieces/companion"
+    },
+    "author": {
+      "name": "David L. Brown",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": "http://www.enpassant.dk/chess/fonteng.htm#GC"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/companion"
+    }
+  },
+  "condal": {
+    "files": {
+      "name": "condal",
+      "link": "pieces/condal"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-condal.font"
+    }
+  },
+  "dubrovny": {
+    "files": {
+      "name": "dubrovny",
+      "link": "pieces/dubrovny"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/dubrovny"
+    }
+  },
+  "fantasy": {
+    "files": {
+      "name": "fantasy",
+      "link": "pieces/fantasy"
+    },
+    "author": {
+      "name": "Maurizio Monge",
+      "link": "http://poisson.phc.unipi.it/~monge/chess_art.php"
+    },
+    "license": {
+      "name": "\"give credit in a suitable way\"",
+      "link": null
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/fantasy"
+    }
+  },
+  "fresca": {
+    "files": {
+      "name": "fresca",
+      "link": "pieces/fresca"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/fresca"
+    }
+  },
+  "gioco": {
+    "files": {
+      "name": "gioco",
+      "link": "pieces/gioco"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/gioco"
+    }
+  },
+  "governor": {
+    "files": {
+      "name": "governor",
+      "link": "pieces/governor"
+    },
+    "author": {
+      "name": "the lila authors",
+      "link": "https://github.com/lichess-org/lila"
+    },
+    "license": {
+      "name": "AGPLv3+",
+      "link": "https://www.gnu.org/licenses/agpl-3.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/governor"
+    }
+  },
+  "harlequin": {
+    "files": {
+      "name": "harlequin",
+      "link": "pieces/harlequin"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/harlequi.htm"
+    }
+  },
+  "horsey": {
+    "files": {
+      "name": "horsey",
+      "link": "pieces/horsey"
+    },
+    "author": {
+      "name": "cham, michael1241",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/horsey"
+    }
+  },
+  "icpieces": {
+    "files": {
+      "name": "icpieces",
+      "link": "pieces/icpieces"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/icpieces"
+    }
+  },
+  "kingdom": {
+    "files": {
+      "name": "kingdom",
+      "link": "pieces/kingdom"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/kingdom.htm"
+    }
+  },
+  "kosal": {
+    "files": {
+      "name": "kosal",
+      "link": "pieces/kosal"
+    },
+    "author": {
+      "name": "Philatype",
+      "link": "https://github.com/philatype"
+    },
+    "license": {
+      "name": "CC BY 4.0",
+      "link": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/philatype/kosal"
+    }
+  },
+  "leipzig": {
+    "files": {
+      "name": "leipzig",
+      "link": "pieces/leipzig"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-leipzig.font"
+    }
+  },
+  "lettes ": {
+    "files": {
+      "name": "lettes ",
+      "link": "pieces/letter"
+    },
+    "author": {
+      "name": "caderek",
+      "link": "https://github.com/caderek"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "original",
+      "link": null
+    }
+  },
+  "libra": {
+    "files": {
+      "name": "libra",
+      "link": "pieces/libra"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lichobile/tree/master/www/images/pieces/libra"
+    }
+  },
+  "line": {
+    "files": {
+      "name": "line",
+      "link": "pieces/line"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/line.htm"
+    }
+  },
+  "lucena": {
+    "files": {
+      "name": "lucena",
+      "link": "pieces/lucena"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-lucena.font"
+    }
+  },
+  "maestro": {
+    "files": {
+      "name": "maestro",
+      "link": "pieces/maestro"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/maestro"
+    }
+  },
+  "magnetic": {
+    "files": {
+      "name": "magnetic",
+      "link": "pieces/magnetic"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-magnetic.font"
+    }
+  },
+  "mark": {
+    "files": {
+      "name": "mark",
+      "link": "pieces/mark"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/mark.htm"
+    }
+  },
+  "marroquin": {
+    "files": {
+      "name": "marroquin",
+      "link": "pieces/marroquin"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-marroquin.font"
+    }
+  },
+  "maya": {
+    "files": {
+      "name": "maya",
+      "link": "pieces/maya"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-maya.font"
+    }
+  },
+  "mediaeval": {
+    "files": {
+      "name": "mediaeval",
+      "link": "pieces/mediaeval"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-mediaeval.font"
+    }
+  },
+  "merida": {
+    "files": {
+      "name": "merida",
+      "link": "pieces/merida"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "GPLv2+",
+      "link": "https://www.gnu.org/licenses/gpl-2.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/merida"
+    }
+  },
+  "millennia": {
+    "files": {
+      "name": "millennia",
+      "link": "pieces/millennia"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/millenia.htm"
+    }
+  },
+  "motif": {
+    "files": {
+      "name": "motif",
+      "link": "pieces/motif"
+    },
+    "author": {
+      "name": "Armando Hernandez Marroquin",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/motif.htm"
+    }
+  },
+  "pirat": {
+    "files": {
+      "name": "pirat",
+      "link": "pieces/pirat"
+    },
+    "author": {
+      "name": "Klaus Wolf",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/pirat.htm"
+    }
+  },
+  "pirouetti": {
+    "files": {
+      "name": "pirouetti",
+      "link": "pieces/pirouetti"
+    },
+    "author": {
+      "name": "pirouetti",
+      "link": "https://lichess.org/@/pirouetti"
+    },
+    "license": {
+      "name": "AGPLv3+",
+      "link": "https://www.gnu.org/licenses/agpl-3.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/pirouetti"
+    }
+  },
+  "pixel": {
+    "files": {
+      "name": "pixel",
+      "link": "pieces/pixel"
+    },
+    "author": {
+      "name": "therealqtpi",
+      "link": "https://twitter.com/therealqtpi"
+    },
+    "license": {
+      "name": "AGPLv3+",
+      "link": "https://www.gnu.org/licenses/agpl-3.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/pixel"
+    }
+  },
+  "regular": {
+    "files": {
+      "name": "regular",
+      "link": "pieces/regular"
+    },
+    "author": {
+      "name": "Alastair Scott",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/usual.htm"
+    }
+  },
+  "reillycraig": {
+    "files": {
+      "name": "reillycraig",
+      "link": "pieces/reillycraig"
+    },
+    "author": {
+      "name": "Reilly Craig",
+      "link": "https://instagram.com/fader_"
+    },
+    "license": {
+      "name": "\"free of charge\"",
+      "link": "https://www.chess.com/forum/view/suggestions/new-chess-set-design"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/reillycraig"
+    }
+  },
+  "riohacha": {
+    "files": {
+      "name": "riohacha",
+      "link": "pieces/riohacha"
+    },
+    "author": {
+      "name": "the lila authors",
+      "link": "https://github.com/lichess-org/lila"
+    },
+    "license": {
+      "name": "AGPLv3+",
+      "link": "https://www.gnu.org/licenses/agpl-3.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/riohacha"
+    }
+  },
+  "shapes": {
+    "files": {
+      "name": "shapes",
+      "link": "pieces/shapes"
+    },
+    "author": {
+      "name": "flugsio",
+      "link": "https://github.com/flugsio/chess_shapes"
+    },
+    "license": {
+      "name": "CC BY-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/shapes"
+    }
+  },
+  "smart": {
+    "files": {
+      "name": "smart",
+      "link": "pieces/smart"
+    },
+    "author": {
+      "name": "Christoph Wirth",
+      "link": null
+    },
+    "license": {
+      "name": "\"free\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/smart.htm"
+    }
+  },
+  "spatial": {
+    "files": {
+      "name": "spatial",
+      "link": "pieces/spatial"
+    },
+    "author": {
+      "name": "Maurizio Monge",
+      "link": "http://poisson.phc.unipi.it/~monge/chess_art.php"
+    },
+    "license": {
+      "name": "\"give credit in a suitable way\"",
+      "link": null
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/spatial"
+    }
+  },
+  "staunty": {
+    "files": {
+      "name": "staunty",
+      "link": "pieces/staunty"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/staunty"
+    }
+  },
+  "symmetric": {
+    "files": {
+      "name": "symmetric",
+      "link": "pieces/symmetric"
+    },
+    "author": {
+      "name": "the lichobile authors",
+      "link": "https://github.com/lichess-org/lichobile"
+    },
+    "license": {
+      "name": "GNU GPL v3",
+      "link": "https://www.gnu.org/licenses/gpl-3.0.txt"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lichobile/tree/master/www/images/pieces/symmetric"
+    }
+  },
+  "tatiana": {
+    "files": {
+      "name": "tatiana",
+      "link": "pieces/tatiana"
+    },
+    "author": {
+      "name": "sadsnake1",
+      "link": null
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/lichess-org/lila/tree/master/public/piece/tatiana"
+    }
+  },
+  "tfb": {
+    "files": {
+      "name": "tfb",
+      "link": "pieces/tfb"
+    },
+    "author": {
+      "name": "Kaiserzharkhan",
+      "link": null
+    },
+    "license": {
+      "name": "\"Free for personal use\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/chess-tfb.font"
+    }
+  },
+  "traveller": {
+    "files": {
+      "name": "traveller",
+      "link": "pieces/traveller"
+    },
+    "author": {
+      "name": "Alan Cowderoy",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/travel.htm"
+    }
+  },
+  "utrecht": {
+    "files": {
+      "name": "utrecht",
+      "link": "pieces/utrecht"
+    },
+    "author": {
+      "name": "Hans Bodlaender",
+      "link": null
+    },
+    "license": {
+      "name": "\"freeware\"",
+      "link": null
+    },
+    "source": {
+      "name": "enpassant.dk",
+      "link": "http://www.enpassant.dk/chess/fontimg/utrecht.htm"
+    }
+  },
+  "wisdom": {
+    "files": {
+      "name": "wisdom",
+      "link": "pieces/wisdom"
+    },
+    "author": {
+      "name": "Vladimir Nikolic",
+      "link": null
+    },
+    "license": {
+      "name": "\"Wisdom Chess is 100% free chess font! Enjoy!\"",
+      "link": null
+    },
+    "source": {
+      "name": "dafont.com",
+      "link": "https://www.dafont.com/wisdom-chess.font"
+    }
+  }
+}

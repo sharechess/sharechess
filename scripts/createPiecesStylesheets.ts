@@ -44,7 +44,9 @@ const createUserStyles = async () => {
   for (const name of sets) {
     console.log(`Generating stylesheets for pieces: ${name}...`);
 
-    const files = fs.readdirSync(`${PIECES_FOLDER}/${name}`);
+    const files = fs
+      .readdirSync(`${PIECES_FOLDER}/${name}`)
+      .filter((file) => file !== "README.txt");
 
     const namePretty = name
       .split(/[-_]/)

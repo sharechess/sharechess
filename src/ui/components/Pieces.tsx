@@ -87,12 +87,11 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
                   className="collection__action collection__stylus"
                   title="Install via Stylus"
                 />
-                {/* <a
-                  href=""
-                  target="_blank"
+                <a
+                  href={`download/pieces/${item.key}.zip`}
                   className="collection__action collection__download"
                   title="Download"
-                /> */}
+                />
               </Show>
             </div>
           </div>

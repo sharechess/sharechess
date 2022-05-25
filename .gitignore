@@ -9,3 +9,4 @@ _release_assets
 temp
 public/stylus
 public/boards/*.png
+public/download

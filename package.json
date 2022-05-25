@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "gen:styles": "npm run gen:styles:boards && npm run gen:styles:pieces",
     "gen:styles:boards": "ts-node scripts/createBoardsStylesheets.ts",
-    "gen:styles:pieces": "ts-node scripts/createPiecesStylesheets.ts"
+    "gen:styles:pieces": "ts-node scripts/createPiecesStylesheets.ts",
+    "gen:zips:pieces": "ts-node scripts/createPiecesZIPs.ts"
   },
   "devDependencies": {
     "@types/chess.js": "^0.11.2",
