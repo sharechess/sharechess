@@ -1,11 +1,27 @@
+import fs from "fs";
+import imagemin from "imagemin";
+import imageminPngquant from "imagemin-pngquant";
+import prettier from "prettier";
+
 import { BoardStyle, Style } from "./../src/types";
 import { loadImage, createCanvas, Canvas } from "canvas";
 import Board from "../src/board/Board";
 import { CreateCanvas, LoadImage } from "../src/types";
 import boardStyles from "../src/board/styles-board/boardStyles";
-import fs from "fs";
-import imagemin from "imagemin";
-import imageminPngquant from "imagemin-pngquant";
+
+import LichessBoardCSS from "./style-templates/LichessBoardCSS";
+import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
+
+const domains = [
+  {
+    name: "lichess.org",
+    template: LichessBoardCSS,
+  },
+  {
+    name: "chess.com",
+    template: ChesscomBoardCSS,
+  },
+];
 
 const size = 1200;
 const icoSize = 144;
@@ -13,53 +29,17 @@ const OUT_DIR = "public/stylus/boards";
 const OUT_IMG_DIR = "public/boards";
 const OUT_ICO_DIR = "public/boards/ico";
 
-const LichessStylesheet = (
-  dataURL: string,
-  boardName: string,
-  style: Style
-) => {
+const Header = (boardName: string, content: string) => {
   return `
     /* ==UserStyle==
-    @name           Lichess ${boardName} board
-    @namespace      lichess.org
+    @name           ${boardName} board
+    @namespace      sharechess.github.io
     @version        1.0.0
-    @description    Chessboard for lichess.org
+    @description    Chessboard for ${domains.map((d) => d.name).join(", ")}
     @author         sharechess.github.io
     ==/UserStyle== */
 
-    @-moz-document domain("lichess.org") {
-      .is2d cg-board {background-image: url(${dataURL}) !important}
-      .is2d coords {
-        --cg-ccw: ${style.coords.onDark} !important;
-        --cg-ccb: ${style.coords.onLight} !important;
-      }
-      square.last-move {background-color: ${style.moveIndicator.color} !important}
-    }
-  `;
-};
-
-const ChesscomStylesheet = (
-  dataURL: string,
-  boardName: string,
-  style: Style
-) => {
-  return `
-    /* ==UserStyle==
-    @name           Chess.com ${boardName} board
-    @namespace      chess.com
-    @version        1.0.0
-    @description    Chessboard for chess.com
-    @author         sharechess.github.io
-    ==/UserStyle== */
-
-    @-moz-document domain("chess.com") {
-      .board {background-image: url(${dataURL}) !important}
-      .coordinate-light {fill: ${style.coords.onLight} !important}
-      .coordinate-dark {fill: ${style.coords.onDark} !important}
-      .coords-light {color: ${style.coords.onLight} !important}
-      .coords-dark {color: ${style.coords.onDark} !important}
-      .highlight {opacity: 1 !important; background-color: ${style.moveIndicator.color} !important}
-    }
+    ${content}
   `;
 };
 
@@ -127,27 +107,30 @@ const main = async () => {
 
     const imgURL = `data:image/png;base64,${board.toString("base64")}`;
 
-    const lichessStylesheet = LichessStylesheet(
-      imgURL,
-      boardNamePretty,
-      styleObj
-    );
+    const vars = `
+    @-moz-document ${domains.map((d) => `domain(${d.name})`).join(", ")} {
+      :root {
+        --sharechess-board-url: url(${imgURL});
+      }
+    }
+    `;
 
-    const chesscomStylesheet = ChesscomStylesheet(
-      imgURL,
-      boardNamePretty,
-      styleObj
-    );
+    const boardVar = "var(--sharechess-board-url)";
 
-    fs.writeFileSync(
-      `${OUT_DIR}/${boardStyle}_lichess.user.css`,
-      lichessStylesheet
-    );
+    const domainStylesheets = domains
+      .map((d) => d.template(boardVar, styleObj))
+      .join("\n");
 
-    fs.writeFileSync(
-      `${OUT_DIR}/${boardStyle}_chesscom.user.css`,
-      chesscomStylesheet
-    );
+    const content = `
+      ${vars}
+      ${domainStylesheets}
+    `;
+
+    const stylesheet = prettier.format(Header(boardNamePretty, content), {
+      parser: "css",
+    });
+
+    fs.writeFileSync(`${OUT_DIR}/${boardStyle}.user.css`, stylesheet);
 
     fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}.png`, board);
     fs.writeFileSync(`${OUT_ICO_DIR}/${boardStyle}_ico.png`, ico);

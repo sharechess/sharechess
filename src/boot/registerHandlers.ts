@@ -241,6 +241,40 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
         return false;
       }
     },
+    toggleFavoritePieces(name) {
+      if (state.favoritePieces.has(name)) {
+        setState("favoritePieces", (fp) => {
+          const updated = new Set([...fp]);
+          updated.delete(name);
+          return updated;
+        });
+      } else {
+        setState("favoritePieces", (fp) => {
+          const updated = new Set([...fp]);
+          updated.add(name);
+          return updated;
+        });
+      }
+
+      saveConfig("pieces");
+    },
+    toggleFavoriteBoard(name) {
+      if (state.favoriteBoards.has(name)) {
+        setState("favoriteBoards", (fb) => {
+          const updated = new Set([...fb]);
+          updated.delete(name);
+          return updated;
+        });
+      } else {
+        setState("favoriteBoards", (fb) => {
+          const updated = new Set([...fb]);
+          updated.add(name);
+          return updated;
+        });
+      }
+
+      saveConfig("boards");
+    },
   };
 };
 

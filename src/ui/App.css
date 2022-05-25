@@ -84,8 +84,8 @@ body {
   --color-btn-light: rgb(0, 207, 162);
   --color-tab: #899399;
   --color-tab-light: #a9b4bd;
-  --color-bg-block: #0c0c0f;
   --color-bg-block: #17171f;
+  --color-bg-card: #21212c;
   --color-bg-input: #20242a;
   --color-border-input: #2d323a;
   --color-highlight: #ffffff22;
@@ -96,6 +96,8 @@ body {
   --color-scrollbar: rgb(0, 59, 47);
   --color-scrollbar-track: #ffffff22;
   --color-frame-marker-active: #fff;
+  --card-shadow: 0.5rem 0.5rem 0.5rem #00000077;
+  --card-buttons-opacity: 0.4;
 }
 
 .light {
@@ -110,6 +112,7 @@ body {
   --color-tab: #5d6468;
   --color-tab-light: #3e4346;
   --color-bg-block: #dddddd;
+  --color-bg-card: #eeeeee;
   --color-bg-input: #eeeeee;
   --color-border-input: #7f8999;
   --color-highlight: #00000022;
@@ -120,6 +123,8 @@ body {
   --color-scrollbar: rgb(133, 184, 173);
   --color-scrollbar-track: #00000022;
   --color-frame-marker-active: #000;
+  --card-shadow: 0.5rem 0.5rem 0.5rem #00000044;
+  --card-buttons-opacity: 0.8;
 }
 
 button,

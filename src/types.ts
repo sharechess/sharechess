@@ -189,6 +189,8 @@ export type Handlers = {
   toggleSpeech(): void;
   toggleDarkMode(): void;
   openOnLichess: () => Promise<boolean>;
+  toggleFavoritePieces(name: string): void;
+  toggleFavoriteBoard(name: string): void;
 };
 
 export type Header = {

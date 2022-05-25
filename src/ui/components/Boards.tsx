@@ -1,81 +1,97 @@
-import { Component, For, createSignal } from "solid-js";
-import { Handlers, StyleCategory, BoardStyle, Style } from "../../types";
+import { Component, For, Show } from "solid-js";
+import { Handlers, BoardStyle } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
 import boardStyles from "../../board/styles-board/boardStyles";
-import Board from "../../board/Board";
 import { state, setState } from "../../state";
 
-type BoardPreview = {
-  key: keyof typeof boardStyles;
-  name: string;
-  category: StyleCategory;
-  img: string;
-};
-
-const prepareBoards = async () => {
-  const boards = [];
-
-  const board = new Board({
-    size: 144,
-    tiles: 2,
-    showBorder: true,
-    showExtraInfo: false,
-  });
-
-  board.setBorderScale(3);
-
-  for (const [key, style] of Object.entries(boardStyles) as [
-    BoardStyle,
-    Style
-  ][]) {
-    let img: string;
-
-    if (style.category !== "custom") {
-      img = `/boards/ico/${key}_ico.png`;
-    } else {
-      await board.updateConfig({ boardStyle: key });
-      await board.frame(null);
-      board.render();
-      img = board.toImgUrl();
-    }
-
-    boards.push({
-      key,
-      img,
-    } as BoardPreview);
-  }
-
-  return boards;
-};
+const boards = Object.keys(boardStyles).map((key) => ({
+  key,
+  img: `/boards/ico/${key}_ico.png`,
+})) as { key: BoardStyle; img: string }[];
 
 const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
-  const [boards, setBoards] = createSignal<BoardPreview[]>([]);
-
-  prepareBoards().then((data) => setBoards(data));
-
   return (
-    <Scrollable class={"boards" + (props.class ? ` ${props.class}` : "")}>
-      <For each={boards()}>
-        {(board) => {
-          return (
+    <Scrollable class={"collection" + (props.class ? ` ${props.class}` : "")}>
+      <p class="switch">
+        <button
+          classList={{
+            switch__btn: true,
+            "switch__btn--left": true,
+            "switch__btn--active": !state.showFavoriteBoards,
+          }}
+          onClick={() => setState("showFavoriteBoards", false)}
+        >
+          All
+        </button>
+        <button
+          classList={{
+            switch__btn: true,
+            "switch__btn--right": true,
+            "switch__btn--active": state.showFavoriteBoards,
+          }}
+          onClick={() => setState("showFavoriteBoards", true)}
+        >
+          Favorite
+        </button>
+      </p>
+      <For
+        each={
+          state.showFavoriteBoards
+            ? boards.filter(({ key }) => state.favoriteBoards.has(key))
+            : boards
+        }
+      >
+        {(item) => (
+          <div className="collection__card">
             <div
               class={
-                "boards__ico" +
-                (state.boardConfig.boardStyle === board.key
-                  ? " boards__ico--active"
+                "collection__ico boards__ico" +
+                (state.boardConfig.boardStyle === item.key
+                  ? " collection__ico--active"
                   : "")
               }
               onClick={() => {
-                setState("boardConfig", "boardStyle", board.key);
-                props.handlers.changeBoardStyle(board.key);
+                setState("boardConfig", "boardStyle", item.key);
+                props.handlers.changeBoardStyle(item.key);
               }}
-              style={{ "background-image": `url(${board.img})` }}
-              title={board.key}
+              style={{ "background-image": `url(${item.img})` }}
+              title={item.key as string}
               draggable={false}
-            />
-          );
-        }}
+            ></div>
+            <div className="collection__actions">
+              <a
+                href=""
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.handlers.toggleFavoriteBoard(item.key);
+                }}
+                classList={{
+                  collection__action: true,
+                  collection__favorite: true,
+                  "collection__favorite--active": state.favoriteBoards.has(
+                    item.key
+                  ),
+                }}
+                title="Add to favorites"
+              />
+              <Show when={!state.mobile}>
+                <a
+                  href={`stylus/boards/${item.key}.user.css`}
+                  target="_blank"
+                  className="collection__action collection__stylus"
+                  title="Install via Stylus"
+                />
+                <a
+                  href={`boards/${item.key}.png`}
+                  target="_blank"
+                  className="collection__action collection__download"
+                  title="Download"
+                />
+              </Show>
+            </div>
+          </div>
+        )}
       </For>
     </Scrollable>
   );

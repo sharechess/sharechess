@@ -19,6 +19,8 @@ const loadConfig = () => {
   const gameConfig = localStorage.getItem("gameConfig");
   const siteConfig = localStorage.getItem("siteConfig");
   const recent = localStorage.getItem("recent");
+  const favoritePieces = localStorage.getItem("pieces");
+  const favoriteBoards = localStorage.getItem("boards");
 
   return {
     boardConfig:
@@ -26,6 +28,10 @@ const loadConfig = () => {
     gameConfig: gameConfig === null ? {} : JSON.parse(gameConfig),
     siteConfig: siteConfig === null ? {} : JSON.parse(siteConfig),
     recent: recent === null ? [] : JSON.parse(recent),
+    pieces:
+      favoritePieces === null ? new Set() : new Set(JSON.parse(favoritePieces)),
+    boards:
+      favoriteBoards === null ? new Set() : new Set(JSON.parse(favoriteBoards)),
   };
 };
 

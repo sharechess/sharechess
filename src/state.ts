@@ -61,6 +61,10 @@ export type State = {
   os?: string;
   about: boolean;
   recent: Recent;
+  favoritePieces: Set<string>;
+  favoriteBoards: Set<string>;
+  showFavoritePieces: boolean;
+  showFavoriteBoards: boolean;
 };
 
 const initialState: State = {
@@ -90,6 +94,10 @@ const initialState: State = {
   os: userAgent.os.name,
   about: false,
   recent: saved.recent,
+  favoritePieces: saved.pieces as Set<string>,
+  favoriteBoards: saved.boards as Set<string>,
+  showFavoritePieces: saved.pieces.size > 0,
+  showFavoriteBoards: saved.boards.size > 0,
 };
 
 const [state, setState] = createStore(initialState);

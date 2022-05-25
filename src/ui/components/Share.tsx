@@ -341,7 +341,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
       >
         <hr />
         <h2>
-          Install this style via{" "}
+          Install this style for lichess & chess.com via{" "}
           <a
             href={
               state.browser === "Chrome"
@@ -359,40 +359,22 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           Pieces:{" "}
           <a
             href={`stylus/pieces/${state.boardConfig.piecesStyle}${
-              state.boardConfig.showShadows ? "_sh" : ""
-            }_lichess.user.css`}
+              state.boardConfig.showShadows ? "_shadows" : ""
+            }.user.css`}
             target="_blank"
             title="Install"
           >
-            lichess
-          </a>
-          <span className="delimiter"> | </span>
-          <a
-            href={`stylus/pieces/${state.boardConfig.piecesStyle}${
-              state.boardConfig.showShadows ? "_sh" : ""
-            }_chesscom.user.css`}
-            target="_blank"
-            title="Install"
-          >
-            chess.com
+            Install
           </a>
         </p>
         <p class="stylus">
-          Board: &nbsp;
+          Board:{" "}
           <a
-            href={`stylus/boards/${state.boardConfig.boardStyle}_lichess.user.css`}
+            href={`stylus/boards/${state.boardConfig.boardStyle}.user.css`}
             target="_blank"
             title="Install"
           >
-            lichess
-          </a>
-          <span className="delimiter"> | </span>
-          <a
-            href={`stylus/boards/${state.boardConfig.boardStyle}_chesscom.user.css`}
-            target="_blank"
-            title="Install"
-          >
-            chess.com
+            Install
           </a>
         </p>
       </Show>

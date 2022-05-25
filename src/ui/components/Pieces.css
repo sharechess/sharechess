@@ -1,21 +1,123 @@
-.pieces {
+.collection {
   text-align: center;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+.collection__card {
+  margin: 0.5rem;
+  cursor: pointer;
+  width: 7.2rem;
+  height: 9.8rem;
+  background-color: var(--color-bg-card);
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  display: inline-block;
+  position: relative;
+}
 
-.pieces__ico {
+.collection__ico {
   border: solid 5px transparent;
-  margin: 5px;
   cursor: pointer;
   width: 7.2rem;
   height: 7.2rem;
   background-color: var(--color-highlight);
   border-radius: 0.5rem;
-  filter: drop-shadow(0.5rem 0.5rem 0.5rem black);
+  /* filter: drop-shadow(0.5rem 0.5rem 0.5rem black); */
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.pieces__ico--active {
+.collection__ico--active {
   border-color: var(--color-frame-marker-active);
+  cursor: default;
+}
+
+.collection__actions {
+  width: 7.2rem;
+  height: 2.6rem;
+  /* background-color: #ff000055; */
+  position: absolute;
+  padding: 0.5rem 0.2rem;
+  bottom: 0;
+  cursor: default;
+  font-size: 0;
+}
+
+.collection__action,
+.collection__action:hover {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 0 0.3rem;
+  opacity: var(--card-buttons-opacity);
+  filter: saturate(0);
+}
+
+.collection__action:hover {
+  background-color: transparent;
+  opacity: 1;
+  filter: saturate(1);
+}
+
+.collection__favorite,
+.collection__favorite:hover {
+  background-image: url(/img/heart.svg);
+}
+
+.collection__favorite--active,
+.collection__favorite--active:hover {
+  opacity: 0.8;
+  filter: saturate(1);
+  background-image: url(/img/heart-full.svg);
+}
+
+.collection__favorite--active:hover {
+  opacity: 1;
+  filter: saturate(1);
+  background-image: url(/img/heart-full.svg);
+}
+
+.collection__stylus,
+.collection__stylus:hover {
+  background-image: url(/img/stylus.svg);
+}
+
+.collection__download,
+.collection__download:hover {
+  background-image: url(/img/download.svg);
+}
+
+.switch {
+  max-width: 31.8rem;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
+
+.switch__btn {
+  width: 50%;
+  opacity: 0.5;
+}
+
+.switch__btn--right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.switch__btn--left {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.switch__btn--active {
+  opacity: 1;
+}
+
+.switch__btn--active:hover {
   cursor: default;
 }
