@@ -16,10 +16,10 @@ const domains = [
     name: "chess.com",
     template: ChesscomPiecesCSS,
   },
-  {
-    name: "chessable.com",
-    template: ChessablePiecesCSS,
-  },
+  // {
+  //   name: "chessable.com",
+  //   template: ChessablePiecesCSS,
+  // },
 ];
 
 const PIECES_FOLDER = "public/pieces";
