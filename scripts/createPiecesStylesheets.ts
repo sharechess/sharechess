@@ -5,6 +5,7 @@ import encode from "./utils/encode";
 
 import LichessPiecesCSS from "./style-templates/LichessPiecesCSS";
 import ChesscomPiecesCSS from "./style-templates/ChesscomPiecesCSS";
+import ChessablePiecesCSS from "./style-templates/ChessablePiecesCSS";
 
 const domains = [
   {
@@ -14,6 +15,10 @@ const domains = [
   {
     name: "chess.com",
     template: ChesscomPiecesCSS,
+  },
+  {
+    name: "chessable.com",
+    template: ChessablePiecesCSS,
   },
 ];
 
