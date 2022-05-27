@@ -17,17 +17,22 @@ const About: Component = () => {
           <div className="about__content">
             <h2>About</h2>
             <p>
-              <b>ShareChess</b> is a free, open source website that allows you
-              to share chess games as self-contained replay links (the whole
-              game is stored in the url without the need for a database), PNG
-              images, or GIF / MP4 / WebM animations.
+              <b>ShareChess</b> is a free, open-source website that allows you
+              to:
             </p>
-
-            <p>
-              The website provides a high variety of chessboard and piece
-              designs to serve as an open alternative for commercial chess GIF
-              makers.
-            </p>
+            <ul class="about__features">
+              <li>
+                share chess games as self-contained replay links (the whole game
+                is stored in the URL),
+              </li>
+              <li>
+                create images and animations of chess games and positions,
+              </li>
+              <li>
+                install addtional chessboard styles and piece sets for major
+                chess websites!
+              </li>
+            </ul>
             <p>
               You can find the complete source code on our{" "}
               <a href="https://github.com/sharechess/sharechess">GitHub page</a>
