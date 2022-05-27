@@ -85,6 +85,10 @@ import wood9 from "./pic/wood9";
 import wood10 from "./pic/wood10";
 import wood11 from "./pic/wood11";
 import wood12 from "./pic/wood12";
+import wood13 from "./pic/wood13";
+import wood14 from "./pic/wood14";
+import wood15 from "./pic/wood15";
+import wood16 from "./pic/wood16";
 
 import lines_parchment from "./pic/lines_parchment";
 import lines_alabaster from "./pic/lines_alabaster";
@@ -191,6 +195,10 @@ const boardStyles = {
   wood10,
   wood11,
   wood12,
+  wood13,
+  wood14,
+  wood15,
+  wood16,
 
   lines_parchment,
   lines_alabaster,
