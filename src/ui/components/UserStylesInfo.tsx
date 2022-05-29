@@ -58,7 +58,7 @@ const About: Component = () => {
           <div className="us-info__step">
             <h2 class="us-info__step-num">2</h2>
             <h3 className="us-info__step-title">
-              Chose your chessboard and pieces
+              Choose your chessboard and pieces
             </h3>
             <p className="us-info__description">
               Install any of the piece or chessboard styles by clicking the{" "}
