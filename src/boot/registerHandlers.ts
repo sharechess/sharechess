@@ -18,6 +18,8 @@ import { PiecesStyle } from "../board/styles-pieces/piecesStyles";
 import link from "../persistance/link";
 import importToLichess from "../imports/importToLichess";
 
+const MAX_RECENT_ITEMS = 20;
+
 const registerHandlers = (player: Player, board: Board): Handlers => {
   return {
     prev() {
@@ -125,6 +127,20 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       setState("boardConfig", "flipped", side === "b");
 
       document.title = `ShareChess - ${game.getTitle({ anonymous: false })}`;
+
+      if (location.hash !== "") {
+        setState("recent", (recent) => {
+          const newRecent = recent.filter(({ hash }) => hash !== location.hash);
+          newRecent.unshift({
+            hash: location.hash,
+            title: game.getShortTitle({ anonymous: state.anonymous }),
+          });
+
+          return newRecent.slice(0, MAX_RECENT_ITEMS);
+        });
+
+        saveConfig("recent");
+      }
     },
     async loadFEN(fen: string, hash = true) {
       const game = new Game().loadFEN(fen);
@@ -274,6 +290,18 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       }
 
       saveConfig("boards");
+    },
+    clearRecent(e: Event) {
+      e.preventDefault();
+      setState("recent", []);
+      saveConfig("recent");
+    },
+    deleteRecent(hash) {
+      setState("recent", (recent) => {
+        const newRecent = recent.filter((x) => x.hash !== hash);
+        return newRecent;
+      });
+      saveConfig("recent");
     },
   };
 };

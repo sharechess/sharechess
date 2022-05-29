@@ -5,7 +5,7 @@
 }
 
 .load__game-input {
-  height: 40vh;
+  height: 30vh;
   margin-top: 2rem;
 }
 
@@ -42,6 +42,39 @@
 
 .load__link-input {
   margin-top: 2rem;
+}
+
+.load__recent {
+  font-size: 1.4rem;
+  text-align: left;
+  list-style: circle;
+}
+
+.load__recent-item {
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+}
+
+.load__recent-more {
+  font-size: 1.4rem;
+  text-align: left;
+  margin-top: 1rem;
+  color: var(--color-text-dimmed);
+}
+
+.load__recent-delete-item {
+  position: relative;
+  top: -0.1rem;
+  display: none;
+}
+
+.load__recent-item:hover .load__recent-delete-item {
+  display: inline;
+}
+
+.load__recent-delete-item:hover {
+  cursor: pointer;
+  color: var(--color-warning);
 }
 
 @media (orientation: portrait) {

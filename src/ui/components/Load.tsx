@@ -1,4 +1,4 @@
-import { Component, createSignal, Show } from "solid-js";
+import { Component, createSignal, Show, For } from "solid-js";
 import { Handlers } from "../../types";
 import readFile from "../../utils/readFile";
 import Scrollable from "./reusable/Scrollable";
@@ -9,6 +9,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
   const [data, setData] = createSignal("");
   const [clipError, setClipError] = createSignal(false);
   const [inputError, setInputError] = createSignal(false);
+  const [recentMore, setRecentMore] = createSignal(false);
 
   let filePicker: HTMLInputElement | undefined = undefined;
 
@@ -82,6 +83,51 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
           <p>or</p>
           <p>drop the PGN file anywhere on the page</p>
         </div>
+      </Show>
+
+      <hr />
+      <Show
+        when={state.recent.filter((x) => x.hash !== location.hash).length > 0}
+      >
+        <h2>Recent:</h2>
+        <ul class="load__recent">
+          <For
+            each={state.recent
+              .filter((x) => x.hash !== location.hash)
+              .slice(0, recentMore() ? undefined : 5)}
+          >
+            {(recent) => (
+              <li class="load__recent-item">
+                <a href={recent.hash}>{recent.title.split(" | ")[0]}</a>{" "}
+                <i
+                  class="las la-trash-alt load__recent-delete-item"
+                  onClick={() => props.handlers.deleteRecent(recent.hash)}
+                ></i>
+              </li>
+            )}
+          </For>
+        </ul>
+        <p class="load__recent-more">
+          <Show
+            when={
+              state.recent.filter((x) => x.hash !== location.hash).length > 5
+            }
+          >
+            <a
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                setRecentMore(!recentMore());
+              }}
+            >
+              {recentMore() ? "show less" : "show more"}
+            </a>{" "}
+            |{" "}
+          </Show>
+          <a href="" onClick={props.handlers.clearRecent}>
+            clear
+          </a>
+        </p>
       </Show>
     </Scrollable>
   );

@@ -191,6 +191,8 @@ export type Handlers = {
   openOnLichess: () => Promise<boolean>;
   toggleFavoritePieces(name: string): void;
   toggleFavoriteBoard(name: string): void;
+  clearRecent(e: Event): void;
+  deleteRecent(hash: string): void;
 };
 
 export type Header = {

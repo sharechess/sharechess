@@ -193,6 +193,14 @@ class Game {
     );
   }
 
+  getShortTitle({ anonymous }: { anonymous: boolean }) {
+    const header = this.header;
+    const w = anonymous ? "Anonymous" : header.WhitePretty;
+    const b = anonymous ? "Anonymous" : header.BlackPretty;
+
+    return `${w} vs ${b}` + (header.Event ? ` | ${header.Event}` : "");
+  }
+
   getFileName(anonymous: boolean) {
     const header = this.header;
     const w = anonymous ? "Anonymous" : header.WhitePretty;

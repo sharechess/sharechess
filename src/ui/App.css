@@ -100,6 +100,7 @@ body {
   --color-frame-marker-active: #fff;
   --card-shadow: 0.5rem 0.5rem 0.5rem #00000077;
   --card-buttons-opacity: 0.4;
+  --color-warning: #fc4444;
 }
 
 .light {
@@ -129,6 +130,7 @@ body {
   --color-frame-marker-active: #000;
   --card-shadow: 0.5rem 0.5rem 0.5rem #00000044;
   --card-buttons-opacity: 0.8;
+  --color-warning: #fc4444;
 }
 
 button,
@@ -156,7 +158,7 @@ button:hover,
 
 .btn--error,
 .btn--error:hover {
-  background-color: #fc4444;
+  background-color: var(--color-warning);
 }
 
 input,
