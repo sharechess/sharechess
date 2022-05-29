@@ -107,7 +107,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
             )}
           </For>
         </ul>
-        <p class="load__recent-more">
+        <p class="load__recent-options">
           <Show
             when={
               state.recent.filter((x) => x.hash !== location.hash).length > 5
@@ -125,7 +125,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
             |{" "}
           </Show>
           <a href="" onClick={props.handlers.clearRecent}>
-            clear
+            clear all
           </a>
         </p>
       </Show>
