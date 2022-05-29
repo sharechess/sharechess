@@ -14,7 +14,7 @@ import WrongBrowserPopup from "./components/popups/WrongBrowserPopup";
 import AndroidAppPopup from "./components/popups/AndroidAppPopup";
 import IOSAppPopup from "./components/popups/IOSAppPopup";
 import About from "./components/About";
-import PiecesGallery from "./components/PiecesGallery";
+import UserStylesInfo from "./components/UserStylesInfo";
 
 const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
   props
@@ -48,10 +48,10 @@ const App: Component<{ handlers: Handlers; state: DeepReadonly<State> }> = (
         </div>
       </div>
       <About />
+      <UserStylesInfo />
       <WrongBrowserPopup />
       <AndroidAppPopup />
       <IOSAppPopup />
-      {/* <PiecesGallery /> */}
     </div>
   );
 };

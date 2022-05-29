@@ -41,6 +41,7 @@ const initialSiteConfig: SiteConfig = {
 };
 
 export type TabName = "game" | "load" | "share" | "boards" | "pieces";
+export type LeftTabName = "share" | "boards" | "pieces";
 
 export type State = {
   boardConfig: BoardConfig;
@@ -54,12 +55,14 @@ export type State = {
   mobile: boolean;
   layout: "single" | "double" | "triple";
   activeTab: TabName;
+  activeLeftTab: LeftTabName;
   playing: boolean;
   anonymous: boolean;
   refreshHash: boolean;
   browser?: string;
   os?: string;
   about: boolean;
+  userStylesInfo: boolean;
   recent: Recent;
   favoritePieces: Set<string>;
   favoriteBoards: Set<string>;
@@ -87,12 +90,14 @@ const initialState: State = {
       ? "double"
       : "triple",
   activeTab: "load",
+  activeLeftTab: "share",
   playing: false,
   anonymous: false,
   refreshHash: true,
   browser: userAgent.browser.name,
   os: userAgent.os.name,
   about: false,
+  userStylesInfo: false,
   recent: saved.recent,
   favoritePieces: saved.pieces as Set<string>,
   favoriteBoards: saved.boards as Set<string>,

@@ -14,7 +14,10 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
       <div class="header__options">
         <div
           class="header__options-ico"
-          onClick={() => setState("about", !state.about)}
+          onClick={() => {
+            setState("userStylesInfo", false);
+            setState("about", !state.about);
+          }}
           title="ABOUT"
         >
           <i class="las la-question-circle"></i>

@@ -82,6 +82,8 @@ body {
   --color--score: #ffffff;
   --color-btn: rgb(0, 173, 136);
   --color-btn-light: rgb(0, 207, 162);
+  --color-btn-accent: #8bd636;
+  --color-btn-accent-light: #a4f14b;
   --color-tab: #899399;
   --color-tab-light: #a9b4bd;
   --color-bg-block: #17171f;
@@ -109,6 +111,8 @@ body {
 
   --color-btn: rgb(0, 148, 116);
   --color-btn-light: rgb(0, 114, 89);
+  --color-btn-accent: #6bad1f;
+  --color-btn-accent-light: #89d137;
   --color-tab: #5d6468;
   --color-tab-light: #3e4346;
   --color-bg-block: #dddddd;
@@ -128,6 +132,7 @@ body {
 }
 
 button,
+.btn,
 .upload::before {
   padding: 0.8rem;
   font-family: "Ubuntu";
@@ -142,8 +147,10 @@ button,
 }
 
 button:hover,
+.btn:hover,
 .upload:hover::before {
   background: var(--color-btn-light);
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -196,6 +203,15 @@ a,
 a:visited,
 a:active {
   color: var(--color-btn);
+  text-decoration: none;
+}
+
+a.btn,
+a.btn:visited,
+a.btn:active {
+  display: inline-block;
+  text-align: center;
+  color: var(--color-text-contrast);
   text-decoration: none;
 }
 

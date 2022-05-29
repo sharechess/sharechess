@@ -97,3 +97,20 @@
 .delimiter {
   color: var(--color-highlight);
 }
+
+.share__stylus {
+  margin-top: 2rem;
+  background-color: var(--color-btn-accent);
+  font-size: 2rem;
+  line-height: 2rem;
+  padding: 1.5rem;
+}
+
+.share__stylus:hover {
+  background-color: var(--color-btn-accent-light);
+}
+
+.share__stylus span {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}

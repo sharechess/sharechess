@@ -340,7 +340,16 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         }
       >
         <hr />
-        <h2>
+
+        <button
+          class="share__stylus"
+          onClick={() => setState("userStylesInfo", true)}
+        >
+          INSTALL STYLES
+          <br />
+          <span>for lichess.org & chess.com</span>
+        </button>
+        {/* <h2>
           Install this style for lichess & chess.com via{" "}
           <a
             href={
@@ -354,8 +363,8 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           >
             Stylus
           </a>
-        </h2>
-        <p class="stylus">
+        </h2> */}
+        {/* <p class="stylus">
           Pieces:{" "}
           <a
             href={`stylus/pieces/${state.boardConfig.piecesStyle}${
@@ -376,7 +385,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           >
             Install
           </a>
-        </p>
+        </p> */}
       </Show>
     </Scrollable>
   );

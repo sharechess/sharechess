@@ -1,0 +1,68 @@
+.us-info {
+  max-width: 1200px;
+  font-size: 1.4rem;
+}
+
+.us-info__steps {
+  /* background-color: orange; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 4rem;
+}
+
+.us-info__intro {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  margin-bottom: 5rem;
+}
+
+.us-info__step-num {
+  font-size: 5rem;
+  margin-top: 0;
+  font-family: Ubuntu;
+  padding-bottom: 1rem;
+  border-bottom: solid 3px var(--color-btn);
+}
+
+.us-info__step-title {
+  font-size: 2rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.us-info__description {
+  line-height: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.us-info__install-stylus {
+  margin-top: 2rem;
+  /* text-align: center; */
+}
+
+.us-info__install-stylus .btn {
+  max-width: 220px;
+}
+
+.us-info__manage-stylus {
+  margin-top: 2rem;
+}
+
+.us-info__manage-stylus img {
+  border-radius: 5px;
+  box-shadow: 0.7rem 0.7rem 1rem #00000055;
+}
+
+.us-info__text-ico {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  top: 0.3rem;
+  margin: 0 0.5rem;
+}
+
+.us-info__browse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}

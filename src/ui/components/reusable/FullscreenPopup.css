@@ -1,0 +1,35 @@
+.fs-popup {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  display: grid;
+  vertical-align: middle;
+  padding-top: var(--header-height);
+  pointer-events: none;
+}
+
+.fs-popup__box {
+  background-color: var(--color-bg-input);
+  min-height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 6rem;
+  position: relative;
+  pointer-events: all;
+}
+
+.fs-popup__close {
+  width: 3.2rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.fs-popup__content {
+  text-align: left;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: auto;
+}
