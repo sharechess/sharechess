@@ -293,7 +293,10 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
     },
     clearRecent(e: Event) {
       e.preventDefault();
-      setState("recent", []);
+      setState(
+        "recent",
+        state.recent.filter((x) => x.hash === location.hash)
+      );
       saveConfig("recent");
     },
     deleteRecent(hash) {
