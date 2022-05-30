@@ -193,6 +193,7 @@ export type Handlers = {
   toggleFavoriteBoard(name: string): void;
   clearRecent(e: Event): void;
   deleteRecent(hash: string): void;
+  loadGameOfTheDay(): void;
 };
 
 export type Header = {

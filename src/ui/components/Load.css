@@ -44,6 +44,13 @@
   margin-top: 2rem;
 }
 
+.load__daily-game {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  text-align: left;
+  text-transform: capitalize;
+}
+
 .load__recent {
   font-size: 1.4rem;
   text-align: left;

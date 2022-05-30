@@ -68,6 +68,7 @@ const compressPGN = (pgn: string) => {
 };
 
 const decompressPGN = (compressedPGN: string) => {
+  console.log(atob(compressedPGN));
   const [headerRaw, movesRaw] = atob(compressedPGN).split("\n\n");
 
   let result;

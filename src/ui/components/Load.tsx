@@ -86,6 +86,17 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
       </Show>
 
       <hr />
+      <p class="load__daily-game">
+        <a
+          href=""
+          onClick={(e) => {
+            e.preventDefault();
+            props.handlers.loadGameOfTheDay();
+          }}
+        >
+          Load game of the day
+        </a>
+      </p>
       <Show
         when={state.recent.filter((x) => x.hash !== location.hash).length > 0}
       >
