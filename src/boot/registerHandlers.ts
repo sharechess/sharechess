@@ -89,10 +89,19 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       saveConfig("board");
     },
     flip() {
+      const currentIndex = state.recent.findIndex(
+        (x) => x.hash === location.hash
+      );
+
       board.flip();
       setState("boardConfig", "flipped", !state.boardConfig.flipped);
       setState("refreshHash", false);
       link.set({ side: state.boardConfig.flipped ? "b" : "w" });
+
+      if (currentIndex !== -1) {
+        setState("recent", currentIndex, "hash", location.hash);
+        saveConfig("recent");
+      }
     },
     changeBoardStyle(style: BoardStyle) {
       board.setStyle(style);
