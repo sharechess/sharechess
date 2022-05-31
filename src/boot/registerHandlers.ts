@@ -324,7 +324,7 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       const source = `daily-games/${month}.${day}.json`;
       const res = await fetch(source);
       const games = (await res.json()) as string[];
-      const index = Math.abs((year - 2022) % games.length);
+      const index = year % games.length;
       const game = games[index];
 
       location.hash = `#pgn/w/0/${game}`;
