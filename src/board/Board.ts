@@ -168,7 +168,7 @@ class Board {
   }
 
   setStyle(style: BoardStyle, refresh: boolean = true) {
-    this.style = boards[style];
+    this.style = boards[style] as unknown as Style;
     this.cfg.boardStyle = style;
     if (refresh) {
       this.refresh();
@@ -285,8 +285,6 @@ class Board {
     const { background, dark, light, border, coords } = this.style;
 
     ctx.clearRect(0, 0, this.size, this.size);
-    ctx.fillStyle = "#FF0000";
-    ctx.fillRect(0, 0, this.size, this.size);
 
     await drawRectangle(
       ctx,

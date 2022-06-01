@@ -107,6 +107,8 @@ import leather2 from "./pic/leather2";
 import leather3 from "./pic/leather3";
 import leather4 from "./pic/leather4";
 
+import blank from "./dev/blank";
+
 const boardStyles = {
   standard,
   spring,
@@ -216,6 +218,8 @@ const boardStyles = {
   leather2,
   leather3,
   leather4,
+
+  ...(location.hostname === "localhost" ? { blank } : {}),
 };
 
 const boardNames = Object.keys(boardStyles);

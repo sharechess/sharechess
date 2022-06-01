@@ -74,6 +74,16 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
           </a>
         </div>
       </div>
+      <Show when={!state.mobile}>
+        <a
+          href="https://www.buymeacoffee.com/maciejcaderek"
+          className="header__support"
+          target="_blank"
+        >
+          <i class="las la-heart header__support-ico"></i> &nbsp;Support the
+          project
+        </a>
+      </Show>
     </header>
   );
 };

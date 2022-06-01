@@ -50,3 +50,35 @@
   color: var(--color-btn);
   cursor: pointer;
 }
+
+.header__support,
+.header__support:visited,
+.header__support:active {
+  position: absolute;
+  top: 1rem;
+  max-width: 300px;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #d33e5e;
+}
+
+.header__support:hover {
+  text-decoration: none;
+  color: #cf002d;
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
+}
+
+.header__support-ico {
+  animation: beat 0.5s 6 alternate;
+  transform-origin: center;
+}
+
+.header__support:hover .header__support-ico {
+  animation: beat 0.5s infinite alternate;
+}
