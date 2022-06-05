@@ -73,6 +73,15 @@ import rainbow_light from "./gradient/rainbow_light";
 import rainbow_dark from "./gradient/rainbow_dark";
 import rainbow_night from "./gradient/rainbow_night";
 
+import clouds_acapulco from "./pic/clouds_acapulco";
+import clouds_bermuda from "./pic/clouds_bermuda";
+import clouds_cucumber from "./pic/clouds_cucumber";
+import clouds_gimblet from "./pic/clouds_gimblet";
+import clouds_kimberly from "./pic/clouds_kimberly";
+import clouds_rose from "./pic/clouds_rose";
+import clouds_sandal from "./pic/clouds_sandal";
+import clouds_wisteria from "./pic/clouds_wisteria";
+
 import wood1 from "./pic/wood1";
 import wood2 from "./pic/wood2";
 import wood3 from "./pic/wood3";
@@ -106,8 +115,6 @@ import leather1 from "./pic/leather1";
 import leather2 from "./pic/leather2";
 import leather3 from "./pic/leather3";
 import leather4 from "./pic/leather4";
-
-import blank from "./dev/blank";
 
 const boardStyles = {
   standard,
@@ -185,6 +192,15 @@ const boardStyles = {
   rainbow_dark,
   rainbow_night,
 
+  clouds_bermuda,
+  clouds_kimberly,
+  clouds_wisteria,
+  clouds_rose,
+  clouds_sandal,
+  clouds_gimblet,
+  clouds_cucumber,
+  clouds_acapulco,
+
   wood1,
   wood2,
   wood3,
@@ -218,8 +234,6 @@ const boardStyles = {
   leather2,
   leather3,
   leather4,
-
-  ...(location.hostname === "localhost" ? { blank } : {}),
 };
 
 const boardNames = Object.keys(boardStyles);

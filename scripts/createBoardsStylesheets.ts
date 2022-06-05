@@ -100,7 +100,7 @@ const main = async () => {
       .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
       .join(" ");
 
-    const styleObj = boardStyles[boardStyle as BoardStyle];
+    const styleObj = boardStyles[boardStyle as BoardStyle] as Style;
 
     const board = await createBoard(size, 8, boardStyle, styleObj);
     const ico = await createBoard(icoSize, 2, boardStyle, styleObj, 3);
