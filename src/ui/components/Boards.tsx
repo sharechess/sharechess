@@ -2,7 +2,7 @@ import { Component, For, Show } from "solid-js";
 import { Handlers, BoardStyle } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
-import boardStyles from "../../board/styles-board/boardStyles";
+import boardStyles from "../../board/styles-board";
 import { state, setState } from "../../state";
 
 const boards = Object.keys(boardStyles).map((key) => ({

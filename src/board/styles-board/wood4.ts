@@ -1,0 +1,39 @@
+import { Style } from "../../types";
+
+const style: Style = {
+  category: "pic",
+  background: {
+    type: "image",
+    data: {
+      src: "/textures/wood04.jpg",
+    },
+  },
+  dark: {
+    type: "solid",
+    data: {
+      color: "transparent",
+    },
+  },
+  light: {
+    type: "solid",
+    data: {
+      color: "transparent",
+    },
+  },
+  moveIndicator: {
+    color: "#ff007733",
+  },
+  border: {
+    type: "image",
+    data: {
+      src: "/textures/wood04_bg.jpg",
+    },
+  },
+  coords: {
+    onLight: "#9e543b",
+    onDark: "#e3c7b5",
+    onBorder: "#ddbba4",
+  },
+};
+
+export default style;

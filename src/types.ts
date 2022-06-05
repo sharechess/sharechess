@@ -1,5 +1,5 @@
 import { Move } from "chess.js";
-import stylesBoard from "./board/styles-board/boardStyles";
+import stylesBoard from "./board/styles-board";
 import { PiecesStyle } from "./board/styles-pieces/piecesStyles";
 
 export type GradientDir =

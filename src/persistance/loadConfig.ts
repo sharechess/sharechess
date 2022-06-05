@@ -1,5 +1,5 @@
 import { PiecesStyle } from "./../board/styles-pieces/piecesStyles";
-import { boardNames } from "../board/styles-board/boardStyles";
+import { boardNames } from "../board/styles-board";
 import piecesStyles from "../board/styles-pieces/piecesStyles";
 
 const fixBoardConfig = (boardConfig: { [key: string]: string }) => {

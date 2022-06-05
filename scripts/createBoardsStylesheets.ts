@@ -7,7 +7,7 @@ import { BoardStyle, Style } from "./../src/types";
 import { loadImage, createCanvas, Canvas } from "canvas";
 import Board from "../src/board/Board";
 import { CreateCanvas, LoadImage } from "../src/types";
-import boardStyles from "../src/board/styles-board/boardStyles";
+import boardStyles from "../src/board/styles-board";
 
 import LichessBoardCSS from "./style-templates/LichessBoardCSS";
 import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
