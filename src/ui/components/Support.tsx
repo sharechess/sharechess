@@ -26,7 +26,7 @@ const About: Component = () => {
                 href="https://github.com/sharechess/sharechess/issues"
                 target="_blank"
               >
-                GitHub Issues,
+                GitHub Issues
               </a>{" "}
               or by messaging me on{" "}
               <a
@@ -37,7 +37,7 @@ const About: Component = () => {
               </a>
             </p>
             <p class="support__description">
-              If you are a programmer you can contribute to the project
+              If you are a programmer, you can contribute to the project
               directly. Yu can find the source code on my{" "}
               <a
                 href="https://github.com/sharechess/sharechess"
@@ -82,7 +82,7 @@ const About: Component = () => {
               a new board design or a piece set.
             </p>
             <p class="support__description">
-              Yo can find instructions how to prepare the assets on my{" "}
+              You can find instructions on how to prepare the assets on my{" "}
               <a
                 href="https://github.com/sharechess/sharechess#designing-new-boards-and-piece-sets"
                 target="_blank"
@@ -98,7 +98,7 @@ const About: Component = () => {
               >
                 Reddit
               </a>{" "}
-              or open an{" "}
+              or open a{" "}
               <a
                 href="https://github.com/sharechess/sharechess/issues"
                 target="_blank"
