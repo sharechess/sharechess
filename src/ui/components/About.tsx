@@ -6,10 +6,10 @@ import "./About.css";
 
 const About: Component = () => {
   return (
-    <Show when={state.about}>
+    <Show when={state.fullscreenPopup === "about"}>
       <FullscreenPopup
         class="about"
-        onCLose={() => setState("about", !state.about)}
+        onCLose={() => setState("fullscreenPopup", null)}
       >
         <h2>About</h2>
         <p>

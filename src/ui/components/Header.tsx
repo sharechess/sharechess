@@ -14,15 +14,21 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
       <div class="header__options">
         <div
           class="header__options-ico"
-          onClick={() => {
-            setState("userStylesInfo", false);
-            setState("about", !state.about);
-          }}
-          title="ABOUT"
+          onClick={props.handlers.toggleDarkMode}
+          title={
+            state.siteConfig.darkMode
+              ? "SWITCH TO LIGHT MODE"
+              : "SWITCH TO DARK MODE"
+          }
         >
-          <i class="las la-question-circle"></i>
+          <i
+            classList={{
+              las: true,
+              "la-sun": state.siteConfig.darkMode,
+              "la-moon": !state.siteConfig.darkMode,
+            }}
+          ></i>
         </div>
-
         <div
           class="header__options-ico"
           onClick={props.handlers.toggleSound}
@@ -51,34 +57,52 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
             ></i>
           </div>
         </Show>
-        <div
-          class="header__options-ico"
-          onClick={props.handlers.toggleDarkMode}
-          title={
-            state.siteConfig.darkMode
-              ? "SWITCH TO LIGHT MODE"
-              : "SWITCH TO DARK MODE"
-          }
-        >
-          <i
-            classList={{
-              las: true,
-              "la-sun": state.siteConfig.darkMode,
-              "la-moon": !state.siteConfig.darkMode,
-            }}
-          ></i>
+        <div class="header__options-ico" title="VISIT SUBREDDIT">
+          <a href="https://www.reddit.com/r/sharechess" target="_blank">
+            <i class="lab la-reddit-alien"></i>
+          </a>
         </div>
         <div class="header__options-ico" title="SOURCE CODE">
           <a href="https://github.com/sharechess/sharechess" target="_blank">
             <i class="lab la-github"></i>
           </a>
         </div>
+        <div
+          class="header__options-ico"
+          onClick={() => {
+            setState(
+              "fullscreenPopup",
+              state.fullscreenPopup === "about" ? null : "about"
+            );
+          }}
+          title="ABOUT"
+        >
+          <i class="las la-question-circle"></i>
+        </div>
+
+        <Show when={state.mobile}>
+          <div
+            class="header__options-ico"
+            onClick={() => {
+              setState(
+                "fullscreenPopup",
+                state.fullscreenPopup === "support" ? null : "support"
+              );
+            }}
+            title="SUPPORT"
+          >
+            <i class="las la-heart"></i>
+          </div>
+        </Show>
       </div>
       <Show when={!state.mobile}>
         <a
-          href="https://www.buymeacoffee.com/maciejcaderek"
+          href=""
           className="header__support"
-          target="_blank"
+          onClick={(e) => {
+            e.preventDefault();
+            setState("fullscreenPopup", "support");
+          }}
         >
           <i class="las la-heart header__support-ico"></i> &nbsp;Support the
           project

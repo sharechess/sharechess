@@ -343,49 +343,12 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
 
         <button
           class="share__stylus"
-          onClick={() => setState("userStylesInfo", true)}
+          onClick={() => setState("fullscreenPopup", "styles")}
         >
           INSTALL STYLES
           <br />
           <span>for lichess.org & chess.com</span>
         </button>
-        {/* <h2>
-          Install this style for lichess & chess.com via{" "}
-          <a
-            href={
-              state.browser === "Chrome"
-                ? "https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne"
-                : state.browser === "Firefox"
-                ? "https://addons.mozilla.org/pl/firefox/addon/styl-us/"
-                : "https://addons.opera.com/pl/extensions/details/stylus/"
-            }
-            target="_blank"
-          >
-            Stylus
-          </a>
-        </h2> */}
-        {/* <p class="stylus">
-          Pieces:{" "}
-          <a
-            href={`stylus/pieces/${state.boardConfig.piecesStyle}${
-              state.boardConfig.showShadows ? "_shadows" : ""
-            }.user.css`}
-            target="_blank"
-            title="Install"
-          >
-            Install
-          </a>
-        </p>
-        <p class="stylus">
-          Board:{" "}
-          <a
-            href={`stylus/boards/${state.boardConfig.boardStyle}.user.css`}
-            target="_blank"
-            title="Install"
-          >
-            Install
-          </a>
-        </p> */}
       </Show>
     </Scrollable>
   );

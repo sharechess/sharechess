@@ -78,6 +78,7 @@ body {
   background-size: 12rem;
   color: rgb(212, 221, 224);
   --logo-url: url(/img/logo.svg);
+  --logo-mobile-url: url(/img/logo-mobile.svg);
 
   --color--score: #ffffff;
   --color-btn: rgb(0, 173, 136);
@@ -109,6 +110,7 @@ body {
   background-size: 12rem;
   color: rgb(29, 31, 32);
   --logo-url: url(/img/logo-dark.svg);
+  --logo-mobile-url: url(/img/logo-mobile-dark.svg);
 
   --color-btn: rgb(0, 148, 116);
   --color-btn-light: rgb(0, 114, 89);

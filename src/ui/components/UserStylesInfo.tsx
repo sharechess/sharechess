@@ -15,10 +15,10 @@ const onBrowseClick = (tab: "pieces" | "boards") => () => {
 
 const About: Component = () => {
   return (
-    <Show when={state.userStylesInfo}>
+    <Show when={state.fullscreenPopup === "styles"}>
       <FullscreenPopup
         class="us-info"
-        onCLose={() => setState("userStylesInfo", !state.userStylesInfo)}
+        onCLose={() => setState("fullscreenPopup", null)}
       >
         <p class="us-info__intro">
           You can install any chessboard and piece styles from this website for{" "}

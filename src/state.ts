@@ -63,6 +63,7 @@ export type State = {
   os?: string;
   about: boolean;
   userStylesInfo: boolean;
+  fullscreenPopup: "about" | "styles" | "support" | null;
   recent: Recent;
   favoritePieces: Set<string>;
   favoriteBoards: Set<string>;
@@ -98,6 +99,7 @@ const initialState: State = {
   os: userAgent.os.name,
   about: false,
   userStylesInfo: false,
+  fullscreenPopup: null,
   recent: saved.recent,
   favoritePieces: saved.pieces as Set<string>,
   favoriteBoards: saved.boards as Set<string>,

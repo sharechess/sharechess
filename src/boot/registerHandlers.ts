@@ -178,7 +178,10 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
 
       setState("boardConfig", "flipped", side === "b");
 
-      document.title = `ShareChess - FEN ${fen}`;
+      document.title =
+        fen === "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+          ? "ShareChess - Chess With Style"
+          : `ShareChess - FEN ${fen}`;
     },
     async load(data: string) {
       setState("refreshHash", false);
