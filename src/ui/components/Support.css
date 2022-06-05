@@ -5,6 +5,7 @@
 
 .support__intro {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .support__methods {
@@ -61,6 +62,12 @@
 .support__share {
   text-align: center;
   margin-top: 5rem;
+}
+
+.support__share-intro {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .resp-sharing-button__link,
