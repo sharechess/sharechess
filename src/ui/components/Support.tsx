@@ -55,9 +55,8 @@ const About: Component = () => {
             />
             <h2 class="support__title">Buy me a coffee</h2>
             <p class="support__description">
-              The project is free for everyone, forever, but improving the
-              website and creating new boards and piece sets takes a lot of time
-              and effort.
+              The project is free for everyone, but improving the website and
+              creating new boards and piece sets takes a lot of time and effort.
             </p>
             <p class="support__description">
               I don't use ads or trackers, and the only source to fund the
