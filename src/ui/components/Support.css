@@ -70,6 +70,17 @@
   text-align: center;
 }
 
+@media (orientation: portrait) {
+  .support__methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 10rem;
+  }
+  .support__method {
+    margin-bottom: 7rem;
+  }
+}
+
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block;
