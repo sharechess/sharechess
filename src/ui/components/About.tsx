@@ -27,8 +27,15 @@ const About: Component = () => {
           </li>
         </ul>
         <p>
-          You can find the complete source code on our{" "}
+          You can find the complete source code on my{" "}
           <a href="https://github.com/sharechess/sharechess">GitHub page</a>.
+        </p>
+        <p>
+          Follow my{" "}
+          <a href="https://www.reddit.com/r/sharechess/" target="_blank">
+            subreddit
+          </a>{" "}
+          for news, updates, and chess-related content!
         </p>
         <Show when={!state.mobile}>
           <hr />

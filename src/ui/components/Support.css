@@ -64,7 +64,8 @@
   margin-top: 5rem;
 }
 
-.support__share-intro {
+.support__share-intro,
+.support__subreddit {
   font-size: 1.6rem;
   margin-bottom: 2rem;
   text-align: center;

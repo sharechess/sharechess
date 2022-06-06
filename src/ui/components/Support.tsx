@@ -111,6 +111,13 @@ const About: Component = () => {
         </div>
         <hr />
         <div className="support__share">
+          <p className="support__subreddit">
+            Follow my{" "}
+            <a href="https://www.reddit.com/r/sharechess/" target="_blank">
+              subreddit
+            </a>{" "}
+            for news, updates, and chess-related content!
+          </p>
           <p class="support__share-intro">
             Share the project with others, to help it grow!
           </p>
