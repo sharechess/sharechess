@@ -25,9 +25,11 @@ const domains = [
 
 const size = 1200;
 const icoSize = 144;
+const bigIcoSize = 200;
 const OUT_DIR = "public/stylus/boards";
 const OUT_IMG_DIR = "public/boards";
 const OUT_ICO_DIR = "public/boards/ico";
+const OUT_BIG_ICO_DIR = "_promo/boards";
 
 const Header = (boardName: string, content: string) => {
   return `
@@ -92,6 +94,10 @@ const main = async () => {
     fs.mkdirSync(OUT_ICO_DIR, { recursive: true });
   }
 
+  if (!fs.existsSync(OUT_BIG_ICO_DIR)) {
+    fs.mkdirSync(OUT_BIG_ICO_DIR, { recursive: true });
+  }
+
   for (const boardStyle of Object.keys(boardStyles)) {
     console.log(`Generating stylesheets for board: ${boardStyle}...`);
 
@@ -104,6 +110,7 @@ const main = async () => {
 
     const board = await createBoard(size, 8, boardStyle, styleObj);
     const ico = await createBoard(icoSize, 2, boardStyle, styleObj, 3);
+    const bigIco = await createBoard(bigIcoSize, 2, boardStyle, styleObj, 3);
 
     const imgURL = `data:image/png;base64,${board.toString("base64")}`;
 
@@ -134,6 +141,7 @@ const main = async () => {
 
     fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}.png`, board);
     fs.writeFileSync(`${OUT_ICO_DIR}/${boardStyle}_ico.png`, ico);
+    fs.writeFileSync(`${OUT_BIG_ICO_DIR}/${boardStyle}_ico.png`, bigIco);
   }
 };
 
