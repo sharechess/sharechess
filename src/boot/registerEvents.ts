@@ -44,6 +44,7 @@ const registerEvents = (handlers: Handlers, board: Board) => {
       i: handlers.toggleExtraInfo,
       h: handlers.toggleTitleScreen,
       s: handlers.toggleShadows,
+      p: handlers.togglePuzzle,
     };
 
     document.addEventListener("keydown", (e) => {

@@ -83,6 +83,9 @@ const About: Component = () => {
               <li>
                 <kbd>s</kbd> Toggle shadows
               </li>
+              <li>
+                <kbd>p</kbd> Toggle puzzle view
+              </li>
             </ul>
           </div>
         </Show>
