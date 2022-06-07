@@ -14,9 +14,11 @@ import importFromLink from "../imports/importFromLink";
 import isFEN from "../utils/isFEN";
 import isPGN from "../utils/isPGN";
 import isSafeLink from "../utils/isSafeLink";
-import { PiecesStyle } from "../board/styles-pieces/piecesStyles";
+import piecesStyles, { PiecesStyle } from "../board/styles-pieces/piecesStyles";
 import link from "../persistance/link";
 import importToLichess from "../imports/importToLichess";
+import { boardNames } from "../board/styles-board";
+import { randomElement } from "../utils/random";
 
 const MAX_RECENT_ITEMS = 20;
 
@@ -331,6 +333,18 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       const game = games[index];
 
       location.hash = `#pgn/w/0/${game}`;
+    },
+    async randomStyle() {
+      const boardStyle = randomElement(boardNames);
+      const piecesStyle = randomElement(piecesStyles as unknown as string[]);
+
+      await board.setStyle(boardStyle);
+      await board.setPiecesStyle(piecesStyle);
+
+      setState("boardConfig", "boardStyle", boardStyle);
+      setState("boardConfig", "piecesStyle", piecesStyle);
+
+      saveConfig("board");
     },
   };
 };

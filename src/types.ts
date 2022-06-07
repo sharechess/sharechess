@@ -194,6 +194,7 @@ export type Handlers = {
   clearRecent(e: Event): void;
   deleteRecent(hash: string): void;
   loadGameOfTheDay(): void;
+  randomStyle(): void;
 };
 
 export type Header = {

@@ -7,7 +7,6 @@ import {
   Style,
   BoardStyle,
 } from "./../types";
-// @ts-ignore
 import drawRectangle from "./layers/drawRectangle";
 import drawCoords from "./layers/drawCoords";
 import drawMoveIndicators from "./layers/drawMoveIndicators";
@@ -130,7 +129,7 @@ class Board {
       await this.frame(this.lastPosition, this.header);
     }
 
-    this.render();
+    await this.render();
   }
 
   setSize(size: number) {
@@ -167,79 +166,70 @@ class Board {
     this.setSize(this.cfg.size);
   }
 
-  setStyle(style: BoardStyle, refresh: boolean = true) {
+  async setStyle(style: BoardStyle, refresh: boolean = true) {
     this.style = boards[style] as unknown as Style;
     this.cfg.boardStyle = style;
     if (refresh) {
-      this.refresh();
+      await this.refresh();
     }
-    return this;
   }
 
-  setPiecesStyle(style: PiecesStyle) {
+  async setPiecesStyle(style: PiecesStyle) {
     this.cfg.piecesStyle = style;
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  flip() {
+  async flip() {
     this.cfg.flipped = !this.cfg.flipped;
-    this.refresh();
+    await this.refresh();
     return this;
   }
 
-  flipWhite() {
+  async flipWhite() {
     if (!this.cfg.flipped) {
       return;
     }
 
     this.cfg.flipped = false;
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  flipBlack() {
+  async flipBlack() {
     if (this.cfg.flipped) {
       return;
     }
 
     this.cfg.flipped = true;
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  hideBorder() {
+  async hideBorder() {
     this.cfg.showBorder = false;
     this.setSize(this.size);
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  showBorder() {
+  async showBorder() {
     this.cfg.showBorder = true;
     this.setSize(this.size);
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  toggleBorder() {
+  async toggleBorder() {
     this.cfg.showBorder = !this.cfg.showBorder;
     this.setSize(this.size);
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  toggleExtraInfo() {
+  async toggleExtraInfo() {
     this.cfg.showExtraInfo = !this.cfg.showExtraInfo;
     this.setSize(this.size);
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
-  toggleShadows() {
+  async toggleShadows() {
     this.cfg.showShadows = !this.cfg.showShadows;
-    this.refresh();
-    return this;
+    await this.refresh();
   }
 
   private getFinalHeader() {
@@ -284,7 +274,7 @@ class Board {
 
     const { background, dark, light, border, coords } = this.style;
 
-    ctx.clearRect(0, 0, this.size, this.size);
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     await drawRectangle(
       ctx,
@@ -352,7 +342,7 @@ class Board {
     this.lastPosition = position;
     this.header = header ?? this.header;
 
-    this.tempCtx.clearRect(0, 0, this.size, this.size);
+    this.tempCtx.clearRect(0, 0, this.tempCanvas.width, this.tempCanvas.height);
 
     if (this.background === null) {
       await this.renderBackground();
@@ -420,12 +410,12 @@ class Board {
   }
 
   render() {
-    this.ctx.clearRect(0, 0, this.size, this.size);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.drawImage(this.tempCanvas, 0, 0);
   }
 
   async renderStatic() {
-    this.ctx.clearRect(0, 0, this.size, this.size);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     const { background, dark, light, border } = this.style;
 
     await drawRectangle(

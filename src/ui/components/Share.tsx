@@ -82,6 +82,17 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         >
           <i class="las la-cloud"></i>
         </button>
+        <button
+          classList={{
+            options__button: true,
+            "options__button--last": true,
+            "options__button--active": true,
+          }}
+          onClick={props.handlers.randomStyle}
+          title="RANDOM STYLE"
+        >
+          <i class="las la-dice-three"></i>
+        </button>
       </div>
       <hr />
       <div className="share__fen">
