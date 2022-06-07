@@ -12,6 +12,9 @@ const PGN_KEYS_TO_SHORT = {
   SetUp: "SU",
   WhiteElo: "WE",
   BlackElo: "BE",
+  PuzzleTitle: "PT",
+  PuzzleMotif: "PM",
+  PuzzleDescription: "PD",
 };
 
 const PGN_KEYS = Object.keys(PGN_KEYS_TO_SHORT);

@@ -85,6 +85,17 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         <button
           classList={{
             options__button: true,
+            "options__button--last": false,
+            "options__button--active": state.boardConfig.puzzle,
+          }}
+          onClick={props.handlers.togglePuzzle}
+          title="RENDER AS PUZZLE"
+        >
+          <i class="las la-puzzle-piece"></i>
+        </button>
+        <button
+          classList={{
+            options__button: true,
             "options__button--last": true,
             "options__button--active": true,
           }}

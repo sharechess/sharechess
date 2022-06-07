@@ -14,6 +14,7 @@
     "gen:zips:pieces": "ts-node scripts/createPiecesZIPs.ts"
   },
   "devDependencies": {
+    "@types/canvas-txt": "^3.0.0",
     "@types/chess.js": "^0.11.2",
     "@types/common-tags": "^1.8.1",
     "@types/gif.js": "^0.2.2",
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "@arrows/array": "^1.4.1",
+    "canvas-txt": "^3.0.0",
     "chess.js": "^0.13.2",
     "common-tags": "^1.8.2",
     "gif.js": "^0.2.0",

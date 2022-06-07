@@ -16,7 +16,9 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
             <div className="info__left">
               <button className="info__color info__color--white"></button>
               <Show when={!state.anonymous} fallback="Anonymous">
-                {state.game.header.WhitePretty}{" "}
+                <span contenteditable={false}>
+                  {state.game.header.WhitePretty}
+                </span>{" "}
               </Show>
               <Show when={state.game.header.WhiteElo}>
                 <span className="info__rating">
@@ -41,7 +43,9 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
             <div className="info__left">
               <button className="info__color info__color--black"></button>
               <Show when={!state.anonymous} fallback="Anonymous">
-                {state.game.header.BlackPretty}{" "}
+                <span contenteditable={false}>
+                  {state.game.header.BlackPretty}
+                </span>{" "}
               </Show>
               <Show when={state.game.header.BlackElo}>
                 <span className="info__rating">

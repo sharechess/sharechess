@@ -345,6 +345,11 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
 
       saveConfig("board");
     },
+    togglePuzzle() {
+      board.togglePuzzle();
+      setState("boardConfig", "puzzle", !state.boardConfig.puzzle);
+      saveConfig("board");
+    },
   };
 };
 

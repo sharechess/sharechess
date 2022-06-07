@@ -177,6 +177,9 @@ class Game {
       Round: prepareHeaderEntry(header.Round),
       Site: prepareHeaderEntry(header.Site),
       Result: prepareHeaderEntry(header.Result),
+      PuzzleTitle: prepareHeaderEntry(header.PuzzleTitle),
+      PuzzleMotif: prepareHeaderEntry(header.PuzzleMotif),
+      PuzzleDescription: prepareHeaderEntry(header.PuzzleDescription),
     };
   }
 

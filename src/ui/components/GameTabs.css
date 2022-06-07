@@ -2,7 +2,7 @@
   grid-area: moves;
   padding: 2rem;
   padding-top: var(--header-margin);
-  min-width: 40rem;
+  min-width: 41rem;
   height: 100vh;
 }
 
@@ -36,6 +36,7 @@
     padding: 0;
     height: auto;
     min-height: 100vh;
+    min-width: 36rem;
   }
 
   .game {

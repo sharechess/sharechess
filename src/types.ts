@@ -89,6 +89,7 @@ export type BoardConfig = {
   showCoords: boolean;
   showShadows: boolean;
   flipped: boolean;
+  puzzle: boolean;
 };
 
 export type Size = "XS" | "S" | "M" | "L" | "XL";
@@ -195,6 +196,7 @@ export type Handlers = {
   deleteRecent(hash: string): void;
   loadGameOfTheDay(): void;
   randomStyle(): void;
+  togglePuzzle(): void;
 };
 
 export type Header = {
@@ -210,6 +212,9 @@ export type Header = {
   Round: string | null;
   Site: string | null;
   Result: string | null;
+  PuzzleTitle: string | null;
+  PuzzleMotif: string | null;
+  PuzzleDescription: string | null;
 };
 
 export type LoadImage = (src: string) => Promise<HTMLImageElement>;

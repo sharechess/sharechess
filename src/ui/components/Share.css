@@ -54,10 +54,11 @@
   margin: 3px;
   padding: 0.5rem;
   font-size: 3rem;
+  line-height: 3rem;
   text-align: center;
   border-radius: 5px;
-  width: 4.4rem;
-  height: 4.4rem;
+  width: 4rem;
+  height: 4rem;
   opacity: 0.5;
 }
 

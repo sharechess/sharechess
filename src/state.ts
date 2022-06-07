@@ -22,6 +22,7 @@ const initialBoardConfig: BoardConfig = {
   showCoords: true,
   showShadows: false,
   flipped: false,
+  puzzle: false,
 };
 
 const initialGameConfig: GameConfig = {

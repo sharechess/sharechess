@@ -31,6 +31,7 @@ const defaultConfig: BoardConfig = {
   showCoords: true,
   showShadows: false,
   flipped: false,
+  puzzle: false,
 };
 
 const defaultHeader: Header = {
@@ -46,6 +47,9 @@ const defaultHeader: Header = {
   Round: null,
   Site: null,
   Result: null,
+  PuzzleTitle: null,
+  PuzzleMotif: null,
+  PuzzleDescription: null,
 };
 
 class Board {
@@ -239,6 +243,11 @@ class Board {
     await this.refresh();
   }
 
+  async togglePuzzle() {
+    this.cfg.puzzle = !this.cfg.puzzle;
+    await this.refresh();
+  }
+
   private getFinalHeader() {
     return this._anonymous
       ? {
@@ -268,7 +277,8 @@ class Board {
       this.margin,
       this.style,
       this.getFinalHeader(),
-      this.loadImage
+      this.loadImage,
+      this.cfg.puzzle
     );
   }
 
@@ -411,7 +421,8 @@ class Board {
         this.style,
         this.getFinalHeader(),
         this.cfg.flipped,
-        this.lastPosition
+        this.lastPosition,
+        this.cfg.puzzle
       );
     }
   }

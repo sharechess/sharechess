@@ -19,7 +19,8 @@ const drawExtraInfo = async (
   style: Style,
   data: Header,
   flipped: boolean,
-  position: Position
+  position: Position,
+  puzzle: boolean
 ) => {
   const fontSize = Math.round(20 * scale);
   let offsetX = (margin - fontSize) / 2;
@@ -29,56 +30,80 @@ const drawExtraInfo = async (
 
   ctx.fillStyle = style.coords.onBorder;
 
-  {
-    const w = drawText(
+  if (puzzle) {
+    drawText(
       ctx,
-      data.White === "Anonymous" ? "White" : data.White,
+      `Find the best move for ${position.turn === "b" ? "black" : "white"}.`,
       "Ubuntu",
       fontSize,
       700,
       marginLeft,
-      flipped ? offsetY : height - offsetY,
+      height - offsetY,
       "left"
     );
-
-    const elo = data.WhiteElo ? ` ${data.WhiteElo}` : "";
 
     drawText(
       ctx,
-      elo,
-      "Fira Mono",
-      fontSize,
-      500,
-      marginLeft + w,
-      flipped ? offsetY : height - offsetY,
-      "left"
-    );
-  }
-
-  {
-    const w = drawText(
-      ctx,
-      data.Black === "Anonymous" ? "Black" : data.Black,
+      data.PuzzleTitle ?? "sharechess.github.io",
       "Ubuntu",
       fontSize,
       700,
       marginLeft,
-      flipped ? height - offsetY : offsetY,
+      offsetY,
       "left"
     );
+  } else {
+    {
+      const w = drawText(
+        ctx,
+        data.White === "Anonymous" ? "White" : data.White,
+        "Ubuntu",
+        fontSize,
+        700,
+        marginLeft,
+        flipped ? offsetY : height - offsetY,
+        "left"
+      );
 
-    const elo = data.BlackElo ? ` ${data.BlackElo}` : "";
+      const elo = data.WhiteElo ? ` ${data.WhiteElo}` : "";
 
-    drawText(
-      ctx,
-      elo,
-      "Fira Mono",
-      fontSize,
-      500,
-      marginLeft + w,
-      flipped ? height - offsetY : offsetY,
-      "left"
-    );
+      drawText(
+        ctx,
+        elo,
+        "Fira Mono",
+        fontSize,
+        500,
+        marginLeft + w,
+        flipped ? offsetY : height - offsetY,
+        "left"
+      );
+    }
+
+    {
+      const w = drawText(
+        ctx,
+        data.Black === "Anonymous" ? "Black" : data.Black,
+        "Ubuntu",
+        fontSize,
+        700,
+        marginLeft,
+        flipped ? height - offsetY : offsetY,
+        "left"
+      );
+
+      const elo = data.BlackElo ? ` ${data.BlackElo}` : "";
+
+      drawText(
+        ctx,
+        elo,
+        "Fira Mono",
+        fontSize,
+        500,
+        marginLeft + w,
+        flipped ? height - offsetY : offsetY,
+        "left"
+      );
+    }
   }
 
   let rightMarginWhite = 0;
