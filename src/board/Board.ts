@@ -179,6 +179,13 @@ class Board {
     await this.refresh();
   }
 
+  async setAllStyles(piecesStyle: PiecesStyle, boardStyle: BoardStyle) {
+    this.cfg.piecesStyle = piecesStyle;
+    this.style = boards[boardStyle] as unknown as Style;
+    this.cfg.boardStyle = boardStyle;
+    await this.refresh();
+  }
+
   async flip() {
     this.cfg.flipped = !this.cfg.flipped;
     await this.refresh();

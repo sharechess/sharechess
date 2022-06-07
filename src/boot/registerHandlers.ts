@@ -338,8 +338,7 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       const boardStyle = randomElement(boardNames);
       const piecesStyle = randomElement(piecesStyles as unknown as string[]);
 
-      await board.setStyle(boardStyle);
-      await board.setPiecesStyle(piecesStyle);
+      await board.setAllStyles(piecesStyle, boardStyle);
 
       setState("boardConfig", "boardStyle", boardStyle);
       setState("boardConfig", "piecesStyle", piecesStyle);
