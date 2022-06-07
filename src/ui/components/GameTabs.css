@@ -2,7 +2,7 @@
   grid-area: moves;
   padding: 2rem;
   padding-top: var(--header-margin);
-  min-width: 35rem;
+  min-width: 40rem;
   height: 100vh;
 }
 
