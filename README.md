@@ -56,7 +56,7 @@ Board design:
 Credits and license:
 
 - You should specify a CC license: [choose the license](https://creativecommons.org/choose/)
-- If you want to be credited, please provide your name / nickname and an optional link to yur profile.
+- If you want to be credited, please provide your name / nickname and an optional link to your profile.
 
 You can submit your work by opening a [issue](https://github.com/sharechess/sharechess/issues) or messaging me on [Reddit](https://www.reddit.com/message/compose/?to=kap89&subject=ShareChess%20design).
 

@@ -11,7 +11,8 @@
     "gen:styles": "npm run gen:styles:boards && npm run gen:styles:pieces",
     "gen:styles:boards": "ts-node scripts/createBoardsStylesheets.ts",
     "gen:styles:pieces": "ts-node scripts/createPiecesStylesheets.ts",
-    "gen:zips:pieces": "ts-node scripts/createPiecesZIPs.ts"
+    "gen:zips:pieces": "ts-node scripts/createPiecesZIPs.ts",
+    "gen:puzzles": "ts-node scripts/createDailyPuzzles.ts"
   },
   "devDependencies": {
     "@types/canvas-txt": "^3.0.0",
