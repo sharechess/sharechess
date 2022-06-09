@@ -66,7 +66,13 @@ type Tag =
   | "xRayAttack"
   | "zugzwang";
 
-const day = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+const start = 19150;
+
+const num = Number(process.argv[2]);
+
+const day = start + num;
+
+console.log(day);
 
 const dailyPuzzles = [
   {
@@ -83,9 +89,7 @@ const dailyPuzzles = [
   },
 ];
 
-// console.dir(dailyPuzzles, { depth: null });
-
-let markdown = `Daily puzzles\n\n`;
+let markdown = `<!-- prettier-ignore-start -->\n\nDaily puzzles\n\n`;
 
 dailyPuzzles.forEach((puzzle) => {
   markdown += `Level: ${puzzle.level}\n\n`;
@@ -123,6 +127,6 @@ ${puzzle.data.TAG.map(
   `;
 });
 
-console.log(markdown);
+markdown += "\n<!-- prettier-ignore-end -->";
 
 fs.writeFileSync("temp/daily-puzzles.md", markdown);

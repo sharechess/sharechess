@@ -151,13 +151,14 @@ const drawHeader = async (
 
   const logoUrl = await prepareLogoUrl(style.coords.onBorder);
   const logo = await loadImage(logoUrl);
-  const logoHeight = size * 0.114 * 0.5;
+  const logoWidth = size * 0.6;
+  const logoHeight = logo.height * (logoWidth / logo.width);
 
   ctx.drawImage(
     logo,
-    size / 4,
+    size * 0.2,
     margin + size + margin - logoHeight * 2,
-    size / 2,
+    logoWidth,
     logoHeight
   );
 };
