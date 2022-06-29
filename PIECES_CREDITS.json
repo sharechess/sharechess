@@ -269,6 +269,24 @@
       "link": "https://www.dafont.com/chess-condal.font"
     }
   },
+  "dmuys": {
+    "files": {
+      "name": "dmuys",
+      "link": "pieces/dmuys"
+    },
+    "author": {
+      "name": "Zach Bogart",
+      "link": "https://thenounproject.com/zachbogart/"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/collection-icon/dont-move-until-you-see-it-156570"
+    }
+  },
   "dubrovny": {
     "files": {
       "name": "dubrovny",
