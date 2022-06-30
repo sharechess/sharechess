@@ -719,6 +719,24 @@
       "link": "http://www.enpassant.dk/chess/fontimg/motif.htm"
     }
   },
+  "oldstyle": {
+    "files": {
+      "name": "oldstyle",
+      "link": "pieces/oldstyle"
+    },
+    "author": {
+      "name": "Monika Berger",
+      "link": null
+    },
+    "license": {
+      "name": "Non-Commercial",
+      "link": null
+    },
+    "source": {
+      "name": "likefont.com",
+      "link": "https://en.likefont.com/font/3938584/"
+    }
+  },
   "pirat": {
     "files": {
       "name": "pirat",
