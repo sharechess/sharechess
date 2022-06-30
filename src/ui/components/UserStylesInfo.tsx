@@ -5,7 +5,7 @@ import FullscreenPopup from "./reusable/FullscreenPopup";
 import "./UserStylesInfo.css";
 
 const onBrowseClick = (tab: "pieces" | "boards") => () => {
-  setState("userStylesInfo", false);
+  setState("fullscreenPopup", null);
   if (state.layout === "triple") {
     setState("activeLeftTab", tab);
   } else {
