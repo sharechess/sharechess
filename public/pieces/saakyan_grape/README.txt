@@ -1,0 +1,6 @@
+Saakyan Grape piece set
+
+Original author: Sergey Saakyan (https://thenounproject.com/seregasa/)
+Color variant by: caderek (https://github.com/caderek)
+License: CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+Source: https://sharechess.github.io

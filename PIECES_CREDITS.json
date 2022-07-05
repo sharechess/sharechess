@@ -17,6 +17,24 @@
       "link": "http://www.enpassant.dk/chess/fontimg/advent.htm"
     }
   },
+  "alfarishy": {
+    "files": {
+      "name": "alfarishy",
+      "link": "pieces/alfarishy"
+    },
+    "author": {
+      "name": "Jordan Alfarishy",
+      "link": "https://thenounproject.com/joalfa/"
+    },
+    "license": {
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/collection-icon/chess-64635/"
+    }
+  },
   "alfonso-x": {
     "files": {
       "name": "alfonso-x",
@@ -279,8 +297,8 @@
       "link": "https://thenounproject.com/zachbogart/"
     },
     "license": {
-      "name": "CC BY-NC-SA 4.0",
-      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
     },
     "source": {
       "name": "thenounproject.com",
@@ -411,6 +429,24 @@
     "source": {
       "name": "github.com",
       "link": "https://github.com/lichess-org/lila/tree/master/public/piece/horsey"
+    }
+  },
+  "icon54": {
+    "files": {
+      "name": "icon54",
+      "link": "pieces/icon54"
+    },
+    "author": {
+      "name": "icon 54",
+      "link": "https://thenounproject.com/icon54app/"
+    },
+    "license": {
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/collection-icon/chess-solid-icon-17460"
     }
   },
   "icpieces": {
@@ -845,6 +881,24 @@
       "link": "https://github.com/lichess-org/lila/tree/master/public/piece/riohacha"
     }
   },
+  "saakyan": {
+    "files": {
+      "name": "saakyan",
+      "link": "pieces/saakyan"
+    },
+    "author": {
+      "name": "Sergey Saakyan",
+      "link": "https://thenounproject.com/seregasa/"
+    },
+    "license": {
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/creator/seregasa/icons/"
+    }
+  },
   "shapes": {
     "files": {
       "name": "shapes",
@@ -989,6 +1043,24 @@
       "link": "http://www.enpassant.dk/chess/fontimg/travel.htm"
     }
   },
+  "trendy": {
+    "files": {
+      "name": "trendy",
+      "link": "pieces/trendy"
+    },
+    "author": {
+      "name": "Benjamin Kinard",
+      "link": "https://thenounproject.com/sportsgator/"
+    },
+    "license": {
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/collection-icon/trendy-chess-161956/"
+    }
+  },
   "utrecht": {
     "files": {
       "name": "utrecht",
@@ -1005,6 +1077,24 @@
     "source": {
       "name": "enpassant.dk",
       "link": "http://www.enpassant.dk/chess/fontimg/utrecht.htm"
+    }
+  },
+  "vecon": {
+    "files": {
+      "name": "vecon",
+      "link": "pieces/vecon"
+    },
+    "author": {
+      "name": "vecon",
+      "link": "https://thenounproject.com/vecon/"
+    },
+    "license": {
+      "name": "CC BY 3.0",
+      "link": "https://creativecommons.org/licenses/by/3.0/"
+    },
+    "source": {
+      "name": "thenounproject.com",
+      "link": "https://thenounproject.com/browse/collection-icon/chess-ii-80594/"
     }
   },
   "wisdom": {
