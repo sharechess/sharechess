@@ -15,6 +15,10 @@ import lichess from "./lichess";
 import leko from "./leko";
 import patina from "./patina";
 import lila from "./lila";
+import spun from "./spun";
+import gulf from "./gulf";
+import silk from "./silk";
+import nobel from "./nobel";
 import peach from "./peach";
 import violet from "./violet";
 import danya from "./danya";
@@ -116,6 +120,47 @@ import leather2 from "./leather2";
 import leather3 from "./leather3";
 import leather4 from "./leather4";
 
+import marino from "./vibrant_marino";
+import bay from "./vibrant_bay";
+import havelock from "./vibrant_havelock";
+import picont from "./vibrant_picont";
+import oracle from "./vibrant_oracle";
+import rhino from "./vibrant_rhino";
+import mist from "./vibrant_mist";
+import pigeon from "./vibrant_pigeon";
+import oxford from "./vibrant_oxford";
+import mandy from "./vibrant_mandy";
+import copper from "./vibrant_copper";
+import salmon from "./vibrant_salmon";
+import camelot from "./vibrant_camelot";
+import cadillac from "./vibrant_cadillac";
+import mona from "./vibrant_mona";
+import carnation from "./vibrant_carnation";
+import tangerine from "./vibrant_tangerine";
+import sienna from "./vibrant_sienna";
+import fuzzy from "./vibrant_fuzzy";
+import flamingo from "./vibrant_flamingo";
+import orange from "./vibrant_orange";
+import jaffa from "./vibrant_jaffa";
+import ronchi from "./vibrant_ronchi";
+import conifer from "./vibrant_conifer";
+import olive from "./vibrant_olive";
+import turmeric from "./vibrant_turmeric";
+import bahia from "./vibrant_bahia";
+import husk from "./vibrant_husk";
+import york from "./vibrant_york";
+import sulu from "./vibrant_sulu";
+import sushi from "./vibrant_sushi";
+import salad from "./vibrant_salad";
+import meadow from "./vibrant_meadow";
+import observatory from "./vibrant_observatory";
+import keppel from "./vibrant_keppel";
+import casal from "./vibrant_casal";
+import mule from "./vibrant_mule";
+import russett from "./vibrant_russett";
+import sirocco from "./vibrant_sirocco";
+import nevada from "./vibrant_nevada";
+
 const boardStyles = {
   standard,
   spring,
@@ -129,6 +174,50 @@ const boardStyles = {
   leko,
   patina,
   mud,
+  spun,
+  gulf,
+  silk,
+  nobel,
+  marino,
+  bay,
+  havelock,
+  picont,
+  oracle,
+  rhino,
+  mist,
+  pigeon,
+  oxford,
+  mandy,
+  copper,
+  salmon,
+  camelot,
+  cadillac,
+  mona,
+  carnation,
+  tangerine,
+  sienna,
+  fuzzy,
+  flamingo,
+  orange,
+  jaffa,
+  ronchi,
+  conifer,
+  olive,
+  turmeric,
+  bahia,
+  husk,
+  york,
+  sulu,
+  sushi,
+  salad,
+  meadow,
+  observatory,
+  keppel,
+  casal,
+  mule,
+  russett,
+  sirocco,
+  nevada,
   danny,
   danny_green,
   danny_cyan,
