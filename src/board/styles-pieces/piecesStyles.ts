@@ -1,4 +1,9 @@
 const piecesStyles = [
+  // "tagged",
+  "echiquier",
+  "echiquier_blue",
+  "echiquier_flesh",
+  "echiquier_grape",
   "tatiana",
   "tatiana_wood",
   "tatiana_calm",
