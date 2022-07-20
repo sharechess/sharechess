@@ -323,6 +323,24 @@
       "link": "https://github.com/lichess-org/lila/tree/master/public/piece/dubrovny"
     }
   },
+  "echiquier": {
+    "files": {
+      "name": "echiquier",
+      "link": "pieces/echiquier"
+    },
+    "author": {
+      "name": "Vincent Tellier",
+      "link": "https://www.vincent-tellier.fr/"
+    },
+    "license": {
+      "name": "CC BY-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    "source": {
+      "name": "original",
+      "link": null
+    }
+  },
   "fantasy": {
     "files": {
       "name": "fantasy",
