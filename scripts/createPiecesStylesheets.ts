@@ -1,7 +1,9 @@
 import fs from "fs";
 import prettier from "prettier";
 
+import { PiecesStyle } from "./../src/board/styles-pieces/piecesStyles";
 import encode from "./utils/encode";
+import credits from "../PIECES_CREDITS.json";
 
 import LichessPiecesCSS from "./style-templates/LichessPiecesCSS";
 import ChesscomPiecesCSS from "./style-templates/ChesscomPiecesCSS";
@@ -25,14 +27,30 @@ const domains = [
 const PIECES_FOLDER = "public/pieces";
 const OUT_DIR = "public/stylus/pieces";
 
-const Header = (setName: string, content: string) => {
+const Header = (setName: string, content: string, shadows: boolean = false) => {
+  const baseName = setName.split("_")[0] as keyof typeof credits;
+  const isOriginal = setName === baseName;
+  const credit = credits[baseName] ?? {
+    author: { name: "unknown" },
+    license: { name: "unknown" },
+  };
+
+  const namePretty =
+    setName
+      .split(/[-_]/)
+      .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
+      .join(" ") + (shadows ? " Shadows" : "");
+
   return `
     /* ==UserStyle==
-    @name           ${setName} piece set
+    @name           ${namePretty} piece set
     @namespace      sharechess.github.io
     @version        1.0.0
     @description    Piece set for ${domains.map((d) => d.name).join(", ")}
-    @author         sharechess.github.io
+    @author         ${credit.author.name} ${
+    isOriginal ? "" : "(color variant by caderek)"
+  }
+    @license        ${credit.license.name}
     ==/UserStyle== */
 
     ${content}
@@ -52,11 +70,6 @@ const createUserStyles = async () => {
     const files = fs
       .readdirSync(`${PIECES_FOLDER}/${name}`)
       .filter((file) => file !== "README.txt");
-
-    const namePretty = name
-      .split(/[-_]/)
-      .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
-      .join(" ");
 
     const encodedPieces = files.map((fileName) => {
       const key = fileName.split(".")[0];
@@ -91,11 +104,11 @@ const createUserStyles = async () => {
       ${domainStylesheetsShadows}
     `;
 
-    const stylesheet = prettier.format(Header(namePretty, content), {
+    const stylesheet = prettier.format(Header(name, content), {
       parser: "css",
     });
     const stylesheetShadows = prettier.format(
-      Header(`${namePretty} Shadows`, contentShadows),
+      Header(name, contentShadows, true),
       { parser: "css" }
     );
 

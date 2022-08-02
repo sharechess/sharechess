@@ -539,10 +539,10 @@
       "link": "https://www.dafont.com/chess-leipzig.font"
     }
   },
-  "lettes ": {
+  "letters": {
     "files": {
-      "name": "lettes ",
-      "link": "pieces/letter"
+      "name": "letters",
+      "link": "pieces/letters"
     },
     "author": {
       "name": "caderek",
@@ -843,6 +843,24 @@
     "source": {
       "name": "github.com",
       "link": "https://github.com/lichess-org/lila/tree/master/public/piece/pixel"
+    }
+  },
+  "qootee": {
+    "files": {
+      "name": "qootee",
+      "link": "pieces/qootee"
+    },
+    "author": {
+      "name": "Zaphroz",
+      "link": "https://www.reddit.com/user/TangentialElephant"
+    },
+    "license": {
+      "name": "CC BY 4.0",
+      "link": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "source": {
+      "name": "original",
+      "link": null
     }
   },
   "regular": {

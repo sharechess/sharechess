@@ -161,6 +161,11 @@ import russett from "./vibrant_russett";
 import sirocco from "./vibrant_sirocco";
 import nevada from "./vibrant_nevada";
 
+import qootee from "./qootee";
+import qootee_summer from "./qootee_summer";
+import qootee_pink from "./qootee_pink";
+import qootee_grape from "./qootee_grape";
+
 const boardStyles = {
   standard,
   spring,
@@ -178,6 +183,10 @@ const boardStyles = {
   gulf,
   silk,
   nobel,
+  qootee,
+  qootee_summer,
+  qootee_pink,
+  qootee_grape,
   marino,
   bay,
   havelock,
