@@ -7,7 +7,7 @@ import credits from "../PIECES_CREDITS.json";
 
 import LichessPiecesCSS from "./style-templates/LichessPiecesCSS";
 import ChesscomPiecesCSS from "./style-templates/ChesscomPiecesCSS";
-import ChessablePiecesCSS from "./style-templates/ChessablePiecesCSS";
+import OpeningTreePiecesCSS from "./style-templates/OpeningTreePiecesCSS";
 
 const domains = [
   {
@@ -18,10 +18,10 @@ const domains = [
     name: "chess.com",
     template: ChesscomPiecesCSS,
   },
-  // {
-  //   name: "chessable.com",
-  //   template: ChessablePiecesCSS,
-  // },
+  {
+    name: "openingtree.com",
+    template: OpeningTreePiecesCSS,
+  },
 ];
 
 const PIECES_FOLDER = "public/pieces";
@@ -45,7 +45,7 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
     /* ==UserStyle==
     @name           ${namePretty} piece set
     @namespace      sharechess.github.io
-    @version        1.0.0
+    @version        1.1.0
     @description    Piece set for ${domains.map((d) => d.name).join(", ")}
     @author         ${credit.author.name} ${
     isOriginal ? "" : "(color variant by caderek)"

@@ -11,6 +11,7 @@ import boardStyles from "../src/board/styles-board";
 
 import LichessBoardCSS from "./style-templates/LichessBoardCSS";
 import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
+import OpeningTreeBoardCSS from "./style-templates/OpeningTreeBoardCSS";
 
 const domains = [
   {
@@ -20,6 +21,10 @@ const domains = [
   {
     name: "chess.com",
     template: ChesscomBoardCSS,
+  },
+  {
+    name: "openingtree.com",
+    template: OpeningTreeBoardCSS,
   },
 ];
 
@@ -36,7 +41,7 @@ const Header = (boardName: string, content: string) => {
     /* ==UserStyle==
     @name           ${boardName} board
     @namespace      sharechess.github.io
-    @version        1.0.0
+    @version        1.1.0
     @description    Chessboard for ${domains.map((d) => d.name).join(", ")}
     @author         sharechess.github.io
     ==/UserStyle== */
