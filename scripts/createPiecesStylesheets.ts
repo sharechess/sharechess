@@ -1,7 +1,6 @@
 import fs from "fs";
 import prettier from "prettier";
 
-import { PiecesStyle } from "./../src/board/styles-pieces/piecesStyles";
 import encode from "./utils/encode";
 import credits from "../PIECES_CREDITS.json";
 
@@ -9,6 +8,7 @@ import LichessPiecesCSS from "./style-templates/LichessPiecesCSS";
 import ChesscomPiecesCSS from "./style-templates/ChesscomPiecesCSS";
 import OpeningTreePiecesCSS from "./style-templates/OpeningTreePiecesCSS";
 import ChessGamesPiecesCSS from "./style-templates/ChessGamesPiecesCSS";
+import Chess24PiecesCSS from "./style-templates/Chess24PiecesCSS";
 
 const domains = [
   {
@@ -26,6 +26,10 @@ const domains = [
   {
     name: "chessgames.com",
     template: ChessGamesPiecesCSS,
+  },
+  {
+    name: "chess24.com",
+    template: Chess24PiecesCSS,
   },
 ];
 
@@ -48,10 +52,12 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
 
   return `
     /* ==UserStyle==
-    @name           ${namePretty} piece set
+    @name           Custom pieces
     @namespace      sharechess.github.io
-    @version        1.2.0
-    @description    Piece set for ${domains.map((d) => d.name).join(", ")}
+    @version        1.3.0
+    @description    ${namePretty} piece set for ${domains
+    .map((d) => d.name)
+    .join(", ")}
     @author         ${credit.author.name} ${
     isOriginal ? "" : "(color variant by caderek)"
   }

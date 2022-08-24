@@ -67,7 +67,8 @@ const About: Component = () => {
             </p>
             <p className="us-info__description">
               This will open a stylesheet, click{" "}
-              <strong>"Install style"</strong> button in the top left corner.
+              <strong>"Install / Reinstall style"</strong> button in the top
+              left corner.
             </p>
             <p className="us-info__browse">
               <button onClick={onBrowseClick("boards")}>

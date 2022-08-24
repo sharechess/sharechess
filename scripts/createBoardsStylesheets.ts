@@ -13,6 +13,7 @@ import LichessBoardCSS from "./style-templates/LichessBoardCSS";
 import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
 import OpeningTreeBoardCSS from "./style-templates/OpeningTreeBoardCSS";
 import ChessGamesBoardCSS from "./style-templates/ChessGamesBoardCSS";
+import Chess24BoardCSS from "./style-templates/Chess24BoardCSS";
 
 const domains = [
   {
@@ -31,6 +32,10 @@ const domains = [
     name: "chessgames.com",
     template: ChessGamesBoardCSS,
   },
+  {
+    name: "chess24.com",
+    template: Chess24BoardCSS,
+  },
 ];
 
 const size = 1200;
@@ -44,10 +49,10 @@ const OUT_BIG_ICO_DIR = "_promo/boards";
 const Header = (boardName: string, content: string) => {
   return `
     /* ==UserStyle==
-    @name           ${boardName} board
+    @name           Custom chessboard
     @namespace      sharechess.github.io
-    @version        1.2.0
-    @description    Chessboard for ${domains.map((d) => d.name).join(", ")}
+    @version        1.3.0
+    @description    ${boardName} for ${domains.map((d) => d.name).join(", ")}
     @author         sharechess.github.io
     ==/UserStyle== */
 
