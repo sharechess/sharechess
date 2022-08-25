@@ -1,10 +1,10 @@
 import { Style } from "../../src/types";
 
-const OpeningTreeBoardCSS = (dataURL: string, style: Style) => {
+const OpeningTreeBoardCSS = (cssVars: { board: string }, style: Style) => {
   return `
     @-moz-document domain("openingtree.com") {
       .cg-wrap {
-        background-image: ${dataURL} !important;
+        background-image: ${cssVars.board} !important;
         background-size: cover !important;
         filter: none !important;
       }

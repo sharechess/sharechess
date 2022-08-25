@@ -1,9 +1,9 @@
 import { Style } from "../../src/types";
 
-const LichessBoardCSS = (dataURL: string, style: Style) => {
+const LichessBoardCSS = (cssVars: { board: string }, style: Style) => {
   return `
     @-moz-document domain("lichess.org") {
-      .is2d cg-board {background-image: ${dataURL} !important}
+      .is2d cg-board {background-image: ${cssVars.board} !important}
       .is2d coords {
         --cg-ccw: ${style.coords.onDark} !important;
         --cg-ccb: ${style.coords.onLight} !important;

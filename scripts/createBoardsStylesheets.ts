@@ -14,6 +14,8 @@ import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
 import OpeningTreeBoardCSS from "./style-templates/OpeningTreeBoardCSS";
 import ChessGamesBoardCSS from "./style-templates/ChessGamesBoardCSS";
 import Chess24BoardCSS from "./style-templates/Chess24BoardCSS";
+import ChesstempoBoardCSS from "./style-templates/ChesstempoBoardCSS";
+import { chunk_ } from "@arrows/array";
 
 const domains = [
   {
@@ -36,6 +38,10 @@ const domains = [
     name: "chess24.com",
     template: Chess24BoardCSS,
   },
+  {
+    name: "chesstempo.com",
+    template: ChesstempoBoardCSS,
+  },
 ];
 
 const size = 1200;
@@ -51,8 +57,10 @@ const Header = (boardName: string, content: string) => {
     /* ==UserStyle==
     @name           Custom chessboard
     @namespace      sharechess.github.io
-    @version        1.3.0
-    @description    ${boardName} for ${domains.map((d) => d.name).join(", ")}
+    @version        1.4.0
+    @description    ${boardName} chessboard for ${domains
+    .map((d) => d.name)
+    .join(", ")}
     @author         sharechess.github.io
     ==/UserStyle== */
 
@@ -68,7 +76,9 @@ const createBoard = async (
   tiles: number,
   boardStyle: string,
   styleObj: Style,
-  borderSize: number = 0
+  borderSize: number = 0,
+  borderOnly: boolean = false,
+  blackFill: boolean = false
 ) => {
   const board = new Board(
     {
@@ -81,6 +91,9 @@ const createBoard = async (
     load as unknown as LoadImage,
     create as unknown as CreateCanvas
   );
+
+  board.setBorderOnly(borderOnly);
+  board.setBlackFill(blackFill);
 
   if (borderSize > 0) {
     board.setBorderScale(borderSize);
@@ -98,6 +111,83 @@ const createBoard = async (
         });
 
   return minified;
+};
+
+const getAverageColor = (arr: Uint8ClampedArray) => {
+  let R = 0;
+  let G = 0;
+  let B = 0;
+
+  let size = arr.length / 4;
+
+  for (let i = 0; i < size; i++) {
+    R += arr[i * 4];
+    G += arr[i * 4 + 1];
+    B += arr[i * 4 + 2];
+  }
+
+  const r = Math.floor(R / size)
+    .toString(16)
+    .padStart(2, "0");
+  const g = Math.floor(G / size)
+    .toString(16)
+    .padStart(2, "0");
+  const b = Math.floor(B / size)
+    .toString(16)
+    .padStart(2, "0");
+
+  return `#${r}${g}${b}`;
+};
+
+const getAverageBorderColor = async (boardStyle: string) => {
+  const board = new Board(
+    {
+      size: 32,
+      tiles: 1,
+      showBorder: true,
+      showExtraInfo: false,
+      boardStyle: boardStyle as BoardStyle,
+    },
+    load as unknown as LoadImage,
+    create as unknown as CreateCanvas
+  );
+
+  board.setBorderOnly(true);
+  board.setBlackFill(false);
+
+  await board.renderStatic();
+  const clampedArr = board.toClampedArray();
+
+  return getAverageColor(clampedArr);
+};
+
+const createBorder = async (
+  size: number,
+  tiles: number,
+  boardStyle: string,
+  styleObj: Style,
+  borderSize: number = 2
+): Promise<{ color: string; image: string | null }> => {
+  if (!Array.isArray(styleObj.border) && styleObj.border.type === "solid") {
+    return { color: styleObj.border.data.color, image: null };
+  }
+
+  const averageColor = await getAverageBorderColor(boardStyle);
+
+  const img = await createBoard(
+    size,
+    tiles,
+    boardStyle,
+    styleObj,
+    borderSize,
+    true,
+    true
+  );
+
+  return {
+    color: averageColor,
+    image: `data:image/png;base64,${img.toString("base64")}`,
+  };
 };
 
 const main = async () => {
@@ -126,21 +216,31 @@ const main = async () => {
     const board = await createBoard(size, 8, boardStyle, styleObj);
     const ico = await createBoard(icoSize, 2, boardStyle, styleObj, 3);
     const bigIco = await createBoard(bigIcoSize, 2, boardStyle, styleObj, 3);
+    const borderStyle = await createBorder(size, 1, boardStyle, styleObj);
 
     const imgURL = `data:image/png;base64,${board.toString("base64")}`;
+
+    const borderCSSImage =
+      borderStyle.image !== null ? `url(${borderStyle.image})` : "none";
 
     const vars = `
     @-moz-document ${domains.map((d) => `domain(${d.name})`).join(", ")} {
       :root {
         --sharechess-board-url: url(${imgURL});
+        --sharechess-border-url: ${borderCSSImage};
+        --sharechess-border-color: ${borderStyle.color};
       }
     }
     `;
 
-    const boardVar = "var(--sharechess-board-url)";
+    const cssVars = {
+      board: "var(--sharechess-board-url)",
+      borderImg: "var(--sharechess-border-url)",
+      borderColor: "var(--sharechess-border-color)",
+    };
 
     const domainStylesheets = domains
-      .map((d) => d.template(boardVar, styleObj))
+      .map((d) => d.template(cssVars, styleObj))
       .join("\n");
 
     const content = `

@@ -58,6 +58,8 @@ class Board {
 
   private scale: number = 1;
   private borderScale: number = 1;
+  private borderOnly: boolean = false;
+  private blackFill: boolean = false;
 
   private size: number = 0;
   private squareSize: number = 0;
@@ -168,6 +170,14 @@ class Board {
   setBorderScale(scale: number) {
     this.borderScale = scale;
     this.setSize(this.cfg.size);
+  }
+
+  setBorderOnly(borderOnly: boolean) {
+    this.borderOnly = borderOnly;
+  }
+
+  setBlackFill(blackFill: boolean) {
+    this.blackFill = blackFill;
   }
 
   async setStyle(style: BoardStyle, refresh: boolean = true) {
@@ -445,6 +455,23 @@ class Board {
       border,
       this.loadImage
     );
+
+    if (this.borderOnly) {
+      if (this.blackFill) {
+        await drawRectangle(
+          this.ctx,
+          this.innerSize,
+          this.innerSize,
+          this.cfg.showBorder ? this.borderWidth : 0,
+          (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
+          { type: "solid", data: { color: "black" } },
+          this.loadImage,
+          this.cfg.tiles
+        );
+      }
+
+      return;
+    }
 
     await drawRectangle(
       this.ctx,

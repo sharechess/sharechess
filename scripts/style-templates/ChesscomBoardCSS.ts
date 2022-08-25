@@ -1,9 +1,9 @@
 import { Style } from "../../src/types";
 
-const ChesscomBoardCSS = (dataURL: string, style: Style) => {
+const ChesscomBoardCSS = (cssVars: { board: string }, style: Style) => {
   return `
     @-moz-document domain("chess.com") {
-      .board {background-image: ${dataURL} !important}
+      .board {background-image: ${cssVars.board} !important}
       .coordinate-light {fill: ${style.coords.onLight} !important}
       .coordinate-dark {fill: ${style.coords.onDark} !important}
       .coords-light {color: ${style.coords.onLight} !important}

@@ -1,14 +1,14 @@
 import { Style } from "../../src/types";
 import { hexToRGBA, rgb2hsl } from "../utils/colors";
 
-const Chess24BoardCSS = (dataURL: string, style: Style) => {
+const Chess24BoardCSS = (cssVars: { board: string }, style: Style) => {
   const [r, g, b] = hexToRGBA(style.moveIndicator.color);
   const [h, s, l] = rgb2hsl(r, g, b);
 
   return `
     @-moz-document domain("chess24.com") {
       .chess-board .svg {
-        background-image: ${dataURL} !important;
+        background-image: ${cssVars.board} !important;
         background-size: cover !important;
         opacity: 1 !important;
         border-radius: 2.8%;
