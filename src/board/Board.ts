@@ -59,7 +59,7 @@ class Board {
   private scale: number = 1;
   private borderScale: number = 1;
   private borderOnly: boolean = false;
-  private blackFill: boolean = false;
+  private hollow: boolean = false;
 
   private size: number = 0;
   private squareSize: number = 0;
@@ -176,8 +176,8 @@ class Board {
     this.borderOnly = borderOnly;
   }
 
-  setBlackFill(blackFill: boolean) {
-    this.blackFill = blackFill;
+  setHollow(hollow: boolean) {
+    this.hollow = hollow;
   }
 
   async setStyle(style: BoardStyle, refresh: boolean = true) {
@@ -457,17 +457,24 @@ class Board {
     );
 
     if (this.borderOnly) {
-      if (this.blackFill) {
-        await drawRectangle(
-          this.ctx,
+      if (this.hollow) {
+        this.ctx.clearRect(
+          this.borderWidth,
+          this.borderWidth + this.margin,
           this.innerSize,
-          this.innerSize,
-          this.cfg.showBorder ? this.borderWidth : 0,
-          (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
-          { type: "solid", data: { color: "black" } },
-          this.loadImage,
-          this.cfg.tiles
+          this.innerSize
         );
+
+        // await drawRectangle(
+        //   this.ctx,
+        //   this.innerSize,
+        //   this.innerSize,
+        //   this.cfg.showBorder ? this.borderWidth : 0,
+        //   (this.cfg.showBorder ? this.borderWidth : 0) + this.margin,
+        //   { type: "solid", data: { color: "black" } },
+        //   this.loadImage,
+        //   this.cfg.tiles
+        // );
       }
 
       return;

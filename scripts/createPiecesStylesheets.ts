@@ -10,6 +10,10 @@ import OpeningTreePiecesCSS from "./style-templates/OpeningTreePiecesCSS";
 import ChessGamesPiecesCSS from "./style-templates/ChessGamesPiecesCSS";
 import Chess24PiecesCSS from "./style-templates/Chess24PiecesCSS";
 import ChesstempoPiecesCSS from "./style-templates/ChesstempoPiecesCSS";
+import ListudyPiecesCSS from "./style-templates/ListudyPiecesCSS";
+import ChesspeckerPiecesCSS from "./style-templates/ChesspeckerPiecesCSS";
+import ChessbasePiecesCSS from "./style-templates/ChessbasePiecesCSS";
+import WikipediaPiecesCSS from "./style-templates/WikipediaPiecesCSS";
 
 const domains = [
   {
@@ -36,6 +40,22 @@ const domains = [
     name: "chesstempo.com",
     template: ChesstempoPiecesCSS,
   },
+  {
+    name: "listudy.org",
+    template: ListudyPiecesCSS,
+  },
+  {
+    name: "chesspecker.com",
+    template: ChesspeckerPiecesCSS,
+  },
+  {
+    name: "chessbase.com",
+    template: ChessbasePiecesCSS,
+  },
+  {
+    name: "wikipedia.org",
+    template: WikipediaPiecesCSS,
+  },
 ];
 
 const PIECES_FOLDER = "public/pieces";
@@ -59,7 +79,7 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
     /* ==UserStyle==
     @name           Custom pieces
     @namespace      sharechess.github.io
-    @version        1.4.0
+    @version        1.5.0
     @description    ${namePretty} piece set for ${domains
     .map((d) => d.name)
     .join(", ")}

@@ -15,7 +15,11 @@ import OpeningTreeBoardCSS from "./style-templates/OpeningTreeBoardCSS";
 import ChessGamesBoardCSS from "./style-templates/ChessGamesBoardCSS";
 import Chess24BoardCSS from "./style-templates/Chess24BoardCSS";
 import ChesstempoBoardCSS from "./style-templates/ChesstempoBoardCSS";
-import { chunk_ } from "@arrows/array";
+import ListudyBoardCSS from "./style-templates/ListudyBoardCSS";
+import ChesspeckerBoardCSS from "./style-templates/ChesspeckerBoardCSS";
+import ChessbaseBoardCSS from "./style-templates/ChessbaseBoardCSS";
+import WikipediaBoardCSS from "./style-templates/WikipediaBoardCSS";
+import AimchessBoardCSS from "./style-templates/AimchessBoardCSS";
 
 const domains = [
   {
@@ -42,6 +46,26 @@ const domains = [
     name: "chesstempo.com",
     template: ChesstempoBoardCSS,
   },
+  {
+    name: "listudy.org",
+    template: ListudyBoardCSS,
+  },
+  {
+    name: "chesspecker.com",
+    template: ChesspeckerBoardCSS,
+  },
+  {
+    name: "chessbase.com",
+    template: ChessbaseBoardCSS,
+  },
+  {
+    name: "wikipedia.org",
+    template: WikipediaBoardCSS,
+  },
+  {
+    name: "aimchess.com",
+    template: AimchessBoardCSS,
+  },
 ];
 
 const size = 1200;
@@ -57,7 +81,7 @@ const Header = (boardName: string, content: string) => {
     /* ==UserStyle==
     @name           Custom chessboard
     @namespace      sharechess.github.io
-    @version        1.4.0
+    @version        1.5.0
     @description    ${boardName} chessboard for ${domains
     .map((d) => d.name)
     .join(", ")}
@@ -93,7 +117,7 @@ const createBoard = async (
   );
 
   board.setBorderOnly(borderOnly);
-  board.setBlackFill(blackFill);
+  board.setHollow(blackFill);
 
   if (borderSize > 0) {
     board.setBorderScale(borderSize);
@@ -153,7 +177,7 @@ const getAverageBorderColor = async (boardStyle: string) => {
   );
 
   board.setBorderOnly(true);
-  board.setBlackFill(false);
+  board.setHollow(false);
 
   await board.renderStatic();
   const clampedArr = board.toClampedArray();
