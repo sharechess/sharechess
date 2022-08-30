@@ -1,6 +1,21 @@
 import pieces from "../utils/pieces";
 import { PieceType, PieceColor } from "../../src/types";
 
+const uniqueSrcEnding: { [key: string]: string } = {
+  wP: "caMAAAAAElFTkSuQmCC",
+  wN: "AAAAABJRU5ErkJggg==",
+  wB: "5oAAAAASUVORK5CYII=",
+  wR: "SLxAAAAAElFTkSuQmCC",
+  wQ: "9TGAAAAAElFTkSuQmCC",
+  wK: "P9HAAAAAElFTkSuQmCC",
+  bP: "25GAAAAAElFTkSuQmCC",
+  bN: "QAAAABJRU5ErkJggg==",
+  bB: "UM2AAAAAElFTkSuQmCC",
+  bR: "MJoAAAAAElFTkSuQmCC",
+  bQ: "wAAAABJRU5ErkJggg==",
+  bK: "CLzAAAAAElFTkSuQmCC",
+};
+
 const ChessableCSSEntry = (key: string, dataURL: string, forceStyle = true) => {
   const [piece, color] = key.split("") as [PieceType, PieceColor];
   const selector = `${color}${piece.toUpperCase()}`;
@@ -10,7 +25,8 @@ const ChessableCSSEntry = (key: string, dataURL: string, forceStyle = true) => {
       background-image: ${dataURL}${forceStyle ? " !important" : ""}
     }
 
-    img[data-piece="${selector}"] {
+    img[data-piece="${selector}"],
+    img[src$='${uniqueSrcEnding[selector]}'][data-piece='wP'] {
       content: ${dataURL} !important;
     }
   `;

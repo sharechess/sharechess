@@ -83,7 +83,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
                   title="Install via Stylus"
                 />
                 <a
-                  href={`boards/${item.key}.png`}
+                  href={`download/boards/${item.key}.zip`}
                   target="_blank"
                   className="collection__action collection__download"
                   title="Download"

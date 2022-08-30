@@ -14,6 +14,8 @@ import ListudyPiecesCSS from "./style-templates/ListudyPiecesCSS";
 import ChesspeckerPiecesCSS from "./style-templates/ChesspeckerPiecesCSS";
 import ChessbasePiecesCSS from "./style-templates/ChessbasePiecesCSS";
 import WikipediaPiecesCSS from "./style-templates/WikipediaPiecesCSS";
+import AimchessPiecesCSS from "./style-templates/AimchessPiecesCSS";
+import ChessablePiecesCSS from "./style-templates/ChessablePiecesCSS";
 
 const domains = [
   {
@@ -55,6 +57,14 @@ const domains = [
   {
     name: "wikipedia.org",
     template: WikipediaPiecesCSS,
+  },
+  {
+    name: "aimchess.com",
+    template: AimchessPiecesCSS,
+  },
+  {
+    name: "chessable.com",
+    template: ChessablePiecesCSS,
   },
 ];
 

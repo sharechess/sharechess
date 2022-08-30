@@ -10,13 +10,20 @@ const AimchessBoardCSS = (
       .board .square.black {
           fill: transparent !important;
       }
+
+      .board .square[style^='fill'] {
+        fill: ${style.moveIndicator.color} !important;
+      }
+
       .board .border {
           fill: transparent !important;
           stroke-width: 0 !important;
       }
+
       .board .border-inner {
           stroke-width: 0 !important;
       }
+
       .cm-chessboard {
           background-color: ${cssVars.borderColor} !important;
           background-image: ${cssVars.board}, ${cssVars.borderImg ?? "none"};
@@ -24,6 +31,7 @@ const AimchessBoardCSS = (
           background-repeat: no-repeat;
           background-position: center;
       }
+
       .cm-chessboard .coordinate {
           fill: ${style.coords.onBorder} !important;
       }

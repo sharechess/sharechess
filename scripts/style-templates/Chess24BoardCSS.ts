@@ -22,6 +22,21 @@ const Chess24BoardCSS = (cssVars: { board: string }, style: Style) => {
           hue-rotate(${h}deg)
           saturate(${Math.round(s * 100)});
       }
+
+      [data-cy='chessboard'] > div:first-child > div:first-child > div:first-child > div > svg {
+        background-image: ${cssVars.board} !important;
+        background-size: cover !important;
+      }
+
+      [data-cy='chessboard'] > div:first-child > div:first-child > div:first-child > div > svg * {
+          display: none;
+      }
+
+      [data-cy='chessboard'] > div:first-child > div:first-child > div:first-child > div:nth-child(2),
+      [data-cy='chessboard'] > div:first-child > div:first-child > div:first-child > div:nth-child(3) {
+          background-color: ${style.moveIndicator.color} !important;
+          opacity: 1 !important;
+      }
     }
   `;
 };

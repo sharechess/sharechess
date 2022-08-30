@@ -20,6 +20,7 @@ import ChesspeckerBoardCSS from "./style-templates/ChesspeckerBoardCSS";
 import ChessbaseBoardCSS from "./style-templates/ChessbaseBoardCSS";
 import WikipediaBoardCSS from "./style-templates/WikipediaBoardCSS";
 import AimchessBoardCSS from "./style-templates/AimchessBoardCSS";
+import ChessableBoardCSS from "./style-templates/ChessableBoardCSS";
 
 const domains = [
   {
@@ -65,6 +66,10 @@ const domains = [
   {
     name: "aimchess.com",
     template: AimchessBoardCSS,
+  },
+  {
+    name: "chessable.com",
+    template: ChessableBoardCSS,
   },
 ];
 
@@ -238,6 +243,15 @@ const main = async () => {
     const styleObj = boardStyles[boardStyle as BoardStyle] as Style;
 
     const board = await createBoard(size, 8, boardStyle, styleObj);
+    const boardWithBorder = await createBoard(size, 8, boardStyle, styleObj, 1);
+    const background = await createBoard(
+      size,
+      8,
+      boardStyle,
+      styleObj,
+      1,
+      true
+    );
     const ico = await createBoard(icoSize, 2, boardStyle, styleObj, 3);
     const bigIco = await createBoard(bigIcoSize, 2, boardStyle, styleObj, 3);
     const borderStyle = await createBorder(size, 1, boardStyle, styleObj);
@@ -278,7 +292,14 @@ const main = async () => {
 
     fs.writeFileSync(`${OUT_DIR}/${boardStyle}.user.css`, stylesheet);
 
-    fs.writeFileSync(`${OUT_IMG_DIR}/${boardStyle}.png`, board);
+    const subfolder = `${OUT_IMG_DIR}/${boardStyle}`;
+    if (!fs.existsSync(subfolder)) {
+      fs.mkdirSync(subfolder);
+    }
+
+    fs.writeFileSync(`${subfolder}/${boardStyle}.png`, board);
+    fs.writeFileSync(`${subfolder}/${boardStyle}_border.png`, boardWithBorder);
+    fs.writeFileSync(`${subfolder}/${boardStyle}_bg.png`, background);
     fs.writeFileSync(`${OUT_ICO_DIR}/${boardStyle}_ico.png`, ico);
     fs.writeFileSync(`${OUT_BIG_ICO_DIR}/${boardStyle}_ico.png`, bigIco);
   }
