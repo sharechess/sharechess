@@ -9,6 +9,5 @@ _promo
 *.temp.*
 temp
 public/stylus
-public/boards/*
-!public/boards/ico/
+public/boards
 public/download
