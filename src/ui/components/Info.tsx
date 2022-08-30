@@ -10,25 +10,25 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
 
   return (
     <div class="info">
-      <div className="info__header">
-        <div className="info__players">
+      <div class="info__header">
+        <div class="info__players">
           <div class="info__player">
-            <div className="info__left">
-              <button className="info__color info__color--white"></button>
+            <div class="info__left">
+              <button class="info__color info__color--white"></button>
               <Show when={!state.anonymous} fallback="Anonymous">
                 <span contenteditable={false}>
                   {state.game.header.WhitePretty}
                 </span>{" "}
               </Show>
               <Show when={state.game.header.WhiteElo}>
-                <span className="info__rating">
+                <span class="info__rating">
                   {" "}
                   ({state.game.header.WhiteElo})
                 </span>
               </Show>
             </div>
-            <div className="info__right">
-              <span className="info__score">
+            <div class="info__right">
+              <span class="info__score">
                 {state.game.header.Result === "1-0"
                   ? "1"
                   : state.game.header.Result === "0-1"
@@ -40,22 +40,22 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
             </div>
           </div>
           <div class="info__player">
-            <div className="info__left">
-              <button className="info__color info__color--black"></button>
+            <div class="info__left">
+              <button class="info__color info__color--black"></button>
               <Show when={!state.anonymous} fallback="Anonymous">
                 <span contenteditable={false}>
                   {state.game.header.BlackPretty}
                 </span>{" "}
               </Show>
               <Show when={state.game.header.BlackElo}>
-                <span className="info__rating">
+                <span class="info__rating">
                   {" "}
                   ({state.game.header.BlackElo})
                 </span>
               </Show>
             </div>
-            <div className="info__right">
-              <span className="info__score">
+            <div class="info__right">
+              <span class="info__score">
                 {state.game.header.Result === "1-0"
                   ? "0"
                   : state.game.header.Result === "0-1"
@@ -67,7 +67,7 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
             </div>
           </div>
         </div>
-        <div className="info__event">
+        <div class="info__event">
           <Show when={state.game.header.Event}>
             <p>{state.game.header.Event}</p>
           </Show>
@@ -75,7 +75,7 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
             <p>Round {state.game.header.Round}</p>
           </Show>
         </div>
-        <div className="info__site">
+        <div class="info__site">
           <Show when={state.game.header.Site}>
             <p>
               <Show when={!state.anonymous || !isLink(state.game.header.Site)}>
@@ -95,7 +95,7 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
           </Show>
         </div>
       </div>
-      <div className="info__analyze">
+      <div class="info__analyze">
         <button
           onClick={async () => {
             const success = await props.handlers.openOnLichess();
@@ -107,7 +107,7 @@ const Info: Component<{ handlers: Handlers }> = (props) => {
           }}
           classList={{ "btn--error": error() }}
         >
-          <i className="las la-vial"></i>{" "}
+          <i class="las la-vial"></i>{" "}
           {error() ? "Cannot import to lichess" : "Analyze on Lichess"}
         </button>
       </div>

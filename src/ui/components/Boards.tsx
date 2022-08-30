@@ -43,7 +43,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
         }
       >
         {(item) => (
-          <div className="collection__card">
+          <div class="collection__card">
             <div
               class={
                 "collection__ico boards__ico" +
@@ -59,7 +59,7 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
               title={item.key as string}
               draggable={false}
             ></div>
-            <div className="collection__actions">
+            <div class="collection__actions">
               <a
                 href=""
                 onClick={(e) => {
@@ -79,13 +79,13 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
                 <a
                   href={`stylus/boards/${item.key}.user.css`}
                   target="_blank"
-                  className="collection__action collection__stylus"
+                  class="collection__action collection__stylus"
                   title="Install via Stylus"
                 />
                 <a
                   href={`download/boards/${item.key}.zip`}
                   target="_blank"
-                  className="collection__action collection__download"
+                  class="collection__action collection__download"
                   title="Download"
                 />
               </Show>

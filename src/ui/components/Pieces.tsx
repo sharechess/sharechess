@@ -46,7 +46,7 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
         }
       >
         {(item) => (
-          <div className="collection__card">
+          <div class="collection__card">
             <div
               class={
                 "collection__ico" +
@@ -62,7 +62,7 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
               title={item.key as string}
               draggable={false}
             ></div>
-            <div className="collection__actions">
+            <div class="collection__actions">
               <a
                 href=""
                 onClick={(e) => {
@@ -84,12 +84,12 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
                     state.boardConfig.showShadows ? "_shadows" : ""
                   }.user.css`}
                   target="_blank"
-                  className="collection__action collection__stylus"
+                  class="collection__action collection__stylus"
                   title="Install via Stylus"
                 />
                 <a
                   href={`download/pieces/${item.key}.zip`}
-                  className="collection__action collection__download"
+                  class="collection__action collection__download"
                   title="Download"
                 />
               </Show>

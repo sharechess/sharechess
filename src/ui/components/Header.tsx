@@ -98,7 +98,7 @@ const Header: Component<{ handlers: Handlers }> = (props) => {
       <Show when={!state.mobile}>
         <a
           href=""
-          className="header__support"
+          class="header__support"
           onClick={(e) => {
             e.preventDefault();
             setState("fullscreenPopup", "support");

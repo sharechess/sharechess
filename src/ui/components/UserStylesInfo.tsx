@@ -31,11 +31,11 @@ const About: Component = () => {
           </a>{" "}
           by following the instructions below.
         </p>
-        <div className="us-info__steps">
-          <div className="us-info__step">
+        <div class="us-info__steps">
+          <div class="us-info__step">
             <h2 class="us-info__step-num">1</h2>
-            <h3 className="us-info__step-title">Install Stylus</h3>
-            <p className="us-info__description">
+            <h3 class="us-info__step-title">Install Stylus</h3>
+            <p class="us-info__description">
               Get the Stylus extension for your browser, that allows you to use
               custom styles on other websites.
             </p>
@@ -55,32 +55,32 @@ const About: Component = () => {
               </a>
             </p>
           </div>
-          <div className="us-info__step">
+          <div class="us-info__step">
             <h2 class="us-info__step-num">2</h2>
-            <h3 className="us-info__step-title">
+            <h3 class="us-info__step-title">
               Choose your chessboard and pieces
             </h3>
-            <p className="us-info__description">
+            <p class="us-info__description">
               Install any of the piece or chessboard styles by clicking the{" "}
               <img class="us-info__text-ico" src="img/stylus.svg" alt="" /> icon
               on the chessboard / piece set card.
             </p>
-            <p className="us-info__description">
+            <p class="us-info__description">
               This will open a stylesheet, click{" "}
               <strong>"Install / Reinstall style"</strong> button in the top
               left corner.
             </p>
-            <p className="us-info__browse">
+            <p class="us-info__browse">
               <button onClick={onBrowseClick("boards")}>
                 Browse Chessboards
               </button>
               <button onClick={onBrowseClick("pieces")}>Browse Pieces</button>
             </p>
           </div>
-          <div className="us-info__step">
+          <div class="us-info__step">
             <h2 class="us-info__step-num">3</h2>
-            <h3 className="us-info__step-title">Manage your styles</h3>
-            <p className="us-info__description">
+            <h3 class="us-info__step-title">Manage your styles</h3>
+            <p class="us-info__description">
               Toggle installed styles via Stylus extension menu. Pin the
               extension for easy access.
             </p>

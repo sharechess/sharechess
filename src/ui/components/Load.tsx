@@ -79,7 +79,7 @@ const Load: Component<{ handlers: Handlers; class?: string }> = (props) => {
       </button>
 
       <Show when={!state.mobile}>
-        <div className="load__pgn-file-info">
+        <div class="load__pgn-file-info">
           <p>or</p>
           <p>drop the PGN file anywhere on the page</p>
         </div>

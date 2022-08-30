@@ -40,7 +40,7 @@ const About: Component = () => {
         <Show when={!state.mobile}>
           <hr />
           <h2>Keyboard Shortcuts</h2>
-          <div className="about__shortcuts">
+          <div class="about__shortcuts">
             <ul>
               <li>
                 <kbd>→</kbd> Next move

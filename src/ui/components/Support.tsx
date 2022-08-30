@@ -11,13 +11,13 @@ const About: Component = () => {
         class="support"
         onCLose={() => setState("fullscreenPopup", null)}
       >
-        <p className="support__intro">
+        <p class="support__intro">
           If you like what I'm doing, you can support the project financially,
           contribute your work and ideas, and share the projects with others.
         </p>
 
-        <div className="support__methods">
-          <div className="support__method">
+        <div class="support__methods">
+          <div class="support__method">
             <img class="support__ico" src="img/github.svg" alt="contribute" />
             <h2 class="support__title">Help improve the website</h2>
             <p class="support__description">
@@ -47,7 +47,7 @@ const About: Component = () => {
               </a>
             </p>
           </div>
-          <div className="support__method">
+          <div class="support__method">
             <img
               class="support__ico support__ico--coffee"
               src="img/donate.svg"
@@ -74,7 +74,7 @@ const About: Component = () => {
               DONATE
             </a>
           </div>
-          <div className="support__method">
+          <div class="support__method">
             <img class="support__ico" src="img/artists.svg" alt="design" />
             <h2 class="support__title">Design a chessboard or piece set</h2>
             <p class="support__description">
@@ -110,8 +110,8 @@ const About: Component = () => {
           </div>
         </div>
         <hr />
-        <div className="support__share">
-          <p className="support__subreddit">
+        <div class="support__share">
+          <p class="support__subreddit">
             Follow my{" "}
             <a href="https://www.reddit.com/r/sharechess/" target="_blank">
               subreddit
@@ -121,7 +121,7 @@ const About: Component = () => {
           <p class="support__share-intro">
             Share the project with others, to help it grow!
           </p>
-          <div className="share__targets">
+          <div class="share__targets">
             {/* <!-- Sharingbutton Facebook --> */}
             <a
               class="resp-sharing-button__link"

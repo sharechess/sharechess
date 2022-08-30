@@ -1,8 +1,9 @@
-import { Component } from "solid-js";
+import { Component, JSXElement } from "solid-js";
 import "./Tab.css";
 import { TabName } from "../../../state";
 
 const Tab: Component<{
+  children: JSXElement;
   name: TabName;
   setTab: (name: TabName) => void;
   isActive: boolean;
