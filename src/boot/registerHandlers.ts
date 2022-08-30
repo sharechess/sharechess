@@ -17,7 +17,7 @@ import isSafeLink from "../utils/isSafeLink";
 import piecesStyles, { PiecesStyle } from "../board/styles-pieces/piecesStyles";
 import link from "../persistance/link";
 import importToLichess from "../imports/importToLichess";
-import { boardNames } from "../board/styles-board";
+import boardStyles from "../board/styles-board/boardStyles";
 import { randomElement } from "../utils/random";
 
 const MAX_RECENT_ITEMS = 20;
@@ -335,7 +335,7 @@ const registerHandlers = (player: Player, board: Board): Handlers => {
       location.hash = `#pgn/w/0/${game}`;
     },
     async randomStyle() {
-      const boardStyle = randomElement(boardNames);
+      const boardStyle = randomElement(boardStyles);
       const piecesStyle = randomElement(piecesStyles as unknown as string[]);
 
       await board.setAllStyles(piecesStyle, boardStyle);

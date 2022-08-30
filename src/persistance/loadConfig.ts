@@ -1,9 +1,9 @@
 import { PiecesStyle } from "./../board/styles-pieces/piecesStyles";
-import { boardNames } from "../board/styles-board";
+import boardStyles from "../board/styles-board/boardStyles";
 import piecesStyles from "../board/styles-pieces/piecesStyles";
 
 const fixBoardConfig = (boardConfig: { [key: string]: string }) => {
-  if (!boardNames.includes(boardConfig.boardStyle)) {
+  if (!boardStyles.includes(boardConfig.boardStyle)) {
     delete boardConfig.boardStyle;
   }
 

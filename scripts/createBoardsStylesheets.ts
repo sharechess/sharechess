@@ -7,7 +7,7 @@ import { BoardStyle, Style } from "./../src/types";
 import { loadImage, createCanvas, Canvas } from "canvas";
 import Board from "../src/board/Board";
 import { CreateCanvas, LoadImage } from "../src/types";
-import boardStyles from "../src/board/styles-board";
+import boardStyles from "../src/board/styles-board/templates";
 
 import LichessBoardCSS from "./style-templates/LichessBoardCSS";
 import ChesscomBoardCSS from "./style-templates/ChesscomBoardCSS";
@@ -81,6 +81,11 @@ const OUT_IMG_DIR = "public/boards";
 const OUT_ICO_DIR = "public/boards/ico";
 const OUT_BIG_ICO_DIR = "_promo/boards";
 
+const loadStyle = async (name: string) =>
+  JSON.parse(
+    fs.readFileSync(`public/board-templates/${name}.json`, { encoding: "utf8" })
+  );
+
 const Header = (boardName: string, content: string) => {
   return `
     /* ==UserStyle==
@@ -110,16 +115,18 @@ const createBoard = async (
   blackFill: boolean = false
 ) => {
   const board = new Board(
-    {
-      size,
-      tiles,
-      showBorder: borderSize > 0,
-      showExtraInfo: false,
-      boardStyle: boardStyle as BoardStyle,
-    },
     load as unknown as LoadImage,
-    create as unknown as CreateCanvas
+    create as unknown as CreateCanvas,
+    loadStyle
   );
+
+  await board.init({
+    size,
+    tiles,
+    showBorder: borderSize > 0,
+    showExtraInfo: false,
+    boardStyle: boardStyle as BoardStyle,
+  });
 
   board.setBorderOnly(borderOnly);
   board.setHollow(blackFill);
@@ -170,16 +177,18 @@ const getAverageColor = (arr: Uint8ClampedArray) => {
 
 const getAverageBorderColor = async (boardStyle: string) => {
   const board = new Board(
-    {
-      size: 32,
-      tiles: 1,
-      showBorder: true,
-      showExtraInfo: false,
-      boardStyle: boardStyle as BoardStyle,
-    },
     load as unknown as LoadImage,
-    create as unknown as CreateCanvas
+    create as unknown as CreateCanvas,
+    loadStyle
   );
+
+  await board.init({
+    size: 32,
+    tiles: 1,
+    showBorder: true,
+    showExtraInfo: false,
+    boardStyle: boardStyle as BoardStyle,
+  });
 
   board.setBorderOnly(true);
   board.setHollow(false);

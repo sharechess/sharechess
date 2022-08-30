@@ -18,7 +18,8 @@ const createImage = async (
     game.loadFEN(fen);
   }
 
-  const board = new Board({ ...boardConfig, size: sizeToPX[size] });
+  const board = new Board();
+  await board.init({ ...boardConfig, size: sizeToPX[size] });
 
   const position = game.getPosition(ply);
   await board.frame(position, game.header);

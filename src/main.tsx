@@ -11,7 +11,8 @@ import loadFromUrl from "./boot/loadFromUrl";
 import registerEvents from "./boot/registerEvents";
 
 const main = async () => {
-  const board = new Board(state.boardConfig);
+  const board = new Board();
+  await board.init(state.boardConfig);
   const player = new Player(board, state.gameConfig);
 
   /* Connect player to the state */

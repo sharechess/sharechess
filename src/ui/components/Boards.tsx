@@ -2,10 +2,10 @@ import { Component, For, Show } from "solid-js";
 import { Handlers, BoardStyle } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
-import boardStyles from "../../board/styles-board";
+import boardStyles from "../../board/styles-board/boardStyles";
 import { state, setState } from "../../state";
 
-const boards = Object.keys(boardStyles).map((key) => ({
+const boards = boardStyles.map((key) => ({
   key,
   img: `/boards/ico/${key}_ico.png`,
 })) as { key: BoardStyle; img: string }[];

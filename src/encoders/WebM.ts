@@ -1,5 +1,6 @@
 // @ts-ignore
 import WebMWriter from "webm-writer";
+import Board from "../board/Board";
 
 class WebM {
   private video: WebMWriter;
@@ -14,8 +15,9 @@ class WebM {
     });
   }
 
-  add(frame: CanvasImageSource | string, frames: number) {
-    this.video.addFrame(frame, frames * this.frameTime);
+  add(board: Board, frames: number) {
+    const data = board.canvas;
+    this.video.addFrame(data, frames * this.frameTime);
   }
 
   async render(): Promise<File> {

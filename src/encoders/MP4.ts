@@ -1,17 +1,13 @@
 import * as HME from "h264-mp4-encoder";
+import Board from "../board/Board";
 
 class MP4 {
   private hme: Promise<HME.H264MP4Encoder>;
   private encoder: HME.H264MP4Encoder | null = null;
-  private frameTime: number;
+  private frameTime: number = 1000;
 
-  constructor(
-    private width: number,
-    private height: number,
-    frameTime: number = 1000
-  ) {
+  constructor(private width: number, private height: number) {
     this.hme = HME.createH264MP4Encoder();
-    this.frameTime = frameTime;
   }
 
   async setup(width: number, height: number) {
@@ -23,7 +19,9 @@ class MP4 {
     this.encoder.initialize();
   }
 
-  async add(data: Uint8ClampedArray, frames: number) {
+  async add(board: Board, frames: number) {
+    const data = board.toClampedArray();
+
     if (this.encoder === null) {
       await this.setup(this.width, this.height);
     }

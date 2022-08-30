@@ -1,4 +1,5 @@
 import GIFLib from "gif.js";
+import Board from "../board/Board";
 
 class GIF {
   private gif: GIFLib;
@@ -20,17 +21,11 @@ class GIF {
     this.frameTime = frameTime;
   }
 
-  add(
-    frame:
-      | CanvasImageSource
-      | CanvasRenderingContext2D
-      | WebGLRenderingContext
-      | ImageData,
+  add(board: Board, frames: number) {
+    const data = board.toImageData();
 
-    frames: number
-  ) {
     while (frames--) {
-      this.gif.addFrame(frame, { delay: this.frameTime });
+      this.gif.addFrame(data, { delay: this.frameTime });
     }
   }
 

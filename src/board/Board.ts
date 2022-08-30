@@ -13,10 +13,10 @@ import drawMoveIndicators from "./layers/drawMoveIndicators";
 import drawPieces from "./layers/drawPieces";
 import drawHeader from "./layers/drawHeader";
 import drawExtraInfo from "./layers/drawExtraInfo";
-import boards from "./styles-board";
 import isLink from "../utils/isLink";
 import { PiecesStyle } from "./styles-pieces/piecesStyles";
 import loadImageBrowser from "./loaders/loadImage";
+import standardStyle from "./styles-board/templates/standard";
 
 const defaultConfig: BoardConfig = {
   size: 720,
@@ -67,7 +67,7 @@ class Board {
   private borderWidth: number = 0;
   private margin: number = 0;
 
-  private style: Style = boards.standard;
+  private style: Style = standardStyle;
   private header: Header = defaultHeader;
   private lastPosition: Position | null = null;
   private background: HTMLCanvasElement | null = null;
@@ -80,9 +80,10 @@ class Board {
   public canvas: HTMLCanvasElement;
 
   constructor(
-    config: Partial<BoardConfig> = {},
     private loadImage: LoadImage = loadImageBrowser,
-    private createCanvas: CreateCanvas = () => document.createElement("canvas")
+    private createCanvas: CreateCanvas = () => document.createElement("canvas"),
+    private loadStyle: (name: string) => Promise<any> = (name) =>
+      fetch(name).then((res) => res.json())
   ) {
     this.canvas = this.createCanvas();
     this.tempCanvas = this.createCanvas();
@@ -96,8 +97,10 @@ class Board {
 
     this.ctx = ctx;
     this.tempCtx = tempCtx;
+  }
 
-    this.updateConfig(config, false);
+  async init(config: Partial<BoardConfig> = {}) {
+    await this.updateConfig(config, false);
   }
 
   async setCanvas(canvas: HTMLCanvasElement) {
@@ -114,7 +117,7 @@ class Board {
     this.cfg = cfg;
 
     this.setSize(cfg.size);
-    this.setStyle(cfg.boardStyle, refresh);
+    await this.setStyle(cfg.boardStyle, refresh);
 
     if (refresh) {
       await this.refresh();
@@ -181,7 +184,7 @@ class Board {
   }
 
   async setStyle(style: BoardStyle, refresh: boolean = true) {
-    this.style = boards[style] as unknown as Style;
+    this.style = await this.loadStyle(style);
     this.cfg.boardStyle = style;
     if (refresh) {
       await this.refresh();
@@ -195,7 +198,7 @@ class Board {
 
   async setAllStyles(piecesStyle: PiecesStyle, boardStyle: BoardStyle) {
     this.cfg.piecesStyle = piecesStyle;
-    this.style = boards[boardStyle] as unknown as Style;
+    this.style = await this.loadStyle(boardStyle);
     this.cfg.boardStyle = boardStyle;
     await this.refresh();
   }

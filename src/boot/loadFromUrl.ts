@@ -2,7 +2,7 @@ import { PiecesStyle } from "./../board/styles-pieces/piecesStyles";
 import { BoardStyle, Handlers } from "./../types";
 import { setState } from "../state";
 import link from "../persistance/link";
-import boardStyles from "../board/styles-board";
+import boardStyles from "../board/styles-board/boardStyles";
 import piecesStyles from "../board/styles-pieces/piecesStyles";
 import Board from "../board/Board";
 
@@ -27,7 +27,7 @@ const loadFromUrl = async (
     handlers.goto(ply);
   }
 
-  if (boardStyle && Object.keys(boardStyles).includes(boardStyle)) {
+  if (boardStyle && boardStyles.includes(boardStyle)) {
     setState("boardConfig", "boardStyle", boardStyle as BoardStyle);
     board.setStyle(boardStyle as BoardStyle);
   }

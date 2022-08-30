@@ -1,0 +1,1 @@
+{"category":"solid","background":{"type":"solid","data":{"color":"transparent"}},"dark":{"type":"solid","data":{"color":"#FF9999"}},"light":{"type":"solid","data":{"color":"#FFC8C8"}},"moveIndicator":{"color":"#00ffff33"},"border":{"type":"solid","data":{"color":"#444F5A"}},"coords":{"onLight":"#FF9999","onDark":"#FFC8C8","onBorder":"#FFC8C8"}}
