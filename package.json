@@ -54,6 +54,7 @@
     "hammerjs": "^2.0.8",
     "howler": "^2.2.3",
     "is-mobile": "^3.0.0",
+    "solid-js": "^1.5.2",
     "ua-parser-js": "^1.0.2",
     "webm-writer": "^1.0.0"
   }
