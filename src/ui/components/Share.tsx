@@ -18,7 +18,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
 
   return (
     <Scrollable class={"share" + (props.class ? ` ${props.class}` : "")}>
-      <div className="share__view">
+      <div class="share__view">
         <h2 class="header--first">Board options</h2>
         <button
           classList={{
@@ -106,7 +106,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         </button>
       </div>
       <hr />
-      <div className="share__fen">
+      <div class="share__fen">
         <h2>Current position</h2>
         <input
           type="text"
@@ -261,7 +261,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
           </div>
         </div>
         <div class="share__animation">
-          <hr className="invisible" />
+          <hr class="invisible" />
           <button
             classList={{
               share__size: true,

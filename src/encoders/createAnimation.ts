@@ -2,9 +2,6 @@ import { BoardConfig, Size } from "./../types";
 import Board from "../board/Board";
 import Game from "../game/Game";
 import sizeToPX from "./sizeToPX";
-// import GIF from "./GIF";
-// import WebM from "./WebM";
-// import MP4 from "./MP4";
 
 const createAnimation = async (
   pgn: string,
@@ -26,14 +23,6 @@ const createAnimation = async (
   ).default;
 
   const encoder = new Encoder(board.width, board.height, true);
-
-  // const encoder =
-  //   format === "GIF"
-  //     ? new GIF(board.width, board.height, true)
-  //     : format === "MP4"
-  //     ? new MP4(board.width, board.height)
-  //     : new WebM();
-
   const header = game.header;
 
   if (includeTitleScreen) {
