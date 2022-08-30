@@ -52,6 +52,10 @@ const defaultHeader: Header = {
   PuzzleDescription: null,
 };
 
+const defaultLoadStyle = (name: string) => {
+  return fetch(`/board-templates/${name}.json`).then((res) => res.json());
+};
+
 class Board {
   private cfg: BoardConfig = defaultConfig;
   private _anonymous: boolean = false;
@@ -82,8 +86,7 @@ class Board {
   constructor(
     private loadImage: LoadImage = loadImageBrowser,
     private createCanvas: CreateCanvas = () => document.createElement("canvas"),
-    private loadStyle: (name: string) => Promise<any> = (name) =>
-      fetch(name).then((res) => res.json())
+    private loadStyle: (name: string) => Promise<any> = defaultLoadStyle
   ) {
     this.canvas = this.createCanvas();
     this.tempCanvas = this.createCanvas();
