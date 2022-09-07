@@ -51,7 +51,7 @@ const drawCoords = (
     ctx.fillText(v, x, y);
   });
 
-  const files = "ABCDEFGHIJKLMNOPQRSTUWVXYZ".split("").slice(0, tiles);
+  const files = "abcdefghijklmnopqrstuwvxyz".split("").slice(0, tiles);
   const orderedFiles = blackSide ? files.reverse() : files;
 
   ctx.textBaseline = hasBorder ? "middle" : "bottom";

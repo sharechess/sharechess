@@ -369,7 +369,7 @@ const Share: Component<{ handlers: Handlers; class?: string }> = (props) => {
         >
           INSTALL STYLES
           <br />
-          <span>for lichess.org & chess.com</span>
+          <span>for lichess.org, chess.com & more</span>
         </button>
       </Show>
     </Scrollable>

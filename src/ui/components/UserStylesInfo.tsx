@@ -1,4 +1,4 @@
-import { Component, Show } from "solid-js";
+import { Component, Show, For } from "solid-js";
 import { setState, state } from "../../state";
 import FullscreenPopup from "./reusable/FullscreenPopup";
 
@@ -13,6 +13,21 @@ const onBrowseClick = (tab: "pieces" | "boards") => () => {
   }
 };
 
+const websites = [
+  "lichess.org",
+  "chess.com",
+  "openingtree.com",
+  "chessgames.com",
+  "chess24.com",
+  "chesstempo.com",
+  "listudy.org",
+  "chesspecker.com",
+  "chessbase.com",
+  "wikipedia.org",
+  "aimchess.com",
+  "chessable.com",
+];
+
 const About: Component = () => {
   return (
     <Show when={state.fullscreenPopup === "styles"}>
@@ -22,13 +37,13 @@ const About: Component = () => {
       >
         <p class="us-info__intro">
           You can install any chessboard and piece styles from this website for{" "}
-          <a href="https://lichess.org/" target="_blank">
-            lichess.org
-          </a>{" "}
-          and{" "}
-          <a href="https://www.chess.com/" target="_blank">
-            chess.com
-          </a>{" "}
+          <For each={websites}>
+            {(website) => (
+              <a href={`https://${website}`} target="_blank">
+                {website},{" "}
+              </a>
+            )}
+          </For>
           by following the instructions below.
         </p>
         <div class="us-info__steps">

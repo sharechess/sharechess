@@ -86,6 +86,11 @@ import clouds_rose from "./clouds_rose";
 import clouds_sandal from "./clouds_sandal";
 import clouds_wisteria from "./clouds_wisteria";
 
+import chessception_brown from "./chessception_brown";
+import chessception_green from "./chessception_green";
+import chessception_pink from "./chessception_pink";
+import chessception_violet from "./chessception_violet";
+
 import wood1 from "./wood1";
 import wood2 from "./wood2";
 import wood3 from "./wood3";
@@ -298,6 +303,11 @@ const boardStyles = {
   clouds_gimblet,
   clouds_cucumber,
   clouds_acapulco,
+
+  chessception_brown,
+  chessception_green,
+  chessception_pink,
+  chessception_violet,
 
   wood1,
   wood2,
