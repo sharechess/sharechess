@@ -3,6 +3,17 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.collection__cards {
+  padding: 0;
+  margin: 0;
+}
+
+.collection__title {
+  text-align: center;
+  text-transform: capitalize;
+}
+
 .collection__card {
   margin: 0.5rem;
   cursor: pointer;

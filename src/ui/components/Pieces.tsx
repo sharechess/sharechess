@@ -1,17 +1,14 @@
 import { Component, For, Show } from "solid-js";
 import { Handlers } from "../../types";
 import Scrollable from "./reusable/Scrollable";
-import piecesSets, {
+import piecesStyles, {
   PiecesStyle,
+  piecesStylesGrouped,
 } from "../../board/styles-pieces/piecesStyles";
 import { state, setState } from "../../state";
 
 import "./Pieces.css";
-
-const pieces = piecesSets.map((key) => ({
-  key,
-  img: `/pieces/${key}/nw.svg`,
-})) as { key: PiecesStyle; img: string }[];
+import PieceCard from "./PieceCard";
 
 const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
   return (
@@ -38,65 +35,44 @@ const Pieces: Component<{ handlers: Handlers; class?: string }> = (props) => {
           Favorite
         </button>
       </p>
-      <For
-        each={
-          state.showFavoritePieces
-            ? pieces.filter(({ key }) => state.favoritePieces.has(key))
-            : pieces
-        }
-      >
-        {(item) => (
-          <div class="collection__card">
-            <div
-              class={
-                "collection__ico" +
-                (state.boardConfig.piecesStyle === item.key
-                  ? " collection__ico--active"
-                  : "")
-              }
-              onClick={() => {
-                setState("boardConfig", "piecesStyle", item.key);
-                props.handlers.changePiecesStyle(item.key);
-              }}
-              style={{ "background-image": `url(${item.img})` }}
-              title={item.key as string}
-              draggable={false}
-            ></div>
-            <div class="collection__actions">
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  props.handlers.toggleFavoritePieces(item.key);
-                }}
-                classList={{
-                  collection__action: true,
-                  collection__favorite: true,
-                  "collection__favorite--active": state.favoritePieces.has(
-                    item.key
-                  ),
-                }}
-                title="Add to favorites"
-              />
-              <Show when={!state.mobile}>
-                <a
-                  href={`stylus/pieces/${item.key}${
-                    state.boardConfig.showShadows ? "_shadows" : ""
-                  }.user.css`}
-                  target="_blank"
-                  class="collection__action collection__stylus"
-                  title="Install via Stylus"
-                />
-                <a
-                  href={`download/pieces/${item.key}.zip`}
-                  class="collection__action collection__download"
-                  title="Download"
-                />
-              </Show>
+      <Show when={!state.showFavoritePieces}>
+        <For
+          each={Object.entries(piecesStylesGrouped).filter(
+            ([key]) => key !== "hidden"
+          )}
+        >
+          {([key, items]) => (
+            <div class="collection_cards">
+              <h2 class="collection__title">{key}</h2>
+              <For each={items}>
+                {(key) => (
+                  <PieceCard
+                    handlers={props.handlers}
+                    item={{
+                      key: key as PiecesStyle,
+                      img: `/pieces/${key}/nw.svg`,
+                    }}
+                  />
+                )}
+              </For>
             </div>
-          </div>
-        )}
-      </For>
+          )}
+        </For>
+      </Show>
+      <Show when={state.showFavoritePieces}>
+        <div class="collection_cards">
+          <For
+            each={piecesStyles.filter((key) => state.favoritePieces.has(key))}
+          >
+            {(key) => (
+              <PieceCard
+                handlers={props.handlers}
+                item={{ key, img: `/pieces/${key}/nw.svg` }}
+              />
+            )}
+          </For>
+        </div>
+      </Show>
     </Scrollable>
   );
 };

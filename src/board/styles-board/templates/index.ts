@@ -59,6 +59,8 @@ import mono_bw from "./mono_bw";
 import mono_bw2 from "./mono_bw2";
 import mono_sharechess_dark from "./mono_sharechess_dark";
 import mono_sharechess_light from "./mono_sharechess_light";
+import mono_halloween from "./mono_halloween";
+import mono_halloween2 from "./mono_halloween2";
 
 import smooth_sunset from "./smooth_sunset";
 import smooth_summer from "./smooth_summer";
@@ -277,6 +279,8 @@ const boardStyles = {
   mono_bw2,
   mono_sharechess_dark,
   mono_sharechess_light,
+  mono_halloween,
+  mono_halloween2,
 
   smooth_sunset,
   smooth_summer,

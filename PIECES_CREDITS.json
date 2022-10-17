@@ -285,6 +285,12 @@
     "source": {
       "name": "dafont.com",
       "link": "https://www.dafont.com/chess-condal.font"
+    },
+    "colors": {
+      "halloween": {
+        "name": "Isaiah Brown",
+        "link": null
+      }
     }
   },
   "dmuysi": {

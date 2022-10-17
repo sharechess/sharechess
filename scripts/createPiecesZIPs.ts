@@ -9,6 +9,7 @@ type Credits = {
     author: CreditsEntry;
     license: CreditsEntry;
     source?: CreditsEntry;
+    colors?: { [key: string]: CreditsEntry };
   };
 };
 
@@ -23,7 +24,7 @@ const generateREADME = (name: string) => {
     .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
     .join(" ");
 
-  const [baseName] = name.split("_");
+  const [baseName, colorName] = name.split("_");
 
   const credits = CREDITS[baseName] ?? {
     author: { name: "unknown", link: null },
@@ -39,9 +40,17 @@ const generateREADME = (name: string) => {
     credits.author.name +
     (credits.author.link ? ` (${credits.author.link})` : "");
 
-  const editor = isOriginal
-    ? null
-    : "Color variant by: caderek (https://github.com/caderek)";
+  let editor: string | null = null;
+
+  if (!isOriginal) {
+    const name = credits?.colors?.[colorName]?.name ?? "caderek";
+    const link =
+      credits?.colors?.[colorName]?.link !== undefined
+        ? credits?.colors?.[colorName]?.link
+        : "https://github.com/caderek";
+
+    editor = "Color variant by: " + name + (link ? ` (${link})` : "");
+  }
 
   const license =
     "License: " +

@@ -103,6 +103,8 @@ const boardNames = [
   "mono_bw2",
   "mono_sharechess_dark",
   "mono_sharechess_light",
+  "mono_halloween",
+  "mono_halloween2",
   "smooth_sunset",
   "smooth_summer",
   "smooth_spring",

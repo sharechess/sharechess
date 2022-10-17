@@ -2,7 +2,6 @@ import fs from "fs";
 import prettier from "prettier";
 
 import encode from "./utils/encode";
-import credits from "../PIECES_CREDITS.json";
 
 import LichessPiecesCSS from "./style-templates/LichessPiecesCSS";
 import ChesscomPiecesCSS from "./style-templates/ChesscomPiecesCSS";
@@ -16,6 +15,20 @@ import ChessbasePiecesCSS from "./style-templates/ChessbasePiecesCSS";
 import WikipediaPiecesCSS from "./style-templates/WikipediaPiecesCSS";
 import AimchessPiecesCSS from "./style-templates/AimchessPiecesCSS";
 import ChessablePiecesCSS from "./style-templates/ChessablePiecesCSS";
+
+type CreditsEntry = { name: string; link: string | null };
+
+type Credits = {
+  [key: string]: {
+    files?: CreditsEntry;
+    author: CreditsEntry;
+    license: CreditsEntry;
+    source?: CreditsEntry;
+    colors?: { [key: string]: CreditsEntry };
+  };
+};
+
+const credits = require("../PIECES_CREDITS.json") as Credits;
 
 const domains = [
   {
@@ -72,7 +85,7 @@ const PIECES_FOLDER = "public/pieces";
 const OUT_DIR = "public/stylus/pieces";
 
 const Header = (setName: string, content: string, shadows: boolean = false) => {
-  const baseName = setName.split("_")[0] as keyof typeof credits;
+  const [baseName, colorName] = setName.split("_");
   const isOriginal = setName === baseName;
   const credit = credits[baseName] ?? {
     author: { name: "unknown" },
@@ -85,6 +98,12 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
       .map((chunk) => chunk[0].toUpperCase() + chunk.substring(1))
       .join(" ") + (shadows ? " Shadows" : "");
 
+  let editor: string | null = null;
+
+  if (!isOriginal) {
+    editor = credit?.colors?.[colorName]?.name ?? "caderek";
+  }
+
   return `
     /* ==UserStyle==
     @name           Custom pieces
@@ -94,7 +113,7 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
     .map((d) => d.name)
     .join(", ")}
     @author         ${credit.author.name} ${
-    isOriginal ? "" : "(color variant by caderek)"
+    isOriginal ? "" : `(color variant by ${editor})`
   }
     @license        ${credit.license.name}
     ==/UserStyle== */
