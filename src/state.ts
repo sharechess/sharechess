@@ -104,8 +104,8 @@ const initialState: State = {
   recent: saved.recent,
   favoritePieces: saved.pieces as Set<string>,
   favoriteBoards: saved.boards as Set<string>,
-  showFavoritePieces: saved.pieces.size > 0,
-  showFavoriteBoards: saved.boards.size > 0,
+  showFavoritePieces: false,
+  showFavoriteBoards: false,
 };
 
 const [state, setState] = createStore(initialState);
