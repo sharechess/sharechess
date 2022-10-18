@@ -1,8 +1,8 @@
 const boardNames = [
   "halloween_purple",
-  "halloween_purple2",
+  "halloween_web",
   "halloween_green",
-  "halloween_green2",
+  "halloween_swamp",
   "standard",
   "spring",
   "azure",
@@ -172,9 +172,9 @@ const boardNames = [
 const boardNamesGrouped = {
   "seasonal": [
     "halloween_purple",
-    "halloween_purple2",
+    "halloween_web",
     "halloween_green",
-    "halloween_green2"
+    "halloween_swamp"
   ],
   "solid": [
     "standard",

@@ -177,9 +177,9 @@ import qootee_grape from "./qootee_grape";
 
 const boardStyles = {
   halloween_purple,
-  halloween_purple2: halloween_web,
+  halloween_web,
   halloween_green,
-  halloween_green2: halloween_swamp,
+  halloween_swamp,
 
   standard,
   spring,
