@@ -2,13 +2,11 @@ import { Component, For, Show } from "solid-js";
 import { Handlers, BoardStyle } from "../../types";
 import Scrollable from "./reusable/Scrollable";
 import "./Boards.css";
-import boardStyles from "../../board/styles-board/boardStyles";
+import boardNames, {
+  boardNamesGrouped,
+} from "../../board/styles-board/boardStyles";
 import { state, setState } from "../../state";
-
-const boards = boardStyles.map((key) => ({
-  key,
-  img: `/boards/ico/${key}_ico.png`,
-})) as { key: BoardStyle; img: string }[];
+import BoardCard from "./BoardCard";
 
 const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
   return (
@@ -35,64 +33,45 @@ const Boards: Component<{ handlers: Handlers; class?: string }> = (props) => {
           Favorite
         </button>
       </p>
-      <For
-        each={
-          state.showFavoriteBoards
-            ? boards.filter(({ key }) => state.favoriteBoards.has(key))
-            : boards
-        }
-      >
-        {(item) => (
-          <div class="collection__card">
-            <div
-              class={
-                "collection__ico boards__ico" +
-                (state.boardConfig.boardStyle === item.key
-                  ? " collection__ico--active"
-                  : "")
-              }
-              onClick={() => {
-                setState("boardConfig", "boardStyle", item.key);
-                props.handlers.changeBoardStyle(item.key);
-              }}
-              style={{ "background-image": `url(${item.img})` }}
-              title={item.key as string}
-              draggable={false}
-            ></div>
-            <div class="collection__actions">
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  props.handlers.toggleFavoriteBoard(item.key);
-                }}
-                classList={{
-                  collection__action: true,
-                  collection__favorite: true,
-                  "collection__favorite--active": state.favoriteBoards.has(
-                    item.key
-                  ),
-                }}
-                title="Add to favorites"
-              />
-              <Show when={!state.mobile}>
-                <a
-                  href={`stylus/boards/${item.key}.user.css`}
-                  target="_blank"
-                  class="collection__action collection__stylus"
-                  title="Install via Stylus"
-                />
-                <a
-                  href={`download/boards/${item.key}.zip`}
-                  target="_blank"
-                  class="collection__action collection__download"
-                  title="Download"
-                />
-              </Show>
+      <Show when={!state.showFavoriteBoards}>
+        <For
+          each={Object.entries(boardNamesGrouped).filter(
+            ([key]) => key !== "hidden"
+          )}
+        >
+          {([key, items]) => (
+            <div class="collection_cards">
+              <h2 class="collection__title">{key}</h2>
+              <For each={items}>
+                {(key) => (
+                  <BoardCard
+                    handlers={props.handlers}
+                    item={{
+                      key: key as BoardStyle,
+                      img: `/boards/ico/${key}_ico.png`,
+                    }}
+                  />
+                )}
+              </For>
             </div>
-          </div>
-        )}
-      </For>
+          )}
+        </For>
+      </Show>
+      <Show when={state.showFavoriteBoards}>
+        <div class="collection_cards">
+          <For each={boardNames.filter((key) => state.favoriteBoards.has(key))}>
+            {(key) => (
+              <BoardCard
+                handlers={props.handlers}
+                item={{
+                  key: key as BoardStyle,
+                  img: `/boards/ico/${key}_ico.png`,
+                }}
+              />
+            )}
+          </For>
+        </div>
+      </Show>
     </Scrollable>
   );
 };

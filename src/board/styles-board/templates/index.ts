@@ -59,8 +59,10 @@ import mono_bw from "./mono_bw";
 import mono_bw2 from "./mono_bw2";
 import mono_sharechess_dark from "./mono_sharechess_dark";
 import mono_sharechess_light from "./mono_sharechess_light";
-import mono_halloween from "./mono_halloween";
-import mono_halloween2 from "./mono_halloween2";
+import halloween_purple from "./halloween_purple";
+import halloween_web from "./halloween_web";
+import halloween_green from "./halloween_green";
+import halloween_swamp from "./halloween_swamp";
 
 import smooth_sunset from "./smooth_sunset";
 import smooth_summer from "./smooth_summer";
@@ -174,6 +176,11 @@ import qootee_pink from "./qootee_pink";
 import qootee_grape from "./qootee_grape";
 
 const boardStyles = {
+  halloween_purple,
+  halloween_purple2: halloween_web,
+  halloween_green,
+  halloween_green2: halloween_swamp,
+
   standard,
   spring,
   azure,
@@ -279,8 +286,6 @@ const boardStyles = {
   mono_bw2,
   mono_sharechess_dark,
   mono_sharechess_light,
-  mono_halloween,
-  mono_halloween2,
 
   smooth_sunset,
   smooth_summer,

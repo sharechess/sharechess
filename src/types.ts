@@ -53,7 +53,12 @@ export type MoveIndicator = {
   color: string;
 };
 
-export type StyleCategory = "solid" | "gradient" | "pic" | "custom";
+export type StyleCategory =
+  | "solid"
+  | "gradient"
+  | "texture"
+  | "custom"
+  | "seasonal";
 
 export type Style = {
   category: StyleCategory;
