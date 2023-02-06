@@ -6,7 +6,6 @@ export const piecesStylesGrouped = {
     "anarchy-plug_fresh",
     "anarchy-plug_sepia",
   ] as const,
-  seasonal: ["anarchy_halloween", "condal_halloween"] as const,
   modern: [
     "tatiana",
     "tatiana_wood",
@@ -271,6 +270,7 @@ export const piecesStylesGrouped = {
     "letters_cold",
     "letters_dim",
   ] as const,
+  seasonal: ["anarchy_halloween", "condal_halloween"] as const,
 };
 
 const piecesStyles = [
