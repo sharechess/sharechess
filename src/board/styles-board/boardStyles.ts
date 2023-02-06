@@ -166,17 +166,11 @@ const boardNames = [
   "leather1",
   "leather2",
   "leather3",
-  "leather4"
-]
+  "leather4",
+];
 
 const boardNamesGrouped = {
-  "seasonal": [
-    "halloween_purple",
-    "halloween_web",
-    "halloween_green",
-    "halloween_swamp"
-  ],
-  "solid": [
+  solid: [
     "standard",
     "spring",
     "azure",
@@ -280,9 +274,9 @@ const boardNamesGrouped = {
     "mono_bw",
     "mono_bw2",
     "mono_sharechess_dark",
-    "mono_sharechess_light"
+    "mono_sharechess_light",
   ],
-  "gradient": [
+  gradient: [
     "smooth_sunset",
     "smooth_summer",
     "smooth_spring",
@@ -298,9 +292,9 @@ const boardNamesGrouped = {
     "rainbow_light",
     "rainbow",
     "rainbow_dark",
-    "rainbow_night"
+    "rainbow_night",
   ],
-  "texture": [
+  texture: [
     "clouds_bermuda",
     "clouds_kimberly",
     "clouds_wisteria",
@@ -344,9 +338,15 @@ const boardNamesGrouped = {
     "leather1",
     "leather2",
     "leather3",
-    "leather4"
-  ]
-}
+    "leather4",
+  ],
+  seasonal: [
+    "halloween_purple",
+    "halloween_web",
+    "halloween_green",
+    "halloween_swamp",
+  ],
+};
 
-export { boardNamesGrouped }
-export default boardNames
+export { boardNamesGrouped };
+export default boardNames;

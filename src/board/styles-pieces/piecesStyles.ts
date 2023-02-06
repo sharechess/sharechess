@@ -275,11 +275,11 @@ export const piecesStylesGrouped = {
 
 const piecesStyles = [
   ...piecesStylesGrouped.hidden,
-  ...piecesStylesGrouped.seasonal,
   ...piecesStylesGrouped.modern,
   ...piecesStylesGrouped.classic,
   ...piecesStylesGrouped.fun,
   ...piecesStylesGrouped.unusual,
+  ...piecesStylesGrouped.seasonal,
 ];
 
 export const pieceNames = [
