@@ -55,16 +55,13 @@ const About: Component = () => {
             />
             <h2 class="support__title">Buy me a coffee</h2>
             <p class="support__description">
-              The project is free for everyone, but improving the website and
-              creating new boards and piece sets takes a lot of time and effort.
+              The project is free for everyone, and does not use ads or
+              trackers. It takes some time and effort, but I'm fine supporting
+              it on my own.
             </p>
             <p class="support__description">
-              I don't use ads or trackers, and the only source to fund the
-              project is your generosity.
-            </p>
-            <p class="support__description">
-              Help fuel the development of the project by buying me a symbolic
-              coffee!
+              If you really want to, you can help fuel the development of the
+              project by buying me a symbolic coffee!
             </p>
             <a
               href="https://www.buymeacoffee.com/maciejcaderek"
