@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.0001 56C14.0001 59.75 26.1529 61 33.4445 61C40.7362 61 52.889 59.75 52.889 56C52.889 52.25 40.1255 51 33.4445 51C26.7636 51 14.0001 52.25 14.0001 56Z" fill="url(#paint0_linear_1_485)"/>
+<path d="M32 5V18" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 38C36.4183 38 40 33.0751 40 27C40 20.9249 36.4183 16 32 16C27.5817 16 24 20.9249 24 27C24 33.0751 27.5817 38 32 38Z" fill="#FFFAD7" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18 42C18 42 10 38 10 30C10 26 13.7834 22 18 22C26 22 32 28 32 43" fill="#FFFAD7"/>
+<path d="M18 42C18 42 10 38 10 30C10 26 13.7834 22 18 22C26 22 32 28 32 43" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.0001 42C17.0001 42 16.0001 50 16.0002 54C22.0002 56 32.0002 56 32.0002 56C32.0002 56 42.0002 56 48.0002 54C48.0001 50 47.0001 42 47.0001 42C42.0001 44 32.0001 44 32.0001 44C32.0001 44 22.0001 44 17.0001 42Z" fill="#FFFAD7"/>
+<path d="M45.0002 42L48.0002 54L41.0002 55L39 44L45.0002 42Z" fill="#FFE4A7"/>
+<path d="M46 42C46 42 54 38 54 30C54 26 50.2166 22 46 22C38 22 32 28 32 43" fill="#FFFAD7"/>
+<path d="M48 24C48 34 45 38 40 42C48 42 54 35 54 30C54 26.6667 48 24 48 24Z" fill="#FFE4A7"/>
+<path d="M18 42C18 42 16.0001 50 16.0002 54C22.0002 56 32.0002 56 32.0002 56C32.0002 56 42.0002 56 48.0002 54C48.0001 50 46 42 46 42C41 44 32 44 32 44C32 44 23 44 18 42Z" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 9H36" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M47 48C42 50 32 50 32 50C32 50 22 50 17 48" stroke="black" stroke-width="3.99999" stroke-linejoin="round"/>
+<path d="M46 42C46 42 54 38 54 30C54 26 50.2166 22 46 22C38 22 32 28 32 43" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_1_485" x1="14.0001" y1="103.5" x2="467.877" y2="103.5" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.2"/>
+</linearGradient>
+</defs>
+</svg>

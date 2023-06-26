@@ -1,0 +1,20 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.0001 56C14.0001 59.75 26.1528 61 33.4445 61C40.7362 61 52.8889 59.75 52.8889 56C52.8889 52.25 40.1255 51 33.4445 51C26.7635 51 14.0001 52.25 14.0001 56Z" fill="url(#paint0_linear_1_503)"/>
+<path d="M32 5V18" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32 38C27.5817 38 24 33.0751 24 27C24 20.9249 27.5817 16 32 16C36.4183 16 40 20.9249 40 27C40 33.0751 36.4183 38 32 38Z" fill="#FF2171" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46 42C46 42 54 38 54 30C54 26 50.2166 22 46 22C38 22 32 28 32 43" fill="#FF2171"/>
+<path d="M46 42C46 42 54 38 54 30C54 26 50.2166 22 46 22C38 22 32 28 32 43" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46.9999 42C46.9999 42 47.9999 50 47.9998 54C41.9998 56 31.9998 56 31.9998 56C31.9998 56 21.9998 56 15.9998 54C15.9999 50 16.9999 42 16.9999 42C21.9999 44 31.9999 44 31.9999 44C31.9999 44 41.9999 44 46.9999 42Z" fill="#FF2171"/>
+<path d="M18.9998 42L15.9998 54L22.9998 55L25 44L18.9998 42Z" fill="#FF68A3"/>
+<path d="M18 42C18 42 10 38 10 30C10 26 13.7834 22 18 22C26 22 32 28 32 43" fill="#FF2171"/>
+<path d="M24 25C17 26 13 35 18 41C10 38 10 35 10 30C10 18 24 25 24 25Z" fill="#FF68A3"/>
+<path d="M18 42C18 42 10 38 10 30C10 26 13.7834 22 18 22C26 22 32 28 32 43" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46 42C46 42 47.9999 50 47.9998 54C41.9998 56 31.9998 56 31.9998 56C31.9998 56 21.9998 56 15.9998 54C15.9999 50 18 42 18 42C23 44 32 44 32 44C32 44 41 44 46 42Z" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M36 9H28" stroke="black" stroke-width="3.99999" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 48C22 50 32 50 32 50C32 50 42 50 47 48" stroke="black" stroke-width="3.99999" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_1_503" x1="14.0001" y1="103.5" x2="467.877" y2="103.5" gradientUnits="userSpaceOnUse">
+<stop stop-opacity="0.2"/>
+</linearGradient>
+</defs>
+</svg>

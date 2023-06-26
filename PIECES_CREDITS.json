@@ -125,6 +125,24 @@
       "link": "http://www.enpassant.dk/chess/fontimg/berlin.htm"
     }
   },
+  "caliente": {
+    "files": {
+      "name": "caliente",
+      "link": "pieces/caliente"
+    },
+    "author": {
+      "name": "Leonid Gordenin \"avi\"",
+      "link": "https://github.com/avi-0"
+    },
+    "license": {
+      "name": "CC BY-NC-SA 4.0",
+      "link": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "source": {
+      "name": "github.com",
+      "link": "https://github.com/avi-0/caliente"
+    }
+  },
   "california": {
     "files": {
       "name": "california",
