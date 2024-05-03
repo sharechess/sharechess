@@ -32,7 +32,7 @@
     "@types/prettier": "^2.6.1",
     "@types/ua-parser-js": "^0.7.36",
     "@vitejs/plugin-legacy": "^1.8.1",
-    "canvas": "^2.9.3",
+    "canvas": "^2.11.2",
     "imagemin": "^7.0.1",
     "imagemin-pngquant": "^9.0.2",
     "mime": "^3.0.0",

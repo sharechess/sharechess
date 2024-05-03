@@ -1,7 +1,7 @@
 const WikipediaBoardCSS = (cssVars: { board: string }) => {
-  return `
+	return `
     @-moz-document domain("wikipedia.org") {
-      .chess-board > img {
+      .chess-board img {
         content: ${cssVars.board} !important;
       }
     }
