@@ -8,7 +8,7 @@ const LichessBoardCSS = (cssVars: { board: string }, style: Style) => {
         background-size: cover;
       }
       .is2d cg-board::before {
-        background-image: none;
+        background-image: none !important;
       }
       .is2d coords {
         ---cg-ccw: ${style.coords.onDark} !important;

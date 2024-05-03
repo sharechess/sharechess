@@ -93,7 +93,7 @@ const Header = (boardName: string, content: string) => {
     /* ==UserStyle==
     @name           Custom chessboard
     @namespace      sharechess.github.io
-    @version        1.6.0
+    @version        1.7.0
     @description    ${boardName} chessboard for ${domains
 			.map((d) => d.name)
 			.join(", ")}
