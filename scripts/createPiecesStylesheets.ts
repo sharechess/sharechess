@@ -106,7 +106,7 @@ const Header = (setName: string, content: string, shadows: boolean = false) => {
 
   return `
     /* ==UserStyle==
-    @name           Custom pieces
+    @name           Custom pieces ${Math.floor(Math.random() * 99999999)}
     @namespace      sharechess.github.io
     @version        1.5.0
     @description    ${namePretty} piece set for ${domains
