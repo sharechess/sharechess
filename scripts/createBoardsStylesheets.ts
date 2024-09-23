@@ -91,7 +91,7 @@ const loadStyle = async (name: string) =>
 const Header = (boardName: string, content: string) => {
 	return `
     /* ==UserStyle==
-    @name           Custom chessboard
+    @name           Custom chessboard ${Math.floor(Math.random() * 99999999)}
     @namespace      sharechess.github.io
     @version        1.7.0
     @description    ${boardName} chessboard for ${domains
