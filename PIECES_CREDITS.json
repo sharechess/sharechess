@@ -383,6 +383,24 @@
       "link": "https://github.com/lichess-org/lila/tree/master/public/piece/fantasy"
     }
   },
+  "fly-or-dream": {
+    "files": {
+      "name": "fly-pr-dream",
+      "link": "pieces/fly-or-dream"
+    },
+    "author": {
+      "name": "DG-RA",
+      "link": "https://www.reddit.com/user/RaF_zz/"
+    },
+    "license": {
+      "name": "PDM 1.0",
+      "link": "https://creativecommons.org/publicdomain/mark/1.0/"
+    },
+    "source": {
+      "name": "reddit.com",
+      "link": "https://www.reddit.com/r/sharechess/comments/1jen8ab/flyordream_i_have_created_this_set_of_pieces_with/"
+    }
+  },
   "fresca": {
     "files": {
       "name": "fresca",

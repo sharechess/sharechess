@@ -21,7 +21,7 @@ Latest build is available on [github.com/sharechess/sharechess.github.io](https:
 For development:
 
 - fork this repo and clone the fork to your local environment,
-- go to the project's directory and run `npm i` (requires Node 16 LTS or higher, available [here](https://nodejs.org/en/)),
+- go to the project's directory and run `npm i` (requires Node 16 LTS, available [here](https://nodejs.org/en/)),
 - run `npm run gen` - it will generate styles and board images,
 - run `npm start` - it will start the development server,
 - start coding ;)

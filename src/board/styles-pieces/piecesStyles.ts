@@ -75,6 +75,10 @@ export const piecesStylesGrouped = {
     "echiquier_ink",
     "echiquier_flesh",
     "echiquier_grape",
+    "fly-or-dream",
+    "fly-or-dream_fire",
+    "fly-or-dream_magic",
+    "fly-or-dream_rainbow",
   ] as const,
   classic: [
     "merida",
