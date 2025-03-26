@@ -21,12 +21,12 @@ const ChessableCSSEntry = (key: string, dataURL: string, forceStyle = true) => {
   const selector = `${color}${piece.toUpperCase()}`;
 
   return `
-    svg[data-piece="${selector}"] {
+    div[data-piece="${selector}"] {
       background-image: ${dataURL}${forceStyle ? " !important" : ""}
     }
 
-    img[data-piece="${selector}"],
-    img[src$='${uniqueSrcEnding[selector]}'][data-piece='wP'] {
+    div[data-piece="${selector}"],
+    div[src$='${uniqueSrcEnding[selector]}'][data-piece='wP'] {
       content: ${dataURL} !important;
     }
   `;
@@ -42,7 +42,7 @@ const ChessablePiecesCSS = (
 
   return `
     @-moz-document domain("chessable.com") {
-      svg[class*="piece-"] {
+      div[class*="piece-"] {
         background-position: center;
         background-size: contain;
         filter: ${
@@ -82,7 +82,7 @@ const ChessablePiecesCSS = (
         content: var(--sharechess-bb-url);
       }
 
-      svg[class*="piece-"] * {
+      div[class*="piece-"] * {
         display: none;
       }
 
