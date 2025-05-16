@@ -63,6 +63,10 @@ import halloween_purple from "./halloween_purple";
 import halloween_web from "./halloween_web";
 import halloween_green from "./halloween_green";
 import halloween_swamp from "./halloween_swamp";
+import plain_purple from "./plain_purple"
+import plain_pink from "./plain_pink"
+import plain_green from "./plain_green"
+import plain_blue from "./plain_blue"
 
 import smooth_sunset from "./smooth_sunset";
 import smooth_summer from "./smooth_summer";
@@ -286,6 +290,11 @@ const boardStyles = {
   mono_bw2,
   mono_sharechess_dark,
   mono_sharechess_light,
+
+  plain_purple,
+  plain_pink,
+  plain_green,
+  plain_blue,
 
   smooth_sunset,
   smooth_summer,

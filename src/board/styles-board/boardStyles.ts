@@ -107,6 +107,10 @@ const boardNames = [
   "mono_bw2",
   "mono_sharechess_dark",
   "mono_sharechess_light",
+  "plain_purple",
+  "plain_pink",
+  "plain_green",
+  "plain_blue",
   "smooth_sunset",
   "smooth_summer",
   "smooth_spring",
@@ -280,7 +284,11 @@ const boardNamesGrouped = {
     "mono_bw",
     "mono_bw2",
     "mono_sharechess_dark",
-    "mono_sharechess_light"
+    "mono_sharechess_light",
+    "plain_purple",
+    "plain_pink",
+    "plain_green",
+    "plain_blue"
   ],
   "gradient": [
     "smooth_sunset",
