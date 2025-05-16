@@ -14,8 +14,6 @@ const main = async () => {
   const board = new Board();
   await board.init();
 
-  console.log(state.boardConfig);
-
   await board.init(state.boardConfig);
   const player = new Player(board, state.gameConfig);
 
